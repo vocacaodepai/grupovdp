@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Painel VDP</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --bg:#f2ecdd;
+    --surface:#fbf7ec;
+    --surface-2:#efe4cb;
+    --text:#241c13;
+    --text-muted:#6e5f49;
+    --border:#d8c9a3;
+    --gold:#96701a;
+    --gold-soft:#ebddb0;
+    --green:#24503a;
+    --green-soft:#dce7dd;
+    --rust:#9c5a3c;
+    --shadow: 0 1px 2px rgba(36,28,19,.06), 0 8px 24px rgba(36,28,19,.08);
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14110d;
+      --surface:#1c1712;
+      --surface-2:#241d15;
+      --text:#eee6d6;
+      --text-muted:#9c8e78;
+      --border:#352a1d;
+      --gold:#d3aa3e;
+      --gold-soft:#3a2e15;
+      --green:#5f9973;
+      --green-soft:#1b2a20;
+      --rust:#c07a5a;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14110d;
+    --surface:#1c1712;
+    --surface-2:#241d15;
+    --text:#eee6d6;
+    --text-muted:#9c8e78;
+    --border:#352a1d;
+    --gold:#d3aa3e;
+    --gold-soft:#3a2e15;
+    --green:#5f9973;
+    --green-soft:#1b2a20;
+    --rust:#c07a5a;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    height:100dvh;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    padding:clamp(10px,2vh,22px) clamp(12px,2.4vw,28px);
+    gap:clamp(6px,1vh,10px);
+  }
+  @media (max-width:720px){
+    body{ height:auto; min-height:100dvh; overflow:auto; }
+  }
+
+  .top{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    flex-shrink:0;
+    flex-wrap:wrap;
+  }
+  .wordmark{
+    font-family:"Fraunces",serif;
+    font-weight:600;
+    font-size:clamp(15px,1.9vw,20px);
+    letter-spacing:.02em;
+  }
+  .wordmark b{ color:var(--gold); font-weight:700; }
+  .top-right{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:clamp(10px,1.1vw,12px);
+    color:var(--text-muted);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    text-align:right;
+  }
+  .fresh-note{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:clamp(9px,1vw,10.5px);
+    color:var(--text-muted);
+    flex-shrink:0;
+  }
+
+  .grid{
+    flex:1;
+    min-height:0;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:repeat(3,1fr);
+    gap:clamp(8px,1.3vw,14px);
+  }
+  @media (max-width:720px){
+    .grid{ grid-template-columns:1fr 1fr; grid-template-rows:none; height:auto; }
+    .hub{ grid-column:1 / -1; }
+  }
+  @media (max-width:460px){
+    .grid{ grid-template-columns:1fr; }
+  }
+
+  .card{
+    position:relative;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:clamp(10px,1.3vw,16px);
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    min-height:0;
+    overflow:hidden;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .card:hover{ border-color:var(--gold); transform:translateY(-1px); }
+  .card:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+
+  .card-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+  .num{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:clamp(10px,1vw,12px);
+    color:var(--gold);
+    border:1px solid var(--gold);
+    border-radius:4px;
+    padding:1px 6px;
+    flex-shrink:0;
+  }
+  .kicker{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:clamp(8.5px,.85vw,10px);
+    text-transform:uppercase;
+    letter-spacing:.09em;
+    color:var(--text-muted);
+    text-align:right;
+  }
+  .name{
+    font-family:"Fraunces",serif;
+    font-weight:600;
+    font-size:clamp(13px,1.5vw,18px);
+    line-height:1.15;
+    text-wrap:balance;
+  }
+  .card-bottom{ margin-top:auto; display:flex; flex-direction:column; gap:5px; }
+  .stage-row{ display:flex; align-items:center; justify-content:space-between; gap:6px; }
+  .stage-label{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:clamp(9px,.9vw,11px);
+    color:var(--text-muted);
+  }
+  .items-count{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:clamp(9px,.9vw,11px);
+    color:var(--text-muted);
+  }
+  .segbar{ display:flex; gap:3px; }
+  .seg{ flex:1; height:5px; border-radius:3px; background:var(--surface-2); border:1px solid var(--border); }
+  .seg.on{ background:var(--gold); border-color:var(--gold); }
+  .seg.on.done{ background:var(--green); border-color:var(--green); }
+
+  .hub{
+    background:radial-gradient(circle at 50% 35%, var(--gold-soft), var(--surface) 72%);
+    border:1px solid var(--gold);
+    align-items:center;
+    text-align:center;
+    justify-content:center;
+    gap:10px;
+    cursor:pointer;
+  }
+  .hub .wordmark2{
+    font-family:"Fraunces",serif;
+    font-weight:700;
+    font-size:clamp(20px,3vw,32px);
+    letter-spacing:.01em;
+  }
+  .hub .wordmark2 .vdp{ color:var(--gold); }
+  .hub .sub{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:clamp(9px,1vw,11px);
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--text-muted);
+  }
+  .hub .legend{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:8px 14px;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:clamp(9px,.85vw,10.5px);
+    color:var(--text-muted);
+  }
+  .legend .dot{ display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px; vertical-align:middle; }
+
+  /* modal */
+  .overlay{
+    position:fixed; inset:0; background:rgba(20,16,10,.55);
+    backdrop-filter:blur(2px);
+    display:flex; align-items:center; justify-content:center;
+    padding:20px; z-index:50;
+  }
+  .overlay[hidden]{ display:none; }
+  .panel{
+    width:min(560px,100%);
+    max-height:88vh;
+    overflow-y:auto;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:clamp(18px,3vw,28px);
+    box-shadow:var(--shadow);
+  }
+  .panel-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:14px; }
+  .panel-title{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .panel-title .num{ font-size:12px; }
+  .panel-name{ font-family:"Fraunces",serif; font-weight:600; font-size:clamp(20px,3vw,26px); text-wrap:balance; }
+  .panel-kicker{
+    font-family:"IBM Plex Mono",monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:.09em; color:var(--gold); margin-top:2px;
+  }
+  .close-btn{
+    border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+    border-radius:8px; width:32px; height:32px; font-size:16px; cursor:pointer; flex-shrink:0;
+  }
+  .close-btn:hover{ border-color:var(--gold); }
+
+  .section-label{
+    font-family:"IBM Plex Mono",monospace; font-size:10px; text-transform:uppercase;
+    letter-spacing:.1em; color:var(--text-muted); margin:18px 0 8px;
+  }
+  .section-label:first-of-type{ margin-top:4px; }
+
+  .stages{ display:flex; gap:6px; }
+  .stage-btn{
+    flex:1; border:1px solid var(--border); background:var(--surface-2); color:var(--text-muted);
+    border-radius:8px; padding:8px 4px; cursor:pointer; text-align:center;
+    font-family:"IBM Plex Mono",monospace; font-size:10.5px; line-height:1.5;
+  }
+  .stage-btn b{ display:block; font-family:"Fraunces",serif; font-size:14px; color:var(--text); font-weight:600; }
+  .stage-btn.active{ border-color:var(--gold); background:var(--gold-soft); color:var(--gold); }
+  .stage-btn.active b{ color:var(--gold); }
+  .stage-btn:hover{ border-color:var(--gold); }
+
+  .items{ display:flex; flex-direction:column; gap:8px; }
+  .item-block{ display:flex; flex-direction:column; gap:2px; }
+  .item-row{
+    display:flex; align-items:center; gap:8px;
+    border:1px solid var(--border); border-radius:8px; padding:7px 8px 7px 12px;
+    background:var(--surface-2);
+  }
+  .item-label{ flex:1; font-size:13.5px; }
+  .status-pill{
+    font-family:"IBM Plex Mono",monospace; font-size:10px; text-transform:uppercase; letter-spacing:.05em;
+    border:1px solid var(--border); border-radius:999px; padding:4px 10px; cursor:pointer; background:var(--surface);
+    color:var(--text-muted); white-space:nowrap;
+  }
+  .status-pill[data-status="andamento"]{ border-color:var(--gold); color:var(--gold); }
+  .status-pill[data-status="ativo"]{ border-color:var(--green); color:var(--green); }
+  .item-del{
+    border:none; background:none; color:var(--text-muted); cursor:pointer; font-size:14px; padding:2px 4px;
+    opacity:.5;
+  }
+  .item-del:hover{ opacity:1; color:var(--gold); }
+  .empty-items{ font-size:12.5px; color:var(--text-muted); font-style:italic; }
+
+  .item-expand{
+    border:none; background:none; color:var(--gold); cursor:pointer;
+    font-size:14px; padding:2px 4px; opacity:.75; line-height:1;
+  }
+  .item-expand:hover{ opacity:1; }
+
+  .metrics-block{ display:flex; flex-wrap:wrap; gap:8px; padding:1px 4px 4px 12px; }
+  .metric-chip{
+    display:flex; align-items:center; gap:6px;
+    font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--text-muted);
+    background:var(--surface); border:1px solid var(--border); border-radius:999px;
+    padding:3px 9px 3px 11px;
+  }
+  .metric-value{ color:var(--text); font-weight:600; }
+  .metric-delta.up{ color:var(--green); }
+  .metric-delta.down{ color:var(--rust); }
+  .spark{ color:var(--gold); display:block; flex-shrink:0; }
+  .metric-note{
+    font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--text-muted);
+    font-style:italic; padding:1px 4px 4px 12px;
+  }
+
+  .back-btn{
+    border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+    border-radius:8px; width:32px; height:32px; font-size:15px; cursor:pointer; flex-shrink:0;
+  }
+  .back-btn:hover{ border-color:var(--gold); }
+  .detail-tabs{ display:flex; flex-wrap:wrap; gap:6px; margin:14px 0; }
+  .detail-tab{
+    border:1px solid var(--border); background:var(--surface-2); color:var(--text-muted);
+    border-radius:999px; padding:6px 12px; font-family:"IBM Plex Mono",monospace; font-size:10.5px; cursor:pointer;
+  }
+  .detail-tab.active{ border-color:var(--gold); background:var(--gold-soft); color:var(--gold); }
+  .detail-tab:hover{ border-color:var(--gold); }
+  .detail-stat{ display:flex; align-items:baseline; gap:10px; margin-bottom:4px; flex-wrap:wrap; }
+  .detail-stat .big{ font-family:"Fraunces",serif; font-weight:700; font-size:clamp(28px,4vw,38px); }
+  .detail-stat .delta{ font-family:"IBM Plex Mono",monospace; font-size:12.5px; }
+  .detail-period{ font-family:"IBM Plex Mono",monospace; font-size:10px; color:var(--text-muted); margin-bottom:12px; }
+  .chart-wrap{ width:100%; }
+  .chart-wrap svg{ width:100%; height:auto; display:block; }
+
+  .add-row{ display:flex; gap:6px; margin-top:8px; flex-wrap:wrap; }
+  .add-row input, .add-row select{
+    flex:1; border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+    border-radius:8px; padding:8px 10px; font-family:"Inter",sans-serif; font-size:13px;
+  }
+  .add-row input:focus, .add-row select:focus{ outline:none; border-color:var(--gold); }
+  .add-row button{
+    border:1px solid var(--gold); background:var(--gold-soft); color:var(--gold);
+    border-radius:8px; padding:8px 14px; font-family:"Inter",sans-serif; font-size:13px; font-weight:600; cursor:pointer;
+  }
+  .add-row button:hover{ filter:brightness(1.05); }
+  .fin-add select{ flex:1 1 40%; }
+  .fin-add input[type="month"]{ flex:1 1 30%; }
+  .fin-add input[type="number"]{ flex:1 1 25%; }
+
+  textarea.notes{
+    width:100%; min-height:64px; resize:vertical;
+    border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+    border-radius:8px; padding:10px; font-family:"Inter",sans-serif; font-size:13px; line-height:1.5;
+  }
+  textarea.notes:focus{ outline:none; border-color:var(--gold); }
+
+  .updated{
+    margin-top:16px; font-family:"IBM Plex Mono",monospace; font-size:10px; color:var(--text-muted);
+  }
+
+  .overview-table{ display:flex; flex-direction:column; gap:6px; }
+  .ov-row{
+    display:grid; grid-template-columns:28px 1fr auto auto; align-items:center; gap:10px;
+    border:1px solid var(--border); border-radius:8px; padding:8px 10px; background:var(--surface-2);
+    cursor:pointer;
+  }
+  .ov-row:hover{ border-color:var(--gold); }
+  .ov-num{ font-family:"IBM Plex Mono",monospace; color:var(--gold); font-size:11px; }
+  .ov-name{ font-family:"Fraunces",serif; font-weight:600; font-size:14px; }
+  .ov-stage{ font-family:"IBM Plex Mono",monospace; font-size:10px; color:var(--text-muted); white-space:nowrap; }
+  .ov-bar{ display:flex; gap:2px; width:64px; }
+  .ov-bar .seg{ height:4px; }
+
+  .fin-chart{ display:flex; align-items:flex-end; gap:10px; height:64px; margin-bottom:10px; padding:0 2px; }
+  .fin-bar-col{ display:flex; flex-direction:column-reverse; align-items:center; gap:4px; flex:1; height:100%; }
+  .fin-bar{ width:100%; max-width:28px; background:var(--gold); border-radius:4px 4px 0 0; }
+  .fin-bar-label{ font-family:"IBM Plex Mono",monospace; font-size:9.5px; color:var(--text-muted); }
+  .fin-list{ display:flex; flex-direction:column; gap:5px; margin-bottom:4px; max-height:130px; overflow-y:auto; }
+  .fin-row{
+    display:grid; grid-template-columns:1fr auto auto auto; align-items:center; gap:8px;
+    border:1px solid var(--border); border-radius:8px; padding:6px 8px 6px 12px; background:var(--surface-2);
+    font-size:12.5px;
+  }
+  .fin-row-front{ font-weight:500; }
+  .fin-row-month, .fin-row-amount{
+    font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--text-muted);
+    font-variant-numeric:tabular-nums; white-space:nowrap;
+  }
+  .fin-row-amount{ color:var(--text); }
+
+  .status-msg{
+    display:flex; align-items:center; justify-content:center; height:100%;
+    font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--text-muted);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .card{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wordmark">GRUPO <b>V.D.P.</b> <span style="color:var(--text-muted); font-family:'IBM Plex Mono',monospace; font-size:.7em; letter-spacing:.06em;">— painel de frentes</span></div>
+  <div style="display:flex; flex-direction:column; align-items:flex-end; gap:2px;">
+    <div class="top-right" id="topRight">carregando…</div>
+    <div class="fresh-note">métricas do Metricool · 11/09/2026 · peça a atualização quando quiser dados novos</div>
+  </div>
+</div>
+
+<div class="grid" id="grid">
+  <div class="status-msg" style="grid-column:1/-1;grid-row:1/-1;">carregando…</div>
+</div>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="panel" id="panel" role="dialog" aria-modal="true"></div>
+</div>
+
+<script>
+(function(){
+  var STAGES = ["Ideação","Estruturação","Execução","Consolidado"];
+  var STATUS_ORDER = ["pendente","andamento","ativo"];
+  var STATUS_LABEL = {pendente:"Pendente", andamento:"Em andamento", ativo:"Ativo"};
+  var LAYOUT = ["f5","f6","f4","f7","hub","f1","f8","f2","f3"];
+  var STORAGE_KEY = "vdp-painel-state-v1";
+
+  var SEED_DATA = {
+    updatedAt: 1757620000000,
+    revenue: { entries: [] },
+    fronts: {
+      f1: { num:1, name:"Vocação de Pai", category:"Paternidade", stage:0, notes:"", items:[
+        {id:"1.1", label:"Instagram", status:"pendente", note:"Windsor.ai desconectado — reconecte a conta do Instagram (vocacaodepai) em claude.ai → Conectores para ativar os números aqui"},
+        {id:"1.2", label:"YouTube", status:"pendente"},
+        {id:"1.3", label:"Threads", status:"pendente"},
+        {id:"1.4", label:"X", status:"pendente"},
+        {id:"1.5", label:"Substack", status:"pendente"},
+        {id:"1.6", label:"Site", status:"pendente"}
+      ]},
+      f2: { num:2, name:"Apostolado São José", category:"Igreja Católica", stage:0, notes:"", items:[
+        {id:"2.1", label:"Escrivá todo dia", status:"pendente", source:{provider:"metricool", metrics:[{field:"IGEV01",label:"Seguidores IG"}]}},
+        {id:"2.2", label:"S.J.E. / Opus Dei", status:"pendente", source:{provider:"metricool", metrics:[
+          {field:"IGEV01",label:"Seguidores IG"},
+          {field:"YTEV01",label:"Inscritos YT"},
+          {field:"YTEV03",label:"Receita YT", currency:true}
+        ]}},
+        {id:"2.3", label:"Escrúpulos", status:"pendente"},
+        {id:"2.4", label:"Sta Teresinha", status:"pendente"},
+        {id:"2.5", label:"S. Padre Pio", status:"pendente"}
+      ]},
+      f3: { num:3, name:"Vocação de Mãe", category:"Maternidade", stage:0, notes:"", items:[
+        {id:"3.1", label:"Site", status:"pendente"},
+        {id:"3.2", label:"Instagram", status:"pendente"}
+      ]},
+      f4: { num:4, name:"Pai de Negócios", category:"Finanças", stage:0, notes:"", items:[
+        {id:"4.1", label:"YouTube", status:"pendente"},
+        {id:"4.2", label:"Site + outras redes", status:"pendente"},
+        {id:"4.3", label:"Instagram", status:"pendente"}
+      ]},
+      f5: { num:5, name:"Ateliê Lisieux", category:"Roupas", stage:0, notes:"", items:[] },
+      f6: { num:6, name:"Pequena Via", category:"Loja de brinquedos", stage:0, notes:"", items:[] },
+      f7: { num:7, name:"Flor de Lisieux", category:"Casa de festas", stage:0, notes:"", items:[] },
+      f8: { num:8, name:"Apostas", category:"Pessoal", stage:0, notes:"", items:[
+        {id:"8.1", label:"Futebol", status:"pendente", source:{provider:"metricool", metrics:[{field:"IGEV01",label:"Seguidores IG"}]}},
+        {id:"8.2", label:"Tudo Sobre Vasco da Gama", status:"pendente", source:{provider:"metricool", metrics:[{field:"IGEV01",label:"Seguidores IG"}], detailMetrics:[
+          {field:"IGEV01",label:"Seguidores"},
+          {field:"IGEV06",label:"Alcance"},
+          {field:"IGEV05",label:"Visualizações"},
+          {field:"IGEV09",label:"Interações"},
+          {field:"IGEV37",label:"Publicações"},
+          {field:"IGEV9999",label:"Engajamento", isPercent:true}
+        ]}},
+        {id:"8.3", label:"Motivação", status:"pendente", source:{provider:"metricool", metrics:[{field:"IGEV01",label:"Seguidores IG"}]}}
+      ]}
+    }
+  };
+
+  // Real snapshots pulled from Metricool on 2026-09-11/12 (last 30 days).
+  // Rows: [...values in the item's metrics order, dateYYYYMMDD]. Refreshed on request.
+  var SNAPSHOT_ROWS = {
+    "2.1": [["4.0","20260901"],["4.0","20260903"],["4.0","20260902"],["5.0","20260909"],["5.0","20260908"],["3.0","20260831"],["5.0","20260910"],["5.0","20260905"],["5.0","20260904"],["5.0","20260907"],["5.0","20260906"]],
+    "2.2": [["144.0","689.0","0.0","20260830"],[null,null,"0.0","20260816"],[null,"716.0",null,"20260911"],["138.0","675.0","0.0","20260827"],[null,null,"0.0","20260823"],[null,null,"0.0","20260819"],["169.0","709.0",null,"20260910"],[null,null,"0.0","20260815"],[null,null,"0.0","20260822"],["160.0","707.0","0.0","20260904"],[null,null,"0.0","20260814"],["153.0","696.0","0.0","20260831"],[null,null,"0.0","20260818"],[null,null,"0.0","20260821"],["136.0",null,"0.0","20260826"],["165.0","709.0","0.0","20260908"],[null,null,"0.0","20260813"],[null,null,"0.0","20260820"],[null,null,"0.0","20260817"],["166.0","709.0",null,"20260909"],["160.0","706.0","0.0","20260903"],["163.0","707.0","0.0","20260907"],["160.0","704.0","0.0","20260902"],["144.0","678.0","0.0","20260829"],[null,null,"0.0","20260825"],["160.0","706.0","0.0","20260906"],["158.0","703.0","0.0","20260901"],["141.0","676.0","0.0","20260828"],[null,null,"0.0","20260824"],["160.0","707.0","0.0","20260905"]],
+    "8.1": [["0.0","20260901"],["0.0","20260903"],["0.0","20260902"],["0.0","20260909"],["0.0","20260908"],["0.0","20260831"],["0.0","20260830"],["0.0","20260910"],["0.0","20260905"],["0.0","20260904"],["0.0","20260907"],["0.0","20260906"]],
+    "8.2": [[null,"0.0",null,null,null,null,"20260902"],[null,"0.0",null,null,null,null,"20260901"],["3.0","3.0","32.0","1.0","1.0","33.333333333333336","20260904"],["0.0","0.0",null,null,null,null,"20260903"],[null,"0.0",null,null,null,null,"20260831"],["3.0","2.0","36.0","4.0","7.0","36.36363636363637","20260908"],["3.0","1.0","32.0","1.0","1.0","50.0","20260910"],["3.0","2.0","81.0","17.0","21.0","47.22222222222222","20260907"],[null,"0.0",null,null,null,null,"20260830"],["3.0","3.0","102.0","16.0","24.0","38.095238095238095","20260906"],["3.0","3.0","151.0","34.0","24.0","72.34042553191489","20260905"],["3.0","2.0","15.0","3.0","3.0","50.0","20260909"]],
+    "8.3": [["4726.0","20260909"],["4728.0","20260908"],["4725.0","20260910"]]
+  };
+
+  var state = null;
+  var metricsState = {};
+
+  var grid = document.getElementById("grid");
+  var overlay = document.getElementById("overlay");
+  var panel = document.getElementById("panel");
+  var topRight = document.getElementById("topRight");
+
+  function fmtDate(ts){
+    if(!ts) return "—";
+    try{
+      var d = new Date(ts);
+      return d.toLocaleDateString("pt-BR",{day:"2-digit",month:"short"}) + " · " + d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});
+    }catch(e){ return "—"; }
+  }
+  function fmtNumber(v){ return Math.round(v).toLocaleString("pt-BR"); }
+  function fmtCurrency(v){ try{ return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"}); }catch(e){ return "R$ "+v; } }
+  function monthLabel(m){
+    try{
+      var d = new Date(m+"-01T00:00:00");
+      return d.toLocaleDateString("pt-BR",{month:"short",year:"2-digit"}).replace(".","");
+    }catch(e){ return m; }
+  }
+  function formatMetricValue(def, v){
+    if(v===null || v===undefined) return "—";
+    if(def.currency) return fmtCurrency(v);
+    if(def.isPercent) return v.toFixed(1).replace(".",",")+"%";
+    return fmtNumber(v);
+  }
+  function fmtDateShort(yyyymmdd){ return yyyymmdd.slice(6,8)+"/"+yyyymmdd.slice(4,6); }
+
+  function segBar(stageIdx){
+    var html = '<div class="segbar">';
+    for(var i=0;i<STAGES.length;i++){
+      var cls = "seg";
+      if(i<=stageIdx) cls += stageIdx>=STAGES.length-1 ? " on done" : " on";
+      html += '<div class="'+cls+'"></div>';
+    }
+    return html + '</div>';
+  }
+
+  function frontsAsArray(){
+    var out = [];
+    for(var k in (state.fronts||{})){
+      var f = state.fronts[k];
+      f.key = k;
+      out.push(f);
+    }
+    out.sort(function(a,b){ return a.num-b.num; });
+    return out;
+  }
+
+  function renderTopStats(){
+    var arr = frontsAsArray();
+    var counts = [0,0,0,0];
+    arr.forEach(function(f){ counts[f.stage]++; });
+    var parts = [];
+    for(var i=0;i<STAGES.length;i++){ if(counts[i]) parts.push(counts[i]+" "+STAGES[i]); }
+    topRight.textContent = parts.join(" · ") || "—";
+  }
+
+  function renderGrid(){
+    grid.innerHTML = "";
+    LAYOUT.forEach(function(key){
+      if(key === "hub"){ grid.appendChild(renderHub()); return; }
+      var f = state.fronts[key];
+      if(!f) return;
+      grid.appendChild(renderCard(key, f));
+    });
+    renderTopStats();
+  }
+
+  function renderHub(){
+    var el = document.createElement("div");
+    el.className = "card hub";
+    el.tabIndex = 0;
+    el.setAttribute("role","button");
+    el.setAttribute("aria-label","Ver visão geral de todas as frentes");
+    var arr = frontsAsArray();
+    var counts = [0,0,0,0];
+    arr.forEach(function(f){ counts[f.stage]++; });
+    var legend = STAGES.map(function(s,i){
+      var dotColor = i===0 ? "var(--border)" : (i===3 ? "var(--green)" : "var(--gold)");
+      return '<span><span class="dot" style="background:'+dotColor+'"></span>'+counts[i]+' '+s+'</span>';
+    }).join("");
+    el.innerHTML =
+      '<div class="wordmark2">GRUPO <span class="vdp">V.D.P.</span></div>' +
+      '<div class="sub">'+arr.length+' frentes ativas no radar</div>' +
+      '<div class="legend">'+legend+'</div>';
+    el.addEventListener("click", openOverview);
+    el.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openOverview(); } });
+    return el;
+  }
+
+  function renderCard(key, f){
+    var el = document.createElement("div");
+    el.className = "card";
+    el.tabIndex = 0;
+    el.setAttribute("role","button");
+    el.setAttribute("aria-label","Abrir "+f.name);
+    var itemsCount = f.items.length;
+    var activeCount = f.items.filter(function(it){ return it.status==="ativo"; }).length;
+    el.innerHTML =
+      '<div class="card-top"><span class="num">'+String(f.num).padStart(2,"0")+'</span><span class="kicker">'+f.category+'</span></div>' +
+      '<div class="name">'+f.name+'</div>' +
+      '<div class="card-bottom">' +
+        '<div class="stage-row"><span class="stage-label">'+STAGES[f.stage]+'</span>' +
+        (itemsCount ? '<span class="items-count">'+activeCount+'/'+itemsCount+' ativos</span>' : '<span class="items-count">sem itens</span>') +
+        '</div>' +
+        segBar(f.stage) +
+      '</div>';
+    el.addEventListener("click", function(){ openFront(key); });
+    el.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openFront(key); } });
+    return el;
+  }
+
+  function openModal(html){
+    panel.innerHTML = html;
+    overlay.hidden = false;
+    document.addEventListener("keydown", escClose);
+  }
+  function escClose(e){ if(e.key==="Escape") closeModal(); }
+  function closeModal(){
+    overlay.hidden = true;
+    document.removeEventListener("keydown", escClose);
+  }
+  overlay.addEventListener("click", function(e){ if(e.target === overlay) closeModal(); });
+
+  // ---- metrics (static snapshot, refreshed on request) ----
+
+  function parseMetricRows(rows, metricsDef){
+    var series = metricsDef.map(function(){ return []; });
+    rows.forEach(function(r){
+      var dateStr = r[r.length-1];
+      for(var i=0;i<metricsDef.length;i++){
+        var v = r[i];
+        if(v!==null && v!==undefined){
+          series[i].push({date:dateStr, value:parseFloat(v)});
+        }
+      }
+    });
+    return metricsDef.map(function(def,i){
+      var pts = series[i].slice().sort(function(a,b){ return a.date.localeCompare(b.date); });
+      var latest = pts.length ? pts[pts.length-1].value : null;
+      var first = pts.length ? pts[0].value : null;
+      var delta = (latest!==null && first!==null) ? (latest-first) : null;
+      return { label:def.label, currency:!!def.currency, isPercent:!!def.isPercent, value:latest, delta:delta, points:pts };
+    });
+  }
+
+  function sparkline(points){
+    if(!points || points.length<2) return "";
+    var vals = points.map(function(p){ return p.value; });
+    var min = Math.min.apply(null,vals), max = Math.max.apply(null,vals);
+    var range = (max-min) || 1;
+    var w=72,h=20,pad=2;
+    var step = (w-2*pad)/(points.length-1);
+    var coords = points.map(function(p,i){
+      var x = pad+i*step;
+      var y = pad+(1-(p.value-min)/range)*(h-2*pad);
+      return x.toFixed(1)+","+y.toFixed(1);
+    }).join(" ");
+    return '<svg class="spark" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'"><polyline points="'+coords+'" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+
+  function renderMetricsBlock(itemId){
+    var ms = metricsState[itemId];
+    var inner;
+    if(!ms || !ms.metrics.length){
+      inner = '<span class="metric-note" style="padding:0;">sem dados no período</span>';
+    } else {
+      inner = ms.metrics.map(function(m){
+        var valStr = m.value===null ? "—" : (m.currency ? fmtCurrency(m.value) : (m.isPercent ? formatMetricValue(m,m.value) : fmtNumber(m.value)));
+        var deltaStr = "";
+        if(m.delta!==null && m.delta!==0){
+          var cls = m.delta>=0 ? "up" : "down";
+          var sign = m.delta>=0 ? "+" : "";
+          deltaStr = ' <span class="metric-delta '+cls+'">'+sign+(m.currency||m.isPercent?formatMetricValue(m,m.delta):fmtNumber(m.delta))+'</span>';
+        }
+        return '<div class="metric-chip"><span>'+m.label+'</span><span class="metric-value">'+valStr+'</span>'+deltaStr+sparkline(m.points)+'</div>';
+      }).join("");
+    }
+    return '<div class="metrics-block" id="metrics-'+itemId+'">'+inner+'</div>';
+  }
+
+  function initMetrics(){
+    frontsAsArray().forEach(function(f){
+      f.items.forEach(function(it){
+        if(!it.source || it.source.provider!=="metricool") return;
+        var rows = SNAPSHOT_ROWS[it.id] || [];
+        metricsState[it.id] = { metrics: parseMetricRows(rows, it.source.metrics) };
+      });
+    });
+  }
+
+  // ---- full metric detail (chart per metric, one item at a time) ----
+
+  function buildChart(points, def){
+    if(!points.length) return '<div class="empty-items">Sem dados no período.</div>';
+    var w=320,h=150,left=38,right=10,top=12,bottom=20;
+    var plotW=w-left-right, plotH=h-top-bottom;
+    var vals = points.map(function(p){ return p.value; });
+    var min = Math.min.apply(null,vals), max = Math.max.apply(null,vals);
+    if(min===max){ min-=1; max+=1; }
+    var pad = (max-min)*0.1;
+    var lo = min-pad, hi = max+pad;
+    function sx(i){ return points.length>1 ? left+i*(plotW/(points.length-1)) : left+plotW/2; }
+    function sy(v){ return top+(1-(v-lo)/(hi-lo))*plotH; }
+    var coords = points.map(function(p,i){ return sx(i).toFixed(1)+","+sy(p.value).toFixed(1); });
+    var lineD = "M"+coords.join(" L");
+    var areaD = lineD+" L"+sx(points.length-1).toFixed(1)+","+(top+plotH)+" L"+sx(0).toFixed(1)+","+(top+plotH)+" Z";
+    var gridVals = [hi, (lo+hi)/2, lo];
+    var gridLines = gridVals.map(function(v){
+      var y = sy(v).toFixed(1);
+      return '<line x1="'+left+'" x2="'+(w-right)+'" y1="'+y+'" y2="'+y+'" style="stroke:var(--border);stroke-width:1" />' +
+        '<text x="'+(left-5)+'" y="'+y+'" text-anchor="end" dominant-baseline="middle" style="fill:var(--text-muted);font-family:\'IBM Plex Mono\',monospace;font-size:7.5px;">'+formatMetricValue(def,v)+'</text>';
+    }).join("");
+    var lastX = sx(points.length-1), lastY = sy(points[points.length-1].value);
+    var xLabels =
+      '<text x="'+left+'" y="'+(h-4)+'" style="fill:var(--text-muted);font-family:\'IBM Plex Mono\',monospace;font-size:8px;">'+fmtDateShort(points[0].date)+'</text>' +
+      '<text x="'+(w-right)+'" y="'+(h-4)+'" text-anchor="end" style="fill:var(--text-muted);font-family:\'IBM Plex Mono\',monospace;font-size:8px;">'+fmtDateShort(points[points.length-1].date)+'</text>';
+    return '<svg viewBox="0 0 '+w+' '+h+'" class="chart-svg" role="img" aria-label="Gráfico de evolução">' +
+      '<defs><linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0%" style="stop-color:var(--gold);stop-opacity:.35" />' +
+        '<stop offset="100%" style="stop-color:var(--gold);stop-opacity:0" />' +
+      '</linearGradient></defs>' +
+      gridLines +
+      '<path d="'+areaD+'" style="fill:url(#chartGrad);stroke:none" />' +
+      '<path d="'+lineD+'" style="fill:none;stroke:var(--gold);stroke-width:2;stroke-linejoin:round;stroke-linecap:round" />' +
+      '<circle cx="'+lastX.toFixed(1)+'" cy="'+lastY.toFixed(1)+'" r="3" style="fill:var(--gold)" />' +
+      xLabels +
+    '</svg>';
+  }
+
+  function renderDetailPanel(item, metricsDef, parsed, activeIdx){
+    var tabs = metricsDef.map(function(def,i){
+      return '<button class="detail-tab'+(i===activeIdx?" active":"")+'" data-idx="'+i+'">'+def.label+'</button>';
+    }).join("");
+    var m = parsed[activeIdx];
+    var deltaHtml = "";
+    if(m.delta!==null && m.delta!==0){
+      var cls = m.delta>=0 ? "up" : "down";
+      var sign = m.delta>=0 ? "+" : "";
+      deltaHtml = '<span class="delta metric-delta '+cls+'">'+sign+formatMetricValue(metricsDef[activeIdx], m.delta)+' em 30 dias</span>';
+    }
+    var body =
+      '<div class="detail-stat"><span class="big">'+formatMetricValue(metricsDef[activeIdx], m.value)+'</span>'+deltaHtml+'</div>' +
+      '<div class="detail-period">'+(m.points.length ? fmtDateShort(m.points[0].date)+' – '+fmtDateShort(m.points[m.points.length-1].date) : "sem histórico no período")+'</div>' +
+      '<div class="chart-wrap">'+buildChart(m.points, metricsDef[activeIdx])+'</div>';
+
+    return '<div class="panel-head">' +
+      '<div style="display:flex;align-items:center;gap:10px;min-width:0;">' +
+        '<button class="back-btn" id="backBtn" aria-label="Voltar">←</button>' +
+        '<div style="min-width:0;"><div class="panel-name">'+item.label+'</div><div class="panel-kicker">'+item.id+' · via Metricool</div></div>' +
+      '</div>' +
+      '<button class="close-btn" id="closeBtn">×</button>' +
+    '</div>' +
+    '<div class="detail-tabs">'+tabs+'</div>' +
+    '<div id="detailBody">'+body+'</div>';
+  }
+
+  function wireDetail(frontKey, item, metricsDef, parsed, activeIdx){
+    document.getElementById("closeBtn").addEventListener("click", closeModal);
+    document.getElementById("backBtn").addEventListener("click", function(){ openFront(frontKey); });
+    Array.prototype.forEach.call(panel.querySelectorAll(".detail-tab"), function(btn){
+      btn.addEventListener("click", function(){
+        var idx = parseInt(btn.getAttribute("data-idx"),10);
+        openModal(renderDetailPanel(item, metricsDef, parsed, idx));
+        wireDetail(frontKey, item, metricsDef, parsed, idx);
+      });
+    });
+  }
+
+  function openMetricDetail(frontKey, itemId){
+    var f = state.fronts[frontKey];
+    var item = f.items.find(function(x){ return x.id===itemId; });
+    if(!item || !item.source) return;
+    var metricsDef = item.source.detailMetrics || item.source.metrics;
+    var rows = SNAPSHOT_ROWS[itemId] || [];
+    var parsed = parseMetricRows(rows, metricsDef);
+    openModal(renderDetailPanel(item, metricsDef, parsed, 0));
+    wireDetail(frontKey, item, metricsDef, parsed, 0);
+  }
+
+  // ---- overview / finance ----
+
+  function openOverview(){
+    var arr = frontsAsArray();
+    var rows = arr.map(function(f){
+      var bar = '<div class="ov-bar">' + STAGES.map(function(s,i){
+        var on = i<=f.stage;
+        return '<div class="seg '+(on?"on "+(f.stage>=3?"done":""):"")+'"></div>';
+      }).join("") + '</div>';
+      return '<div class="ov-row" data-key="'+f.key+'">' +
+        '<span class="ov-num">'+String(f.num).padStart(2,"0")+'</span>' +
+        '<span class="ov-name">'+f.name+'</span>' +
+        bar +
+        '<span class="ov-stage">'+STAGES[f.stage]+'</span>' +
+      '</div>';
+    }).join("");
+
+    var revenue = state.revenue || {entries:[]};
+    var byMonth = {};
+    revenue.entries.forEach(function(e){ byMonth[e.month] = (byMonth[e.month]||0) + Number(e.amount); });
+    var months = Object.keys(byMonth).sort().slice(-6);
+    var max = Math.max.apply(null, months.map(function(m){ return byMonth[m]; }).concat([1]));
+    var bars = months.map(function(m){
+      var v = byMonth[m];
+      var h = Math.max(4, Math.round(v/max*48));
+      return '<div class="fin-bar-col"><div class="fin-bar" style="height:'+h+'px" title="'+fmtCurrency(v)+'"></div><span class="fin-bar-label">'+monthLabel(m)+'</span></div>';
+    }).join("");
+
+    var entriesRows = revenue.entries.slice().sort(function(a,b){ return b.month.localeCompare(a.month); }).map(function(e){
+      var fr = state.fronts[e.frontKey];
+      var frName = fr ? fr.name : e.frontKey;
+      return '<div class="fin-row" data-id="'+e.id+'"><span class="fin-row-front">'+frName+'</span><span class="fin-row-month">'+monthLabel(e.month)+'</span><span class="fin-row-amount">'+fmtCurrency(e.amount)+'</span><button class="item-del fin-del" aria-label="Remover">×</button></div>';
+    }).join("") || '<div class="empty-items">Nenhum lançamento ainda — comece pelo mês atual.</div>';
+
+    var frontOptions = arr.map(function(f){ return '<option value="'+f.key+'">'+String(f.num).padStart(2,"0")+' · '+f.name+'</option>'; }).join("");
+
+    var financeHtml =
+      '<div class="section-label">Financeiro do grupo</div>' +
+      (months.length ? '<div class="fin-chart">'+bars+'</div>' : '<div class="empty-items">Ainda sem lançamentos — registre a receita mensal de cada negócio abaixo.</div>') +
+      '<div class="fin-list">'+entriesRows+'</div>' +
+      '<div class="add-row fin-add">' +
+        '<select id="revFront">'+frontOptions+'</select>' +
+        '<input type="month" id="revMonth" />' +
+        '<input type="number" id="revAmount" placeholder="Valor R$" min="0" step="0.01" />' +
+        '<button id="revAddBtn">Adicionar</button>' +
+      '</div>';
+
+    var html =
+      '<div class="panel-head"><div class="panel-title"><div><div class="panel-name">Visão geral</div>' +
+      '<div class="panel-kicker">Todas as frentes</div></div></div>' +
+      '<button class="close-btn" id="closeBtn">×</button></div>' +
+      '<div class="overview-table">'+rows+'</div>' +
+      financeHtml +
+      '<div class="updated">Atualizado em '+fmtDate(state.updatedAt)+'</div>';
+
+    openModal(html);
+    document.getElementById("closeBtn").addEventListener("click", closeModal);
+    Array.prototype.forEach.call(panel.querySelectorAll(".ov-row"), function(row){
+      row.addEventListener("click", function(){ openFront(row.getAttribute("data-key")); });
+    });
+    Array.prototype.forEach.call(panel.querySelectorAll(".fin-del"), function(btn){
+      btn.addEventListener("click", function(){
+        var id = btn.closest(".fin-row").getAttribute("data-id");
+        state.revenue.entries = state.revenue.entries.filter(function(e){ return e.id!==id; });
+        persistState();
+        openOverview();
+      });
+    });
+    document.getElementById("revAddBtn").addEventListener("click", function(){
+      var frontKey = document.getElementById("revFront").value;
+      var month = document.getElementById("revMonth").value;
+      var amount = parseFloat(document.getElementById("revAmount").value);
+      if(!frontKey || !month || !(amount>=0)) return;
+      state.revenue = state.revenue || {entries:[]};
+      state.revenue.entries.push({ id:"r"+Date.now()+Math.floor(Math.random()*1000), frontKey:frontKey, month:month, amount:amount });
+      persistState();
+      openOverview();
+    });
+  }
+
+  function openFront(key){
+    var f = state.fronts[key];
+    if(!f) return;
+
+    var stagesHtml = STAGES.map(function(s,i){
+      return '<button class="stage-btn'+(i===f.stage?" active":"")+'" data-stage="'+i+'"><b>'+(i+1)+'</b>'+s+'</button>';
+    }).join("");
+
+    var itemsHtml = f.items.length ? f.items.map(function(it){
+      var extra = it.source ? renderMetricsBlock(it.id) : (it.note ? '<div class="metric-note">'+it.note+'</div>' : "");
+      var expandBtn = (it.source && it.source.detailMetrics) ? '<button class="item-expand" data-detail="'+it.id+'" aria-label="Ver gráfico completo">📈</button>' : "";
+      return '<div class="item-block">' +
+        '<div class="item-row" data-item="'+it.id+'">' +
+          '<span class="item-label">'+it.id+' · '+it.label+'</span>' +
+          expandBtn +
+          '<button class="status-pill" data-status="'+it.status+'">'+STATUS_LABEL[it.status]+'</button>' +
+          '<button class="item-del" aria-label="Remover">×</button>' +
+        '</div>' +
+        extra +
+      '</div>';
+    }).join("") : '<div class="empty-items">Nenhum item ainda — adicione abaixo.</div>';
+
+    var html =
+      '<div class="panel-head"><div class="panel-title"><span class="num">'+String(f.num).padStart(2,"0")+'</span>' +
+      '<div><div class="panel-name">'+f.name+'</div><div class="panel-kicker">'+f.category+'</div></div></div>' +
+      '<button class="close-btn" id="closeBtn">×</button></div>' +
+
+      '<div class="section-label">Estágio</div>' +
+      '<div class="stages">'+stagesHtml+'</div>' +
+
+      '<div class="section-label">Itens</div>' +
+      '<div class="items" id="itemsWrap">'+itemsHtml+'</div>' +
+      '<div class="add-row"><input type="text" id="newItemInput" placeholder="Novo item…" /><button id="addItemBtn">Adicionar</button></div>' +
+
+      '<div class="section-label">Notas</div>' +
+      '<textarea class="notes" id="notesArea" placeholder="Observações, próximos passos…">'+(f.notes||"")+'</textarea>' +
+
+      '<div class="updated">Atualizado em '+fmtDate(f.updatedAt)+'</div>';
+
+    openModal(html);
+    document.getElementById("closeBtn").addEventListener("click", closeModal);
+
+    Array.prototype.forEach.call(panel.querySelectorAll(".stage-btn"), function(btn){
+      btn.addEventListener("click", function(){
+        f.stage = parseInt(btn.getAttribute("data-stage"),10);
+        persistFront(key, f);
+        openFront(key);
+      });
+    });
+
+    Array.prototype.forEach.call(panel.querySelectorAll(".item-row"), function(row){
+      var id = row.getAttribute("data-item");
+      row.querySelector(".status-pill").addEventListener("click", function(){
+        var item = f.items.find(function(it){ return it.id===id; });
+        var idx = STATUS_ORDER.indexOf(item.status);
+        item.status = STATUS_ORDER[(idx+1)%STATUS_ORDER.length];
+        persistFront(key, f);
+        openFront(key);
+      });
+      row.querySelector(".item-del").addEventListener("click", function(){
+        f.items = f.items.filter(function(it){ return it.id!==id; });
+        persistFront(key, f);
+        openFront(key);
+      });
+      var expandBtn = row.querySelector(".item-expand");
+      if(expandBtn){
+        expandBtn.addEventListener("click", function(e){
+          e.stopPropagation();
+          openMetricDetail(key, id);
+        });
+      }
+    });
+
+    var addBtn = document.getElementById("addItemBtn");
+    var addInput = document.getElementById("newItemInput");
+    function doAdd(){
+      var val = addInput.value.trim();
+      if(!val) return;
+      var nextN = f.items.length ? Math.max.apply(null, f.items.map(function(it){
+        var parts = it.id.split(".");
+        return parseInt(parts[1]||"0",10);
+      })) + 1 : 1;
+      f.items.push({id:f.num+"."+nextN, label:val, status:"pendente"});
+      persistFront(key, f);
+      openFront(key);
+    }
+    addBtn.addEventListener("click", doAdd);
+    addInput.addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); doAdd(); } });
+
+    var notesArea = document.getElementById("notesArea");
+    notesArea.addEventListener("blur", function(){
+      f.notes = notesArea.value;
+      persistFront(key, f);
+    });
+  }
+
+  function persistState(){
+    state.updatedAt = Date.now();
+    renderGrid();
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){ /* private mode / storage full: edits stay in-memory only */ }
+  }
+  function persistFront(key, f){
+    f.updatedAt = Date.now();
+    state.fronts[key] = f;
+    persistState();
+  }
+
+  function loadState(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(raw) return JSON.parse(raw);
+    }catch(e){ /* fall through to seed */ }
+    return JSON.parse(JSON.stringify(SEED_DATA));
+  }
+
+  function boot(){
+    state = loadState();
+    initMetrics();
+    renderGrid();
+  }
+
+  boot();
+})();
+</script>
+</body>
+</html>
