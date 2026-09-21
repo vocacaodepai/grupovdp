@@ -470,7 +470,16 @@
           {field:"IGEV01",label:"Seguidores IG"},
           {field:"YTEV01",label:"Inscritos YT"},
           {field:"YTEV03",label:"Receita YT", currency:true}
-        ]}},
+        ], detailMetrics:[
+          {field:"views",label:"Visualizações"},
+          {field:"minutes",label:"Tempo assistido (min)"},
+          {field:"avgDuration",label:"Duração média (s)"},
+          {field:"subsGained",label:"Inscritos ganhos"},
+          {field:"subsLost",label:"Inscritos perdidos"},
+          {field:"likes",label:"Curtidas"},
+          {field:"comments",label:"Comentários"},
+          {field:"shares",label:"Compartilhamentos"}
+        ], detailSourceLabel:"YouTube Analytics"}},
         {id:"2.3", label:"Escrúpulos", status:"pendente"},
         {id:"2.4", label:"Sta Teresinha", status:"pendente"},
         {id:"2.5", label:"S. Padre Pio", status:"pendente"}
@@ -511,6 +520,62 @@
     "8.1": [["0.0","20260901"],["0.0","20260903"],["0.0","20260902"],["0.0","20260909"],["0.0","20260908"],["0.0","20260831"],["0.0","20260830"],["0.0","20260910"],["0.0","20260905"],["0.0","20260904"],["0.0","20260907"],["0.0","20260906"]],
     "8.2": [[null,"0.0",null,null,null,null,"20260902"],[null,"0.0",null,null,null,null,"20260901"],["3.0","3.0","32.0","1.0","1.0","33.333333333333336","20260904"],["0.0","0.0",null,null,null,null,"20260903"],[null,"0.0",null,null,null,null,"20260831"],["3.0","2.0","36.0","4.0","7.0","36.36363636363637","20260908"],["3.0","1.0","32.0","1.0","1.0","50.0","20260910"],["3.0","2.0","81.0","17.0","21.0","47.22222222222222","20260907"],[null,"0.0",null,null,null,null,"20260830"],["3.0","3.0","102.0","16.0","24.0","38.095238095238095","20260906"],["3.0","3.0","151.0","34.0","24.0","72.34042553191489","20260905"],["3.0","2.0","15.0","3.0","3.0","50.0","20260909"]],
     "8.3": [["4726.0","20260909"],["4728.0","20260908"],["4725.0","20260910"]]
+  };
+
+  // Detailed per-item breakdowns that don't share the compact SNAPSHOT_ROWS shape
+  // (different metric set / column count). Falls back to SNAPSHOT_ROWS when absent.
+  var DETAIL_ROWS = {
+    "2.2": [
+      [24,102,267,1,0,3,0,0,"20260822"],
+      [26,43,201,0,1,1,0,0,"20260823"],
+      [35,67,162,1,0,1,0,0,"20260824"],
+      [77,125,144,0,0,2,0,1,"20260825"],
+      [59,155,239,1,0,1,0,1,"20260826"],
+      [495,108,54,2,1,20,0,1,"20260827"],
+      [594,94,37,2,0,20,0,1,"20260828"],
+      [799,633,133,11,0,59,2,8,"20260829"],
+      [930,481,97,8,1,37,4,9,"20260830"],
+      [329,275,155,7,0,18,1,6,"20260831"],
+      [255,147,114,1,0,11,1,1,"20260901"],
+      [98,60,100,2,0,4,0,0,"20260902"],
+      [99,160,316,1,0,4,0,0,"20260903"],
+      [100,184,229,1,0,1,0,0,"20260904"],
+      [71,41,68,0,2,1,0,0,"20260905"],
+      [46,85,283,1,0,1,0,1,"20260906"],
+      [148,87,90,2,0,9,0,0,"20260907"],
+      [132,114,138,0,0,11,2,7,"20260908"],
+      [453,214,114,1,0,20,0,13,"20260909"],
+      [588,295,83,8,2,22,0,4,"20260910"],
+      [270,118,92,3,1,13,0,3,"20260911"],
+      [289,146,78,6,0,28,3,4,"20260912"],
+      [762,168,62,2,0,26,0,3,"20260913"],
+      [454,210,84,3,0,36,0,6,"20260914"],
+      [368,305,185,3,0,17,0,3,"20260915"],
+      [220,29,26,1,0,5,1,5,"20260916"],
+      [372,142,90,3,0,4,0,1,"20260917"],
+      [535,202,118,1,0,17,0,3,"20260918"]
+    ]
+  };
+
+  // Non-time-series extras shown below the chart (traffic sources, top videos).
+  var EXTRA_INFO = {
+    "2.2": {
+      traffic: [
+        {label:"Shorts", views:4371},
+        {label:"Inscritos (feed)", views:1922},
+        {label:"Busca no YouTube", views:1103},
+        {label:"Vídeos relacionados", views:721},
+        {label:"Notificações", views:186},
+        {label:"Página do canal", views:158}
+      ],
+      videos: [
+        {title:"ORAÇÃO NÃO É SILÊNCIO #Shorts", views:1422},
+        {title:"Caminho, 117 - Oração | São Josemaría Escrivá", views:607},
+        {title:"TU ÉS FILHO DE DEUS: A INTIMIDADE QUE CURA TODA QUEDA", views:509},
+        {title:"Caminho 124 - Santa Pureza", views:460},
+        {title:"Caminho 121 - Santa Pureza", views:441}
+      ]
+    }
   };
 
   var state = null;
@@ -771,6 +836,19 @@
     '</svg>';
   }
 
+  function renderExtraSection(itemId){
+    var info = EXTRA_INFO[itemId];
+    if(!info) return "";
+    var trafficHtml = info.traffic.map(function(t){
+      return '<div class="evo-row" style="grid-template-columns:1fr auto;"><span class="evo-item">'+t.label+'</span><span class="evo-value">'+fmtNumber(t.views)+'</span></div>';
+    }).join("");
+    var videosHtml = info.videos.map(function(v){
+      return '<div class="evo-row" style="grid-template-columns:1fr auto;"><span class="evo-item" style="white-space:normal;">'+v.title+'</span><span class="evo-value">'+fmtNumber(v.views)+'</span></div>';
+    }).join("");
+    return '<div class="section-label">Origem do tráfego (30 dias)</div><div class="evo-list">'+trafficHtml+'</div>' +
+      '<div class="section-label">Vídeos com melhor desempenho</div><div class="evo-list">'+videosHtml+'</div>';
+  }
+
   function renderDetailPanel(item, metricsDef, parsed, activeIdx){
     var tabs = metricsDef.map(function(def,i){
       return '<button class="detail-tab'+(i===activeIdx?" active":"")+'" data-idx="'+i+'">'+def.label+'</button>';
@@ -785,12 +863,14 @@
     var body =
       '<div class="detail-stat"><span class="big">'+formatMetricValue(metricsDef[activeIdx], m.value)+'</span>'+deltaHtml+'</div>' +
       '<div class="detail-period">'+(m.points.length ? fmtDateShort(m.points[0].date)+' – '+fmtDateShort(m.points[m.points.length-1].date) : "sem histórico no período")+'</div>' +
-      '<div class="chart-wrap">'+buildChart(m.points, metricsDef[activeIdx])+'</div>';
+      '<div class="chart-wrap">'+buildChart(m.points, metricsDef[activeIdx])+'</div>' +
+      renderExtraSection(item.id);
 
+    var sourceLabel = (item.source && item.source.detailSourceLabel) || "Metricool";
     return '<div class="panel-head">' +
       '<div style="display:flex;align-items:center;gap:10px;min-width:0;">' +
         '<button class="back-btn" id="backBtn" aria-label="Voltar">←</button>' +
-        '<div style="min-width:0;"><div class="panel-name">'+item.label+'</div><div class="panel-kicker">'+item.id+' · via Metricool</div></div>' +
+        '<div style="min-width:0;"><div class="panel-name">'+item.label+'</div><div class="panel-kicker">'+item.id+' · via '+sourceLabel+'</div></div>' +
       '</div>' +
       '<button class="close-btn" id="closeBtn">×</button>' +
     '</div>' +
@@ -815,7 +895,7 @@
     var item = f.items.find(function(x){ return x.id===itemId; });
     if(!item || !item.source) return;
     var metricsDef = item.source.detailMetrics || item.source.metrics;
-    var rows = SNAPSHOT_ROWS[itemId] || [];
+    var rows = DETAIL_ROWS[itemId] || SNAPSHOT_ROWS[itemId] || [];
     var parsed = parseMetricRows(rows, metricsDef);
     openModal(renderDetailPanel(item, metricsDef, parsed, 0));
     wireDetail(frontKey, item, metricsDef, parsed, 0);
