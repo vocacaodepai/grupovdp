@@ -421,6 +421,33 @@
   }
   .reset-btn:hover{ color:var(--accent); }
 
+  .panel.wide{ width:min(1040px,96vw); max-height:92vh; }
+  .detail-grid{ display:flex; flex-direction:column; gap:24px; margin-top:4px; }
+  @media (min-width:860px){
+    .detail-grid{ display:grid; grid-template-columns:1.5fr 1fr; align-items:start; }
+    .detail-grid.single{ display:block; }
+  }
+  .detail-side{ display:flex; flex-direction:column; gap:22px; }
+  .leader-list{ display:flex; flex-direction:column; gap:8px; }
+  .leader-row{
+    display:flex; align-items:center; gap:10px;
+    border:1px solid var(--border); border-radius:8px; padding:6px; background:var(--surface-2);
+    cursor:pointer; text-align:left; width:100%;
+  }
+  .leader-row:hover{ border-color:var(--accent); }
+  .leader-thumb{ width:64px; height:36px; object-fit:cover; border-radius:6px; flex-shrink:0; background:var(--border); display:block; }
+  .leader-info{ min-width:0; flex:1; display:flex; flex-direction:column; gap:2px; }
+  .leader-title{
+    font-size:12px; font-weight:500; line-height:1.3; color:var(--text);
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .leader-value{ font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--accent); font-weight:600; white-space:nowrap; }
+
+  .video-head{ display:flex; gap:14px; align-items:flex-start; margin-bottom:16px; }
+  .video-thumb{ width:min(200px,40%); border-radius:10px; flex-shrink:0; display:block; }
+  .video-title{ font-family:"Fraunces",serif; font-weight:600; font-size:17px; line-height:1.35; text-wrap:balance; }
+  .video-stats{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+
   @media (prefers-reduced-motion: reduce){
     .card{ transition:none; }
   }
@@ -557,7 +584,7 @@
     ]
   };
 
-  // Non-time-series extras shown below the chart (traffic sources, top videos).
+  // Non-time-series extras shown alongside the chart (channel-level traffic sources).
   var EXTRA_INFO = {
     "2.2": {
       traffic: [
@@ -567,16 +594,49 @@
         {label:"Vídeos relacionados", views:721},
         {label:"Notificações", views:186},
         {label:"Página do canal", views:158}
-      ],
-      videos: [
-        {title:"ORAÇÃO NÃO É SILÊNCIO #Shorts", views:1422},
-        {title:"Caminho, 117 - Oração | São Josemaría Escrivá", views:607},
-        {title:"TU ÉS FILHO DE DEUS: A INTIMIDADE QUE CURA TODA QUEDA", views:509},
-        {title:"Caminho 124 - Santa Pureza", views:460},
-        {title:"Caminho 121 - Santa Pureza", views:441}
       ]
     }
   };
+
+  // Per-video breakdown (last 30 days) behind each item's detail view — powers the
+  // "destaque nessa métrica" leaderboard, keyed by the same field names as detailMetrics.
+  var ITEM_VIDEOS = {
+    "2.2": [
+      {id:"ijgbrEF5l-E", title:"ORAÇÃO NÃO É SILÊNCIO #Shorts", thumb:"https://i.ytimg.com/vi/ijgbrEF5l-E/mqdefault.jpg", views:1422, likes:61, comments:0, minutes:107, subsGained:3, avgDuration:15},
+      {id:"uD2wtA92RAU", title:"Caminho, 117 - Oração | São Josemaría Escrivá", thumb:"https://i.ytimg.com/vi/uD2wtA92RAU/mqdefault.jpg", views:607, likes:18, comments:0, minutes:38, subsGained:1, avgDuration:15},
+      {id:"_7PAmBlJ4Qk", title:"TU ÉS FILHO DE DEUS: A INTIMIDADE QUE CURA TODA QUEDA", thumb:"https://i.ytimg.com/vi/_7PAmBlJ4Qk/mqdefault.jpg", views:510, likes:45, comments:7, minutes:1237, subsGained:21, avgDuration:221},
+      {id:"PuN0N_bgMmM", title:"Caminho 124 - Santa Pureza", thumb:"https://i.ytimg.com/vi/PuN0N_bgMmM/mqdefault.jpg", views:462, likes:23, comments:0, minutes:32, subsGained:1, avgDuration:14},
+      {id:"wy60p3Znl9g", title:"Caminho 121 - Santa Pureza", thumb:"https://i.ytimg.com/vi/wy60p3Znl9g/mqdefault.jpg", views:441, likes:14, comments:0, minutes:31, subsGained:2, avgDuration:14},
+      {id:"gsiLPtndSzQ", title:"Caminho 122 - Santa Pureza", thumb:"https://i.ytimg.com/vi/gsiLPtndSzQ/mqdefault.jpg", views:423, likes:17, comments:0, minutes:18, subsGained:0, avgDuration:13},
+      {id:"wk1NKhGLxrg", title:"Caminho, 116 - Oração | São Josemaría Escrivá", thumb:"https://i.ytimg.com/vi/wk1NKhGLxrg/mqdefault.jpg", views:393, likes:24, comments:0, minutes:15, subsGained:0, avgDuration:8},
+      {id:"icfZTfLixpc", title:"A ESPERANÇA DO CRISTÃO (Parte 1)", thumb:"https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg", views:385, likes:2, comments:1, minutes:129, subsGained:1, avgDuration:102},
+      {id:"eFLxRBeIjS0", title:"Caminho 125 - Santa Pureza", thumb:"https://i.ytimg.com/vi/eFLxRBeIjS0/mqdefault.jpg", views:329, likes:10, comments:0, minutes:29, subsGained:0, avgDuration:18},
+      {id:"OfO4nU-MNng", title:"PORQUE VERÃO A DEUS (Parte 1 de 2)", thumb:"https://i.ytimg.com/vi/OfO4nU-MNng/mqdefault.jpg", views:297, likes:8, comments:1, minutes:296, subsGained:0, avgDuration:199},
+      {id:"KnTr-LDA8J0", title:"VIDA DE FÉ (Parte 2)", thumb:"https://i.ytimg.com/vi/KnTr-LDA8J0/mqdefault.jpg", views:265, likes:5, comments:0, minutes:74, subsGained:2, avgDuration:89},
+      {id:"7RGfTpN1Vtc", title:"A História de São Josemaría Escrivá", thumb:"https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg", views:221, likes:12, comments:0, minutes:131, subsGained:3, avgDuration:93},
+      {id:"7SgO4ltfgmI", title:"PORQUE VERÃO A DEUS (Parte 2 de 2)", thumb:"https://i.ytimg.com/vi/7SgO4ltfgmI/mqdefault.jpg", views:220, likes:15, comments:0, minutes:223, subsGained:5, avgDuration:110},
+      {id:"bUGxBIVqcLk", title:"Caminho 123 - Santa Pureza", thumb:"https://i.ytimg.com/vi/bUGxBIVqcLk/mqdefault.jpg", views:192, likes:11, comments:1, minutes:11, subsGained:0, avgDuration:14},
+      {id:"CAb5VIfJ3qI", title:"O TEU TRABALHO PODE SER ORAÇÃO: O SEGREDO DE NAZARÉ", thumb:"https://i.ytimg.com/vi/CAb5VIfJ3qI/mqdefault.jpg", views:191, likes:11, comments:0, minutes:427, subsGained:2, avgDuration:249}
+    ]
+  };
+
+  // Daily view series for the channel's top videos (trimmed to since-publish).
+  var VIDEO_DAILY = {
+    "ijgbrEF5l-E": [[415,"20260827"],[538,"20260828"],[261,"20260829"],[171,"20260830"],[15,"20260831"],[2,"20260901"],[0,"20260902"],[3,"20260903"],[6,"20260904"],[0,"20260905"],[0,"20260906"],[0,"20260907"],[0,"20260908"],[0,"20260909"],[2,"20260910"],[0,"20260911"],[0,"20260912"],[0,"20260913"],[4,"20260914"],[0,"20260915"],[0,"20260916"],[0,"20260917"],[5,"20260918"],[0,"20260919"]],
+    "uD2wtA92RAU": [[210,"20260829"],[261,"20260830"],[86,"20260831"],[10,"20260901"],[6,"20260902"],[0,"20260903"],[5,"20260904"],[6,"20260905"],[0,"20260906"],[5,"20260907"],[2,"20260908"],[0,"20260909"],[3,"20260910"],[3,"20260911"],[5,"20260912"],[0,"20260913"],[1,"20260914"],[1,"20260915"],[0,"20260916"],[2,"20260917"],[1,"20260918"],[0,"20260919"]],
+    "_7PAmBlJ4Qk": [[151,"20260829"],[159,"20260830"],[46,"20260831"],[46,"20260901"],[12,"20260902"],[14,"20260903"],[5,"20260904"],[5,"20260905"],[4,"20260906"],[6,"20260907"],[6,"20260908"],[4,"20260909"],[7,"20260910"],[9,"20260911"],[3,"20260912"],[10,"20260913"],[10,"20260914"],[8,"20260915"],[1,"20260916"],[2,"20260917"],[1,"20260918"],[1,"20260919"]],
+    "PuN0N_bgMmM": [[264,"20260913"],[141,"20260914"],[48,"20260915"],[12,"20260916"],[0,"20260917"],[1,"20260918"],[2,"20260919"]],
+    "wy60p3Znl9g": [[131,"20260909"],[205,"20260910"],[78,"20260911"],[4,"20260912"],[14,"20260913"],[0,"20260914"],[0,"20260915"],[5,"20260916"],[1,"20260917"],[3,"20260918"],[0,"20260919"]],
+    "CAb5VIfJ3qI": [[5,"20260822"],[2,"20260823"],[4,"20260824"],[4,"20260825"],[4,"20260826"],[4,"20260827"],[10,"20260828"],[17,"20260829"],[31,"20260830"],[29,"20260831"],[9,"20260901"],[15,"20260902"],[5,"20260903"],[3,"20260904"],[7,"20260905"],[13,"20260906"],[6,"20260907"],[3,"20260908"],[2,"20260909"],[3,"20260910"],[5,"20260911"],[4,"20260912"],[1,"20260913"],[1,"20260914"],[2,"20260915"],[0,"20260916"],[0,"20260917"],[0,"20260918"],[2,"20260919"]]
+  };
+
+  function topVideosByMetric(itemId, field, n){
+    var list = ITEM_VIDEOS[itemId];
+    if(!list) return [];
+    return list.filter(function(v){ return v[field]!==undefined && v[field]!==null; })
+      .slice().sort(function(a,b){ return b[field]-a[field]; })
+      .slice(0, n||3);
+  }
 
   var state = null;
   var metricsState = {};
@@ -717,8 +777,9 @@
     return el;
   }
 
-  function openModal(html){
+  function openModal(html, wide){
     panel.innerHTML = html;
+    panel.className = "panel" + (wide ? " wide" : "");
     overlay.hidden = false;
     document.addEventListener("keydown", escClose);
   }
@@ -836,35 +897,46 @@
     '</svg>';
   }
 
-  function renderExtraSection(itemId){
+  function renderLeaderboard(itemId, field, label){
+    var top = topVideosByMetric(itemId, field, 3);
+    if(!top.length) return "";
+    var rows = top.map(function(v){
+      return '<button class="leader-row" data-video="'+v.id+'">' +
+        '<img class="leader-thumb" src="'+v.thumb+'" alt="" loading="lazy" />' +
+        '<span class="leader-info"><span class="leader-title">'+v.title+'</span><span class="leader-value">'+fmtNumber(v[field])+' · '+label+'</span></span>' +
+      '</button>';
+    }).join("");
+    return '<div><div class="section-label" style="margin-top:0;">Destaque nessa métrica</div><div class="leader-list">'+rows+'</div></div>';
+  }
+
+  function renderTrafficSide(itemId){
     var info = EXTRA_INFO[itemId];
     if(!info) return "";
-    var trafficHtml = info.traffic.map(function(t){
+    var rows = info.traffic.map(function(t){
       return '<div class="evo-row" style="grid-template-columns:1fr auto;"><span class="evo-item">'+t.label+'</span><span class="evo-value">'+fmtNumber(t.views)+'</span></div>';
     }).join("");
-    var videosHtml = info.videos.map(function(v){
-      return '<div class="evo-row" style="grid-template-columns:1fr auto;"><span class="evo-item" style="white-space:normal;">'+v.title+'</span><span class="evo-value">'+fmtNumber(v.views)+'</span></div>';
-    }).join("");
-    return '<div class="section-label">Origem do tráfego (30 dias)</div><div class="evo-list">'+trafficHtml+'</div>' +
-      '<div class="section-label">Vídeos com melhor desempenho</div><div class="evo-list">'+videosHtml+'</div>';
+    return '<div><div class="section-label" style="margin-top:0;">Origem das visualizações (30 dias)</div><div class="evo-list">'+rows+'</div></div>';
   }
 
   function renderDetailPanel(item, metricsDef, parsed, activeIdx){
     var tabs = metricsDef.map(function(def,i){
       return '<button class="detail-tab'+(i===activeIdx?" active":"")+'" data-idx="'+i+'">'+def.label+'</button>';
     }).join("");
+    var def = metricsDef[activeIdx];
     var m = parsed[activeIdx];
     var deltaHtml = "";
     if(m.delta!==null && m.delta!==0){
       var cls = m.delta>=0 ? "up" : "down";
       var sign = m.delta>=0 ? "+" : "";
-      deltaHtml = '<span class="delta metric-delta '+cls+'">'+sign+formatMetricValue(metricsDef[activeIdx], m.delta)+' em 30 dias</span>';
+      deltaHtml = '<span class="delta metric-delta '+cls+'">'+sign+formatMetricValue(def, m.delta)+' em 30 dias</span>';
     }
-    var body =
-      '<div class="detail-stat"><span class="big">'+formatMetricValue(metricsDef[activeIdx], m.value)+'</span>'+deltaHtml+'</div>' +
+    var mainCol =
+      '<div><div class="detail-stat"><span class="big">'+formatMetricValue(def, m.value)+'</span>'+deltaHtml+'</div>' +
       '<div class="detail-period">'+(m.points.length ? fmtDateShort(m.points[0].date)+' – '+fmtDateShort(m.points[m.points.length-1].date) : "sem histórico no período")+'</div>' +
-      '<div class="chart-wrap">'+buildChart(m.points, metricsDef[activeIdx])+'</div>' +
-      renderExtraSection(item.id);
+      '<div class="chart-wrap">'+buildChart(m.points, def)+'</div></div>';
+
+    var sideParts = [renderLeaderboard(item.id, def.field, def.label), renderTrafficSide(item.id)].filter(Boolean);
+    var sideCol = sideParts.length ? '<div class="detail-side">'+sideParts.join("")+'</div>' : "";
 
     var sourceLabel = (item.source && item.source.detailSourceLabel) || "Metricool";
     return '<div class="panel-head">' +
@@ -875,7 +947,7 @@
       '<button class="close-btn" id="closeBtn">×</button>' +
     '</div>' +
     '<div class="detail-tabs">'+tabs+'</div>' +
-    '<div id="detailBody">'+body+'</div>';
+    '<div class="detail-grid'+(sideCol?"":" single")+'" id="detailBody">'+mainCol+sideCol+'</div>';
   }
 
   function wireDetail(frontKey, item, metricsDef, parsed, activeIdx){
@@ -884,8 +956,13 @@
     Array.prototype.forEach.call(panel.querySelectorAll(".detail-tab"), function(btn){
       btn.addEventListener("click", function(){
         var idx = parseInt(btn.getAttribute("data-idx"),10);
-        openModal(renderDetailPanel(item, metricsDef, parsed, idx));
+        openModal(renderDetailPanel(item, metricsDef, parsed, idx), true);
         wireDetail(frontKey, item, metricsDef, parsed, idx);
+      });
+    });
+    Array.prototype.forEach.call(panel.querySelectorAll(".leader-row"), function(btn){
+      btn.addEventListener("click", function(){
+        openVideoDetail(frontKey, item, metricsDef, parsed, activeIdx, btn.getAttribute("data-video"));
       });
     });
   }
@@ -897,8 +974,52 @@
     var metricsDef = item.source.detailMetrics || item.source.metrics;
     var rows = DETAIL_ROWS[itemId] || SNAPSHOT_ROWS[itemId] || [];
     var parsed = parseMetricRows(rows, metricsDef);
-    openModal(renderDetailPanel(item, metricsDef, parsed, 0));
+    openModal(renderDetailPanel(item, metricsDef, parsed, 0), true);
     wireDetail(frontKey, item, metricsDef, parsed, 0);
+  }
+
+  // ---- individual video view (from a leaderboard click) ----
+
+  function renderVideoPanel(video, itemId){
+    var rows = VIDEO_DAILY[video.id];
+    var points = rows ? parseMetricRows(rows, [{field:"views",label:"Visualizações"}])[0].points : [];
+    var chips = [
+      {label:"Visualizações", value:video.views},
+      {label:"Curtidas", value:video.likes},
+      {label:"Comentários", value:video.comments},
+      {label:"Tempo assistido (min)", value:video.minutes},
+      {label:"Inscritos ganhos", value:video.subsGained},
+      {label:"Duração média (s)", value:video.avgDuration}
+    ].map(function(c){
+      return '<div class="metric-chip"><span>'+c.label+'</span><span class="metric-value">'+fmtNumber(c.value)+'</span></div>';
+    }).join("");
+
+    return '<div class="panel-head">' +
+      '<div style="display:flex;align-items:center;gap:10px;min-width:0;">' +
+        '<button class="back-btn" id="backBtn" aria-label="Voltar">←</button>' +
+        '<div style="min-width:0;"><div class="panel-name" style="font-size:15px;">Vídeo</div><div class="panel-kicker">via YouTube Analytics</div></div>' +
+      '</div>' +
+      '<button class="close-btn" id="closeBtn">×</button>' +
+    '</div>' +
+    '<div class="video-head">' +
+      '<img class="video-thumb" src="'+video.thumb+'" alt="" />' +
+      '<div class="video-title">'+video.title+'</div>' +
+    '</div>' +
+    '<div class="video-stats">'+chips+'</div>' +
+    '<div class="section-label" style="margin-top:0;">Visualizações por dia'+(rows?"":" — sem histórico diário ainda")+'</div>' +
+    (points.length>1 ? '<div class="chart-wrap">'+buildChart(points, {label:"Visualizações"})+'</div>' : '<div class="empty-items">Este vídeo ainda não tem série diária registrada.</div>') +
+    '<a href="https://www.youtube.com/watch?v='+video.id+'" target="_blank" rel="noopener" class="reset-btn" style="text-decoration:none;">Abrir no YouTube ↗</a>';
+  }
+
+  function openVideoDetail(frontKey, item, metricsDef, parsed, activeIdx, videoId){
+    var video = (ITEM_VIDEOS[item.id]||[]).find(function(v){ return v.id===videoId; });
+    if(!video) return;
+    openModal(renderVideoPanel(video, item.id), true);
+    document.getElementById("closeBtn").addEventListener("click", closeModal);
+    document.getElementById("backBtn").addEventListener("click", function(){
+      openModal(renderDetailPanel(item, metricsDef, parsed, activeIdx), true);
+      wireDetail(frontKey, item, metricsDef, parsed, activeIdx);
+    });
   }
 
   // ---- overview: frentes / evolução / financeiro (tabbed) ----
