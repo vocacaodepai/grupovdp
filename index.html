@@ -543,7 +543,8 @@
   // All of the below (SNAPSHOT_ROWS, DETAIL_ROWS, EXTRA_INFO, AUDIENCE_INFO,
   // ITEM_VIDEOS, VIDEO_DAILY) is fetched at runtime from data/metrics.json
   // instead of hardcoded here — that file is what the refresh automation
-  // (.github/workflows/refresh-youtube.yml, every 30 min) overwrites, so real
+  // (.github/workflows/refresh-youtube.yml, every 5 min — the GitHub Actions
+  // schedule floor) overwrites, so real
   // data flows in without ever touching this script.
   var SNAPSHOT_ROWS = {};
   var DETAIL_ROWS = {};
@@ -1293,7 +1294,7 @@
     }
     var when = "—";
     try{ when = new Date(metricsGeneratedAt).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}); }catch(e){}
-    note.textContent = "YouTube atualizado automaticamente a cada 30 min · última vez: "+when+" · Instagram/Metricool ainda é manual";
+    note.textContent = "YouTube atualizado automaticamente a cada 5 min · última vez: "+when+" · Instagram/Metricool ainda é manual";
   }
 
   function boot(){
