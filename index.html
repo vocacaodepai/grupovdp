@@ -432,7 +432,7 @@
   <div class="wordmark">GRUPO <b>V.D.P.</b> <span style="color:var(--text-muted); font-family:'IBM Plex Mono',monospace; font-size:.7em; letter-spacing:.06em;">— painel de frentes</span></div>
   <div style="display:flex; flex-direction:column; align-items:flex-end; gap:2px;">
     <div class="top-right" id="topRight">carregando…</div>
-    <div class="fresh-note">métricas do Metricool · 11/09/2026 · peça a atualização quando quiser dados novos</div>
+    <div class="fresh-note">Metricool · 11/09/2026 &nbsp;·&nbsp; YouTube Data API · 21/09/2026 &nbsp;·&nbsp; peça a atualização quando quiser dados novos</div>
   </div>
 </div>
 
@@ -458,7 +458,7 @@
     fronts: {
       f1: { num:1, name:"Vocação de Pai", category:"Paternidade", stage:0, notes:"", goal:{text:"",target:null}, items:[
         {id:"1.1", label:"Instagram", status:"pendente", note:"Windsor.ai desconectado — reconecte a conta do Instagram (vocacaodepai) em claude.ai → Conectores para ativar os números aqui"},
-        {id:"1.2", label:"YouTube", status:"pendente"},
+        {id:"1.2", label:"YouTube", status:"pendente", source:{provider:"youtube", channelId:"UCeQmuftGyoX8XFFcfsh5yHQ", metrics:[{field:"subscribers",label:"Inscritos YT"}]}},
         {id:"1.3", label:"Threads", status:"pendente"},
         {id:"1.4", label:"X", status:"pendente"},
         {id:"1.5", label:"Substack", status:"pendente"},
@@ -505,8 +505,9 @@
   // Real snapshots pulled from Metricool on 2026-09-11/12 (last 30 days).
   // Rows: [...values in the item's metrics order, dateYYYYMMDD]. Refreshed on request.
   var SNAPSHOT_ROWS = {
+    "1.2": [["7.0","20260921"]],
     "2.1": [["4.0","20260901"],["4.0","20260903"],["4.0","20260902"],["5.0","20260909"],["5.0","20260908"],["3.0","20260831"],["5.0","20260910"],["5.0","20260905"],["5.0","20260904"],["5.0","20260907"],["5.0","20260906"]],
-    "2.2": [["144.0","689.0","0.0","20260830"],[null,null,"0.0","20260816"],[null,"716.0",null,"20260911"],["138.0","675.0","0.0","20260827"],[null,null,"0.0","20260823"],[null,null,"0.0","20260819"],["169.0","709.0",null,"20260910"],[null,null,"0.0","20260815"],[null,null,"0.0","20260822"],["160.0","707.0","0.0","20260904"],[null,null,"0.0","20260814"],["153.0","696.0","0.0","20260831"],[null,null,"0.0","20260818"],[null,null,"0.0","20260821"],["136.0",null,"0.0","20260826"],["165.0","709.0","0.0","20260908"],[null,null,"0.0","20260813"],[null,null,"0.0","20260820"],[null,null,"0.0","20260817"],["166.0","709.0",null,"20260909"],["160.0","706.0","0.0","20260903"],["163.0","707.0","0.0","20260907"],["160.0","704.0","0.0","20260902"],["144.0","678.0","0.0","20260829"],[null,null,"0.0","20260825"],["160.0","706.0","0.0","20260906"],["158.0","703.0","0.0","20260901"],["141.0","676.0","0.0","20260828"],[null,null,"0.0","20260824"],["160.0","707.0","0.0","20260905"]],
+    "2.2": [["144.0","689.0","0.0","20260830"],[null,null,"0.0","20260816"],[null,"716.0",null,"20260911"],["138.0","675.0","0.0","20260827"],[null,null,"0.0","20260823"],[null,null,"0.0","20260819"],["169.0","709.0",null,"20260910"],[null,null,"0.0","20260815"],[null,null,"0.0","20260822"],["160.0","707.0","0.0","20260904"],[null,null,"0.0","20260814"],["153.0","696.0","0.0","20260831"],[null,null,"0.0","20260818"],[null,null,"0.0","20260821"],["136.0",null,"0.0","20260826"],["165.0","709.0","0.0","20260908"],[null,null,"0.0","20260813"],[null,null,"0.0","20260820"],[null,null,"0.0","20260817"],["166.0","709.0",null,"20260909"],["160.0","706.0","0.0","20260903"],["163.0","707.0","0.0","20260907"],["160.0","704.0","0.0","20260902"],["144.0","678.0","0.0","20260829"],[null,null,"0.0","20260825"],["160.0","706.0","0.0","20260906"],["158.0","703.0","0.0","20260901"],["141.0","676.0","0.0","20260828"],[null,null,"0.0","20260824"],["160.0","707.0","0.0","20260905"],[null,"740.0",null,"20260921"]],
     "8.1": [["0.0","20260901"],["0.0","20260903"],["0.0","20260902"],["0.0","20260909"],["0.0","20260908"],["0.0","20260831"],["0.0","20260830"],["0.0","20260910"],["0.0","20260905"],["0.0","20260904"],["0.0","20260907"],["0.0","20260906"]],
     "8.2": [[null,"0.0",null,null,null,null,"20260902"],[null,"0.0",null,null,null,null,"20260901"],["3.0","3.0","32.0","1.0","1.0","33.333333333333336","20260904"],["0.0","0.0",null,null,null,null,"20260903"],[null,"0.0",null,null,null,null,"20260831"],["3.0","2.0","36.0","4.0","7.0","36.36363636363637","20260908"],["3.0","1.0","32.0","1.0","1.0","50.0","20260910"],["3.0","2.0","81.0","17.0","21.0","47.22222222222222","20260907"],[null,"0.0",null,null,null,null,"20260830"],["3.0","3.0","102.0","16.0","24.0","38.095238095238095","20260906"],["3.0","3.0","151.0","34.0","24.0","72.34042553191489","20260905"],["3.0","2.0","15.0","3.0","3.0","50.0","20260909"]],
     "8.3": [["4726.0","20260909"],["4728.0","20260908"],["4725.0","20260910"]]
@@ -724,7 +725,7 @@
   function initMetrics(){
     frontsAsArray().forEach(function(f){
       f.items.forEach(function(it){
-        if(!it.source || it.source.provider!=="metricool") return;
+        if(!it.source) return;
         var rows = SNAPSHOT_ROWS[it.id] || [];
         metricsState[it.id] = { metrics: parseMetricRows(rows, it.source.metrics) };
       });
