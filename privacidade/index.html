@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Política de Privacidade — Painel VDP</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --bg:#f4f6f9; --surface:#ffffff; --text:#161a22; --text-muted:#626b7a;
+    --border:#dbe1ea; --accent:#2f5fd6;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0c0f14; --surface:#12161d; --text:#e8ebf0; --text-muted:#838d9c;
+      --border:#232a35; --accent:#4d8dff;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0c0f14; --surface:#12161d; --text:#e8ebf0; --text-muted:#838d9c;
+    --border:#232a35; --accent:#4d8dff;
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    line-height:1.6;
+    padding-block: clamp(28px,6vh,64px);
+    padding-inline: 20px;
+  }
+  main{
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: clamp(24px,4vw,44px);
+  }
+  a{ color:var(--accent); }
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:.1em; color:var(--accent);
+  }
+  h1{
+    font-family:"Fraunces",serif; font-weight:700;
+    font-size:clamp(24px,4vw,32px); margin:8px 0 4px; text-wrap:balance;
+  }
+  .updated{
+    font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--text-muted); margin-bottom:28px;
+  }
+  h2{
+    font-family:"Fraunces",serif; font-weight:600; font-size:18px;
+    margin:32px 0 8px;
+  }
+  p, li{ font-size:14.5px; color:var(--text); }
+  li{ margin-bottom:6px; }
+  ul{ padding-left: 20px; margin: 8px 0; }
+  .contact{
+    margin-top:32px; padding-top:20px; border-top:1px solid var(--border);
+    font-size:13.5px; color:var(--text-muted);
+  }
+  .back{
+    display:inline-block; margin-top:28px;
+    font-family:"IBM Plex Mono",monospace; font-size:12px;
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Grupo V.D.P.</div>
+  <h1>Política de Privacidade — Painel VDP</h1>
+  <div class="updated">Última atualização: 21 de setembro de 2026</div>
+
+  <p>O Painel VDP é um painel interno e de uso pessoal, usado para acompanhar a evolução de projetos e canais do Grupo V.D.P. Esta página explica que dados o painel acessa através de contas do Google (YouTube) e como esses dados são usados.</p>
+
+  <h2>Quais dados acessamos</h2>
+  <p>Quando uma conta do Google autoriza este aplicativo, acessamos apenas:</p>
+  <ul>
+    <li>Estatísticas públicas de canais do YouTube (inscritos, visualizações, vídeos) via YouTube Data API;</li>
+    <li>Dados de desempenho do YouTube Analytics dos canais autorizados (visualizações, tempo assistido, curtidas, comentários, origem do tráfego, vídeos com melhor desempenho) via YouTube Analytics API — apenas leitura, nunca alteramos nada nos canais.</li>
+  </ul>
+  <p>Não solicitamos acesso a e-mails, contatos, arquivos do Drive ou qualquer outro dado do Google além do descrito acima.</p>
+
+  <h2>Como os dados são usados</h2>
+  <p>Os números obtidos são exibidos exclusivamente dentro do painel, para acompanhamento interno do Grupo V.D.P. Não vendemos, compartilhamos nem usamos esses dados para publicidade. Valores agregados (como contagem de inscritos ou visualizações) podem aparecer publicados como parte do código do painel, mas nenhuma credencial, token de acesso ou dado de identificação pessoal é armazenado ou exposto publicamente.</p>
+
+  <h2>Retenção e revogação</h2>
+  <p>Tokens de acesso são usados apenas no momento da busca dos dados e não ficam armazenados de forma permanente. Você pode revogar o acesso deste aplicativo a qualquer momento em <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</p>
+
+  <h2>Compartilhamento com terceiros</h2>
+  <p>Não compartilhamos os dados obtidos com nenhum terceiro. O painel é de uso privado do Grupo V.D.P.</p>
+
+  <div class="contact">
+    Dúvidas sobre esta política? Contato: <a href="mailto:vocacaodepai@gmail.com">vocacaodepai@gmail.com</a>
+  </div>
+
+  <a class="back" href="../">← Voltar ao Painel VDP</a>
+</main>
+</body>
+</html>
