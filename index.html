@@ -459,7 +459,7 @@
   <div class="wordmark">GRUPO <b>V.D.P.</b> <span style="color:var(--text-muted); font-family:'IBM Plex Mono',monospace; font-size:.7em; letter-spacing:.06em;">— painel de frentes</span></div>
   <div style="display:flex; flex-direction:column; align-items:flex-end; gap:2px;">
     <div class="top-right" id="topRight">carregando…</div>
-    <div class="fresh-note">Metricool · 11/09/2026 &nbsp;·&nbsp; YouTube Data API · 21/09/2026 &nbsp;·&nbsp; peça a atualização quando quiser dados novos</div>
+    <div class="fresh-note" id="freshNote">carregando dados…</div>
   </div>
 </div>
 
@@ -540,95 +540,38 @@
 
   // Real snapshots pulled from Metricool on 2026-09-11/12 (last 30 days).
   // Rows: [...values in the item's metrics order, dateYYYYMMDD]. Refreshed on request.
-  var SNAPSHOT_ROWS = {
-    "1.2": [["7.0","20260921"]],
-    "2.1": [["4.0","20260901"],["4.0","20260903"],["4.0","20260902"],["5.0","20260909"],["5.0","20260908"],["3.0","20260831"],["5.0","20260910"],["5.0","20260905"],["5.0","20260904"],["5.0","20260907"],["5.0","20260906"]],
-    "2.2": [["144.0","689.0","0.0","20260830"],[null,null,"0.0","20260816"],[null,"716.0",null,"20260911"],["138.0","675.0","0.0","20260827"],[null,null,"0.0","20260823"],[null,null,"0.0","20260819"],["169.0","709.0",null,"20260910"],[null,null,"0.0","20260815"],[null,null,"0.0","20260822"],["160.0","707.0","0.0","20260904"],[null,null,"0.0","20260814"],["153.0","696.0","0.0","20260831"],[null,null,"0.0","20260818"],[null,null,"0.0","20260821"],["136.0",null,"0.0","20260826"],["165.0","709.0","0.0","20260908"],[null,null,"0.0","20260813"],[null,null,"0.0","20260820"],[null,null,"0.0","20260817"],["166.0","709.0",null,"20260909"],["160.0","706.0","0.0","20260903"],["163.0","707.0","0.0","20260907"],["160.0","704.0","0.0","20260902"],["144.0","678.0","0.0","20260829"],[null,null,"0.0","20260825"],["160.0","706.0","0.0","20260906"],["158.0","703.0","0.0","20260901"],["141.0","676.0","0.0","20260828"],[null,null,"0.0","20260824"],["160.0","707.0","0.0","20260905"],[null,"740.0",null,"20260921"]],
-    "8.1": [["0.0","20260901"],["0.0","20260903"],["0.0","20260902"],["0.0","20260909"],["0.0","20260908"],["0.0","20260831"],["0.0","20260830"],["0.0","20260910"],["0.0","20260905"],["0.0","20260904"],["0.0","20260907"],["0.0","20260906"]],
-    "8.2": [[null,"0.0",null,null,null,null,"20260902"],[null,"0.0",null,null,null,null,"20260901"],["3.0","3.0","32.0","1.0","1.0","33.333333333333336","20260904"],["0.0","0.0",null,null,null,null,"20260903"],[null,"0.0",null,null,null,null,"20260831"],["3.0","2.0","36.0","4.0","7.0","36.36363636363637","20260908"],["3.0","1.0","32.0","1.0","1.0","50.0","20260910"],["3.0","2.0","81.0","17.0","21.0","47.22222222222222","20260907"],[null,"0.0",null,null,null,null,"20260830"],["3.0","3.0","102.0","16.0","24.0","38.095238095238095","20260906"],["3.0","3.0","151.0","34.0","24.0","72.34042553191489","20260905"],["3.0","2.0","15.0","3.0","3.0","50.0","20260909"]],
-    "8.3": [["4726.0","20260909"],["4728.0","20260908"],["4725.0","20260910"]]
-  };
+  // All of the below (SNAPSHOT_ROWS, DETAIL_ROWS, EXTRA_INFO, AUDIENCE_INFO,
+  // ITEM_VIDEOS, VIDEO_DAILY) is fetched at runtime from data/metrics.json
+  // instead of hardcoded here — that file is what the refresh automation
+  // (.github/workflows/refresh-youtube.yml, every 6h) overwrites, so real
+  // data flows in without ever touching this script.
+  var SNAPSHOT_ROWS = {};
+  var DETAIL_ROWS = {};
+  var EXTRA_INFO = {};
+  var AUDIENCE_INFO = {};
+  var ITEM_VIDEOS = {};
+  var VIDEO_DAILY = {};
+  var metricsDataLoaded = false;
+  var metricsGeneratedAt = null;
 
-  // Detailed per-item breakdowns that don't share the compact SNAPSHOT_ROWS shape
-  // (different metric set / column count). Falls back to SNAPSHOT_ROWS when absent.
-  var DETAIL_ROWS = {
-    "2.2": [
-      [24,102,267,1,0,3,0,0,"20260822"],
-      [26,43,201,0,1,1,0,0,"20260823"],
-      [35,67,162,1,0,1,0,0,"20260824"],
-      [77,125,144,0,0,2,0,1,"20260825"],
-      [59,155,239,1,0,1,0,1,"20260826"],
-      [495,108,54,2,1,20,0,1,"20260827"],
-      [594,94,37,2,0,20,0,1,"20260828"],
-      [799,633,133,11,0,59,2,8,"20260829"],
-      [930,481,97,8,1,37,4,9,"20260830"],
-      [329,275,155,7,0,18,1,6,"20260831"],
-      [255,147,114,1,0,11,1,1,"20260901"],
-      [98,60,100,2,0,4,0,0,"20260902"],
-      [99,160,316,1,0,4,0,0,"20260903"],
-      [100,184,229,1,0,1,0,0,"20260904"],
-      [71,41,68,0,2,1,0,0,"20260905"],
-      [46,85,283,1,0,1,0,1,"20260906"],
-      [148,87,90,2,0,9,0,0,"20260907"],
-      [132,114,138,0,0,11,2,7,"20260908"],
-      [453,214,114,1,0,20,0,13,"20260909"],
-      [588,295,83,8,2,22,0,4,"20260910"],
-      [270,118,92,3,1,13,0,3,"20260911"],
-      [289,146,78,6,0,28,3,4,"20260912"],
-      [762,168,62,2,0,26,0,3,"20260913"],
-      [454,210,84,3,0,36,0,6,"20260914"],
-      [368,305,185,3,0,17,0,3,"20260915"],
-      [220,29,26,1,0,5,1,5,"20260916"],
-      [372,142,90,3,0,4,0,1,"20260917"],
-      [535,202,118,1,0,17,0,3,"20260918"]
-    ]
-  };
-
-  // Non-time-series extras shown alongside the chart (channel-level traffic sources).
-  var EXTRA_INFO = {
-    "2.2": {
-      traffic: [
-        {label:"Shorts", views:4371},
-        {label:"Inscritos (feed)", views:1922},
-        {label:"Busca no YouTube", views:1103},
-        {label:"Vídeos relacionados", views:721},
-        {label:"Notificações", views:186},
-        {label:"Página do canal", views:158}
-      ]
-    }
-  };
-
-  // Per-video breakdown (last 30 days) behind each item's detail view — powers the
-  // "destaque nessa métrica" leaderboard, keyed by the same field names as detailMetrics.
-  var ITEM_VIDEOS = {
-    "2.2": [
-      {id:"ijgbrEF5l-E", title:"ORAÇÃO NÃO É SILÊNCIO #Shorts", thumb:"https://i.ytimg.com/vi/ijgbrEF5l-E/mqdefault.jpg", views:1422, likes:61, comments:0, minutes:107, subsGained:3, avgDuration:15},
-      {id:"uD2wtA92RAU", title:"Caminho, 117 - Oração | São Josemaría Escrivá", thumb:"https://i.ytimg.com/vi/uD2wtA92RAU/mqdefault.jpg", views:607, likes:18, comments:0, minutes:38, subsGained:1, avgDuration:15},
-      {id:"_7PAmBlJ4Qk", title:"TU ÉS FILHO DE DEUS: A INTIMIDADE QUE CURA TODA QUEDA", thumb:"https://i.ytimg.com/vi/_7PAmBlJ4Qk/mqdefault.jpg", views:510, likes:45, comments:7, minutes:1237, subsGained:21, avgDuration:221},
-      {id:"PuN0N_bgMmM", title:"Caminho 124 - Santa Pureza", thumb:"https://i.ytimg.com/vi/PuN0N_bgMmM/mqdefault.jpg", views:462, likes:23, comments:0, minutes:32, subsGained:1, avgDuration:14},
-      {id:"wy60p3Znl9g", title:"Caminho 121 - Santa Pureza", thumb:"https://i.ytimg.com/vi/wy60p3Znl9g/mqdefault.jpg", views:441, likes:14, comments:0, minutes:31, subsGained:2, avgDuration:14},
-      {id:"gsiLPtndSzQ", title:"Caminho 122 - Santa Pureza", thumb:"https://i.ytimg.com/vi/gsiLPtndSzQ/mqdefault.jpg", views:423, likes:17, comments:0, minutes:18, subsGained:0, avgDuration:13},
-      {id:"wk1NKhGLxrg", title:"Caminho, 116 - Oração | São Josemaría Escrivá", thumb:"https://i.ytimg.com/vi/wk1NKhGLxrg/mqdefault.jpg", views:393, likes:24, comments:0, minutes:15, subsGained:0, avgDuration:8},
-      {id:"icfZTfLixpc", title:"A ESPERANÇA DO CRISTÃO (Parte 1)", thumb:"https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg", views:385, likes:2, comments:1, minutes:129, subsGained:1, avgDuration:102},
-      {id:"eFLxRBeIjS0", title:"Caminho 125 - Santa Pureza", thumb:"https://i.ytimg.com/vi/eFLxRBeIjS0/mqdefault.jpg", views:329, likes:10, comments:0, minutes:29, subsGained:0, avgDuration:18},
-      {id:"OfO4nU-MNng", title:"PORQUE VERÃO A DEUS (Parte 1 de 2)", thumb:"https://i.ytimg.com/vi/OfO4nU-MNng/mqdefault.jpg", views:297, likes:8, comments:1, minutes:296, subsGained:0, avgDuration:199},
-      {id:"KnTr-LDA8J0", title:"VIDA DE FÉ (Parte 2)", thumb:"https://i.ytimg.com/vi/KnTr-LDA8J0/mqdefault.jpg", views:265, likes:5, comments:0, minutes:74, subsGained:2, avgDuration:89},
-      {id:"7RGfTpN1Vtc", title:"A História de São Josemaría Escrivá", thumb:"https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg", views:221, likes:12, comments:0, minutes:131, subsGained:3, avgDuration:93},
-      {id:"7SgO4ltfgmI", title:"PORQUE VERÃO A DEUS (Parte 2 de 2)", thumb:"https://i.ytimg.com/vi/7SgO4ltfgmI/mqdefault.jpg", views:220, likes:15, comments:0, minutes:223, subsGained:5, avgDuration:110},
-      {id:"bUGxBIVqcLk", title:"Caminho 123 - Santa Pureza", thumb:"https://i.ytimg.com/vi/bUGxBIVqcLk/mqdefault.jpg", views:192, likes:11, comments:1, minutes:11, subsGained:0, avgDuration:14},
-      {id:"CAb5VIfJ3qI", title:"O TEU TRABALHO PODE SER ORAÇÃO: O SEGREDO DE NAZARÉ", thumb:"https://i.ytimg.com/vi/CAb5VIfJ3qI/mqdefault.jpg", views:191, likes:11, comments:0, minutes:427, subsGained:2, avgDuration:249}
-    ]
-  };
-
-  // Daily view series for the channel's top videos (trimmed to since-publish).
-  var VIDEO_DAILY = {
-    "ijgbrEF5l-E": [[415,"20260827"],[538,"20260828"],[261,"20260829"],[171,"20260830"],[15,"20260831"],[2,"20260901"],[0,"20260902"],[3,"20260903"],[6,"20260904"],[0,"20260905"],[0,"20260906"],[0,"20260907"],[0,"20260908"],[0,"20260909"],[2,"20260910"],[0,"20260911"],[0,"20260912"],[0,"20260913"],[4,"20260914"],[0,"20260915"],[0,"20260916"],[0,"20260917"],[5,"20260918"],[0,"20260919"]],
-    "uD2wtA92RAU": [[210,"20260829"],[261,"20260830"],[86,"20260831"],[10,"20260901"],[6,"20260902"],[0,"20260903"],[5,"20260904"],[6,"20260905"],[0,"20260906"],[5,"20260907"],[2,"20260908"],[0,"20260909"],[3,"20260910"],[3,"20260911"],[5,"20260912"],[0,"20260913"],[1,"20260914"],[1,"20260915"],[0,"20260916"],[2,"20260917"],[1,"20260918"],[0,"20260919"]],
-    "_7PAmBlJ4Qk": [[151,"20260829"],[159,"20260830"],[46,"20260831"],[46,"20260901"],[12,"20260902"],[14,"20260903"],[5,"20260904"],[5,"20260905"],[4,"20260906"],[6,"20260907"],[6,"20260908"],[4,"20260909"],[7,"20260910"],[9,"20260911"],[3,"20260912"],[10,"20260913"],[10,"20260914"],[8,"20260915"],[1,"20260916"],[2,"20260917"],[1,"20260918"],[1,"20260919"]],
-    "PuN0N_bgMmM": [[264,"20260913"],[141,"20260914"],[48,"20260915"],[12,"20260916"],[0,"20260917"],[1,"20260918"],[2,"20260919"]],
-    "wy60p3Znl9g": [[131,"20260909"],[205,"20260910"],[78,"20260911"],[4,"20260912"],[14,"20260913"],[0,"20260914"],[0,"20260915"],[5,"20260916"],[1,"20260917"],[3,"20260918"],[0,"20260919"]],
-    "CAb5VIfJ3qI": [[5,"20260822"],[2,"20260823"],[4,"20260824"],[4,"20260825"],[4,"20260826"],[4,"20260827"],[10,"20260828"],[17,"20260829"],[31,"20260830"],[29,"20260831"],[9,"20260901"],[15,"20260902"],[5,"20260903"],[3,"20260904"],[7,"20260905"],[13,"20260906"],[6,"20260907"],[3,"20260908"],[2,"20260909"],[3,"20260910"],[5,"20260911"],[4,"20260912"],[1,"20260913"],[1,"20260914"],[2,"20260915"],[0,"20260916"],[0,"20260917"],[0,"20260918"],[2,"20260919"]]
-  };
+  function loadMetricsData(){
+    return fetch("data/metrics.json", {cache:"no-store"}).then(function(res){
+      if(!res.ok) throw new Error("HTTP "+res.status);
+      return res.json();
+    }).then(function(data){
+      SNAPSHOT_ROWS = data.snapshotRows || {};
+      DETAIL_ROWS = data.detailRows || {};
+      EXTRA_INFO = data.extraInfo || {};
+      AUDIENCE_INFO = data.audience || {};
+      ITEM_VIDEOS = data.itemVideos || {};
+      VIDEO_DAILY = data.videoDaily || {};
+      metricsGeneratedAt = data.generatedAt || null;
+      metricsDataLoaded = true;
+    }).catch(function(err){
+      console.error("Falha ao carregar data/metrics.json", err);
+      metricsDataLoaded = false;
+    });
+  }
 
   function topVideosByMetric(itemId, field, n){
     var list = ITEM_VIDEOS[itemId];
@@ -918,6 +861,40 @@
     return '<div><div class="section-label" style="margin-top:0;">Origem das visualizações (30 dias)</div><div class="evo-list">'+rows+'</div></div>';
   }
 
+  function renderAudienceGroup(rows, valueFmt){
+    return rows.map(function(r){
+      var val = valueFmt(r);
+      return '<div class="evo-row" style="grid-template-columns:1fr auto;"><span class="evo-item">'+r.label+'</span><span class="evo-value">'+val+'</span></div>';
+    }).join("");
+  }
+
+  function renderAudienceSide(itemId){
+    var a = AUDIENCE_INFO[itemId];
+    if(!a) return "";
+    var blocks = [];
+    if(a.ageGender && a.ageGender.length){
+      blocks.push('<div><div class="section-label" style="margin-top:0;">Público (idade e gênero)</div><div class="evo-list">' +
+        renderAudienceGroup(a.ageGender, function(r){ return r.pct.toFixed(1).replace(".",",")+"%"; }) + '</div></div>');
+    }
+    if(a.countries && a.countries.length){
+      blocks.push('<div><div class="section-label" style="margin-top:0;">Países</div><div class="evo-list">' +
+        renderAudienceGroup(a.countries, function(r){ return fmtNumber(r.views); }) + '</div></div>');
+    }
+    if(a.device && a.device.length){
+      blocks.push('<div><div class="section-label" style="margin-top:0;">Dispositivo</div><div class="evo-list">' +
+        renderAudienceGroup(a.device, function(r){ return fmtNumber(r.views); }) + '</div></div>');
+    }
+    if(a.playbackLocation && a.playbackLocation.length){
+      blocks.push('<div><div class="section-label" style="margin-top:0;">Onde assistiram</div><div class="evo-list">' +
+        renderAudienceGroup(a.playbackLocation, function(r){ return fmtNumber(r.views); }) + '</div></div>');
+    }
+    if(a.subscriptionStatus && a.subscriptionStatus.length){
+      blocks.push('<div><div class="section-label" style="margin-top:0;">Inscritos x não inscritos</div><div class="evo-list">' +
+        renderAudienceGroup(a.subscriptionStatus, function(r){ return fmtNumber(r.views); }) + '</div></div>');
+    }
+    return blocks.join("");
+  }
+
   function renderDetailPanel(item, metricsDef, parsed, activeIdx){
     var tabs = metricsDef.map(function(def,i){
       return '<button class="detail-tab'+(i===activeIdx?" active":"")+'" data-idx="'+i+'">'+def.label+'</button>';
@@ -935,7 +912,7 @@
       '<div class="detail-period">'+(m.points.length ? fmtDateShort(m.points[0].date)+' – '+fmtDateShort(m.points[m.points.length-1].date) : "sem histórico no período")+'</div>' +
       '<div class="chart-wrap">'+buildChart(m.points, def)+'</div></div>';
 
-    var sideParts = [renderLeaderboard(item.id, def.field, def.label), renderTrafficSide(item.id)].filter(Boolean);
+    var sideParts = [renderLeaderboard(item.id, def.field, def.label), renderTrafficSide(item.id), renderAudienceSide(item.id)].filter(Boolean);
     var sideCol = sideParts.length ? '<div class="detail-side">'+sideParts.join("")+'</div>' : "";
 
     var sourceLabel = (item.source && item.source.detailSourceLabel) || "Metricool";
@@ -1307,10 +1284,25 @@
     return JSON.parse(JSON.stringify(SEED_DATA));
   }
 
+  function renderFreshNote(){
+    var note = document.getElementById("freshNote");
+    if(!note) return;
+    if(!metricsDataLoaded){
+      note.textContent = "não consegui carregar os dados atualizados — mostrando o painel sem métricas";
+      return;
+    }
+    var when = "—";
+    try{ when = new Date(metricsGeneratedAt).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}); }catch(e){}
+    note.textContent = "YouTube atualizado automaticamente a cada 6h · última vez: "+when+" · Instagram/Metricool ainda é manual";
+  }
+
   function boot(){
     state = loadState();
-    initMetrics();
-    renderGrid();
+    loadMetricsData().then(function(){
+      initMetrics();
+      renderGrid();
+      renderFreshNote();
+    });
   }
 
   boot();
