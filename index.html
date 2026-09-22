@@ -138,11 +138,15 @@
   .card-chip.more{ cursor:default; opacity:.7; }
   .card-chip.more:hover{ border-color:var(--border); color:var(--text-muted); }
   .card-graph{ flex:1; display:flex; flex-direction:column; justify-content:center; gap:6px; min-height:0; }
-  .card-graph-stat{ display:flex; align-items:baseline; gap:6px; flex-wrap:wrap; }
-  .card-graph-value{ font-family:"Fraunces",serif; font-weight:700; font-size:clamp(16px,2vw,22px); }
-  .card-graph-label{ font-family:"IBM Plex Mono",monospace; font-size:9.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; }
   .card-graph svg{ color:var(--accent); width:100%; height:auto; display:block; }
   .card-graph-empty{ font-size:11px; color:var(--text-muted); font-style:italic; }
+  .multi-chart{ width:100%; height:auto; display:block; flex:1; min-height:0; }
+  .chart-legend{ display:flex; flex-wrap:wrap; gap:5px 10px; }
+  .chart-legend-item{
+    display:inline-flex; align-items:center; gap:4px;
+    font-family:"IBM Plex Mono",monospace; font-size:8.5px; color:var(--text-muted);
+  }
+  .chart-dot{ width:7px; height:7px; border-radius:50%; flex-shrink:0; }
 
   .grid{
     flex:1;
@@ -759,32 +763,24 @@
 
   function renderCardBody(f){
     if(graphMode){
-      var m = primaryMetricFor(f);
-      if(!m || m.value===null){
+      var series = buildFrontSeries(f);
+      if(!series.length){
         return '<div class="card-graph"><span class="card-graph-empty">sem dado conectado ainda</span></div>';
       }
-      var valStr = m.currency ? fmtCurrency(m.value) : (m.isPercent ? formatMetricValue(m,m.value) : fmtNumber(m.value));
-      var deltaHtml = "";
-      if(m.delta!==null && m.delta!==0){
-        var cls = m.delta>=0 ? "up" : "down";
-        var sign = m.delta>=0 ? "+" : "";
-        deltaHtml = ' <span class="metric-delta '+cls+'">'+sign+(m.currency||m.isPercent?formatMetricValue(m,m.delta):fmtNumber(m.delta))+'</span>';
-      }
+      var legend = series.map(function(s){
+        return '<span class="chart-legend-item"><span class="chart-dot" style="background:'+s.color+'"></span>'+s.label+'</span>';
+      }).join("");
       return '<div class="card-graph">' +
-        '<div class="card-graph-stat"><span class="card-graph-value">'+valStr+'</span>'+deltaHtml+'</div>' +
-        '<span class="card-graph-label">'+m.label+'</span>' +
-        sparkline(m.points, 220, 48) +
+        buildMultiChart(series, 220, 52) +
+        '<div class="chart-legend">'+legend+'</div>' +
       '</div>';
     }
     if(f.items.length){
-      var maxShown = 5;
-      var shown = f.items.slice(0, maxShown);
-      var chips = shown.map(function(it){
+      var chips = f.items.map(function(it){
         var hasDetail = it.source && it.source.detailMetrics;
         return '<button type="button" class="card-chip'+(hasDetail?" has-detail":"")+'" data-item="'+it.id+'">'+it.label+(hasDetail?" 📈":"")+'</button>';
       }).join("");
-      var more = f.items.length>maxShown ? '<span class="card-chip more">+'+(f.items.length-maxShown)+'</span>' : "";
-      return '<div class="card-chip-row">'+chips+more+'</div>';
+      return '<div class="card-chip-row">'+chips+'</div>';
     }
     if(f.goal && f.goal.text){
       return '<div class="card-items-preview">🎯 '+f.goal.text+'</div>';
@@ -888,6 +884,53 @@
       return x.toFixed(1)+","+y.toFixed(1);
     }).join(" ");
     return '<svg class="spark" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'"><polyline points="'+coords+'" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+
+  // One base hue per sub-project (item); when an item plots more than one
+  // metric (e.g. a channel's followers AND subscribers), those share the
+  // hue as a gradient of lightness — a different item always gets a
+  // distinctly different hue.
+  var SERIES_HUES = [142, 28, 205, 335, 265, 180, 50, 0];
+
+  function buildFrontSeries(f){
+    var series = [];
+    var sourceItems = f.items.filter(function(it){ return it.source && it.source.metrics && it.source.metrics.length; });
+    sourceItems.forEach(function(it, itemIdx){
+      var hue = SERIES_HUES[itemIdx % SERIES_HUES.length];
+      var ms = metricsState[it.id];
+      if(!ms) return;
+      var plottable = it.source.metrics.filter(function(def){ return !def.currency && !def.isPercent; });
+      plottable.forEach(function(def, mi){
+        var metricIdx = it.source.metrics.indexOf(def);
+        var m = ms.metrics[metricIdx];
+        if(!m || !m.points || m.points.length<2) return;
+        var lightness = [45,63,33][mi%3];
+        series.push({
+          label: it.label + (plottable.length>1 ? " · "+def.label : ""),
+          color: "hsl("+hue+" 62% "+lightness+"%)",
+          points: m.points
+        });
+      });
+    });
+    return series;
+  }
+
+  function buildMultiChart(seriesList, w, h){
+    w = w||220; h = h||52;
+    var pad = 3;
+    var paths = seriesList.map(function(s){
+      var vals = s.points.map(function(p){ return p.value; });
+      var min = Math.min.apply(null,vals), max = Math.max.apply(null,vals);
+      var range = (max-min) || 1;
+      var step = (w-2*pad)/(s.points.length-1);
+      var coords = s.points.map(function(p,i){
+        var x = pad+i*step;
+        var y = pad+(1-(p.value-min)/range)*(h-2*pad);
+        return x.toFixed(1)+","+y.toFixed(1);
+      }).join(" ");
+      return '<polyline points="'+coords+'" fill="none" stroke="'+s.color+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" />';
+    }).join("");
+    return '<svg class="multi-chart" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'">'+paths+'</svg>';
   }
 
   function renderMetricsBlock(itemId){
