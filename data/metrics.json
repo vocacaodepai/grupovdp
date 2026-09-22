@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T17:00:06.506Z",
+  "generatedAt": "2026-09-22T20:04:19.888Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -421,7 +421,7 @@
     ],
     "2.2subs": [
       [
-        "742",
+        "743",
         "20260922"
       ]
     ]
@@ -724,6 +724,17 @@
         1,
         3,
         "20260919"
+      ],
+      [
+        464,
+        264,
+        119,
+        1,
+        1,
+        26,
+        2,
+        3,
+        "20260920"
       ]
     ]
   },
@@ -732,35 +743,35 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 4524
+          "views": 4781
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2069
+          "views": 2175
         },
         {
           "label": "Busca no YouTube",
-          "views": 1142
+          "views": 1194
         },
         {
           "label": "Vídeos relacionados",
-          "views": 742
+          "views": 751
         },
         {
           "label": "Notificações",
-          "views": 200
+          "views": 215
         },
         {
           "label": "Página do canal",
-          "views": 158
+          "views": 179
         },
         {
           "label": "Outra página do YouTube",
-          "views": 41
+          "views": 43
         },
         {
           "label": "Link externo",
-          "views": 41
+          "views": 43
         }
       ]
     }
@@ -796,7 +807,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 5660
+          "views": 5950
         },
         {
           "label": "Portugal",
@@ -806,47 +817,47 @@
       "device": [
         {
           "label": "Celular",
-          "views": 7886
+          "views": 8323
         },
         {
           "label": "Computador",
-          "views": 663
+          "views": 680
         },
         {
           "label": "TV",
-          "views": 268
+          "views": 273
         },
         {
           "label": "Tablet",
-          "views": 163
+          "views": 168
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 5682
-        },
-        {
-          "label": "Página de exibição",
-          "views": 1658
+          "views": 6021
         },
         {
           "label": "Explorar/Início",
-          "views": 1639
+          "views": 1722
+        },
+        {
+          "label": "Página de exibição",
+          "views": 1699
         },
         {
           "label": "Incorporado em site",
-          "views": 1
+          "views": 2
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 8172
+          "views": 8577
         },
         {
           "label": "Inscritos",
-          "views": 808
+          "views": 867
         }
       ]
     }
@@ -868,7 +879,7 @@
         "id": "uD2wtA92RAU",
         "title": "Caminho, 117 - Oração | São Josemaría Escrivá  #sãojosemariaescrivá #caminho #sulco #forja #opusdei",
         "thumb": "https://i.ytimg.com/vi/uD2wtA92RAU/mqdefault.jpg",
-        "views": 607,
+        "views": 608,
         "likes": 18,
         "comments": 0,
         "minutes": 38,
@@ -909,6 +920,17 @@
         "avgDuration": 14
       },
       {
+        "id": "icfZTfLixpc",
+        "title": "A ESPERANÇA DO CRISTÃO (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg",
+        "views": 438,
+        "likes": 2,
+        "comments": 1,
+        "minutes": 138,
+        "subsGained": 1,
+        "avgDuration": 100
+      },
+      {
         "id": "gsiLPtndSzQ",
         "title": "Caminho 122 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/gsiLPtndSzQ/mqdefault.jpg",
@@ -931,15 +953,15 @@
         "avgDuration": 8
       },
       {
-        "id": "icfZTfLixpc",
-        "title": "A ESPERANÇA DO CRISTÃO (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
-        "thumb": "https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg",
-        "views": 385,
-        "likes": 2,
-        "comments": 1,
-        "minutes": 129,
-        "subsGained": 1,
-        "avgDuration": 102
+        "id": "M99XVY39Tk0",
+        "title": "Caminho 130 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/M99XVY39Tk0/mqdefault.jpg",
+        "views": 384,
+        "likes": 28,
+        "comments": 2,
+        "minutes": 30,
+        "subsGained": 0,
+        "avgDuration": 16
       },
       {
         "id": "eFLxRBeIjS0",
@@ -956,23 +978,23 @@
         "id": "OfO4nU-MNng",
         "title": "PORQUE VERÃO A DEUS (Parte 1 de 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/OfO4nU-MNng/mqdefault.jpg",
-        "views": 297,
+        "views": 299,
         "likes": 8,
         "comments": 1,
-        "minutes": 296,
+        "minutes": 297,
         "subsGained": 0,
-        "avgDuration": 199
+        "avgDuration": 197
       },
       {
         "id": "KnTr-LDA8J0",
         "title": "VIDA DE FÉ (Parte 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/KnTr-LDA8J0/mqdefault.jpg",
-        "views": 265,
+        "views": 266,
         "likes": 5,
         "comments": 0,
-        "minutes": 74,
+        "minutes": 75,
         "subsGained": 2,
-        "avgDuration": 89
+        "avgDuration": 88
       },
       {
         "id": "7SgO4ltfgmI",
@@ -989,12 +1011,12 @@
         "id": "7RGfTpN1Vtc",
         "title": "A História de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 216,
+        "views": 219,
         "likes": 12,
         "comments": 0,
-        "minutes": 130,
+        "minutes": 133,
         "subsGained": 3,
-        "avgDuration": 96
+        "avgDuration": 97
       },
       {
         "id": "bUGxBIVqcLk",
@@ -1006,17 +1028,6 @@
         "minutes": 11,
         "subsGained": 0,
         "avgDuration": 14
-      },
-      {
-        "id": "kpECJLrPQX8",
-        "title": "Caminho 119 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/kpECJLrPQX8/mqdefault.jpg",
-        "views": 190,
-        "likes": 11,
-        "comments": 0,
-        "minutes": 17,
-        "subsGained": 0,
-        "avgDuration": 20
       }
     ]
   },
@@ -1117,6 +1128,10 @@
       [
         0,
         "20260919"
+      ],
+      [
+        0,
+        "20260920"
       ]
     ],
     "uD2wtA92RAU": [
@@ -1207,6 +1222,10 @@
       [
         0,
         "20260919"
+      ],
+      [
+        1,
+        "20260920"
       ]
     ],
     "_7PAmBlJ4Qk": [
@@ -1297,6 +1316,10 @@
       [
         1,
         "20260919"
+      ],
+      [
+        0,
+        "20260920"
       ]
     ],
     "PuN0N_bgMmM": [
@@ -1327,6 +1350,10 @@
       [
         2,
         "20260919"
+      ],
+      [
+        0,
+        "20260920"
       ]
     ],
     "wy60p3Znl9g": [
@@ -1373,44 +1400,32 @@
       [
         0,
         "20260919"
-      ]
-    ],
-    "gsiLPtndSzQ": [
-      [
-        62,
-        "20260911"
-      ],
-      [
-        89,
-        "20260912"
-      ],
-      [
-        251,
-        "20260913"
-      ],
-      [
-        15,
-        "20260914"
       ],
       [
         0,
-        "20260915"
-      ],
+        "20260920"
+      ]
+    ],
+    "icfZTfLixpc": [
       [
-        2,
+        10,
         "20260916"
       ],
       [
-        0,
+        154,
         "20260917"
       ],
       [
-        3,
+        107,
         "20260918"
       ],
       [
-        1,
+        114,
         "20260919"
+      ],
+      [
+        53,
+        "20260920"
       ]
     ]
   }
