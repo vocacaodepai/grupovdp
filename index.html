@@ -124,6 +124,19 @@
     display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
     flex:1; min-height:0;
   }
+  .card-chip-row{
+    display:flex; flex-wrap:wrap; align-content:flex-start; gap:4px;
+    flex:1; min-height:0; overflow:hidden;
+  }
+  .card-chip{
+    font-family:"IBM Plex Mono",monospace; font-size:clamp(8.5px,.82vw,10px);
+    border:1px solid var(--border); background:var(--surface-2); color:var(--text-muted);
+    border-radius:999px; padding:3px 8px; cursor:pointer; line-height:1.3; white-space:nowrap;
+  }
+  .card-chip:hover{ border-color:var(--accent); color:var(--text); }
+  .card-chip.has-detail{ border-color:var(--accent); color:var(--accent); }
+  .card-chip.more{ cursor:default; opacity:.7; }
+  .card-chip.more:hover{ border-color:var(--border); color:var(--text-muted); }
   .card-graph{ flex:1; display:flex; flex-direction:column; justify-content:center; gap:6px; min-height:0; }
   .card-graph-stat{ display:flex; align-items:baseline; gap:6px; flex-wrap:wrap; }
   .card-graph-value{ font-family:"Fraunces",serif; font-weight:700; font-size:clamp(16px,2vw,22px); }
@@ -764,8 +777,14 @@
       '</div>';
     }
     if(f.items.length){
-      var labels = f.items.map(function(it){ return it.label; }).join(" · ");
-      return '<div class="card-items-preview">'+labels+'</div>';
+      var maxShown = 5;
+      var shown = f.items.slice(0, maxShown);
+      var chips = shown.map(function(it){
+        var hasDetail = it.source && it.source.detailMetrics;
+        return '<button type="button" class="card-chip'+(hasDetail?" has-detail":"")+'" data-item="'+it.id+'">'+it.label+(hasDetail?" 📈":"")+'</button>';
+      }).join("");
+      var more = f.items.length>maxShown ? '<span class="card-chip more">+'+(f.items.length-maxShown)+'</span>' : "";
+      return '<div class="card-chip-row">'+chips+more+'</div>';
     }
     if(f.goal && f.goal.text){
       return '<div class="card-items-preview">🎯 '+f.goal.text+'</div>';
@@ -803,6 +822,20 @@
       '</div>';
     el.addEventListener("click", function(){ openFront(key); });
     el.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openFront(key); } });
+
+    Array.prototype.forEach.call(el.querySelectorAll(".card-chip[data-item]"), function(chip){
+      chip.addEventListener("click", function(e){
+        e.stopPropagation();
+        var itemId = chip.getAttribute("data-item");
+        var item = f.items.find(function(it){ return it.id===itemId; });
+        if(item && item.source && item.source.detailMetrics){
+          openMetricDetail(key, itemId);
+        } else {
+          openFront(key);
+        }
+      });
+    });
+
     return el;
   }
 
