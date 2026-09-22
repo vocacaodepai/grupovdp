@@ -477,6 +477,35 @@
   .reset-btn:hover{ color:var(--accent); }
 
   .panel.wide{ width:min(1040px,96vw); max-height:92vh; }
+  .overlay.full-page{ padding:0; align-items:stretch; justify-content:stretch; }
+  .panel.full{
+    width:100%; max-width:100%; height:100%; max-height:100%;
+    border-radius:0; padding:clamp(18px,3vw,40px) clamp(16px,5vw,64px);
+  }
+  .breadcrumb{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--text-muted); margin-bottom:16px;
+  }
+  .breadcrumb button{
+    background:none; border:none; color:var(--accent); cursor:pointer;
+    font-family:inherit; font-size:inherit; padding:0;
+  }
+  .breadcrumb button:hover{ text-decoration:underline; }
+  .breadcrumb .sep{ opacity:.5; }
+  .breadcrumb .current{ color:var(--text); }
+
+  .kpi-row{ display:flex; flex-wrap:wrap; gap:10px; margin:4px 0 22px; }
+  .kpi-tile{
+    flex:1 1 130px; background:var(--surface-2); border:1px solid var(--border);
+    border-radius:10px; padding:12px 14px;
+  }
+  .kpi-label{
+    font-family:"IBM Plex Mono",monospace; font-size:9.5px; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--text-muted); display:block; margin-bottom:4px;
+  }
+  .kpi-value{ font-family:"Fraunces",serif; font-weight:700; font-size:clamp(18px,2.4vw,24px); }
+  .project-chart-wrap{ margin-bottom:8px; }
+  .project-chart-wrap .multi-chart{ height:auto; }
   .detail-grid{ display:flex; flex-direction:column; gap:24px; margin-top:4px; }
   @media (min-width:860px){
     .detail-grid{ display:grid; grid-template-columns:1.5fr 1fr; align-items:start; }
@@ -764,8 +793,8 @@
       '<div class="wordmark2">GRUPO <span class="vdp">V.D.P.</span></div>' +
       '<div class="sub">'+arr.length+' frentes ativas no radar</div>' +
       '<div class="legend">'+legend+'</div>';
-    el.addEventListener("click", function(){ openOverview(); });
-    el.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openOverview(); } });
+    el.addEventListener("click", function(){ go("#/geral"); });
+    el.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go("#/geral"); } });
     return el;
   }
 
@@ -824,8 +853,8 @@
         segBar(f.stage) +
         goalLine +
       '</div>';
-    el.addEventListener("click", function(){ openFront(key); });
-    el.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openFront(key); } });
+    el.addEventListener("click", function(){ go("#/p/"+key); });
+    el.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go("#/p/"+key); } });
 
     Array.prototype.forEach.call(el.querySelectorAll(".card-chip[data-item]"), function(chip){
       chip.addEventListener("click", function(e){
@@ -833,9 +862,9 @@
         var itemId = chip.getAttribute("data-item");
         var item = f.items.find(function(it){ return it.id===itemId; });
         if(item && item.source && item.source.detailMetrics){
-          openMetricDetail(key, itemId);
+          go("#/p/"+key+"/i/"+itemId);
         } else {
-          openFront(key);
+          go("#/p/"+key);
         }
       });
     });
@@ -845,18 +874,63 @@
     return el;
   }
 
-  function openModal(html, wide){
+  function openModal(html, mode){
     panel.innerHTML = html;
-    panel.className = "panel" + (wide ? " wide" : "");
+    panel.className = "panel" + (mode ? " "+mode : "");
+    overlay.className = "overlay" + (mode==="full" ? " full-page" : "");
     overlay.hidden = false;
     document.addEventListener("keydown", escClose);
   }
-  function escClose(e){ if(e.key==="Escape") closeModal(); }
+  function escClose(e){ if(e.key==="Escape") go(""); }
   function closeModal(){
     overlay.hidden = true;
     document.removeEventListener("keydown", escClose);
   }
-  overlay.addEventListener("click", function(e){ if(e.target === overlay) closeModal(); });
+  overlay.addEventListener("click", function(e){ if(e.target === overlay) go(""); });
+
+  // ---- hash routing (#/, #/p/<front>, #/p/<front>/i/<item>, #/geral/<tab>) ----
+
+  function go(hash){
+    if(location.hash === hash){ route(); } else { location.hash = hash; }
+  }
+  function parseHashParts(){
+    return location.hash.replace(/^#\/?/,"").split("/").filter(Boolean);
+  }
+  function route(){
+    if(!state) return;
+    var parts = parseHashParts();
+    if(parts[0]==="p" && parts[1] && state.fronts[parts[1]]){
+      var key = parts[1];
+      if(parts[2]==="i" && parts[3]){
+        var f = state.fronts[key];
+        var item = f.items.find(function(it){ return it.id===parts[3]; });
+        if(item && item.source && item.source.detailMetrics){
+          openMetricDetail(key, parts[3]);
+          return;
+        }
+      }
+      openFront(key);
+    } else if(parts[0]==="geral"){
+      openOverview(parts[1]||"fronts");
+    } else {
+      closeModal();
+    }
+  }
+  window.addEventListener("hashchange", route);
+
+  function breadcrumbHtml(segments){
+    var parts = segments.map(function(s, i){
+      if(i===segments.length-1) return '<span class="current">'+s.label+'</span>';
+      return '<button data-bc="'+i+'">'+s.label+'</button>';
+    });
+    return '<div class="breadcrumb">'+parts.join('<span class="sep">/</span>')+'</div>';
+  }
+  function wireBreadcrumb(el, segments){
+    Array.prototype.forEach.call(el.querySelectorAll(".breadcrumb [data-bc]"), function(btn){
+      var idx = parseInt(btn.getAttribute("data-bc"),10);
+      btn.addEventListener("click", segments[idx].onClick);
+    });
+  }
 
   // ---- metrics (static snapshot, refreshed on request) ----
 
@@ -1121,7 +1195,11 @@
     return blocks.join("");
   }
 
-  function renderDetailPanel(item, metricsDef, parsed, activeIdx){
+  function renderDetailPanel(item, metricsDef, parsed, activeIdx, frontKey){
+    var frontName = (state.fronts[frontKey]||{}).name || frontKey;
+    var bc = breadcrumbHtml([
+      {label:"Início"}, {label:frontName}, {label:item.label}
+    ]);
     var tabs = metricsDef.map(function(def,i){
       return '<button class="detail-tab'+(i===activeIdx?" active":"")+'" data-idx="'+i+'">'+def.label+'</button>';
     }).join("");
@@ -1142,7 +1220,7 @@
     var sideCol = sideParts.length ? '<div class="detail-side">'+sideParts.join("")+'</div>' : "";
 
     var sourceLabel = (item.source && item.source.detailSourceLabel) || "Metricool";
-    return '<div class="panel-head">' +
+    return bc + '<div class="panel-head">' +
       '<div style="display:flex;align-items:center;gap:10px;min-width:0;">' +
         '<button class="back-btn" id="backBtn" aria-label="Voltar">←</button>' +
         '<div style="min-width:0;"><div class="panel-name">'+item.label+'</div><div class="panel-kicker">'+item.id+' · via '+sourceLabel+'</div></div>' +
@@ -1154,12 +1232,16 @@
   }
 
   function wireDetail(frontKey, item, metricsDef, parsed, activeIdx){
-    document.getElementById("closeBtn").addEventListener("click", closeModal);
-    document.getElementById("backBtn").addEventListener("click", function(){ openFront(frontKey); });
+    wireBreadcrumb(panel, [
+      {onClick:function(){ go(""); }},
+      {onClick:function(){ go("#/p/"+frontKey); }}
+    ]);
+    document.getElementById("closeBtn").addEventListener("click", function(){ go(""); });
+    document.getElementById("backBtn").addEventListener("click", function(){ go("#/p/"+frontKey); });
     Array.prototype.forEach.call(panel.querySelectorAll(".detail-tab"), function(btn){
       btn.addEventListener("click", function(){
         var idx = parseInt(btn.getAttribute("data-idx"),10);
-        openModal(renderDetailPanel(item, metricsDef, parsed, idx), true);
+        openModal(renderDetailPanel(item, metricsDef, parsed, idx, frontKey), "full");
         wireDetail(frontKey, item, metricsDef, parsed, idx);
       });
     });
@@ -1177,13 +1259,17 @@
     var metricsDef = item.source.detailMetrics || item.source.metrics;
     var rows = DETAIL_ROWS[itemId] || SNAPSHOT_ROWS[itemId] || [];
     var parsed = parseMetricRows(rows, metricsDef);
-    openModal(renderDetailPanel(item, metricsDef, parsed, 0), true);
+    openModal(renderDetailPanel(item, metricsDef, parsed, 0, frontKey), "full");
     wireDetail(frontKey, item, metricsDef, parsed, 0);
   }
 
   // ---- individual video view (from a leaderboard click) ----
 
-  function renderVideoPanel(video, itemId){
+  function renderVideoPanel(video, item, frontKey){
+    var frontName = (state.fronts[frontKey]||{}).name || frontKey;
+    var bc = breadcrumbHtml([
+      {label:"Início"}, {label:frontName}, {label:item.label}, {label:video.title.length>40?video.title.slice(0,40)+"…":video.title}
+    ]);
     var rows = VIDEO_DAILY[video.id];
     var points = rows ? parseMetricRows(rows, [{field:"views",label:"Visualizações"}])[0].points : [];
     var chips = [
@@ -1197,7 +1283,7 @@
       return '<div class="metric-chip"><span>'+c.label+'</span><span class="metric-value">'+fmtNumber(c.value)+'</span></div>';
     }).join("");
 
-    return '<div class="panel-head">' +
+    return bc + '<div class="panel-head">' +
       '<div style="display:flex;align-items:center;gap:10px;min-width:0;">' +
         '<button class="back-btn" id="backBtn" aria-label="Voltar">←</button>' +
         '<div style="min-width:0;"><div class="panel-name" style="font-size:15px;">Vídeo</div><div class="panel-kicker">via YouTube Analytics</div></div>' +
@@ -1217,10 +1303,18 @@
   function openVideoDetail(frontKey, item, metricsDef, parsed, activeIdx, videoId){
     var video = (ITEM_VIDEOS[item.id]||[]).find(function(v){ return v.id===videoId; });
     if(!video) return;
-    openModal(renderVideoPanel(video, item.id), true);
-    document.getElementById("closeBtn").addEventListener("click", closeModal);
+    openModal(renderVideoPanel(video, item, frontKey), "full");
+    wireBreadcrumb(panel, [
+      {onClick:function(){ go(""); }},
+      {onClick:function(){ go("#/p/"+frontKey); }},
+      {onClick:function(){
+        openModal(renderDetailPanel(item, metricsDef, parsed, activeIdx, frontKey), "full");
+        wireDetail(frontKey, item, metricsDef, parsed, activeIdx);
+      }}
+    ]);
+    document.getElementById("closeBtn").addEventListener("click", function(){ go(""); });
     document.getElementById("backBtn").addEventListener("click", function(){
-      openModal(renderDetailPanel(item, metricsDef, parsed, activeIdx), true);
+      openModal(renderDetailPanel(item, metricsDef, parsed, activeIdx, frontKey), "full");
       wireDetail(frontKey, item, metricsDef, parsed, activeIdx);
     });
   }
@@ -1323,15 +1417,15 @@
   }
 
   function wireOverview(tabKey){
-    document.getElementById("closeBtn").addEventListener("click", closeModal);
+    document.getElementById("closeBtn").addEventListener("click", function(){ go(""); });
     Array.prototype.forEach.call(panel.querySelectorAll(".ov-tab"), function(btn){
-      btn.addEventListener("click", function(){ openOverview(btn.getAttribute("data-tab")); });
+      btn.addEventListener("click", function(){ go("#/geral/"+btn.getAttribute("data-tab")); });
     });
     Array.prototype.forEach.call(panel.querySelectorAll(".ov-row"), function(row){
-      row.addEventListener("click", function(){ openFront(row.getAttribute("data-key")); });
+      row.addEventListener("click", function(){ go("#/p/"+row.getAttribute("data-key")); });
     });
     Array.prototype.forEach.call(panel.querySelectorAll(".evo-row"), function(row){
-      row.addEventListener("click", function(){ openFront(row.getAttribute("data-key")); });
+      row.addEventListener("click", function(){ go("#/p/"+row.getAttribute("data-key")); });
     });
     Array.prototype.forEach.call(panel.querySelectorAll(".fin-del"), function(btn){
       btn.addEventListener("click", function(){
@@ -1370,9 +1464,53 @@
     wireOverview(tabKey);
   }
 
+  function frontRevenueEntries(key){
+    return ((state.revenue||{}).entries||[]).filter(function(e){ return e.frontKey===key; });
+  }
+  function frontRevenueTotal(key){
+    return frontRevenueEntries(key).reduce(function(sum,e){ return sum+Number(e.amount); }, 0);
+  }
+
+  function renderProjectFinance(key){
+    var entries = frontRevenueEntries(key).slice().sort(function(a,b){ return b.month.localeCompare(a.month); });
+    if(!entries.length){
+      return '<div class="empty-items">Nenhum lançamento financeiro para este projeto ainda — adicione na Visão geral › Financeiro.</div>';
+    }
+    var rows = entries.map(function(e){
+      return '<div class="fin-row"><span class="fin-row-front">'+monthLabel(e.month)+'</span><span class="fin-row-month"></span><span class="fin-row-amount">'+fmtCurrency(e.amount)+'</span><span></span></div>';
+    }).join("");
+    return '<div class="fin-list">'+rows+'</div>';
+  }
+
   function openFront(key){
     var f = state.fronts[key];
     if(!f) return;
+
+    var bc = breadcrumbHtml([{label:"Início"}, {label:f.name}]);
+
+    var itemsCount = f.items.length;
+    var activeCount = f.items.filter(function(it){ return it.status==="ativo"; }).length;
+    var gp = goalProgress(f);
+    var revenueTotal = frontRevenueTotal(key);
+    var kpiRow =
+      '<div class="kpi-row">' +
+        '<div class="kpi-tile"><span class="kpi-label">Itens ativos</span><span class="kpi-value">'+activeCount+'/'+itemsCount+'</span></div>' +
+        '<div class="kpi-tile"><span class="kpi-label">Estágio</span><span class="kpi-value">'+STAGES[f.stage]+'</span></div>' +
+        '<div class="kpi-tile"><span class="kpi-label">Meta</span><span class="kpi-value">'+(gp?gp.pct+"%":"—")+'</span></div>' +
+        '<div class="kpi-tile"><span class="kpi-label">Receita registrada</span><span class="kpi-value">'+fmtCurrency(revenueTotal)+'</span></div>' +
+      '</div>';
+
+    var series = buildFrontSeries(f);
+    var chartSection = "";
+    if(series.length){
+      var legend = series.map(function(s){
+        return '<span class="chart-legend-item"><span class="chart-dot" style="background:'+s.color+'"></span>'+s.label+'</span>';
+      }).join("");
+      chartSection =
+        '<div class="section-label" style="margin-top:0;">Evolução combinada</div>' +
+        '<div class="project-chart-wrap"><div class="chart-wrap-rel" id="projectChartWrap">'+buildMultiChart(series, 900, 220)+'<div class="chart-tooltip" hidden></div></div>' +
+        '<div class="chart-legend">'+legend+'</div></div>';
+    }
 
     var stagesHtml = STAGES.map(function(s,i){
       return '<button class="stage-btn'+(i===f.stage?" active":"")+'" data-stage="'+i+'"><b>'+(i+1)+'</b>'+s+'</button>';
@@ -1392,10 +1530,16 @@
       '</div>';
     }).join("") : '<div class="empty-items">Nenhum item ainda — adicione abaixo.</div>';
 
-    var html =
+    var html = bc +
       '<div class="panel-head"><div class="panel-title"><span class="num">'+String(f.num).padStart(2,"0")+'</span>' +
       '<div><div class="panel-name">'+f.name+'</div><div class="panel-kicker">'+f.category+'</div></div></div>' +
       '<button class="close-btn" id="closeBtn">×</button></div>' +
+
+      kpiRow +
+      chartSection +
+
+      '<div class="section-label">Financeiro do projeto</div>' +
+      renderProjectFinance(key) +
 
       '<div class="section-label">Estágio</div>' +
       '<div class="stages">'+stagesHtml+'</div>' +
@@ -1421,8 +1565,11 @@
 
       '<div class="updated">Atualizado em '+fmtDate(f.updatedAt)+'</div>';
 
-    openModal(html);
-    document.getElementById("closeBtn").addEventListener("click", closeModal);
+    openModal(html, "full");
+    wireBreadcrumb(panel, [{onClick:function(){ go(""); }}]);
+    document.getElementById("closeBtn").addEventListener("click", function(){ go(""); });
+    var projectChartWrap = document.getElementById("projectChartWrap");
+    if(projectChartWrap) wireChartTooltip(projectChartWrap.parentElement);
 
     Array.prototype.forEach.call(panel.querySelectorAll(".stage-btn"), function(btn){
       btn.addEventListener("click", function(){
@@ -1450,7 +1597,7 @@
       if(expandBtn){
         expandBtn.addEventListener("click", function(e){
           e.stopPropagation();
-          openMetricDetail(key, id);
+          go("#/p/"+key+"/i/"+id);
         });
       }
     });
@@ -1528,6 +1675,7 @@
       initMetrics();
       renderGrid();
       renderFreshNote();
+      route();
     });
   }
 
