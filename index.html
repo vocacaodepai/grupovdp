@@ -101,6 +101,36 @@
     flex-shrink:0;
   }
 
+  .graph-toggle{
+    display:flex; align-items:center; gap:8px;
+    border:none; background:none; cursor:pointer; padding:2px 0;
+    font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--text-muted);
+    flex-shrink:0;
+  }
+  .graph-toggle:hover{ color:var(--text); }
+  .graph-toggle-track{
+    width:34px; height:18px; border-radius:999px; background:var(--surface-2);
+    border:1px solid var(--border); position:relative; flex-shrink:0; transition:background .15s ease;
+  }
+  .graph-toggle-thumb{
+    position:absolute; top:1px; left:1px; width:14px; height:14px; border-radius:50%;
+    background:var(--text-muted); transition:transform .15s ease, background .15s ease;
+  }
+  .graph-toggle[aria-pressed="true"] .graph-toggle-track{ background:var(--accent-soft); border-color:var(--accent); }
+  .graph-toggle[aria-pressed="true"] .graph-toggle-thumb{ background:var(--accent); transform:translateX(16px); }
+
+  .card-items-preview{
+    font-size:clamp(9.5px,.9vw,11px); color:var(--text-muted); line-height:1.4;
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+    flex:1; min-height:0;
+  }
+  .card-graph{ flex:1; display:flex; flex-direction:column; justify-content:center; gap:6px; min-height:0; }
+  .card-graph-stat{ display:flex; align-items:baseline; gap:6px; flex-wrap:wrap; }
+  .card-graph-value{ font-family:"Fraunces",serif; font-weight:700; font-size:clamp(16px,2vw,22px); }
+  .card-graph-label{ font-family:"IBM Plex Mono",monospace; font-size:9.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; }
+  .card-graph svg{ color:var(--accent); width:100%; height:auto; display:block; }
+  .card-graph-empty{ font-size:11px; color:var(--text-muted); font-style:italic; }
+
   .grid{
     flex:1;
     min-height:0;
@@ -457,9 +487,15 @@
 
 <div class="top">
   <div class="wordmark">GRUPO <b>V.D.P.</b> <span style="color:var(--text-muted); font-family:'IBM Plex Mono',monospace; font-size:.7em; letter-spacing:.06em;">— painel de frentes</span></div>
-  <div style="display:flex; flex-direction:column; align-items:flex-end; gap:2px;">
-    <div class="top-right" id="topRight">carregando…</div>
-    <div class="fresh-note" id="freshNote">carregando dados…</div>
+  <div style="display:flex; align-items:center; gap:14px;">
+    <button class="graph-toggle" id="graphToggle" type="button" aria-pressed="false">
+      <span class="graph-toggle-track"><span class="graph-toggle-thumb"></span></span>
+      <span>Modo gráfico</span>
+    </button>
+    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:2px;">
+      <div class="top-right" id="topRight">carregando…</div>
+      <div class="fresh-note" id="freshNote">carregando dados…</div>
+    </div>
   </div>
 </div>
 
@@ -476,7 +512,10 @@
   var STAGES = ["Ideação","Estruturação","Execução","Consolidado"];
   var STATUS_ORDER = ["pendente","andamento","ativo"];
   var STATUS_LABEL = {pendente:"Pendente", andamento:"Em andamento", ativo:"Ativo"};
-  var LAYOUT = ["f5","f6","f4","f7","hub","f1","f8","f2","f3"];
+  // Clockwise from top-left, so each card's number (01-08) reads in clock order:
+  // 01 top-left, 02 top-center, 03 top-right, 04 right, 05 bottom-right,
+  // 06 bottom-center, 07 bottom-left, 08 left, back to 01.
+  var LAYOUT = ["f1","f2","f3","f8","hub","f4","f7","f6","f5"];
   var STORAGE_KEY = "vdp-painel-state-v1";
 
   var SEED_DATA = {
@@ -584,11 +623,15 @@
 
   var state = null;
   var metricsState = {};
+  var GRAPH_MODE_KEY = "vdp-graph-mode-v1";
+  var graphMode = false;
+  try{ graphMode = localStorage.getItem(GRAPH_MODE_KEY) === "1"; }catch(e){}
 
   var grid = document.getElementById("grid");
   var overlay = document.getElementById("overlay");
   var panel = document.getElementById("panel");
   var topRight = document.getElementById("topRight");
+  var graphToggle = document.getElementById("graphToggle");
 
   function fmtDate(ts){
     if(!ts) return "—";
@@ -668,6 +711,15 @@
       grid.appendChild(renderCard(key, f));
     });
     renderTopStats();
+    if(graphToggle) graphToggle.setAttribute("aria-pressed", graphMode ? "true" : "false");
+  }
+
+  if(graphToggle){
+    graphToggle.addEventListener("click", function(){
+      graphMode = !graphMode;
+      try{ localStorage.setItem(GRAPH_MODE_KEY, graphMode ? "1" : "0"); }catch(e){}
+      renderGrid();
+    });
   }
 
   function renderHub(){
@@ -692,6 +744,38 @@
     return el;
   }
 
+  function renderCardBody(f){
+    if(graphMode){
+      var m = primaryMetricFor(f);
+      if(!m || m.value===null){
+        return '<div class="card-graph"><span class="card-graph-empty">sem dado conectado ainda</span></div>';
+      }
+      var valStr = m.currency ? fmtCurrency(m.value) : (m.isPercent ? formatMetricValue(m,m.value) : fmtNumber(m.value));
+      var deltaHtml = "";
+      if(m.delta!==null && m.delta!==0){
+        var cls = m.delta>=0 ? "up" : "down";
+        var sign = m.delta>=0 ? "+" : "";
+        deltaHtml = ' <span class="metric-delta '+cls+'">'+sign+(m.currency||m.isPercent?formatMetricValue(m,m.delta):fmtNumber(m.delta))+'</span>';
+      }
+      return '<div class="card-graph">' +
+        '<div class="card-graph-stat"><span class="card-graph-value">'+valStr+'</span>'+deltaHtml+'</div>' +
+        '<span class="card-graph-label">'+m.label+'</span>' +
+        sparkline(m.points, 220, 48) +
+      '</div>';
+    }
+    if(f.items.length){
+      var labels = f.items.map(function(it){ return it.label; }).join(" · ");
+      return '<div class="card-items-preview">'+labels+'</div>';
+    }
+    if(f.goal && f.goal.text){
+      return '<div class="card-items-preview">🎯 '+f.goal.text+'</div>';
+    }
+    if(f.notes){
+      return '<div class="card-items-preview">'+f.notes+'</div>';
+    }
+    return '<div class="card-items-preview">Nenhum item definido ainda.</div>';
+  }
+
   function renderCard(key, f){
     var el = document.createElement("div");
     el.className = "card";
@@ -703,12 +787,13 @@
     var gp = goalProgress(f);
     var goalText = f.goal && f.goal.text ? f.goal.text : "";
     var goalLine = "";
-    if(goalText || gp){
+    if(!graphMode && (goalText || gp)){
       goalLine = '<div class="goal-line">🎯 '+(goalText||"meta definida")+(gp?' · '+gp.pct+'%':'')+'</div>';
     }
     el.innerHTML =
       '<div class="card-top"><span class="num">'+String(f.num).padStart(2,"0")+'</span><span class="kicker">'+f.category+'</span></div>' +
       '<div class="name">'+f.name+'</div>' +
+      renderCardBody(f) +
       '<div class="card-bottom">' +
         '<div class="stage-row"><span class="stage-label">'+STAGES[f.stage]+'</span>' +
         (itemsCount ? '<span class="items-count">'+activeCount+'/'+itemsCount+' ativos</span>' : '<span class="items-count">sem itens</span>') +
