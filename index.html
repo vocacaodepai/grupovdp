@@ -599,7 +599,7 @@
           {field:"likes",label:"Curtidas"},
           {field:"comments",label:"Comentários"},
           {field:"shares",label:"Compartilhamentos"}
-        ], detailSourceLabel:"YouTube Analytics"}},
+        ], detailSourceLabel:"YouTube Analytics", subscriberSnapshotKey:"2.2subs"}},
         {id:"2.3", label:"Escrúpulos", status:"pendente"},
         {id:"2.4", label:"Sta Teresinha", status:"pendente"},
         {id:"2.5", label:"S. Padre Pio", status:"pendente"}
@@ -1256,9 +1256,16 @@
     var f = state.fronts[frontKey];
     var item = f.items.find(function(x){ return x.id===itemId; });
     if(!item || !item.source) return;
-    var metricsDef = item.source.detailMetrics || item.source.metrics;
+    var metricsDef = (item.source.detailMetrics || item.source.metrics).slice();
     var rows = DETAIL_ROWS[itemId] || SNAPSHOT_ROWS[itemId] || [];
     var parsed = parseMetricRows(rows, metricsDef);
+    var subKey = item.source.subscriberSnapshotKey;
+    if(subKey && SNAPSHOT_ROWS[subKey] && SNAPSHOT_ROWS[subKey].length){
+      var subDef = {field:"subs", label:"Inscritos totais"};
+      var subParsed = parseMetricRows(SNAPSHOT_ROWS[subKey], [subDef]);
+      metricsDef = [subDef].concat(metricsDef);
+      parsed = subParsed.concat(parsed);
+    }
     openModal(renderDetailPanel(item, metricsDef, parsed, 0, frontKey), "full");
     wireDetail(frontKey, item, metricsDef, parsed, 0);
   }
@@ -1666,7 +1673,7 @@
     }
     var when = "—";
     try{ when = new Date(metricsGeneratedAt).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}); }catch(e){}
-    note.textContent = "YouTube atualizado automaticamente a cada 5 min · última vez: "+when+" · Instagram/Metricool ainda é manual";
+    note.textContent = "Inscritos: atualizados hoje, a cada 5 min · última checagem: "+when+" · Views/tempo assistido têm defasagem de ~2-3 dias (limite do YouTube Analytics) · Instagram/Metricool ainda é manual";
   }
 
   function boot(){

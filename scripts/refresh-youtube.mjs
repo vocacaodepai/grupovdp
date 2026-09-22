@@ -91,13 +91,20 @@ async function main() {
   const subsByChannel = {};
   for (const item of stats.items) subsByChannel[item.id] = Number(item.statistics.subscriberCount);
 
-  // Append today's "Vocação de Pai" subscriber count (accumulates real history over time).
+  // Append today's subscriber counts (accumulates real history over time, one row per day).
   const snapshotRows = existing.snapshotRows || {};
   const paiSubs = subsByChannel[PAI_CHANNEL];
   if (paiSubs !== undefined) {
     const key = "1.2";
     const rows = (snapshotRows[key] || []).filter((r) => r[r.length - 1] !== compactDate(end));
     rows.push([String(paiSubs), compactDate(end)]);
+    snapshotRows[key] = rows.slice(-90);
+  }
+  const opusSubs = subsByChannel[OPUS_DEI_CHANNEL];
+  if (opusSubs !== undefined) {
+    const key = "2.2subs";
+    const rows = (snapshotRows[key] || []).filter((r) => r[r.length - 1] !== compactDate(end));
+    rows.push([String(opusSubs), compactDate(end)]);
     snapshotRows[key] = rows.slice(-90);
   }
 
