@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T01:53:52.453Z",
+  "generatedAt": "2026-09-22T16:57:43.487Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -726,11 +726,11 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 4527
+          "views": 4524
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2072
+          "views": 2069
         },
         {
           "label": "Busca no YouTube",
@@ -800,7 +800,7 @@
       "device": [
         {
           "label": "Celular",
-          "views": 7892
+          "views": 7886
         },
         {
           "label": "Computador",
@@ -818,15 +818,15 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 5685
+          "views": 5682
         },
         {
           "label": "Página de exibição",
-          "views": 1662
+          "views": 1658
         },
         {
           "label": "Explorar/Início",
-          "views": 1638
+          "views": 1639
         },
         {
           "label": "Incorporado em site",
@@ -836,7 +836,7 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 8178
+          "views": 8172
         },
         {
           "label": "Inscritos",
