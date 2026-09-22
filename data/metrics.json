@@ -1,10 +1,14 @@
 {
-  "generatedAt": "2026-09-21T19:33:20.056Z",
+  "generatedAt": "2026-09-22T01:53:52.453Z",
   "snapshotRows": {
     "1.2": [
       [
         "7",
         "20260921"
+      ],
+      [
+        "7",
+        "20260922"
       ]
     ],
     "2.1": [
@@ -419,17 +423,6 @@
   "detailRows": {
     "2.2": [
       [
-        26,
-        43,
-        201,
-        0,
-        1,
-        1,
-        0,
-        0,
-        "20260823"
-      ],
-      [
         35,
         67,
         162,
@@ -672,7 +665,7 @@
         "20260914"
       ],
       [
-        368,
+        362,
         305,
         185,
         3,
@@ -694,7 +687,7 @@
         "20260916"
       ],
       [
-        372,
+        359,
         142,
         90,
         3,
@@ -737,15 +730,15 @@
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2073
+          "views": 2072
         },
         {
           "label": "Busca no YouTube",
-          "views": 1158
+          "views": 1142
         },
         {
           "label": "Vídeos relacionados",
-          "views": 749
+          "views": 742
         },
         {
           "label": "Notificações",
@@ -757,7 +750,7 @@
         },
         {
           "label": "Outra página do YouTube",
-          "views": 43
+          "views": 41
         },
         {
           "label": "Link externo",
@@ -807,29 +800,29 @@
       "device": [
         {
           "label": "Celular",
-          "views": 7913
+          "views": 7892
         },
         {
           "label": "Computador",
-          "views": 665
+          "views": 663
         },
         {
           "label": "TV",
-          "views": 270
+          "views": 268
         },
         {
           "label": "Tablet",
-          "views": 164
+          "views": 163
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 5701
+          "views": 5685
         },
         {
           "label": "Página de exibição",
-          "views": 1672
+          "views": 1662
         },
         {
           "label": "Explorar/Início",
@@ -843,11 +836,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 8203
+          "views": 8178
         },
         {
           "label": "Inscritos",
-          "views": 809
+          "views": 808
         }
       ]
     }
@@ -990,7 +983,7 @@
         "id": "7RGfTpN1Vtc",
         "title": "A História de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 217,
+        "views": 216,
         "likes": 12,
         "comments": 0,
         "minutes": 130,
@@ -1302,11 +1295,11 @@
     ],
     "PuN0N_bgMmM": [
       [
-        264,
+        259,
         "20260913"
       ],
       [
-        141,
+        140,
         "20260914"
       ],
       [
@@ -1382,11 +1375,11 @@
         "20260911"
       ],
       [
-        92,
+        89,
         "20260912"
       ],
       [
-        256,
+        251,
         "20260913"
       ],
       [
