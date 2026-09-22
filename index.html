@@ -140,8 +140,15 @@
   .card-graph{ flex:1; display:flex; flex-direction:column; justify-content:center; gap:6px; min-height:0; }
   .card-graph svg{ color:var(--accent); width:100%; height:auto; display:block; }
   .card-graph-empty{ font-size:11px; color:var(--text-muted); font-style:italic; }
-  .multi-chart{ width:100%; height:auto; display:block; flex:1; min-height:0; }
-  .multi-chart .chart-hit{ cursor:default; pointer-events:stroke; }
+  .multi-chart{ width:100%; height:auto; display:block; }
+  .multi-chart .chart-hit{ cursor:crosshair; pointer-events:stroke; }
+  .chart-wrap-rel{ position:relative; flex:1; min-height:0; display:flex; }
+  .chart-tooltip{
+    position:absolute; transform:translate(-50%,-130%);
+    background:var(--surface); border:1px solid var(--accent); border-radius:6px;
+    padding:3px 8px; font-family:"IBM Plex Mono",monospace; font-size:9.5px; color:var(--text);
+    white-space:nowrap; pointer-events:none; box-shadow:var(--shadow); z-index:5;
+  }
   .chart-legend{ display:flex; flex-wrap:wrap; gap:5px 10px; }
   .chart-legend-item{
     display:inline-flex; align-items:center; gap:4px;
@@ -772,7 +779,7 @@
         return '<span class="chart-legend-item"><span class="chart-dot" style="background:'+s.color+'"></span>'+s.label+'</span>';
       }).join("");
       return '<div class="card-graph">' +
-        buildMultiChart(series, 220, 52) +
+        '<div class="chart-wrap-rel">'+buildMultiChart(series, 224, 70)+'<div class="chart-tooltip" hidden></div></div>' +
         '<div class="chart-legend">'+legend+'</div>' +
       '</div>';
     }
@@ -832,6 +839,8 @@
         }
       });
     });
+
+    wireChartTooltip(el);
 
     return el;
   }
@@ -921,25 +930,71 @@
   }
 
   function buildMultiChart(seriesList, w, h){
-    w = w||220; h = h||52;
-    var pad = 3;
-    var paths = seriesList.map(function(s){
+    w = w||224; h = h||70;
+    var padL = 6, padR = 6, padT = 6, padB = 15;
+    var plotW = w-padL-padR, plotH = h-padT-padB;
+
+    var gridLines = [0, 0.5, 1].map(function(t){
+      var y = (padT + t*plotH).toFixed(1);
+      return '<line x1="'+padL+'" x2="'+(w-padR)+'" y1="'+y+'" y2="'+y+'" style="stroke:var(--border);stroke-width:1" stroke-dasharray="2,2" />';
+    }).join("");
+    var axisLines =
+      '<line x1="'+padL+'" x2="'+padL+'" y1="'+padT+'" y2="'+(padT+plotH)+'" style="stroke:var(--border);stroke-width:1" />' +
+      '<line x1="'+padL+'" x2="'+(w-padR)+'" y1="'+(padT+plotH)+'" y2="'+(padT+plotH)+'" style="stroke:var(--border);stroke-width:1" />';
+
+    // Reference series (most points) lends its dates to the X-axis labels —
+    // every series is plotted by its own point index, so this is approximate
+    // when date ranges differ slightly, which is fine at this scale.
+    var ref = seriesList.slice().sort(function(a,b){ return b.points.length-a.points.length; })[0];
+    var xLabels = ref ? (
+      '<text x="'+padL+'" y="'+(h-3)+'" style="fill:var(--text-muted);font-family:\'IBM Plex Mono\',monospace;font-size:7.5px;">'+fmtDateShort(ref.points[0].date)+'</text>' +
+      '<text x="'+(w-padR)+'" y="'+(h-3)+'" text-anchor="end" style="fill:var(--text-muted);font-family:\'IBM Plex Mono\',monospace;font-size:7.5px;">'+fmtDateShort(ref.points[ref.points.length-1].date)+'</text>'
+    ) : "";
+
+    var paths = seriesList.map(function(s, si){
       var vals = s.points.map(function(p){ return p.value; });
       var min = Math.min.apply(null,vals), max = Math.max.apply(null,vals);
       var range = (max-min) || 1;
-      var step = (w-2*pad)/(s.points.length-1);
+      var step = s.points.length>1 ? plotW/(s.points.length-1) : 0;
       var coords = s.points.map(function(p,i){
-        var x = pad+i*step;
-        var y = pad+(1-(p.value-min)/range)*(h-2*pad);
+        var x = padL+i*step;
+        var y = padT+(1-(p.value-min)/range)*plotH;
         return x.toFixed(1)+","+y.toFixed(1);
       }).join(" ");
-      var title = "<title>"+escapeXml(s.label)+"</title>";
-      // A wide invisible stroke carries the hover title and makes the thin
-      // visible line easy to point at; the thin one underneath is just ink.
-      return '<polyline points="'+coords+'" fill="none" stroke="'+s.color+'" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" />' +
-        '<polyline points="'+coords+'" fill="none" stroke="transparent" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" class="chart-hit">'+title+'</polyline>';
+      var lx = padL+(s.points.length-1)*step, ly = padT+(1-(s.points[s.points.length-1].value-min)/range)*plotH;
+      return '<polyline points="'+coords+'" fill="none" stroke="'+s.color+'" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />' +
+        '<circle cx="'+lx.toFixed(1)+'" cy="'+ly.toFixed(1)+'" r="1.6" fill="'+s.color+'" />' +
+        '<polyline points="'+coords+'" fill="none" stroke="transparent" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" class="chart-hit" data-series="'+si+'" data-label="'+escapeXml(s.label)+'" />';
     }).join("");
-    return '<svg class="multi-chart" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'">'+paths+'</svg>';
+
+    return '<svg class="multi-chart" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'">' +
+      gridLines + axisLines + paths + xLabels +
+    '</svg>';
+  }
+
+  function wireChartTooltip(cardEl){
+    var wrap = cardEl.querySelector(".chart-wrap-rel");
+    var tooltip = cardEl.querySelector(".chart-tooltip");
+    if(!wrap || !tooltip) return;
+    Array.prototype.forEach.call(cardEl.querySelectorAll(".chart-hit"), function(hit){
+      hit.addEventListener("mouseenter", function(e){
+        e.stopPropagation();
+        tooltip.textContent = hit.getAttribute("data-label");
+        tooltip.hidden = false;
+      });
+      hit.addEventListener("mousemove", function(e){
+        e.stopPropagation();
+        var rect = wrap.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        tooltip.style.left = x+"px";
+        tooltip.style.top = y+"px";
+      });
+      hit.addEventListener("mouseleave", function(e){
+        e.stopPropagation();
+        tooltip.hidden = true;
+      });
+    });
   }
 
   function renderMetricsBlock(itemId){
