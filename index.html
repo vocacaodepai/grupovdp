@@ -141,6 +141,7 @@
   .card-graph svg{ color:var(--accent); width:100%; height:auto; display:block; }
   .card-graph-empty{ font-size:11px; color:var(--text-muted); font-style:italic; }
   .multi-chart{ width:100%; height:auto; display:block; flex:1; min-height:0; }
+  .multi-chart .chart-hit{ cursor:default; }
   .chart-legend{ display:flex; flex-wrap:wrap; gap:5px 10px; }
   .chart-legend-item{
     display:inline-flex; align-items:center; gap:4px;
@@ -915,6 +916,10 @@
     return series;
   }
 
+  function escapeXml(s){
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
   function buildMultiChart(seriesList, w, h){
     w = w||220; h = h||52;
     var pad = 3;
@@ -928,7 +933,11 @@
         var y = pad+(1-(p.value-min)/range)*(h-2*pad);
         return x.toFixed(1)+","+y.toFixed(1);
       }).join(" ");
-      return '<polyline points="'+coords+'" fill="none" stroke="'+s.color+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" />';
+      var title = "<title>"+escapeXml(s.label)+"</title>";
+      // A wide invisible stroke carries the hover title and makes the thin
+      // visible line easy to point at; the thin one underneath is just ink.
+      return '<polyline points="'+coords+'" fill="none" stroke="'+s.color+'" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" />' +
+        '<polyline points="'+coords+'" fill="none" stroke="transparent" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" class="chart-hit">'+title+'</polyline>';
     }).join("");
     return '<svg class="multi-chart" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'">'+paths+'</svg>';
   }
