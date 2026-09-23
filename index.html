@@ -44,7 +44,7 @@
     /* status (fixos, nunca temáticos, sempre com ícone + rótulo) e delta (texto, sempre com glifo) */
     --st-good:#0ca30c; --st-warn:#fab219; --st-serious:#ec835a; --st-critical:#d03b3b;
     --delta-up:#006300; --delta-down:#b3261e;
-    --seq-ink:#ffffff; --ink-on-deemph:#161a22;
+    --seq-ink:#ffffff; --ink-on-deemph:#161a22; --ink-on-s1:#0c0f14;
     /* raios, durações, curva (§4.4 / §14) */
     --r-sm:6px; --r:10px; --r-lg:14px;
     --d-micro:120ms; --d-std:180ms; --d-draw:520ms; --d-flash:900ms;
@@ -78,7 +78,7 @@
       --seq-1:#184f95; --seq-2:#1c5cab; --seq-3:#256abf; --seq-4:#2a78d6; --seq-5:#3987e5; --seq-6:#5598e7; --seq-7:#86b6ef;
       --ord-1:#184f95; --ord-2:#3987e5; --ord-3:#86b6ef;
       --delta-up:#0ca30c; --delta-down:#e66767;
-      --seq-ink:#0c0f14; --ink-on-deemph:#e8ebf0;
+      --seq-ink:#0c0f14; --ink-on-deemph:#e8ebf0; --ink-on-s1:#ffffff;
     }
   }
   :root[data-theme="dark"]{
@@ -106,7 +106,7 @@
     --seq-1:#184f95; --seq-2:#1c5cab; --seq-3:#256abf; --seq-4:#2a78d6; --seq-5:#3987e5; --seq-6:#5598e7; --seq-7:#86b6ef;
     --ord-1:#184f95; --ord-2:#3987e5; --ord-3:#86b6ef;
     --delta-up:#0ca30c; --delta-down:#e66767;
-    --seq-ink:#0c0f14; --ink-on-deemph:#e8ebf0;
+    --seq-ink:#0c0f14; --ink-on-deemph:#e8ebf0; --ink-on-s1:#ffffff;
   }
 
   *{box-sizing:border-box;}
@@ -133,6 +133,7 @@
   .top{ display:flex; flex-direction:column; gap:3px; flex-shrink:0; }
   .top-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
   .wordmark{
+    margin:0;
     font-family:var(--font-serif);
     font-weight:600;
     font-size:clamp(15px,1.9vw,20px);
@@ -176,6 +177,7 @@
   .live-dot{ display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--st-good); flex-shrink:0; animation:vdp-live 2s ease-in-out infinite; }
   .live-dot.off{ background:var(--text-muted); animation:none; }
   .st-warn{ color:var(--st-warn); }
+  .fresh-warn{ color:var(--text-2); }                             /* palavras do alerta em cor de texto; só o ⚠ fica em --st-warn (§17) */
   .st-critical{ color:var(--st-critical); }
   .fresh-error{ color:var(--text-2); }
   .fresh-retry{ border:1px solid var(--st-critical); background:none; color:var(--st-critical); border-radius:999px; padding:2px 9px; font:inherit; cursor:pointer; margin-left:4px; min-height:22px; }
@@ -224,7 +226,8 @@
   .theme-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:1px; }
   @media (max-width:720px){
     .theme-btn .theme-txt{ display:none; }
-    .theme-btn{ padding:5px 8px; min-width:30px; min-height:28px; }
+    .theme-btn{ padding:5px 8px; }
+    .theme-btn > span[aria-hidden]{ font-size:15px; line-height:1; }   /* ◐ ☀ ☾ legíveis a 1× (alvo de 44px definido abaixo) */
   }
 
   .card-items-preview{
@@ -447,10 +450,10 @@
     color:var(--text-muted); white-space:nowrap;
   }
   .status-pill[data-status="andamento"]{ border-color:var(--accent); color:var(--accent); }
-  .status-pill[data-status="ativo"]{ border-color:var(--good); color:var(--good); }
+  .status-pill[data-status="ativo"]{ border-color:var(--good); color:var(--delta-up); }   /* texto no verde "de texto" (≥4,5:1 nos dois temas); --good fica na borda */
   .item-del{
     border:none; background:none; color:var(--text-muted); cursor:pointer; font-size:14px; padding:2px 4px;
-    opacity:.5;
+    opacity:.8;
   }
   .item-del:hover{ opacity:1; color:var(--accent); }
   .empty-items{ font-size:12.5px; color:var(--text-muted); font-style:italic; }
@@ -461,16 +464,6 @@
   }
   .item-expand:hover{ opacity:1; }
 
-  .metrics-block{ display:flex; flex-wrap:wrap; gap:8px; padding:1px 4px 4px 12px; }
-  .metric-chip{
-    display:flex; align-items:center; gap:6px;
-    font-family:var(--font-mono); font-size:10.5px; color:var(--text-muted);
-    background:var(--surface); border:1px solid var(--border); border-radius:999px;
-    padding:3px 9px 3px 11px;
-  }
-  .metric-value{ font-family:var(--font-sans); font-size:12px; color:var(--text); font-weight:600; }
-  .metric-delta.up{ color:var(--delta-up); }
-  .metric-delta.down{ color:var(--delta-down); }
   .spark{ color:var(--accent); display:block; flex-shrink:0; }
   .metric-note{
     font-family:var(--font-mono); font-size:10.5px; color:var(--text-muted);
@@ -705,6 +698,7 @@
   svg.chart .bracket{ stroke:var(--axis); stroke-width:1; fill:none; }
   svg.chart .mkr{ stroke:var(--ring); stroke-width:2; }
   svg.chart .col{ opacity:.9; }
+  svg.chart .col.is-hover{ opacity:1; }                           /* coluna hovered/focada sobe a 100% (§12.0) */
   svg.chart .mk.hit{ outline:none; cursor:pointer; }
   svg.chart .mk.hit:focus-visible{ outline:2px solid var(--accent); }
   svg.chart .hit-col{ cursor:crosshair; }
@@ -722,8 +716,9 @@
   .lg b{ font-family:var(--font-sans); font-weight:600; color:var(--text); }
   .lg-line{ display:inline-block; width:14px; height:0; border-top:2px solid var(--k, var(--s1)); }
   .lg-line.dash{ border-top-style:dashed; }
-  .lg-rect{ display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--k, var(--s1)); }
-  .lg-rect.faded{ opacity:.55; }
+  .lg-rect{ display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--k, var(--s1)); background:color-mix(in srgb, var(--k, var(--s1)) var(--mix, 100%), var(--surface)); }
+  .lg-rect.faded{ --mix:55%; }
+  .lg-rect.faded2{ --mix:32%; }
 
   /* tabela-gêmea */
   table.tw{ border-collapse:collapse; width:100%; font-family:var(--font-sans); font-size:12.5px; }
@@ -803,17 +798,18 @@
   .hm-legend span{ margin:0 4px; }
   .hm-step{ display:inline-block; width:14px; height:8px; border-radius:2px; }
   .hm-wk-short{ display:none; }
-  @media (max-width:720px){ .hm-row{ grid-template-columns:auto repeat(7,minmax(28px,1fr)); } .hm-cell{ min-height:40px; } .hm-wk-full{ display:none; } .hm-wk-short{ display:inline; } }
+  @media (max-width:720px){ .hm-row{ grid-template-columns:auto repeat(7,minmax(28px,1fr)); } .hm-wk-full{ display:none; } .hm-wk-short{ display:inline; } }
 
   /* C7 HBars · C8 AgeGender · C9 Composition100 */
   .hb{ display:flex; flex-direction:column; gap:4px; }
-  .hb-row{ display:grid; grid-template-columns:minmax(90px,150px) 1fr auto; align-items:center; gap:10px; padding:2px 0; border-radius:var(--r-sm); }
+  .hb-row{ display:grid; grid-template-columns:minmax(90px,170px) 1fr auto; align-items:center; gap:10px; padding:2px 0; border-radius:var(--r-sm); }
   .hb-row.mk{ cursor:default; }
   .hb-row.mk:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
   .hb-head{ font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); border-bottom:1px solid var(--grid); padding-bottom:4px; margin-bottom:2px; }
   .hb-lbl{ font-family:var(--font-sans); font-size:12px; color:var(--text-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .hb-bar{ display:block; height:16px; border-left:1px solid var(--axis); min-width:0; }
   .hb-bar i{ display:block; height:100%; border-radius:0 4px 4px 0; opacity:.9; }
+  .hb-head .hb-bar{ border-left:0; height:auto; }                 /* cabeçalho sem a linha de base solta */
   .hb-row.is-hover .hb-bar i, .hb-row:hover .hb-bar i{ opacity:1; }
   .hb-val{ font-family:var(--font-sans); font-weight:600; font-size:12px; color:var(--text); white-space:nowrap; font-variant-numeric:tabular-nums; }
   .hb-pct{ font-family:var(--font-mono); font-weight:400; font-size:10px; color:var(--text-muted); }
@@ -836,14 +832,17 @@
   .c100{ display:flex; flex-direction:column; gap:5px; min-width:0; }
   .c100-title{ font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); }
   .c100-bar{ display:flex; gap:2px; height:14px; width:100%; }
-  .c100-seg{ display:flex; align-items:center; justify-content:center; min-width:2px; height:100%; overflow:visible; position:relative; opacity:.9; }
-  .c100-seg:first-child{ border-radius:3px 0 0 3px; }
-  .c100-seg:last-child{ border-radius:0 4px 4px 0; }
-  .c100-seg.faded{ opacity:.5; }
-  .c100-seg.is-hover, .c100-seg:hover{ opacity:1; }
+  /* segmento: repouso = 80% da cor sobre a superfície (nunca opacity no elemento: a tinta do rótulo não esmaece, §17); hover/foco → 100%; 3ª fatia 55%, 4ª+ 32% */
+  .c100-seg{ display:flex; align-items:center; justify-content:center; min-width:2px; height:100%; overflow:visible; position:relative; --fill:var(--deemph); --mix:80%; background:var(--fill); background:color-mix(in srgb, var(--fill) var(--mix), var(--surface)); }
+  .c100-seg:last-child{ border-radius:0 4px 4px 0; }               /* só a ponta de dado é arredondada; base quadrada (§12 C9) */
+  .c100-seg.faded{ --mix:55%; }
+  .c100-seg.faded2{ --mix:32%; }
+  .c100-seg.is-hover, .c100-seg:hover{ --mix:100%; }
+  .c100-seg.faded.is-hover, .c100-seg.faded:hover{ --mix:75%; }
+  .c100-seg.faded2.is-hover, .c100-seg.faded2:hover{ --mix:52%; }
   .c100-seg:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
   .c100-in{ font-family:var(--font-sans); font-size:10px; font-weight:600; white-space:nowrap; line-height:1; }
-  .c100-in.ink-on-s1{ color:#ffffff; }
+  .c100-in.ink-on-s1{ color:var(--ink-on-s1); }                    /* tinta escura no claro (≈6:1 sobre --s1 a 80%), branca no escuro (≈5:1) */
   .c100-in.ink-on-lt{ color:#0c0f14; }
   .c100-in.ink-on-deemph{ color:var(--ink-on-deemph); }
   .c100-in.is-hidden{ visibility:hidden; }
@@ -892,7 +891,7 @@
   .meter-fill{ position:relative; height:100%; background:var(--s1); border-radius:4px; }
   .meter.done .meter-fill{ background:var(--st-good); }
   .meter-text{ font-family:var(--font-sans); font-weight:600; font-size:11.5px; color:var(--text-2); white-space:nowrap; }
-  .meter-done{ color:var(--st-good); }
+  .meter-done{ color:var(--delta-up); }                            /* "✓ meta atingida" em verde de texto (≥4,5:1); --st-good fica no preenchimento do medidor */
 
   /* C14 Orbit + hub (§7.3) */
   .hub{ align-items:stretch; text-align:left; justify-content:space-between; gap:4px; padding:clamp(8px,1vw,12px) clamp(10px,1.3vw,16px); }
@@ -946,14 +945,14 @@
   .page-head .panel-title > .num, .page-head .panel-title > .back-btn, .page-head .panel-title > .item-dot{ margin-top:4px; }
   .page-head .panel-title > .item-dot.lg{ margin-top:12px; }
   .page-titles{ min-width:0; }
-  h1.panel-name{ margin:0; font-size:clamp(22px,3vw,30px); line-height:1.1; }
+  h1.panel-name{ margin:0; font-size:clamp(22px,3vw,30px); line-height:1.1; width:fit-content; max-width:100%; }   /* anel de foco só em volta do texto */
   h1.panel-name:focus-visible{ outline-offset:3px; border-radius:4px; }
   .panel-kicker{ line-height:1.5; }
+  .page-titles .panel-kicker{ margin-top:6px; }                    /* folga para o anel de foco do h1 (2px + offset 3px) não cruzar o kicker */
   .head-tools{ display:flex; align-items:flex-start; gap:10px; flex-shrink:0; }
   .mini-orbit{ position:relative; width:84px; height:84px; }
   .mini-orbit svg.orbit-sm{ width:84px; height:84px; }
   .sub-chip{ position:absolute; right:-8px; bottom:-2px; font-family:var(--font-mono); font-size:9px; color:var(--accent); border:1px solid var(--accent); background:var(--surface); border-radius:4px; padding:0 4px; line-height:1.5; }
-  @media (max-width:720px){ .mini-orbit, .mini-orbit svg.orbit-sm{ width:64px; height:64px; } }
   @media (max-width:400px){ .mini-orbit{ display:none; } }
   .item-dot{ display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--k, var(--deemph)); flex-shrink:0; }
   .item-dot.off{ background:transparent; border:1px solid var(--text-muted); }
@@ -981,6 +980,11 @@
   .item-label{ min-width:0; overflow-wrap:anywhere; }
   .item-open{ font-family:var(--font-mono); font-size:10.5px; color:var(--accent); text-decoration:none; white-space:nowrap; padding:4px 6px; border-radius:var(--r-sm); }
   .item-open:hover{ text-decoration:underline; }
+  @media (max-width:720px){
+    .item-row{ flex-wrap:wrap; row-gap:4px; }
+    .item-row .item-label{ flex:1 1 calc(100% - 16px); }           /* rótulo ocupa a 1ª linha (ao lado do ponto); "abrir painel →", pílula e × na 2ª */
+    .item-row .status-pill{ margin-left:auto; }
+  }
   .item-metrics{ display:flex; flex-direction:column; gap:3px; padding:2px 4px 4px 12px; }
   .mline{ display:grid; grid-template-columns:minmax(0,1fr) auto auto 72px auto; align-items:center; gap:8px; min-height:22px; }
   .mline-lbl{ font-family:var(--font-mono); font-size:10.5px; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
@@ -1090,7 +1094,7 @@
   .reading-kicker{ grid-column:2; font-family:var(--font-mono); font-size:9.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--text-muted); }
   .reading-text{ grid-column:2; font-family:var(--font-sans); font-size:13.5px; line-height:1.45; color:var(--text); }
   .reading-text b{ font-weight:700; }
-  .reading-status{ color:var(--st-warn); font-family:var(--font-mono); font-size:10.5px; white-space:nowrap; }
+  .reading-status{ color:var(--text-2); font-family:var(--font-mono); font-size:10.5px; white-space:nowrap; }   /* "atenção" em cor de texto; só o ⚠ interno fica em --st-warn (§17) */
   .reading-open{ grid-column:3; grid-row:1 / span 2; align-self:center; margin-top:0; white-space:nowrap; }
   @media (max-width:520px){ .reading-item{ grid-template-columns:18px minmax(0,1fr); } .reading-open{ grid-column:2; grid-row:auto; justify-self:start; margin-top:4px; } }
   .sources{ margin-top:22px; }
@@ -1116,7 +1120,7 @@
   .period-btn.active{ background:var(--accent-soft); color:var(--accent); }
   .period-btn:hover{ color:var(--text); }
   .period-note{ font-family:var(--font-mono); font-size:10px; color:var(--text-muted); }
-  @media (max-width:720px){ .period{ width:100%; display:flex; } .period-btn{ flex:1; text-align:center; min-height:40px; } }
+  @media (max-width:720px){ .period{ width:100%; display:flex; } .period-btn{ flex:1; text-align:center; } }
   .kpi-strip{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-bottom:14px; }
   @media (max-width:900px){ .kpi-strip{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
   @media (max-width:360px){ .kpi-strip{ grid-template-columns:1fr; } }
@@ -1128,6 +1132,7 @@
     font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.09em; color:var(--text-muted);
   }
   .panorama-title{ font-weight:500; color:var(--text); }
+  .ig-tail{ margin-top:26px; padding-top:14px; border-top:1px solid var(--axis); }   /* variante Instagram: mesma divisória/ritmo do panorama */
   .block{ margin:0 0 22px; min-width:0; }
   .section-head{ margin-bottom:8px; }
   .section-title{ font-family:var(--font-serif); font-weight:600; font-size:15.5px; }
@@ -1141,7 +1146,6 @@
   .video-head{ align-items:flex-start; }
   .video-info{ min-width:0; display:flex; flex-direction:column; gap:6px; flex:1; }
   h1.video-title{ font-size:clamp(17px,2vw,22px); line-height:1.3; }
-  .video-hero .hero-value{ font-size:clamp(32px,4vw,44px); }
   .video-hero{ display:flex; align-items:baseline; gap:8px; }
   .video-derived{ font-family:var(--font-mono); font-size:10.5px; color:var(--text-2); line-height:1.5; }
   .video-stats .tile{ flex:1 1 130px; }
@@ -1151,8 +1155,8 @@
 
   /* mobile (§16): folha de tela cheia, cabeçalho sticky */
   @media (max-width:720px){
-    .panel.full{ padding:18px 16px; }
-    .panel.full .page-head{ position:sticky; top:0; background:var(--surface); z-index:3; padding:6px 0; margin-bottom:8px; }
+    .panel.full{ padding:0 16px 18px; }                            /* sem padding-top: o cabeçalho sticky (contido no content-box) gruda no topo real da folha */
+    .panel.full .page-head{ position:sticky; top:0; background:var(--surface); z-index:3; padding:12px 0 6px; margin-bottom:8px; }
   }
 
 
@@ -1247,8 +1251,9 @@
      e o título com o kicker em largura total; depois de rolar (.is-scrolled, JS), uma só linha: ← · título · lupa · × */
   @media (max-width:720px){
     .overlay{ padding:0; align-items:stretch; justify-content:stretch; }
-    .panel, .panel.wide{ width:100%; max-width:100%; height:100%; max-height:100%; border-radius:0; padding:18px 16px; }
-    .panel .panel-head{ position:sticky; top:0; background:var(--surface); z-index:3; padding:6px 0; margin-bottom:8px; }
+    .panel, .panel.wide{ width:100%; max-width:100%; height:100%; max-height:100%; border-radius:0; padding:0 16px 18px; }
+    .panel .breadcrumb{ padding-top:10px; }
+    .panel .panel-head{ position:sticky; top:0; background:var(--surface); z-index:3; padding:12px 0 6px; margin-bottom:8px; }
     .page-head{ flex-wrap:wrap; row-gap:4px; }
     .page-head .head-tools{ order:-1; flex:1 1 100%; justify-content:flex-end; }
     .page-head .panel-title{ flex:1 1 100%; }
@@ -1275,7 +1280,7 @@
 
 <header class="top">
   <div class="top-row">
-    <div class="wordmark">GRUPO <b>V.D.P.</b> <span class="wordmark-sub">— painel de frentes</span></div>
+    <h1 class="wordmark">GRUPO <b>V.D.P.</b> <span class="wordmark-sub">— painel de frentes</span></h1>
     <div class="top-tools">
       <button class="graph-toggle" id="graphToggle" type="button" aria-pressed="false">
         <span class="graph-toggle-track"><span class="graph-toggle-thumb"></span></span>
@@ -1297,9 +1302,9 @@
   <div class="panel" id="panel" role="dialog" aria-modal="true"></div>
 </div>
 
-<div class="grid" id="grid">
+<main class="grid" id="grid" aria-label="Frentes do grupo">
   <div class="status-msg" style="grid-column:1/-1;grid-row:1/-1;">carregando…</div>
-</div>
+</main>
 <p class="home-hint" id="homeHint"><kbd class="kbd-meta">⌘K</kbd> buscar · <kbd>1</kbd>–<kbd>8</kbd> frentes · <kbd>g</kbd> visão geral · <button type="button" class="hint-btn" id="hintKeys" title="Atalhos de teclado (?)"><kbd>?</kbd> atalhos</button></p>
 
 <script>
@@ -1413,16 +1418,7 @@
     });
   }
 
-  function topVideosByMetric(itemId, field, n){
-    var list = ITEM_VIDEOS[itemId];
-    if(!list) return [];
-    return list.filter(function(v){ return v[field]!==undefined && v[field]!==null; })
-      .slice().sort(function(a,b){ return b[field]-a[field]; })
-      .slice(0, n||3);
-  }
-
   var state = null;
-  var metricsState = {};
   var GRAPH_MODE_KEY = "vdp-graph-mode-v1";
   var graphMode = false;
   try{ graphMode = localStorage.getItem(GRAPH_MODE_KEY) === "1"; }catch(e){}
@@ -1449,7 +1445,7 @@
         if(v===null || v===undefined) continue;
         if(v===false){ if(k.indexOf("aria-")===0) el.setAttribute(k,"false"); continue; }
         if(k==="class" || k==="className"){ el.setAttribute("class", v); }
-        else if(k==="style" && typeof v==="object"){ for(var p in v){ el.style[p]=v[p]; } }
+        else if(k==="style" && typeof v==="object"){ for(var p in v){ if(p.indexOf("--")===0) el.style.setProperty(p, String(v[p])); else el.style[p]=v[p]; } }
         else if(k==="text"){ el.textContent = v; }
         else if(k==="dataset" && typeof v==="object"){ for(var dk in v){ if(v[dk]!==null && v[dk]!==undefined) el.dataset[dk]=v[dk]; } }
         else if(k.indexOf("on")===0 && typeof v==="function"){ el.addEventListener(k.slice(2).toLowerCase(), v); }
@@ -1533,10 +1529,10 @@
   function fmtDelta(v, fmt){ v = toNum(v); if(v===null) return "—"; return deltaGlyph(v)+" "+fmtSigned(v, fmt); }   // "▲ +26" · "▼ −3" · "• 0"
   function fmtDeltaNamed(d, opts){                                 // d = deltaNamed(...) → "▲ +26 (+3,6%) desde 11/09" · "sem variação desde 21/09"
     if(!d) return "• sem histórico ainda";
-    if(d.abs===0) return "sem variação desde "+fmtDateDM(d.since);
+    if(d.abs===0) return "sem variação desde "+fmtDateDM(d.since);
     var s = fmtDelta(d.abs, opts && opts.fmt);
     if(d.pct!==null && d.pct!==undefined && !(opts && opts.noPct)) s += " ("+fmtSigned(d.pct*100, function(x){ return fmtDec(x,1); })+"%)";
-    return s+" desde "+fmtDateDM(d.since);
+    return s+" desde "+fmtDateDM(d.since);                    // NBSP: "desde 11/09" nunca parte ao meio nos tiles estreitos
   }
   function formatMetricValue(def, v){
     if(v===null || v===undefined) return "—";
@@ -1562,7 +1558,6 @@
   function todayYmd(){ return dateToYmd(new Date()); }
   function isoWeekday(ymd){ return (ymdToDate(ymd).getDay()+6)%7; }                          // 0=seg … 6=dom
   function fmtDateDM(ymd){ if(!ymd) return "—"; ymd = String(ymd); return ymd.slice(6,8)+"/"+ymd.slice(4,6); }
-  function fmtDateShort(ymd){ return fmtDateDM(ymd); }
   function fmtDateRange(a, b){                                     // "13 a 19/09" · "27/08 a 02/09"
     if(!a || !b) return "—";
     if(a===b) return fmtDateDM(a);
@@ -1579,17 +1574,15 @@
     if(!mm) return String(m||"—");
     return MONTHS_SHORT[+mm[2]-1]+"/"+mm[1].slice(2);
   }
-  function monthLabel(m){ return fmtMonth(m); }
   function weekdayName(iso, style){                                // style: "short" (padrão) | "long" | "plural"
     var arr = style==="long" ? WEEKDAY_LONG : (style==="plural" ? WEEKDAY_PLURAL : WEEKDAY_SHORT);
-    return arr[((iso%7)+7)%7];
+    var i = ((iso%7)+7)%7; return isFinite(i) ? arr[i] : "";
   }
   function capFirst(s){ s = String(s||""); return s.charAt(0).toUpperCase()+s.slice(1); }
   function hhmm(iso){ try{ var d = new Date(iso); if(isNaN(d.getTime())) return "—"; return pad2(d.getHours())+":"+pad2(d.getMinutes()); }catch(e){ return "—"; } }
   function fmtStamp(iso){                                          // "22/09 17:00"
     try{ var d = new Date(iso); if(isNaN(d.getTime())) return "—"; return pad2(d.getDate())+"/"+pad2(d.getMonth()+1)+" "+hhmm(iso); }catch(e){ return "—"; }
   }
-  function median(arr){ var a = arr.slice().sort(function(x,y){ return x-y; }); if(!a.length) return null; var m = a.length>>1; return a.length%2 ? a[m] : (a[m-1]+a[m])/2; }
 
   // ticks "bonitos" 1/2/5×10^k, no máximo n (padrão 4)
   function niceStep(raw){
@@ -1641,13 +1634,16 @@
     return html + '</div>';
   }
 
+  function frontOf(key){                                           // só chaves PRÓPRIAS de state.fronts (um hash "#/p/__proto__" nunca chega ao protótipo)
+    return (state && state.fronts && typeof key==="string" && Object.prototype.hasOwnProperty.call(state.fronts, key) && state.fronts[key] && typeof state.fronts[key]==="object") ? state.fronts[key] : null;
+  }
   function frontsAsArray(){
     var out = [];
-    for(var k in ((state && state.fronts)||{})){
-      var f = state.fronts[k];
+    Object.keys((state && state.fronts)||{}).forEach(function(k){
+      var f = frontOf(k); if(!f) return;
       f.key = k;
       out.push(f);
-    }
+    });
     out.sort(function(a,b){ return a.num-b.num; });
     return out;
   }
@@ -1670,12 +1666,15 @@
     var orb = ae.closest("a.orb-link"); if(orb) return base+(orb.classList.contains("orb-center") ? " a.orb-center" : ' a.orb-link[data-key="'+orb.getAttribute("data-key")+'"]');
     return base;
   }
+  function gridOrder(){                                            // desktop: LAYOUT (ordem de relógio); ≤720px: hub primeiro e 01→08 — o DOM segue a ordem visual (§16/§17, Tab e leitor de tela)
+    return isMobile() ? ["hub"].concat(frontsAsArray().map(function(f){ return f.key; })) : LAYOUT;
+  }
   function renderGrid(){
     var focusSel = gridFocusSelector();
     grid.innerHTML = "";
-    LAYOUT.forEach(function(key){
+    gridOrder().forEach(function(key){
       if(key === "hub"){ grid.appendChild(renderHub()); return; }
-      var f = state.fronts[key];
+      var f = frontOf(key);
       if(!f) return;
       grid.appendChild(renderCard(key, f));
     });
@@ -1709,7 +1708,7 @@
     el.querySelector(".hub-headline").appendChild(hubHeadline());
     wireOrbit(el.querySelector(".hub-orbit"));
     el.addEventListener("click", function(){ go("#/geral"); });
-    el.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go("#/geral"); } });
+    el.addEventListener("keydown", function(e){ if(e.target!==el && e.target.closest && e.target.closest("a, button, [data-item]")) return; if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go("#/geral"); } });
     return el;
   }
 
@@ -1806,7 +1805,7 @@
       if(node){ pulse.appendChild(node); pulse.hidden = false; pulse.title = insightText(ins, "long"); } else pulse.remove();
     }
     el.addEventListener("click", function(){ go("#/p/"+key); });
-    el.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go("#/p/"+key); } });
+    el.addEventListener("keydown", function(e){ if(e.target!==el && e.target.closest && e.target.closest("[data-item], a, button")) return; if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go("#/p/"+key); } });   // chip/linha: o botão interno cuida do Enter/Espaço (§18.8)
 
     Array.prototype.forEach.call(el.querySelectorAll(".card-chip[data-item], .spark-row[data-item]"), function(chip){
       chip.addEventListener("click", function(e){
@@ -1849,6 +1848,12 @@
   function fitAllChips(){ Array.prototype.forEach.call(grid.querySelectorAll(".card-chip-row"), fitChips); }
   var fitTimer = null;
   window.addEventListener("resize", function(){ clearTimeout(fitTimer); fitTimer = setTimeout(fitAllChips, 120); });
+  (function(){                                                     // troca de breakpoint: ordem do DOM da grade e forma curta/longa dos chips de frescor
+    var mq = null; try{ mq = window.matchMedia("(max-width:720px)"); }catch(e){}
+    if(!mq) return;
+    var onChange = function(){ if(!state) return; renderGrid(); renderFreshChips(); };
+    if(mq.addEventListener) mq.addEventListener("change", onChange); else if(mq.addListener) mq.addListener(onChange);
+  })();
   try{ if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ fitAllChips(); }); }catch(e){}
 
   function openModal(html, mode){
@@ -1869,6 +1874,7 @@
     syncPanelScrolled();
     focusPanel(sameRoute, prevId);
     lastRouteHash = location.hash;
+    panelLiveState = currentLiveState();                          // estado ao vivo com que o painel foi pintado (syncLiveUi re-pinta se mudar, §1.3)
     markDrawn();
   }
   function parentHash(parts){                                      // vídeo → subprojeto → projeto → home; #/geral/* → home
@@ -1883,6 +1889,8 @@
     go(parentHash(parseHashParts()));
   }
   function closeModal(){
+    var ae = document.activeElement;                               // campo com foco no painel: blur (e o persist/renderGrid que ele dispara) ANTES de devolver o foco ao card
+    if(ae && !overlay.hidden && panel.contains(ae) && typeof ae.blur==="function"){ try{ ae.blur(); }catch(e){} }
     overlay.hidden = true;
     document.removeEventListener("keydown", escClose);
     document.removeEventListener("keydown", trapTab);
@@ -1908,8 +1916,9 @@
   }
   function setDocTitle(parts){                                     // "Apostolado São José · Painel VDP"
     var base = "Painel VDP", title = base;
-    if(parts[0]==="p" && parts[1] && state.fronts[parts[1]]){
-      var f = state.fronts[parts[1]]; title = f.name+" · "+base;
+    var f = parts[0]==="p" ? frontOf(parts[1]) : null;
+    if(f){
+      title = f.name+" · "+base;
       if(parts[2]==="i" && parts[3]){
         var it = f.items.find(function(x){ return x.id===parts[3]; });
         if(it){
@@ -1929,16 +1938,18 @@
     var parts = parseHashParts();
     setDocTitle(parts);
     if(!keep) VIEW.video = null;
-    if(parts[0]==="p" && parts[1] && state.fronts[parts[1]]){
+    if(parts[0]==="p" && frontOf(parts[1])){
       var key = parts[1];
       if(parts[2]==="i" && parts[3]){
-        var f = state.fronts[key];
+        var f = frontOf(key);
         var item = f.items.find(function(it){ return it.id===parts[3]; });
         if(item && item.source && item.source.detailMetrics){
           if(parts[4]==="v" && parts[5] && openVideoPage(key, item, parts[5])) return;   // #/p/<key>/i/<id>/v/<videoId>; vídeo inexistente → subprojeto
           openMetricDetail(key, parts[3], keep);
           return;
         }
+        try{ history.replaceState(null, "", "#/p/"+key); }catch(e){}   // item sem painel (§13.1): URL normalizada → título e Esc coerentes com a página mostrada
+        setDocTitle(["p", key]);
       }
       openFront(key);
     } else if(parts[0]==="geral"){
@@ -1963,62 +1974,10 @@
     });
   }
 
-  // ---- metrics (static snapshot, refreshed on request) ----
-
-  function parseMetricRows(rows, metricsDef){
-    var series = metricsDef.map(function(){ return []; });
-    rows.forEach(function(r){
-      var dateStr = r[r.length-1];
-      for(var i=0;i<metricsDef.length;i++){
-        var v = r[i];
-        if(v!==null && v!==undefined){
-          series[i].push({date:dateStr, value:parseFloat(v)});
-        }
-      }
-    });
-    return metricsDef.map(function(def,i){
-      var pts = series[i].slice().sort(function(a,b){ return a.date.localeCompare(b.date); });
-      var latest = pts.length ? pts[pts.length-1].value : null;
-      var first = pts.length ? pts[0].value : null;
-      var delta = (latest!==null && first!==null) ? (latest-first) : null;
-      return { label:def.label, currency:!!def.currency, isPercent:!!def.isPercent, value:latest, delta:delta, points:pts };
-    });
-  }
-
   function escapeXml(s){
     return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
   }
-
-  function renderMetricsBlock(itemId){
-    var ms = metricsState[itemId];
-    var inner;
-    if(!ms || !ms.metrics.length){
-      inner = '<span class="metric-note" style="padding:0;">sem dados no período</span>';
-    } else {
-      inner = ms.metrics.map(function(m){
-        var valStr = m.value===null ? "—" : (m.currency ? fmtCurrency(m.value) : (m.isPercent ? formatMetricValue(m,m.value) : fmtNumber(m.value)));
-        var deltaStr = "";
-        if(m.delta!==null && m.delta!==0){
-          var cls = m.delta>=0 ? "up" : "down";
-          var sign = m.delta>=0 ? "+" : "";
-          deltaStr = ' <span class="metric-delta '+cls+'">'+sign+(m.currency||m.isPercent?formatMetricValue(m,m.delta):fmtNumber(m.delta))+'</span>';
-        }
-        return '<div class="metric-chip"><span>'+esc(m.label)+'</span><span class="metric-value">'+valStr+'</span>'+deltaStr+sparklineSvg(m.points, { color:slotColor(slotFor(itemId)) })+'</div>';
-      }).join("");
-    }
-    return '<div class="metrics-block" id="metrics-'+itemId+'">'+inner+'</div>';
-  }
-
-  function initMetrics(){
-    frontsAsArray().forEach(function(f){
-      f.items.forEach(function(it){
-        if(!it.source) return;
-        var rows = SNAPSHOT_ROWS[it.id] || [];
-        metricsState[it.id] = { metrics: parseMetricRows(rows, it.source.metrics) };
-      });
-    });
-    invalidateInsights();
-  }
+  function initMetrics(){ invalidateInsights(); }                  // compat: os chamadores (boot, refetch, sync entre abas, reset) só precisam invalidar o cache de insights (o motor antigo por item saiu)
 
   // ---- camada derive (§2): funções puras sobre SNAPSHOT_ROWS / DETAIL_ROWS / EXTRA_INFO / AUDIENCE_INFO /
   //      ITEM_VIDEOS / VIDEO_DAILY / metricsGeneratedAt / state. "Hoje" = data local do navegador. ----
@@ -2224,7 +2183,8 @@
   }
   function freshness(){                                            // cada campo é null se a fonte não tem linhas
     var today = todayYmd();
-    var bot = metricsGeneratedAt ? { iso:metricsGeneratedAt, label:fmtStamp(metricsGeneratedAt), time:hhmm(metricsGeneratedAt), ymd:dateToYmd(new Date(metricsGeneratedAt)) } : null;
+    var gd = metricsGeneratedAt ? new Date(metricsGeneratedAt) : null;
+    var bot = (gd && !isNaN(gd.getTime())) ? { iso:metricsGeneratedAt, label:fmtStamp(metricsGeneratedAt), time:hhmm(metricsGeneratedAt), ymd:dateToYmd(gd) } : null;   // generatedAt inválido = "sem leitura do bot"
     var ytMax = null;
     ytDetailItems().forEach(function(it){ var m = maxDate(DETAIL_ROWS[it.id]); if(m && (!ytMax || m>ytMax)) ytMax = m; });
     var igMax = null, subsMax = null;
@@ -2530,7 +2490,7 @@
       list = groupOwnInsights();
       frontsAsArray().forEach(function(f){ list = list.concat(computeInsights("front:"+f.key)); });
     } else if(scope.indexOf("front:")===0){
-      var key = scope.slice(6), f = state.fronts[key]; if(!f) return [];
+      var key = scope.slice(6), f = frontOf(key); if(!f) return [];
       f.key = key;
       list = frontOwnInsights(f, key);
       f.items.forEach(function(it){ list = list.concat(computeInsights("item:"+it.id)); });
@@ -2581,7 +2541,14 @@
       if(t0 && t0.closest && t0.closest(".fig, .hub-orbit, .orbit-sm, [data-chart]")) return;
       tipPinned = false; tipHide();
     });
-    window.addEventListener("scroll", function(){ if(!tipPinned) tipHide(); }, true);
+    window.addEventListener("scroll", function(){                 // rolagem (inclusive a do #panel ao focar/hover uma marca): o tooltip ativo segue a marca em vez de sumir
+      var a = tipLast && tipLast.anchor;
+      if(a && a.recalc && tipEl && !tipEl.hidden){
+        var p = null; try{ p = a.recalc(); }catch(e){}
+        if(p && isFinite(p.y) && p.y>-48 && p.y<window.innerHeight+48){ a.x = p.x; a.y = p.y; tipPlace(); return; }
+      }
+      if(!tipPinned) tipHide();
+    }, true);
     window.addEventListener("resize", function(){ tipPinned = false; tipHide(); });
     return tipEl;
   }
@@ -2607,8 +2574,14 @@
     if(content.note) parts.push(String(content.note));
     return parts.join(" · ");
   }
-  function tipShow(content, anchor){                               // anchor: {x, y} (px viewport) + {figEl} → móvel: ancorado no rodapé da figura
+  var tipLast = null;                                              // {anchor} do tooltip visível; anchor.recalc() devolve o {x,y} atual da marca (rolagem)
+  function tipShow(content, anchor){                               // anchor: {x, y} (px viewport) + {figEl} → móvel: ancorado no rodapé da figura · {recalc}
     var el = ensureTip(); tipFill(content);
+    tipLast = { anchor:anchor || null };
+    tipPlace();
+  }
+  function tipPlace(){
+    var el = tipEl, anchor = tipLast && tipLast.anchor;
     el.hidden = false; el.classList.remove("is-anchored", "is-below"); el.style.width = "";
     var vw = window.innerWidth, vh = window.innerHeight;
     if(anchor && anchor.figEl && (isMobile() || coarsePointer())){
@@ -2733,7 +2706,7 @@
       var c = m.cols[i], content = m.tip(i), first = null;
       for(var k=0;k<c.pts.length;k++){ if(c.pts[k]){ first = c.pts[k]; break; } }
       var cp = toClient(c.x, first ? first.y : m.plotTop);
-      tipShow(content, { x:cp.x, y:cp.y, figEl:fig });
+      tipShow(content, { x:cp.x, y:cp.y, figEl:fig, recalc:function(){ return toClient(c.x, first ? first.y : m.plotTop); } });
       if(opts.keyboard) liveSay(fig, m.live ? m.live(i) : tipText(content));
       if(m.sync && !opts.fromSync) document.dispatchEvent(new CustomEvent("vdp:crosshair", { detail:{ group:m.sync, date:c.date, source:el } }));
     }
@@ -2764,15 +2737,17 @@
     var fig = el.closest("figure") || el, marks = el.querySelectorAll(".mk[data-i]"), cur = -1;
     function show(i, opts){
       var mk = marks[i]; if(!mk) return; cur = i;
-      Array.prototype.forEach.call(marks, function(x){ x.classList.remove("is-hover"); });
+      Array.prototype.forEach.call(el.querySelectorAll(".is-hover"), function(x){ x.classList.remove("is-hover"); });
       mk.classList.add("is-hover");
+      var twin = el.querySelector('.col[data-i="'+i+'"]'); if(twin) twin.classList.add("is-hover");   // C6/C12: a coluna visível (path) sobe a 100%
       var r = mk.getBoundingClientRect(), content = m.marks[i] ? m.marks[i].tip : null; if(!content) return;
-      tipShow(content, { x:r.left+r.width/2, y:r.top, figEl:fig });
+      tipShow(content, { x:r.left+r.width/2, y:r.top, figEl:fig, recalc:function(){ var r2 = mk.getBoundingClientRect(); return { x:r2.left+r2.width/2, y:r2.top }; } });
       if(opts && opts.keyboard) liveSay(fig, (m.marks[i] && m.marks[i].live) || tipText(content));
     }
-    function clear(){ cur = -1; Array.prototype.forEach.call(marks, function(x){ x.classList.remove("is-hover"); }); tipHide(); }
+    function clear(){ cur = -1; Array.prototype.forEach.call(el.querySelectorAll(".is-hover"), function(x){ x.classList.remove("is-hover"); }); tipHide(); }
     Array.prototype.forEach.call(marks, function(mk, i){
       mk.addEventListener("pointerenter", function(e){ if(!tipPinned && e.pointerType!=="touch") show(i); });
+      mk.addEventListener("pointermove", function(e){ if(!tipPinned && e.pointerType!=="touch" && cur===i && tipEl && tipEl.hidden) show(i); });
       mk.addEventListener("pointerleave", function(){ if(!tipPinned) clear(); });
       mk.addEventListener("focus", function(){ show(i, { keyboard:true }); });
       mk.addEventListener("blur", function(){ if(!tipPinned) clear(); });
@@ -2783,20 +2758,22 @@
   };
 
   // ---- núcleo de linha: eixos "bonitos" (niceTicks), grade sólida --grid, base --axis, linha 2px, wash .1, marcadores r≥4 + anel ----
-  function yDomainFor(vals, o){                                     // flow (o.zero) → [0, topo]; estoque → em torno de min/max
+  function yDomainFor(vals, o){                                     // flow (o.zero) → [0, topo]; estoque → em torno de min/max; contagens (≥0) nunca descem abaixo de 0
     var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
     if(!isFinite(min) || !isFinite(max)){ min = 0; max = 1; }
+    var nonNeg = min>=0;
     if(o && o.zero){ min = Math.min(0, min); }
     if(o && o.twoTicks){                                           // mini+: 2 ticks = min/max arredondados ao passo "bonito"
-      if(max===min){ var pad0 = Math.max(1, Math.abs(max)*0.1); min = (o.zero ? 0 : min-pad0); max = max+pad0; }
+      if(max===min){ var pad0 = Math.max(1, Math.abs(max)*0.1); min = o.zero ? 0 : (nonNeg ? Math.max(0, min-pad0) : min-pad0); max = max+pad0; }
       var st = niceStep((max-min)/2), lo2 = Math.floor(min/st+1e-9)*st, hi2 = Math.ceil(max/st-1e-9)*st;
       if(o.zero) lo2 = Math.min(0, lo2);
+      if(nonNeg) lo2 = Math.max(0, lo2);
       if(hi2<=lo2) hi2 = lo2+st;
       return { lo:lo2, hi:hi2, ticks:[lo2, hi2] };
     }
     var nT = (o && o.nTicks) || 4, ticks = niceTicks(min, max, nT);
-    if(ticks.length<2){                                            // valores iguais (ou 1 ponto): folga simétrica
-      var pad = Math.max(1, Math.abs(max)*0.1); if(o && o.zero){ min = 0; max = max+pad; } else { min = min-pad; max = max+pad; }
+    if(ticks.length<2){                                            // valores iguais (ou 1 ponto): folga simétrica, com piso em 0 para contagens
+      var pad = Math.max(1, Math.abs(max)*0.1); if(o && o.zero){ min = 0; max = max+pad; } else { min = nonNeg ? Math.max(0, min-pad) : min-pad; max = max+pad; }
       ticks = niceTicks(min, max, nT);
     }
     if(ticks.length<=2 && max>min){ var t5 = niceTicks(min, max, nT+1); if(t5.length>ticks.length) ticks = t5; else { var t6 = niceTicks(min, max, nT+2); if(t6.length>ticks.length) ticks = t6; } }
@@ -2811,11 +2788,6 @@
     r = Math.min(r, w/2, Math.max(0, base-y));
     if(base-y<=0.5) return "M"+n1(x)+","+n1(base)+"h"+n1(w)+"v0h-"+n1(w)+"z";
     return "M"+n1(x)+","+n1(base)+"V"+n1(y+r)+"Q"+n1(x)+","+n1(y)+" "+n1(x+r)+","+n1(y)+"H"+n1(x+w-r)+"Q"+n1(x+w)+","+n1(y)+" "+n1(x+w)+","+n1(y+r)+"V"+n1(base)+"Z";
-  }
-  function roundedRightPath(x, y, w, hgt, r){                       // barra horizontal: ponta de dado à direita arredondada
-    r = Math.min(r, hgt/2, Math.max(0, w));
-    if(w<=0.5) return "";
-    return "M"+n1(x)+","+n1(y)+"H"+n1(x+w-r)+"Q"+n1(x+w)+","+n1(y)+" "+n1(x+w)+","+n1(y+r)+"V"+n1(y+hgt-r)+"Q"+n1(x+w)+","+n1(y+hgt)+" "+n1(x+w-r)+","+n1(y+hgt)+"H"+n1(x)+"Z";
   }
   function linePaths(pts, sx, sy, base, connectGaps){              // segmentos (quebra em lacuna >1 dia salvo connectGaps) → {line, area}
     var segs = [], seg = [];
@@ -2845,7 +2817,9 @@
     var sx = xScaleByDate(xd[0], xd[1], padL, plotW);
     function sy(v){ return padT+(1-(v-yd.lo)/(yd.hi-yd.lo))*plotH; }
     var out = "", endYs = [];
-    cfg.series.forEach(function(s){ if(s.endLabel && s.points && s.points.length) endYs.push(sy(s.points[s.points.length-1].value)); });
+    var mxPt = (cfg.annotateMax && mainPts.length>1) ? mainPts.reduce(function(m, p){ return (!m || p.value>m.value) ? p : m; }, null) : null;
+    var endSkip0 = !!(mxPt && mainPts[mainPts.length-1].date===mxPt.date);   // máximo no último ponto: só a anotação (um rótulo e um marcador por ponto)
+    cfg.series.forEach(function(s, si){ if(s.endLabel && s.points && s.points.length && !(si===0 && endSkip0)) endYs.push(sy(s.points[s.points.length-1].value)); });
     // grade Y (sólida) + ticks (à direita, um tick a menos de 9px do rótulo de fim é omitido: o rótulo já diz o valor)
     if(cfg.yTicks!=="none"){
       yd.ticks.forEach(function(v){
@@ -2890,16 +2864,16 @@
       if(pts.length===1 || cfg.single==="marker" || s.markers){
         pts.forEach(function(p){ if(pts.length===1 || s.markers) out += svgEl("circle", { class:"mkr", cx:n1(sx(p.date)), cy:n1(sy(p.value)), r:4, fill:col }); });
       }
-      if(s.endLabel){
+      if(s.endLabel && !(si===0 && endSkip0)){
         var lp2 = pts[pts.length-1], ex = sx(lp2.date), ey = sy(lp2.value);
         out += svgEl("circle", { class:"mkr", cx:n1(ex), cy:n1(ey), r:4, fill:col });
         out += svgEl("text", { class:"dlabel", x:n1(ex+7), y:n1(ey), "dominant-baseline":"middle" }, esc(s.endLabelText || fmt(lp2.value)));
       }
     });
     // anotação do máximo (série principal)
-    if(cfg.annotateMax && mainPts.length>1){
-      var mx = mainPts.reduce(function(m, p){ return (!m || p.value>m.value) ? p : m; }, null);
-      var ax = sx(mx.date), ay = sy(mx.value), label = cfg.annotateMax.text || (fmt(mx.value)+" · melhor dia");
+    if(mxPt){
+      var mx = mxPt;
+      var ax = sx(mx.date), ay = sy(mx.value), label = cfg.annotateMax.text || (fmt(mx.value)+" · "+(cfg.annotateMax.suffix || "melhor dia"));
       var lw = textW(label, 11), lx = ax, anchor = "middle", ly = ay-14, side = false, minTop = cfg.bracket ? padT+2 : 10;
       if(ly<minTop){ side = true; ly = ay+4; }
       if(side){ if(ax+9+lw<=w-2){ anchor = "start"; lx = ax+9; } else { anchor = "end"; lx = ax-9; } }
@@ -2985,7 +2959,6 @@
     if(o.dotR!==0) body += svgEl("circle", { cx:n1(l[0]), cy:n1(l[1]), r:o.dotR || 2.5, fill:dotColor, stroke:"var(--ring)", "stroke-width":1.5 });
     return '<svg class="spark" viewBox="0 0 '+w+' '+hh+'" width="'+w+'" height="'+hh+'" aria-hidden="true" focusable="false">'+body+'</svg>';
   }
-  function sparkline(points, w, hh){ return sparklineSvg(points, { w:w || 72, h:hh || 20, color:"currentColor" }); }   // compat: chamadas antigas
 
   // ---- C2 SparkRows (card em modo gráfico, §7.2): uma linha por série de frontSeries(f), máx. 4; cada linha é um botão → rota do item ----
   function sparkRows(f){
@@ -3009,9 +2982,13 @@
 
   // ---- C3 SmallMultiples: "mini+" 260×110 (2 ticks Y à direita, 3 ticks X, rótulo de fim, crosshair sincronizado) · "mini" 200×70 (rótulo no pico) ----
   // panels: [{key, title, color, dash, points, valueText, delta:{text,dir,title}, foot, footWarn, href, ariaLabel, peak:true}] · o: {mode, w, h, xDomain, sync, fmt, drawIn, id, fmtTip, unit}
+  function smWidth(mini){                                          // largura real da coluna da grade (repeat(auto-fill, minmax(260|200px,1fr)), gap 10, padding 10 + borda 1): escala ≈1 — texto SVG não escala (§12.0)
+    var min = mini ? 200 : 260, gap = 10, avail = availPanelWidth("full"), cols = Math.max(1, Math.floor((avail+gap)/(min+gap)));
+    return Math.max(120, Math.floor((avail-gap*(cols-1))/cols)-22);
+  }
   function smallMultiples(panels, o){
     o = o||{};
-    var mode = o.mode || "mini+", mini = mode==="mini", w = o.w || (mini ? 200 : 260), hh = o.h || (mini ? 70 : 110), fmt = o.fmt || fmtNumber;
+    var mode = o.mode || "mini+", mini = mode==="mini", w = o.w || smWidth(mini), hh = o.h || (mini ? 70 : 110), fmt = o.fmt || fmtNumber;
     var xd = o.xDomain; if(!xd){ var lo = null, hi = null; panels.forEach(function(p){ (p.points||[]).forEach(function(pt){ if(lo===null || pt.date<lo) lo = pt.date; if(hi===null || pt.date>hi) hi = pt.date; }); }); xd = [lo || todayYmd(), hi || todayYmd()]; }
     var sync = o.sync || ("sm"+(++chartSeq));
     var html = panels.map(function(p){
@@ -3070,7 +3047,7 @@
       var series = [{ points:pts, color:"var(--s1)", area:true, endLabel:true, label:unit, connectGaps:!!o.stock }];
       if(prevPts.length) series.push({ points:prevPts, color:"var(--deemph)", width:1.5, ctx:true, hitless:true, label:"período anterior", connectGaps:!!o.stock });
       var lc = lineChartSvg({ w:w, h:hh, padL:padL, padR:padR, padT:o.stock ? 16 : 26, padB:22, xDomain:xd, series:series, zero:!o.stock, yTicks:"left", xTicks:nx, fmt:fmt, drawIn:o.drawIn, minHit:o.minHit,
-        annotateMax: !o.stock && pts.length>1 ? { text:null } : null,
+        annotateMax: !o.stock && pts.length>1 ? { text:null, suffix:o.invert ? "pior dia" : "melhor dia" } : null,   // polaridade (§10.1): inscritos perdidos → "pior dia"
         tip:function(date, c){
           var rows = [{ color:"var(--s1)", value:fmt(c.pts[0].value), label:unit }], pv = prevByDate[date];
           if(pv) rows.push({ color:"var(--deemph)", value:fmt(pv.value), label:"anterior ("+fmtDateDM(pv.orig)+")" });
@@ -3110,24 +3087,24 @@
     if(!vals.length) return figure({ id:o.id, title:o.title, source:o.source, body:'<div class="fig-empty">Sem leituras no período.</div>', showTitle:o.showTitle });
     var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals), first = o.firstDate || null, last = o.lastDate || null;
     if(!first || !last){ weeks.forEach(function(wk){ wk.cells.forEach(function(v, i){ if(v===null) return; var d = addDays(wk.start, i); if(!first || d<first) first = d; if(!last || d>last) last = d; }); }); }
-    var marks = [], k = 0, maxDone = false, head = '<div class="hm-row hm-head" role="row"><span class="hm-wk" role="columnheader"></span>'+WEEKDAY_SHORT.map(function(d){ return '<span class="hm-d" role="columnheader">'+d+'</span>'; }).join("")+'</div>';
+    var marks = [], k = 0, maxDone = false, head = '<div class="hm-row hm-head" aria-hidden="true"><span class="hm-wk"></span>'+WEEKDAY_SHORT.map(function(d){ return '<span class="hm-d">'+d+'</span>'; }).join("")+'</div>';
     var body = weeks.map(function(wk){
       var cells = wk.cells.map(function(v, i){
         var d = addDays(wk.start, i), dl = weekdayName(i)+" "+fmtDateDM(d), idx = k++;
         if(v===null){
           var why = d<first ? "sem leitura" : (d>last ? (o.lagNote ? "sem dado (defasagem do YouTube)" : "sem leitura ainda") : "sem leitura");
           marks.push({ tip:{ date:dl, note:why } });
-          return '<button type="button" class="hm-cell hm-null mk" data-i="'+idx+'" style="--i:'+Math.min(idx, 28)+'" aria-label="'+esc(dl+" · "+why)+'"></button>';
+          return '<button type="button" class="hm-cell hm-null mk" data-i="'+idx+'" tabindex="-1" style="--i:'+Math.min(idx, 28)+'" aria-label="'+esc(dl+" · "+why)+'"></button>';
         }
         var step = seqStep(v, min, max), isMax = !maxDone && v===max; if(isMax) maxDone = true;
         marks.push({ tip:{ date:dl, rows:[{ color:seqColor(step), value:fmt(v), label:unit }] }, live:dl+" · "+fmt(v)+" "+unit });
-        return '<button type="button" class="hm-cell mk'+(isMax ? " is-max" : "")+'" data-i="'+idx+'" style="--i:'+Math.min(idx, 28)+';background:'+seqColor(step)+'" aria-label="'+esc(dl+" · "+fmt(v)+" "+unit)+'">'+(isMax ? esc(fmt(v)) : '')+'</button>';
+        return '<button type="button" class="hm-cell mk'+(isMax ? " is-max" : "")+'" data-i="'+idx+'" tabindex="-1" style="--i:'+Math.min(idx, 28)+';background:'+seqColor(step)+'" aria-label="'+esc(dl+" · "+fmt(v)+" "+unit)+'">'+(isMax ? esc(fmt(v)) : '')+'</button>';
       }).join("");
-      return '<div class="hm-row" role="row"><span class="hm-wk" role="rowheader"><span class="hm-wk-full">'+esc(wk.label)+'</span><span class="hm-wk-short" aria-hidden="true">'+esc(fmtDateDM(wk.start))+'</span></span>'+cells+'</div>';
+      return '<div class="hm-row"><span class="hm-wk"><span class="hm-wk-full">'+esc(wk.label)+'</span><span class="hm-wk-short" aria-hidden="true">'+esc(fmtDateDM(wk.start))+'</span></span>'+cells+'</div>';
     }).join("");
     var legend = '<div class="hm-legend" aria-hidden="true"><span>'+esc(fmt(min))+'</span>'+[0,1,2,3,4,5,6].map(function(s){ return '<i class="hm-step" style="background:'+seqColor(s)+'"></i>'; }).join("")+'<span>'+esc(fmt(max))+'</span></div>';
     var id = regChart({ type:"marks", marks:marks });
-    var grid = '<div class="hm" data-chart="'+id+'" role="table" aria-label="'+esc((o.title || "Ritmo da semana")+" · "+(o.kicker || ""))+'">'+head+body+'</div>'+legend;
+    var grid = '<div class="hm" data-chart="'+id+'">'+head+body+'</div>'+legend;   // grade decorativa (a semântica de tabela fica na tabela-gêmea); células = botões nomeados fora do Tab (←/→ na figura, §17)
     var table = tableHtml({ caption:(o.title || "Ritmo da semana")+(o.kicker ? " · "+o.kicker : ""), cols:[{ label:"Semana" }].concat(WEEKDAY_SHORT.map(function(d){ return { label:d, num:true }; })),
       rows:weeks.map(function(wk){ return [wk.label].concat(wk.cells.map(function(v){ return v===null ? "" : fmt(v); })); }) });
     return figure({ id:o.id, title:o.title, kicker:o.kicker, source:o.source, body:grid, table:table, caption:o.caption, showTitle:o.showTitle, cls:"fig-heat" });
@@ -3143,12 +3120,12 @@
     out += svgEl("line", { class:"axis", x1:padL, x2:w-padR, y1:n1(base), y2:n1(base) });
     days.forEach(function(d, i){
       var x0 = padL+i*band, x = x0+(band-cw)/2, y = base-(d.mean===null ? 0 : d.mean/max*plotH), isBest = d.iso===best;
-      if(d.mean!==null && d.n>0) out += svgEl("path", { class:"col", d:roundedTopPath(x, y, cw, base, 4), fill:isBest ? "var(--s1)" : "var(--deemph)" });
+      if(d.mean!==null && d.n>0) out += svgEl("path", { class:"col", "data-i":i, d:roundedTopPath(x, y, cw, base, 4), fill:isBest ? "var(--s1)" : "var(--deemph)" });
       if(isBest) out += svgEl("text", { class:"dlabel", x:n1(x+cw/2), y:n1(y-6), "text-anchor":"middle" }, esc(fmt(d.mean)));
       out += svgEl("text", { class:"tick", x:n1(x0+band/2), y:n1(base+15), "text-anchor":"middle" }, weekdayName(i));
       var lbl = weekdayName(i, "long")+" · "+(d.n ? "média "+fmt(d.mean)+" · "+d.n+" "+(d.n===1 ? "dia" : "dias") : "sem leitura");
       marks.push({ tip: d.n ? { date:capFirst(weekdayName(i, "long")), rows:[{ color:isBest ? "var(--s1)" : "var(--deemph)", value:fmt(d.mean), label:"média"+(o.unit ? " de "+o.unit : "") }], note:d.n+" "+(d.n===1 ? "dia" : "dias") } : { date:capFirst(weekdayName(i, "long")), note:"sem leitura" }, live:lbl });
-      out += svgEl("rect", { class:"mk hit", "data-i":i, tabindex:0, role:"img", "aria-label":lbl, x:n1(x0), y:padT-4, width:n1(band), height:n1(plotH+4), fill:"transparent" });
+      out += svgEl("rect", { class:"mk hit", "data-i":i, tabindex:-1, role:"img", "aria-label":lbl, x:n1(x0), y:padT-4, width:n1(band), height:n1(plotH+4), fill:"transparent" });
     });
     var id = regChart({ type:"marks", marks:marks });
     var svg = '<svg class="chart" viewBox="0 0 '+w+' '+hh+'" width="'+w+'" height="'+hh+'" data-chart="'+id+'" role="group" aria-label="'+esc(o.title || "Média por dia da semana")+'">'+out+'</svg>';
@@ -3166,8 +3143,8 @@
     var body = rows.map(function(r, i){
       var pctTxt = fmtPctSentence(r.pct), color = i===0 ? "var(--s1)" : "var(--deemph)", lbl = r.label+": "+fmt(r.v)+(o.unit ? " "+o.unit : "")+" · "+pctTxt;
       marks.push({ tip:{ date:r.label, rows:[{ color:color, value:fmt(r.v), label:(o.unit || "")+" · "+pctTxt }] }, live:lbl });
-      return '<div class="hb-row mk" role="row" data-i="'+i+'" tabindex="0" aria-label="'+esc(lbl)+'">'+
-        '<span class="hb-lbl" role="rowheader">'+esc(r.label)+'</span>'+
+      return '<div class="hb-row mk" role="row" data-i="'+i+'" tabindex="-1" aria-label="'+esc(lbl)+'">'+
+        '<span class="hb-lbl" role="rowheader" title="'+esc(r.label)+'">'+esc(r.label)+'</span>'+
         '<span class="hb-bar" role="cell" aria-hidden="true"><i style="width:'+n1(r.v/max*100)+'%;background:'+color+'"></i></span>'+
         '<span class="hb-val" role="cell">'+esc(fmt(r.v))+' <span class="hb-pct">· '+esc(pctTxt)+'</span></span></div>';
     }).join("");
@@ -3197,7 +3174,7 @@
       var bars = band.items.map(function(it){
         var idx = k++, lbl = band.band+" · "+it.gender+": "+fmtPct(it.pct/100);
         marks.push({ tip:{ date:band.band+" anos", rows:[{ color:color, value:fmtPct(it.pct/100), label:it.gender.toLowerCase() }] }, live:lbl });
-        return '<div class="ag-bar mk" data-i="'+idx+'" tabindex="0" role="img" aria-label="'+esc(lbl)+'"><span class="ag-g">'+esc(it.gender)+'</span><span class="ag-track"><i style="width:'+n1(it.pct/max*100)+'%;background:'+color+'"></i></span><span class="ag-val">'+esc(fmtPct(it.pct/100))+'</span></div>';
+        return '<div class="ag-bar mk" data-i="'+idx+'" tabindex="-1" role="img" aria-label="'+esc(lbl)+'"><span class="ag-g">'+esc(it.gender)+'</span><span class="ag-track"><i style="width:'+n1(it.pct/max*100)+'%;background:'+color+'"></i></span><span class="ag-val">'+esc(fmtPct(it.pct/100))+'</span></div>';
       }).join("");
       return '<div class="ag-band"><span class="ag-band-lbl">'+esc(band.band)+'</span><div class="ag-bars">'+bars+'</div></div>';
     }).join("");
@@ -3218,9 +3195,9 @@
       var color = colors[i] || "var(--deemph)", faded = !o.colors && i>=2, pct = fmtPctSentence(s.pct), lbl = s.label+": "+pct+(o.unit ? " ("+fmt(s.v)+" "+o.unit+")" : "");
       marks.push({ tip:{ date:o.label || "", rows:[{ color:color, value:pct, label:s.label+(o.unit ? " · "+fmt(s.v)+" "+o.unit : "") }] }, live:lbl });
       var ink = color==="var(--s1)" ? "ink-on-s1" : (color==="var(--s1-lt)" ? "ink-on-lt" : "ink-on-deemph");
-      return '<span class="c100-seg mk'+(faded ? " faded" : "")+'" data-i="'+i+'" tabindex="0" role="img" aria-label="'+esc(lbl)+'" style="flex-basis:'+n1(s.pct*100)+'%;background:'+color+'"><span class="c100-in '+ink+'">'+esc(pct)+'</span></span>';
+      return '<span class="c100-seg mk'+(faded ? (i>=3 ? " faded faded2" : " faded") : "")+'" data-i="'+i+'" tabindex="-1" role="img" aria-label="'+esc(lbl)+'" style="flex-basis:'+n1(s.pct*100)+'%;--fill:'+color+'"><span class="c100-in '+ink+'">'+esc(pct)+'</span></span>';
     }).join("");
-    var legend = o.legend===false ? '' : '<div class="c100-legend">'+segs.map(function(s, i){ return '<span class="lg"><i class="lg-rect'+(!o.colors && i>=2 ? " faded" : "")+'" style="--k:'+esc(colors[i] || "var(--deemph)")+'"></i>'+esc(s.label)+' <b>'+esc(fmtPctSentence(s.pct))+'</b></span>'; }).join("")+'</div>';
+    var legend = o.legend===false ? '' : '<div class="c100-legend">'+segs.map(function(s, i){ return '<span class="lg"><i class="lg-rect'+(!o.colors && i>=2 ? (i>=3 ? " faded faded2" : " faded") : "")+'" style="--k:'+esc(colors[i] || "var(--deemph)")+'"></i>'+esc(s.label)+' <b>'+esc(fmtPctSentence(s.pct))+'</b></span>'; }).join("")+'</div>';
     var id = regChart({ type:"marks", marks:marks });
     return '<div class="c100" data-chart="'+id+'"><div class="c100-title">'+esc(o.label || "")+'</div><div class="c100-bar">'+bar+'</div>'+legend+'</div>';
   }
@@ -3320,13 +3297,13 @@
     out += svgEl("line", { class:"axis", x1:padL, x2:w-padR, y1:n1(base), y2:n1(base) });
     months.forEach(function(m, i){
       var x0 = padL+i*band, x = x0+(band-cw)/2, tot = byMonth[m].total, y = sy(tot), isLast = i===months.length-1;
-      out += svgEl("path", { class:"col", d:roundedTopPath(x, y, cw, base, 4), fill:"var(--s1)" });
+      out += svgEl("path", { class:"col", "data-i":i, d:roundedTopPath(x, y, cw, base, 4), fill:"var(--s1)" });
       if(isLast) out += svgEl("text", { class:"dlabel", x:n1(x+cw/2), y:n1(y-6), "text-anchor":"middle" }, esc(fmtCurrency(tot)));
       out += svgEl("text", { class:"tick", x:n1(x0+band/2), y:n1(base+15), "text-anchor":"middle" }, esc(fmtMonth(m)));
       var rows = Object.keys(byMonth[m].byFront).sort(function(a, b){ return byMonth[m].byFront[b]-byMonth[m].byFront[a]; }).map(function(fn){ return { label:fn, value:fmtCurrency(byMonth[m].byFront[fn]) }; });
       var lbl = fmtMonth(m)+": "+fmtCurrency(tot);
       marks.push({ tip:{ date:fmtMonth(m), rows:[{ color:"var(--s1)", value:fmtCurrency(tot), label:"receita registrada" }], grid:rows.length>1 ? rows : null }, live:lbl+(rows.length>1 ? " · "+rows.map(function(r){ return r.label+" "+r.value; }).join(", ") : "") });
-      out += svgEl("rect", { class:"mk hit", "data-i":i, tabindex:0, role:"img", "aria-label":lbl, x:n1(x0), y:padT-4, width:n1(band), height:n1(plotH+4), fill:"transparent" });
+      out += svgEl("rect", { class:"mk hit", "data-i":i, tabindex:-1, role:"img", "aria-label":lbl, x:n1(x0), y:padT-4, width:n1(band), height:n1(plotH+4), fill:"transparent" });
     });
     var id = regChart({ type:"marks", marks:marks });
     var svg = '<svg class="chart" viewBox="0 0 '+w+' '+hh+'" width="'+w+'" height="'+hh+'" data-chart="'+id+'" role="group" aria-label="'+esc(o.title || "Receita por mês")+'">'+out+'</svg>';
@@ -3532,7 +3509,7 @@
     if(!raw) return;
     try{
       var parsed = JSON.parse(raw);
-      if(parsed && parsed.fronts){ state = parsed; initMetrics(); renderGrid(); }
+      if(validState(parsed)){ state = normalizeState(parsed); initMetrics(); renderGrid(); }
     }catch(e){ /* conteúdo inválido: mantém o estado em memória */ }
   }
   window.addEventListener("storage", function(e){
@@ -3545,7 +3522,7 @@
 
   // ---- pulso ao vivo (§13.3): refetch a cada 5 min (+ ao voltar à aba, + botão "atualizar agora"), render anterior a 55% de opacidade,
   //      re-render em lugar preservando scroll/aba/métrica/ordenação/"ver tabela"/foco, flash nos [data-mk] que mudaram, aria-live ----
-  var POLL_MS = 300000, backoff = 0, pollTimer = null, lastCheck = 0, liveOverride = null, pendingPanel = false, refetching = null;
+  var POLL_MS = 300000, backoff = 0, pollTimer = null, lastCheck = 0, liveOverride = null, pendingPanel = false, refetching = null, panelLiveState = null;
   function pollDelay(){ return POLL_MS*Math.pow(2, backoff); }
   function schedule(ms){ clearTimeout(pollTimer); pollTimer = setTimeout(function(){ pollTimer = null; if(!document.hidden) refreshMetrics(false); }, ms); }
   function snapshotValues(){ var out = {}; Array.prototype.forEach.call(document.querySelectorAll("[data-mk]"), function(el){ out[el.getAttribute("data-mk")] = el.textContent; }); return out; }
@@ -3564,11 +3541,11 @@
         var n = flashChanged(prevVals);
         if(changed) announce("Dados atualizados às "+hhmm(data.generatedAt)+(n ? " — "+n+(n===1 ? " valor mudou" : " valores mudaram") : ""));
       }
-      renderFreshChips();
+      syncLiveUi();
       return true;
     }, function(){
       lastCheck = Date.now(); liveOverride = "offline"; backoff = Math.min(backoff+1, 3);
-      renderFreshChips();
+      syncLiveUi();
       return false;
     }).then(function(ok){ document.body.classList.remove("is-refetching"); refetching = null; schedule(pollDelay()); return ok; });
     refetching = p;
@@ -3649,6 +3626,13 @@
 
   // ---- chips de frescor (§6): estado ao vivo (botão = atualizar agora) · YouTube Analytics · Instagram (Metricool); boot sem JSON → chip crítico ----
   function currentLiveState(){ return liveOverride || liveState(); }
+  function syncLiveUi(){                                           // chips sempre; painel aberto re-pintado em lugar quando o estado ao vivo mudou sem dado novo (herói/kicker/tiles nunca dizem "ao vivo" a mais, §1.3)
+    renderFreshChips();
+    if(overlay.hidden || !state) return;
+    if(currentLiveState()===panelLiveState) return;
+    if(panelTyping()){ pendingPanel = true; return; }
+    rerenderInPlace();
+  }
   function stampFor(iso){ try{ return dateToYmd(new Date(iso))===todayYmd() ? hhmm(iso) : fmtStamp(iso); }catch(e){ return fmtStamp(iso); } }
   function renderFreshChips(){
     var ul = document.getElementById("fresh"); if(!ul) return;
@@ -3664,7 +3648,7 @@
       if(hadFocus){ try{ ul.querySelector(".fresh-retry").focus({ preventScroll:true }); }catch(e){} }
       return;
     }
-    var st = currentLiveState(), fr = freshness(), gen = metricsGeneratedAt, stamp = stampFor(gen), full = fmtStamp(gen);
+    var st = currentLiveState(), fr = freshness(), gen = metricsGeneratedAt, stamp = stampFor(gen), full = fmtStamp(gen), mob = isMobile();
     var btn = h("button", { type:"button", class:"fresh-btn", id:"freshLive", "data-live":st });
     if(st==="live"){ btn.appendChild(h("i", { class:"live-dot", "aria-hidden":"true" })); btn.appendChild(document.createTextNode("ao vivo "+hhmm(gen)+" · bot a cada 5 min")); }
     else if(st==="late"){ btn.appendChild(h("span", { class:"st-warn", "aria-hidden":"true", text:"▲" })); btn.appendChild(document.createTextNode("atrasado · dados de "+stamp)); }
@@ -3679,17 +3663,17 @@
     if(hadFocus){ try{ btn.focus({ preventScroll:true }); }catch(e){} }
     if(fr.yt){
       var lag = fr.yt.lagDays;
-      ul.appendChild(h("li", { title:"Views, tempo assistido e interações vêm do YouTube Analytics, que libera os dados com 2–3 dias de atraso. Último dia disponível: "+fr.yt.label+"." },
-        "YouTube Analytics · até "+fr.yt.label+" · defasagem "+lag+" "+(lag===1 ? "dia" : "dias")));
+      ul.appendChild(h("li", { title:"Views, tempo assistido e interações vêm do YouTube Analytics, que libera os dados com 2–3 dias de atraso. Último dia disponível: "+fr.yt.label+" (defasagem de "+lag+" "+(lag===1 ? "dia" : "dias")+")." },
+        mob ? "YouTube · até "+fr.yt.label : "YouTube Analytics · até "+fr.yt.label+" · defasagem "+lag+" "+(lag===1 ? "dia" : "dias")));   // ≤720px: forma curta (2 linhas, §6); o title tem a explicação completa
     }
     if(fr.ig){
       var stale = fr.ig.staleDays>3;
-      var li = h("li", { title:"Seguidores e métricas do Instagram entram por coleta manual no Metricool. Última leitura: "+fr.ig.label+"."+(stale ? " Já são "+fr.ig.staleDays+" dias sem leitura nova." : "") }, "Instagram (Metricool) · "+fr.ig.label);
-      if(stale){ li.appendChild(document.createTextNode(" · ")); li.appendChild(h("span", { class:"st-warn" }, "⚠ "+fr.ig.staleDays+" dias sem leitura")); }
+      var li = h("li", { title:"Seguidores e métricas do Instagram entram por coleta manual no Metricool. Última leitura: "+fr.ig.label+"."+(stale ? " Já são "+fr.ig.staleDays+" dias sem leitura nova." : "") }, (mob ? "Instagram · " : "Instagram (Metricool) · ")+fr.ig.label);
+      if(stale){ li.appendChild(document.createTextNode(" · ")); li.appendChild(h("span", { class:"fresh-warn" }, [ h("span", { class:"st-warn", role:"img", "aria-label":"atenção", text:"⚠" }), " "+fr.ig.staleDays+" dias sem leitura" ])); }   // glifo em --st-warn, palavras em --text-2 (§17)
       ul.appendChild(li);
     }
   }
-  setInterval(function(){ if(!document.hidden && metricsGeneratedAt && !refetching) renderFreshChips(); }, 60000);   // "ao vivo" vira "atrasado" sozinho após 15 min
+  setInterval(function(){ if(!document.hidden && metricsGeneratedAt && !refetching) syncLiveUi(); }, 60000);   // "ao vivo" vira "atrasado" sozinho após 15 min (chips E painel aberto)
 
   // ==== Camada 4 — páginas: visão geral (§8) · projeto (§9) · subprojeto (§10) · vídeo (§11). Edição (§13.2) inalterada em efeito sobre state. ====
 
@@ -3697,7 +3681,7 @@
     return ((state.revenue||{}).entries||[]).filter(function(e){ return e.frontKey===key; });
   }
   function frontRevenueTotal(key){
-    return frontRevenueEntries(key).reduce(function(sum,e){ return sum+Number(e.amount); }, 0);
+    return frontRevenueEntries(key).reduce(function(sum,e){ return sum+(numOrNull(e.amount)||0); }, 0);
   }
   function num2(n){ return String(n).padStart(2, "0"); }
   function itemRoute(key, it){ return (it && it.source && it.source.detailMetrics) ? "#/p/"+key+"/i/"+it.id : "#/p/"+key; }
@@ -3752,7 +3736,7 @@
   }
   function insightRoute(ins){                                      // rota da evidência: item → subprojeto (ou projeto), frente → projeto, grupo → visão geral
     if(ins.itemId){ var found = findItem(ins.itemId); if(found) return itemRoute(found.key, found.item); }
-    if(ins.frontKey && state.fronts[ins.frontKey]) return "#/p/"+ins.frontKey;
+    if(ins.frontKey && frontOf(ins.frontKey)) return "#/p/"+ins.frontKey;
     if(ins.anchor==="fig-fin") return "#/geral/fin";
     return "#/geral/evo";
   }
@@ -3869,8 +3853,8 @@
     var extra = it.source ? itemMetricLines(it) : (it.note ? '<div class="metric-note">'+esc(it.note)+'</div>' : '<div class="mline-empty">sem dado conectado ainda</div>');
     return '<div class="item-block"><div class="item-row" data-item="'+esc(it.id)+'">'+dot+
       '<span class="item-label">'+esc(it.id)+' · '+esc(it.label)+'</span>'+open+
-      '<button type="button" class="status-pill" data-status="'+esc(it.status)+'" title="'+esc("Status: "+(STATUS_LABEL[it.status]||it.status)+" — clique para mudar")+'">'+statusTxt+'</button>'+
-      '<button type="button" class="item-del" aria-label="'+esc("Remover "+it.label)+'">×</button></div>'+extra+'</div>';
+      '<button type="button" class="status-pill" id="status-'+esc(it.id)+'" data-status="'+esc(it.status)+'" title="'+esc("Status: "+(STATUS_LABEL[it.status]||it.status)+" — clique para mudar")+'">'+statusTxt+'</button>'+
+      '<button type="button" class="item-del" id="del-'+esc(it.id)+'" aria-label="'+esc("Remover "+it.label)+'">×</button></div>'+extra+'</div>';
   }
   function renderProjectFinance(key){
     var entries = frontRevenueEntries(key).slice().sort(function(a,b){ return b.month.localeCompare(a.month); });
@@ -3898,7 +3882,7 @@
     var kicker = [esc(f.category), esc(STAGES[f.stage]), accounts ? accounts+" "+plural(accounts, "conta conectada", "contas conectadas") : "sem contas conectadas"].join(" · ")+
       (fresh.length ? ' · <span id="freshNote">'+freshPartsHtml(fresh)+'</span>' : '');
     var stagesHtml = STAGES.map(function(s, i){
-      return '<button type="button" class="stage-btn'+(i===f.stage ? " active" : "")+'" data-stage="'+i+'" role="radio" aria-checked="'+(i===f.stage ? "true" : "false")+'"><b>'+(i+1)+'</b>'+s+'</button>';
+      return '<button type="button" class="stage-btn'+(i===f.stage ? " active" : "")+'" id="stage-btn-'+i+'" data-stage="'+i+'" role="radio" aria-checked="'+(i===f.stage ? "true" : "false")+'"><b>'+(i+1)+'</b>'+s+'</button>';
     }).join("");
     var itemsHtml = f.items.length ? f.items.map(function(it){ return itemRowHtml(key, it); }).join("") : '<div class="empty-items">Nenhum item ainda — adicione abaixo.</div>';
     return breadcrumbHtml([{ label:"Início" }, { label:f.name }])+
@@ -3926,7 +3910,7 @@
           (empty ? firstStepsHtml(key, f) : '')+
         '</div>'+
       '</div>'+
-      '<div class="updated">Atualizado em '+fmtDate(f.updatedAt)+'</div>';
+      '<div class="updated">Atualizado em '+fmtDate(f.updatedAt || state.updatedAt)+'</div>';
   }
   function wireProjectPage(key, f){
     wireBreadcrumb(panel, [{ onClick:function(){ go(""); } }]);
@@ -3956,10 +3940,15 @@
         persistFront(key, f);
         openFront(key);
       });
-      row.querySelector(".item-del").addEventListener("click", function(){
+      row.querySelector(".item-del").addEventListener("click", function(e){
+        var nextBlock = row.parentNode ? row.parentNode.nextElementSibling : null, nextRow = nextBlock && nextBlock.querySelector ? nextBlock.querySelector(".item-row") : null, nextId = nextRow ? nextRow.getAttribute("data-item") : null;
         f.items = f.items.filter(function(it){ return it.id!==id; });
         persistFront(key, f);
         openFront(key);
+        if(e && e.detail===0){                                     // ativado por teclado: foco no item seguinte (ou no campo "Novo item…"), não no topo da página
+          var nxt = (nextId && document.getElementById("status-"+nextId)) || document.getElementById("newItemInput");
+          if(nxt){ try{ nxt.focus({ preventScroll:true }); }catch(e2){} }
+        }
       });
     });
     var addBtn = document.getElementById("addItemBtn"), addInput = document.getElementById("newItemInput");
@@ -4003,7 +3992,7 @@
     }); }
   }
   function openFront(key){
-    var f = state.fronts[key];
+    var f = frontOf(key);
     if(!f) return;
     f.key = key;
     var firstOpen = !(lastRouteHash===location.hash && !overlay.hidden);
@@ -4094,10 +4083,10 @@
     var nMonths = Object.keys(months).length;
     var top = entries.length
       ? '<div class="ov-tiles fin-tiles">'+statTile({ label:"Receita registrada · total", valueText:fmtCurrency(total), foot:entries.length+" "+plural(entries.length, "lançamento", "lançamentos")+" · "+nMonths+" "+plural(nMonths, "mês", "meses") })+'</div>'+
-        '<div class="project-chart-wrap">'+monthlyColumns(entries, { id:"fig-fin", title:"Receita por mês", kicker:"lançamentos neste navegador", source:"valores registrados pelo dono", w:availPanelWidth("wide"), h:180, frontName:function(k){ return (state.fronts[k]||{}).name || k; }, drawIn:shouldDrawIn() })+'</div>'
+        '<div class="project-chart-wrap">'+monthlyColumns(entries, { id:"fig-fin", title:"Receita por mês", kicker:"lançamentos neste navegador", source:"valores registrados pelo dono", w:availPanelWidth("wide"), h:180, frontName:function(k){ return (frontOf(k)||{}).name || k; }, drawIn:shouldDrawIn() })+'</div>'
       : '<div class="empty-items fin-empty">Ainda sem lançamentos — registre a receita mensal de cada negócio abaixo. Os valores ficam só neste navegador.</div>';
     var entriesRows = entries.slice().sort(function(a, b){ return b.month.localeCompare(a.month); }).map(function(e){
-      var fr = state.fronts[e.frontKey], frName = fr ? fr.name : e.frontKey;
+      var fr = frontOf(e.frontKey), frName = fr ? fr.name : e.frontKey;
       return '<div class="fin-row" data-id="'+esc(e.id)+'"><span class="fin-row-front">'+esc(frName)+'</span><span class="fin-row-month">'+esc(fmtMonth(e.month))+'</span><span class="fin-row-amount">'+esc(fmtCurrency(e.amount))+'</span><button type="button" class="item-del fin-del" aria-label="'+esc("Remover lançamento: "+frName+" · "+fmtMonth(e.month)+" · "+fmtCurrency(e.amount))+'">×</button></div>';
     }).join("");
     var frontOptions = arr.map(function(f){ return '<option value="'+esc(f.key)+'">'+num2(f.num)+' · '+esc(f.name)+'</option>'; }).join("");
@@ -4124,10 +4113,10 @@
     list.forEach(function(ins){
       var scopeLbl = "Grupo";
       if(ins.itemId){ var found = findItem(ins.itemId); if(found) scopeLbl = found.item.id+" · "+found.item.label; }
-      else if(ins.frontKey && state.fronts[ins.frontKey]) scopeLbl = num2(state.fronts[ins.frontKey].num)+" · "+state.fronts[ins.frontKey].name;
+      else if(ins.frontKey && frontOf(ins.frontKey)){ var fr0 = frontOf(ins.frontKey); scopeLbl = num2(fr0.num)+" · "+fr0.name; }
       ol.appendChild(h("li", { class:"reading-item" }, [
         h("span", { class:"reading-kicker", text:scopeLbl }),
-        h("span", { class:"reading-text" }, [ insightNode(ins, "long"), ins.status==="warning" ? h("span", { class:"reading-status" }, [ h("span", { "aria-hidden":"true", text:" ⚠ " }), "atenção" ]) : null ]),
+        h("span", { class:"reading-text" }, [ insightNode(ins, "long"), ins.status==="warning" ? h("span", { class:"reading-status" }, [ h("span", { class:"st-warn", "aria-hidden":"true", text:" ⚠ " }), "atenção" ]) : null ]),
         h("button", { type:"button", class:"link-btn reading-open", text:"abrir →", "aria-label":"abrir "+scopeLbl, onClick:function(){ pendingAnchor = ins.anchor; go(insightRoute(ins)); } })
       ]));
     });
@@ -4209,7 +4198,7 @@
   function subCtx(key, item){
     var yt = isYtDetail(item), rows = (yt ? DETAIL_ROWS[item.id] : SNAPSHOT_ROWS[item.id]) || [];
     var N = VIEW.period;
-    return { key:key, f:state.fronts[key], item:item, yt:yt, rows:rows, ci:detailCols(item), N:N, win:flowWindow(rows, N), fr:freshness(), defs:(item.source.detailMetrics||[]).slice(),
+    return { key:key, f:frontOf(key), item:item, yt:yt, rows:rows, ci:detailCols(item), N:N, win:flowWindow(rows, N), fr:freshness(), defs:(item.source.detailMetrics||[]).slice(),
              lastDate:maxDate(rows), nDays:distinctDates(rows), source:item.source.detailSourceLabel || (yt ? "YouTube Analytics" : "Metricool") };
   }
   function insightById(scope, id){ return computeInsights(scope).filter(function(x){ return x.id===id; })[0] || null; }
@@ -4349,7 +4338,11 @@
     }
     var flowDefs = defs.filter(function(d){ return !d.subs; }), winRows = w.cur.slice().sort(function(a, b){ return rowDate(a).localeCompare(rowDate(b)); });
     var hasSubsCol = winRows.some(function(r){ return subsByDate[rowDate(r)]!==undefined; });
-    var table = tableHtml({ caption:"Por dia · "+fmtDateRange(w.curFrom, w.curTo)+" · "+c.source,
+    var table = def.subs
+      ? tableHtml({ caption:"Por dia · Inscritos totais · "+fmtDateRange(from, to)+" · leitura do bot",   // gêmea do que está no gráfico (§12.0): as leituras plotadas, não a janela do Analytics
+          cols:[{ label:"Data" }, { label:"Inscritos totais", num:true }],
+          rows:pts.map(function(p){ return [weekdayName(isoWeekday(p.date))+" "+fmtDateDM(p.date), fmtNumber(p.value)]; }) })
+      : tableHtml({ caption:"Por dia · "+fmtDateRange(w.curFrom, w.curTo)+" · "+c.source,
       cols:[{ label:"Data" }].concat(flowDefs.map(function(d){ return { label:d.label, num:true }; })).concat(hasSubsCol ? [{ label:"Inscritos totais", num:true }] : []),
       rows:winRows.map(function(r){ var d = rowDate(r); return [weekdayName(isoWeekday(d))+" "+fmtDateDM(d)].concat(flowDefs.map(function(x){ var v = numOrNull(r[x.col]); return v===null ? "" : defFmt(x)(v); })).concat(hasSubsCol ? [subsByDate[d]!==undefined ? fmtNumber(subsByDate[d]) : ""] : []); }) });
     var tools = canPrev ? '<button type="button" class="fig-tool-btn prev-toggle" id="prevToggle" aria-pressed="'+(showPrev ? "true" : "false")+'">período anterior</button>' : '';
@@ -4357,11 +4350,11 @@
       : (def.stock ? "Leituras consecutivas ligadas; dias sem leitura não aparecem." : "Dias sem leitura aparecem como lacuna.");
     var nDays = pts.length;
     return dailyChart({ id:"fig-daily", title:"Por dia · "+def.label, kicker:fmtDateRange(from, to)+" · "+nDays+" "+plural(nDays, "dia com leitura", "dias com leitura"), source:c.source,
-      points:pts, prev:showPrev ? prev : [], N:c.N, showPrev:showPrev, label:def.label, unit:unit, fmt:fmt, stock:!!def.stock, grid:gridFor,
+      points:pts, prev:showPrev ? prev : [], N:c.N, showPrev:showPrev, label:def.label, unit:unit, fmt:fmt, stock:!!def.stock, grid:gridFor, invert:def.field==="subsLost",
       w:availPanelWidth("full"), h:isMobile() ? 200 : 260, table:table, curRange:fmtDateRange(from, to), prevRange:fmtDateRange(w.prevFrom, w.prevTo), drawIn:drawIn, caption:note, tools:tools });
   }
   function scopedHtml(c, idx, drawIn){
-    return '<div class="kpi-strip">'+kpiTiles(c).join("")+'</div>'+metricTabsHtml(dailyMetricDefs(c), idx)+'<div id="dailyWrap">'+dailyFigure(c, idx, drawIn)+'</div>';
+    return '<div class="kpi-strip">'+kpiTiles(c).join("")+'</div>'+metricTabsHtml(dailyMetricDefs(c), idx)+'<div id="dailyWrap" role="tabpanel" aria-labelledby="mtab-'+idx+'">'+dailyFigure(c, idx, drawIn)+'</div>';
   }
   function rhythmHtml(c, col, unit){                               // C5 + C6 sobre todo o histórico; gate <14 dias com leitura
     var pts = col===null || col===undefined ? [] : parseSeries(c.rows, col);
@@ -4422,7 +4415,7 @@
     return out.join("");
   }
   function igTailHtml(c){
-    return rhythmHtml(c, c.ci.IGEV05, "visualizações")+'<p class="block-note">Origem e público: disponíveis só para canais do YouTube por enquanto.</p>';
+    return '<div class="ig-tail">'+rhythmHtml(c, c.ci.IGEV05, "visualizações")+'<p class="block-note">Origem e público: disponíveis só para canais do YouTube por enquanto.</p></div>';
   }
   function sourcesTextFor(c){
     var parts = [], fr = c.fr, id = c.item.id;
@@ -4444,7 +4437,7 @@
     } else {
       var s0 = stockSeriesFor(it)[0], st0 = (s0 && s0.points.length) ? staleness(s0.points, s0.provider) : null;
       fresh.push(s0 && s0.latest ? "leitura de "+fmtDateDM(s0.latest.d) : "sem leitura");
-      if(st0 && st0.alert) fresh.push('<span class="st-warn">⚠ '+st0.days+' dias sem leitura</span>');
+      if(st0 && st0.alert) fresh.push('<span class="st-warn" role="img" aria-label="atenção">⚠</span> '+st0.days+' dias sem leitura');   // só o glifo na cor de status; as palavras ficam na cor do kicker (§17)
     }
     var kickerHtml = kicker.map(esc).join(" · ")+' · <span id="freshNote">'+fresh.map(function(s){ return s.indexOf("<span")===0 ? s : esc(s); }).join(" · ")+'</span>';
     return breadcrumbHtml([{ label:"Início" }, { label:f.name }, { label:it.label }])+
@@ -4483,6 +4476,7 @@
       VIEW.idx = i;
       tabs.forEach(function(tb, k){ var on = k===i; tb.classList.toggle("active", on); tb.setAttribute("aria-selected", on ? "true" : "false"); tb.tabIndex = on ? 0 : -1; });
       if(focus){ try{ tabs[i].focus({ preventScroll:true }); }catch(e){} }
+      var dw = document.getElementById("dailyWrap"); if(dw) dw.setAttribute("aria-labelledby", "mtab-"+i);
       swapDaily(c);
     }
     tabs.forEach(function(btn, i){
@@ -4529,7 +4523,7 @@
     wireScoped(c);
   }
   function openMetricDetail(frontKey, itemId, keep){               // keep = re-render em lugar (refetch): mantém período/métrica/toggle (VIEW)
-    var f = state.fronts[frontKey];
+    var f = frontOf(frontKey); if(!f) return;
     var item = f.items.find(function(x){ return x.id===itemId; });
     if(!item || !item.source || !item.source.detailMetrics) return;
     if(!keep || VIEW.item!==itemId){ VIEW.item = itemId; VIEW.idx = 0; VIEW.showPrev = null; VIEW.video = null; }
@@ -4545,7 +4539,8 @@
   }
   // ---- página do vídeo (§11): #/p/<key>/i/<id>/v/<videoId> — herói de views, derivados, 6 tiles, C11, "Abrir no YouTube ↗"; título só via textContent ----
   function openVideoPage(frontKey, item, videoId){
-    var f = state.fronts[frontKey], vids = ITEM_VIDEOS[item.id] || [];
+    var f = frontOf(frontKey), vids = ITEM_VIDEOS[item.id] || [];
+    if(!f) return false;
     var video = vids.filter(function(v){ return v.id===videoId; })[0];
     if(!video) return false;
     f.key = frontKey;
@@ -4600,11 +4595,30 @@
     persistState();
   }
 
+  function validState(s){                                          // forma mínima para renderizar: objeto com fronts (objeto)
+    return !!(s && typeof s==="object" && !Array.isArray(s) && s.fronts && typeof s.fronts==="object" && !Array.isArray(s.fronts));
+  }
+  function normalizeState(s){                                      // estado guardado com campos estranhos não derruba o boot (items/stage/goal/revenue saneados; estado válido passa intacto)
+    Object.keys(s.fronts).forEach(function(k){
+      var f = s.fronts[k];
+      if(!f || typeof f!=="object" || Array.isArray(f)){ delete s.fronts[k]; return; }
+      f.items = Array.isArray(f.items) ? f.items.filter(function(it){ return it && typeof it==="object" && it.id!==undefined; }) : [];
+      var st = parseInt(f.stage, 10); f.stage = isFinite(st) ? clampNum(st, 0, STAGES.length-1) : 0;
+      if(!f.goal || typeof f.goal!=="object") f.goal = { text:"", target:null };
+      if(typeof f.notes!=="string") f.notes = f.notes==null ? "" : String(f.notes);
+      if(typeof f.name!=="string") f.name = String(f.name==null ? k : f.name);
+      if(typeof f.category!=="string") f.category = f.category==null ? "" : String(f.category);
+      var n = parseInt(f.num, 10); f.num = isFinite(n) ? n : 0;
+    });
+    if(!s.revenue || typeof s.revenue!=="object") s.revenue = { entries:[] };
+    if(!Array.isArray(s.revenue.entries)) s.revenue.entries = [];
+    return s;
+  }
   function loadState(){
     try{
       var raw = localStorage.getItem(STORAGE_KEY);
-      lastPersistedRaw = raw || null;
-      if(raw) return JSON.parse(raw);
+      lastPersistedRaw = raw || null;                              // valor inválido fica registado para o sync entre abas não o readotar
+      if(raw){ var parsed = JSON.parse(raw); if(validState(parsed)) return normalizeState(parsed); }
     }catch(e){ /* fall through to seed */ }
     return JSON.parse(JSON.stringify(SEED_DATA));
   }
@@ -4864,7 +4878,7 @@
     if(k==="/"){ e.preventDefault(); openPalette(); return; }
     if(k==="?"){ e.preventDefault(); openSheet(); return; }
     if(e.shiftKey) return;
-    if(/^[1-8]$/.test(k)){ if(state && state.fronts && state.fronts["f"+k]){ e.preventDefault(); go("#/p/f"+k); } return; }
+    if(/^[1-8]$/.test(k)){ if(frontOf("f"+k)){ e.preventDefault(); go("#/p/f"+k); } return; }
     if(k==="g"){ e.preventDefault(); go("#/geral"); return; }
     if(k==="m"){ e.preventDefault(); if(graphToggle) graphToggle.click(); announce(graphMode ? "Modo gráfico ligado" : "Modo gráfico desligado"); return; }
     if(k==="t"){ e.preventDefault(); cycleTheme(); announce("Tema: "+THEME_LABEL[themeMode]); return; }
