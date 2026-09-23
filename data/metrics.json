@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T19:11:33.228Z",
+  "generatedAt": "2026-09-23T22:18:11.447Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -429,7 +429,7 @@
         "20260922"
       ],
       [
-        "746",
+        "747",
         "20260923"
       ]
     ]
@@ -679,7 +679,7 @@
         "20260915"
       ],
       [
-        220,
+        222,
         29,
         26,
         1,
@@ -690,7 +690,7 @@
         "20260916"
       ],
       [
-        359,
+        372,
         142,
         90,
         3,
@@ -701,7 +701,7 @@
         "20260917"
       ],
       [
-        529,
+        535,
         202,
         118,
         1,
@@ -712,7 +712,7 @@
         "20260918"
       ],
       [
-        427,
+        426,
         159,
         78,
         2,
@@ -899,7 +899,7 @@
         "id": "M99XVY39Tk0",
         "title": "Caminho 130 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/M99XVY39Tk0/mqdefault.jpg",
-        "views": 614,
+        "views": 613,
         "likes": 44,
         "comments": 3,
         "minutes": 51,
@@ -932,12 +932,23 @@
         "id": "PuN0N_bgMmM",
         "title": "Caminho 124 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/PuN0N_bgMmM/mqdefault.jpg",
-        "views": 467,
+        "views": 468,
         "likes": 23,
         "comments": 0,
         "minutes": 33,
         "subsGained": 1,
         "avgDuration": 14
+      },
+      {
+        "id": "icfZTfLixpc",
+        "title": "A ESPERANÇA DO CRISTÃO (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg",
+        "views": 445,
+        "likes": 2,
+        "comments": 1,
+        "minutes": 145,
+        "subsGained": 1,
+        "avgDuration": 103
       },
       {
         "id": "wy60p3Znl9g",
@@ -949,17 +960,6 @@
         "minutes": 31,
         "subsGained": 2,
         "avgDuration": 14
-      },
-      {
-        "id": "icfZTfLixpc",
-        "title": "A ESPERANÇA DO CRISTÃO (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
-        "thumb": "https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg",
-        "views": 438,
-        "likes": 2,
-        "comments": 1,
-        "minutes": 144,
-        "subsGained": 1,
-        "avgDuration": 103
       },
       {
         "id": "Km4kqyeLWiM",
@@ -998,7 +998,7 @@
         "id": "eFLxRBeIjS0",
         "title": "Caminho 125 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/eFLxRBeIjS0/mqdefault.jpg",
-        "views": 336,
+        "views": 339,
         "likes": 11,
         "comments": 0,
         "minutes": 30,
@@ -1009,12 +1009,23 @@
         "id": "OfO4nU-MNng",
         "title": "PORQUE VERÃO A DEUS (Parte 1 de 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/OfO4nU-MNng/mqdefault.jpg",
-        "views": 303,
+        "views": 305,
         "likes": 8,
         "comments": 1,
         "minutes": 298,
         "subsGained": 0,
         "avgDuration": 191
+      },
+      {
+        "id": "KnTr-LDA8J0",
+        "title": "VIDA DE FÉ (Parte 2) | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/KnTr-LDA8J0/mqdefault.jpg",
+        "views": 272,
+        "likes": 5,
+        "comments": 0,
+        "minutes": 75,
+        "subsGained": 2,
+        "avgDuration": 88
       },
       {
         "id": "frAwIBOvazs",
@@ -1026,17 +1037,6 @@
         "minutes": 8,
         "subsGained": 0,
         "avgDuration": 7
-      },
-      {
-        "id": "KnTr-LDA8J0",
-        "title": "VIDA DE FÉ (Parte 2) | SÃO JOSEMARIA ESCRIVÁ",
-        "thumb": "https://i.ytimg.com/vi/KnTr-LDA8J0/mqdefault.jpg",
-        "views": 266,
-        "likes": 5,
-        "comments": 0,
-        "minutes": 75,
-        "subsGained": 2,
-        "avgDuration": 88
       },
       {
         "id": "7SgO4ltfgmI",
@@ -1406,57 +1406,29 @@
         "20260921"
       ]
     ],
-    "wy60p3Znl9g": [
+    "icfZTfLixpc": [
       [
-        131,
-        "20260909"
-      ],
-      [
-        205,
-        "20260910"
-      ],
-      [
-        78,
-        "20260911"
-      ],
-      [
-        4,
-        "20260912"
-      ],
-      [
-        14,
-        "20260913"
-      ],
-      [
-        0,
-        "20260914"
-      ],
-      [
-        0,
-        "20260915"
-      ],
-      [
-        5,
+        10,
         "20260916"
       ],
       [
-        1,
+        154,
         "20260917"
       ],
       [
-        3,
+        105,
         "20260918"
       ],
       [
-        0,
+        114,
         "20260919"
       ],
       [
-        0,
+        53,
         "20260920"
       ],
       [
-        0,
+        2,
         "20260921"
       ]
     ]
