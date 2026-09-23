@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T15:31:44.612Z",
+  "generatedAt": "2026-09-23T19:11:33.228Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -732,6 +732,17 @@
         2,
         3,
         "20260920"
+      ],
+      [
+        956,
+        187,
+        39,
+        3,
+        0,
+        53,
+        2,
+        2,
+        "20260921"
       ]
     ]
   },
@@ -740,31 +751,31 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 4778
+          "views": 5550
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2173
+          "views": 2251
         },
         {
           "label": "Busca no YouTube",
-          "views": 1182
+          "views": 1257
         },
         {
           "label": "Vídeos relacionados",
-          "views": 741
+          "views": 755
         },
         {
           "label": "Notificações",
-          "views": 215
+          "views": 225
         },
         {
           "label": "Página do canal",
-          "views": 176
+          "views": 177
         },
         {
           "label": "Outra página do YouTube",
-          "views": 43
+          "views": 48
         },
         {
           "label": "Link externo",
@@ -778,69 +789,81 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 49.2
+          "pct": 40
         },
         {
           "label": "65+ · Homens",
-          "pct": 26.3
+          "pct": 23.4
+        },
+        {
+          "label": "45-54 · Homens",
+          "pct": 8.7
         },
         {
           "label": "55-64 · Mulheres",
           "pct": 8.5
         },
         {
-          "label": "45-54 · Homens",
-          "pct": 7.5
+          "label": "55-64 · Homens",
+          "pct": 7
         },
         {
-          "label": "55-64 · Homens",
-          "pct": 6.3
+          "label": "35-44 · Homens",
+          "pct": 5.4
         },
         {
           "label": "45-54 · Mulheres",
-          "pct": 2.3
+          "pct": 4.3
+        },
+        {
+          "label": "35-44 · Mulheres",
+          "pct": 2.7
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 5940
+          "views": 6660
         },
         {
           "label": "Portugal",
-          "views": 89
+          "views": 124
+        },
+        {
+          "label": "PK",
+          "views": 16
         }
       ],
       "device": [
         {
           "label": "Celular",
-          "views": 8291
+          "views": 9139
         },
         {
           "label": "Computador",
-          "views": 677
+          "views": 738
         },
         {
           "label": "TV",
-          "views": 272
+          "views": 302
         },
         {
           "label": "Tablet",
-          "views": 168
+          "views": 185
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 6004
+          "views": 6854
         },
         {
           "label": "Explorar/Início",
-          "views": 1722
+          "views": 1759
         },
         {
           "label": "Página de exibição",
-          "views": 1680
+          "views": 1749
         },
         {
           "label": "Incorporado em site",
@@ -850,11 +873,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 8550
+          "views": 9432
         },
         {
           "label": "Inscritos",
-          "views": 858
+          "views": 932
         }
       ]
     }
@@ -865,18 +888,29 @@
         "id": "ijgbrEF5l-E",
         "title": "ORAÇÃO NÃO É SILÊNCIO #Shorts",
         "thumb": "https://i.ytimg.com/vi/ijgbrEF5l-E/mqdefault.jpg",
-        "views": 1422,
-        "likes": 61,
+        "views": 1424,
+        "likes": 62,
         "comments": 0,
         "minutes": 107,
         "subsGained": 3,
         "avgDuration": 15
       },
       {
+        "id": "M99XVY39Tk0",
+        "title": "Caminho 130 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/M99XVY39Tk0/mqdefault.jpg",
+        "views": 614,
+        "likes": 44,
+        "comments": 3,
+        "minutes": 51,
+        "subsGained": 0,
+        "avgDuration": 16
+      },
+      {
         "id": "uD2wtA92RAU",
         "title": "Caminho, 117 - Oração | São Josemaría Escrivá  #sãojosemariaescrivá #caminho #sulco #forja #opusdei",
         "thumb": "https://i.ytimg.com/vi/uD2wtA92RAU/mqdefault.jpg",
-        "views": 608,
+        "views": 610,
         "likes": 18,
         "comments": 0,
         "minutes": 38,
@@ -887,21 +921,21 @@
         "id": "_7PAmBlJ4Qk",
         "title": "TU ÉS FILHO DE DEUS: A INTIMIDADE QUE CURA TODA QUEDA | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/_7PAmBlJ4Qk/mqdefault.jpg",
-        "views": 510,
+        "views": 512,
         "likes": 45,
         "comments": 7,
-        "minutes": 1237,
+        "minutes": 1238,
         "subsGained": 21,
-        "avgDuration": 221
+        "avgDuration": 220
       },
       {
         "id": "PuN0N_bgMmM",
         "title": "Caminho 124 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/PuN0N_bgMmM/mqdefault.jpg",
-        "views": 462,
+        "views": 467,
         "likes": 23,
         "comments": 0,
-        "minutes": 32,
+        "minutes": 33,
         "subsGained": 1,
         "avgDuration": 14
       },
@@ -920,12 +954,23 @@
         "id": "icfZTfLixpc",
         "title": "A ESPERANÇA DO CRISTÃO (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg",
-        "views": 436,
+        "views": 438,
         "likes": 2,
         "comments": 1,
-        "minutes": 138,
+        "minutes": 144,
         "subsGained": 1,
-        "avgDuration": 100
+        "avgDuration": 103
+      },
+      {
+        "id": "Km4kqyeLWiM",
+        "title": "Caminho 131 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/Km4kqyeLWiM/mqdefault.jpg",
+        "views": 426,
+        "likes": 26,
+        "comments": 0,
+        "minutes": 114,
+        "subsGained": 1,
+        "avgDuration": 51
       },
       {
         "id": "gsiLPtndSzQ",
@@ -950,43 +995,43 @@
         "avgDuration": 8
       },
       {
-        "id": "M99XVY39Tk0",
-        "title": "Caminho 130 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/M99XVY39Tk0/mqdefault.jpg",
-        "views": 384,
-        "likes": 28,
-        "comments": 2,
-        "minutes": 30,
-        "subsGained": 0,
-        "avgDuration": 16
-      },
-      {
         "id": "eFLxRBeIjS0",
         "title": "Caminho 125 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/eFLxRBeIjS0/mqdefault.jpg",
-        "views": 329,
-        "likes": 10,
+        "views": 336,
+        "likes": 11,
         "comments": 0,
-        "minutes": 29,
+        "minutes": 30,
         "subsGained": 0,
-        "avgDuration": 18
+        "avgDuration": 19
       },
       {
         "id": "OfO4nU-MNng",
         "title": "PORQUE VERÃO A DEUS (Parte 1 de 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/OfO4nU-MNng/mqdefault.jpg",
-        "views": 299,
+        "views": 303,
         "likes": 8,
         "comments": 1,
-        "minutes": 297,
+        "minutes": 298,
         "subsGained": 0,
-        "avgDuration": 197
+        "avgDuration": 191
+      },
+      {
+        "id": "frAwIBOvazs",
+        "title": "Caminho 132 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/frAwIBOvazs/mqdefault.jpg",
+        "views": 267,
+        "likes": 8,
+        "comments": 0,
+        "minutes": 8,
+        "subsGained": 0,
+        "avgDuration": 7
       },
       {
         "id": "KnTr-LDA8J0",
         "title": "VIDA DE FÉ (Parte 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/KnTr-LDA8J0/mqdefault.jpg",
-        "views": 265,
+        "views": 266,
         "likes": 5,
         "comments": 0,
         "minutes": 75,
@@ -997,34 +1042,12 @@
         "id": "7SgO4ltfgmI",
         "title": "PORQUE VERÃO A DEUS (Parte 2 de 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/7SgO4ltfgmI/mqdefault.jpg",
-        "views": 220,
+        "views": 222,
         "likes": 15,
         "comments": 0,
         "minutes": 223,
         "subsGained": 5,
-        "avgDuration": 110
-      },
-      {
-        "id": "7RGfTpN1Vtc",
-        "title": "A História de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 214,
-        "likes": 12,
-        "comments": 0,
-        "minutes": 126,
-        "subsGained": 3,
-        "avgDuration": 95
-      },
-      {
-        "id": "bUGxBIVqcLk",
-        "title": "Caminho 123 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/bUGxBIVqcLk/mqdefault.jpg",
-        "views": 192,
-        "likes": 11,
-        "comments": 1,
-        "minutes": 11,
-        "subsGained": 0,
-        "avgDuration": 14
+        "avgDuration": 109
       }
     ]
   },
@@ -1129,6 +1152,24 @@
       [
         0,
         "20260920"
+      ],
+      [
+        2,
+        "20260921"
+      ]
+    ],
+    "M99XVY39Tk0": [
+      [
+        179,
+        "20260919"
+      ],
+      [
+        205,
+        "20260920"
+      ],
+      [
+        230,
+        "20260921"
       ]
     ],
     "uD2wtA92RAU": [
@@ -1223,6 +1264,10 @@
       [
         1,
         "20260920"
+      ],
+      [
+        2,
+        "20260921"
       ]
     ],
     "_7PAmBlJ4Qk": [
@@ -1317,6 +1362,10 @@
       [
         0,
         "20260920"
+      ],
+      [
+        2,
+        "20260921"
       ]
     ],
     "PuN0N_bgMmM": [
@@ -1351,6 +1400,10 @@
       [
         0,
         "20260920"
+      ],
+      [
+        5,
+        "20260921"
       ]
     ],
     "wy60p3Znl9g": [
@@ -1401,28 +1454,10 @@
       [
         0,
         "20260920"
-      ]
-    ],
-    "icfZTfLixpc": [
-      [
-        10,
-        "20260916"
       ],
       [
-        154,
-        "20260917"
-      ],
-      [
-        105,
-        "20260918"
-      ],
-      [
-        114,
-        "20260919"
-      ],
-      [
-        53,
-        "20260920"
+        0,
+        "20260921"
       ]
     ]
   }
