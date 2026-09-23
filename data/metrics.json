@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T22:54:43.756Z",
+  "generatedAt": "2026-09-23T01:14:24.250Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -9,6 +9,10 @@
       [
         "7",
         "20260922"
+      ],
+      [
+        "7",
+        "20260923"
       ]
     ],
     "2.1": [
@@ -423,22 +427,15 @@
       [
         "743",
         "20260922"
+      ],
+      [
+        "746",
+        "20260923"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        35,
-        67,
-        162,
-        1,
-        0,
-        1,
-        0,
-        0,
-        "20260824"
-      ],
       [
         77,
         125,
@@ -671,7 +668,7 @@
         "20260914"
       ],
       [
-        362,
+        368,
         305,
         185,
         3,
@@ -743,19 +740,19 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 4781
+          "views": 4779
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2175
+          "views": 2173
         },
         {
           "label": "Busca no YouTube",
-          "views": 1194
+          "views": 1182
         },
         {
           "label": "Vídeos relacionados",
-          "views": 751
+          "views": 741
         },
         {
           "label": "Notificações",
@@ -763,7 +760,7 @@
         },
         {
           "label": "Página do canal",
-          "views": 179
+          "views": 176
         },
         {
           "label": "Outra página do YouTube",
@@ -771,7 +768,7 @@
         },
         {
           "label": "Link externo",
-          "views": 43
+          "views": 39
         }
       ]
     }
@@ -807,7 +804,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 5950
+          "views": 5940
         },
         {
           "label": "Portugal",
@@ -817,15 +814,15 @@
       "device": [
         {
           "label": "Celular",
-          "views": 8323
+          "views": 8292
         },
         {
           "label": "Computador",
-          "views": 680
+          "views": 677
         },
         {
           "label": "TV",
-          "views": 273
+          "views": 272
         },
         {
           "label": "Tablet",
@@ -835,7 +832,7 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 6021
+          "views": 6005
         },
         {
           "label": "Explorar/Início",
@@ -843,7 +840,7 @@
         },
         {
           "label": "Página de exibição",
-          "views": 1699
+          "views": 1680
         },
         {
           "label": "Incorporado em site",
@@ -853,11 +850,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 8577
+          "views": 8551
         },
         {
           "label": "Inscritos",
-          "views": 867
+          "views": 858
         }
       ]
     }
@@ -1011,12 +1008,12 @@
         "id": "7RGfTpN1Vtc",
         "title": "A História de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 219,
+        "views": 214,
         "likes": 12,
         "comments": 0,
-        "minutes": 133,
+        "minutes": 126,
         "subsGained": 3,
-        "avgDuration": 97
+        "avgDuration": 95
       },
       {
         "id": "bUGxBIVqcLk",
