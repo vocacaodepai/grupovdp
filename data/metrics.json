@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T10:15:30.626Z",
+  "generatedAt": "2026-09-24T15:13:51.315Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -437,7 +437,7 @@
         "20260923"
       ],
       [
-        "748",
+        "750",
         "20260924"
       ]
     ]
@@ -929,23 +929,12 @@
         "id": "PuN0N_bgMmM",
         "title": "Caminho 124 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/PuN0N_bgMmM/mqdefault.jpg",
-        "views": 468,
+        "views": 467,
         "likes": 23,
         "comments": 0,
         "minutes": 33,
         "subsGained": 1,
         "avgDuration": 14
-      },
-      {
-        "id": "icfZTfLixpc",
-        "title": "A ESPERANÇA DO CRISTÃO (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
-        "thumb": "https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg",
-        "views": 445,
-        "likes": 2,
-        "comments": 1,
-        "minutes": 145,
-        "subsGained": 1,
-        "avgDuration": 103
       },
       {
         "id": "wy60p3Znl9g",
@@ -957,6 +946,17 @@
         "minutes": 31,
         "subsGained": 2,
         "avgDuration": 14
+      },
+      {
+        "id": "icfZTfLixpc",
+        "title": "A ESPERANÇA DO CRISTÃO (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg",
+        "views": 438,
+        "likes": 2,
+        "comments": 1,
+        "minutes": 144,
+        "subsGained": 1,
+        "avgDuration": 103
       },
       {
         "id": "Km4kqyeLWiM",
@@ -995,7 +995,7 @@
         "id": "eFLxRBeIjS0",
         "title": "Caminho 125 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/eFLxRBeIjS0/mqdefault.jpg",
-        "views": 339,
+        "views": 336,
         "likes": 11,
         "comments": 0,
         "minutes": 30,
@@ -1006,23 +1006,12 @@
         "id": "OfO4nU-MNng",
         "title": "PORQUE VERÃO A DEUS (Parte 1 de 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/OfO4nU-MNng/mqdefault.jpg",
-        "views": 305,
+        "views": 303,
         "likes": 8,
         "comments": 1,
         "minutes": 298,
         "subsGained": 0,
         "avgDuration": 191
-      },
-      {
-        "id": "KnTr-LDA8J0",
-        "title": "VIDA DE FÉ (Parte 2) | SÃO JOSEMARIA ESCRIVÁ",
-        "thumb": "https://i.ytimg.com/vi/KnTr-LDA8J0/mqdefault.jpg",
-        "views": 272,
-        "likes": 5,
-        "comments": 0,
-        "minutes": 75,
-        "subsGained": 2,
-        "avgDuration": 88
       },
       {
         "id": "frAwIBOvazs",
@@ -1034,6 +1023,17 @@
         "minutes": 8,
         "subsGained": 0,
         "avgDuration": 7
+      },
+      {
+        "id": "KnTr-LDA8J0",
+        "title": "VIDA DE FÉ (Parte 2) | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/KnTr-LDA8J0/mqdefault.jpg",
+        "views": 266,
+        "likes": 5,
+        "comments": 0,
+        "minutes": 75,
+        "subsGained": 2,
+        "avgDuration": 88
       },
       {
         "id": "7SgO4ltfgmI",
@@ -1157,7 +1157,7 @@
     ],
     "M99XVY39Tk0": [
       [
-        179,
+        178,
         "20260919"
       ],
       [
@@ -1403,29 +1403,57 @@
         "20260921"
       ]
     ],
-    "icfZTfLixpc": [
+    "wy60p3Znl9g": [
       [
-        10,
+        131,
+        "20260909"
+      ],
+      [
+        205,
+        "20260910"
+      ],
+      [
+        78,
+        "20260911"
+      ],
+      [
+        4,
+        "20260912"
+      ],
+      [
+        14,
+        "20260913"
+      ],
+      [
+        0,
+        "20260914"
+      ],
+      [
+        0,
+        "20260915"
+      ],
+      [
+        5,
         "20260916"
       ],
       [
-        154,
+        1,
         "20260917"
       ],
       [
-        105,
+        3,
         "20260918"
       ],
       [
-        114,
+        0,
         "20260919"
       ],
       [
-        53,
+        0,
         "20260920"
       ],
       [
-        2,
+        0,
         "20260921"
       ]
     ]
