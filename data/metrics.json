@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T22:28:15.603Z",
+  "generatedAt": "2026-09-25T00:43:46.826Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -17,6 +17,10 @@
       [
         "7",
         "20260924"
+      ],
+      [
+        "7",
+        "20260925"
       ]
     ],
     "2.1": [
@@ -439,22 +443,15 @@
       [
         "750",
         "20260924"
+      ],
+      [
+        "751",
+        "20260925"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        59,
-        155,
-        239,
-        1,
-        0,
-        1,
-        0,
-        1,
-        "20260826"
-      ],
       [
         495,
         108,
@@ -759,19 +756,19 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 6356
+          "views": 6354
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2293
+          "views": 2279
         },
         {
           "label": "Busca no YouTube",
-          "views": 1289
+          "views": 1266
         },
         {
           "label": "Vídeos relacionados",
-          "views": 761
+          "views": 750
         },
         {
           "label": "Notificações",
@@ -779,7 +776,7 @@
         },
         {
           "label": "Página do canal",
-          "views": 148
+          "views": 145
         },
         {
           "label": "Outra página do YouTube",
@@ -787,7 +784,7 @@
         },
         {
           "label": "Link externo",
-          "views": 39
+          "views": 35
         }
       ]
     }
@@ -831,7 +828,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 7288
+          "views": 7243
         },
         {
           "label": "Portugal",
@@ -845,33 +842,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 9943
+          "views": 9902
         },
         {
           "label": "Computador",
-          "views": 770
+          "views": 758
         },
         {
           "label": "TV",
-          "views": 324
+          "views": 319
         },
         {
           "label": "Tablet",
-          "views": 195
+          "views": 194
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 7667
+          "views": 7630
         },
         {
           "label": "Explorar/Início",
-          "views": 1792
+          "views": 1790
         },
         {
           "label": "Página de exibição",
-          "views": 1771
+          "views": 1751
         },
         {
           "label": "Incorporado em site",
@@ -881,11 +878,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 10234
+          "views": 10182
         },
         {
           "label": "Inscritos",
-          "views": 998
+          "views": 991
         }
       ]
     }
