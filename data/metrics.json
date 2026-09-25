@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T15:27:24.489Z",
+  "generatedAt": "2026-09-25T19:27:25.197Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -445,7 +445,7 @@
         "20260924"
       ],
       [
-        "754",
+        "755",
         "20260925"
       ]
     ]
@@ -748,6 +748,17 @@
         1,
         3,
         "20260922"
+      ],
+      [
+        789,
+        137,
+        38,
+        3,
+        1,
+        39,
+        6,
+        1,
+        "20260923"
       ]
     ]
   },
@@ -756,31 +767,31 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 6344
+          "views": 6827
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2279
+          "views": 2418
         },
         {
           "label": "Busca no YouTube",
-          "views": 1264
+          "views": 1344
         },
         {
           "label": "Vídeos relacionados",
-          "views": 751
+          "views": 770
         },
         {
           "label": "Notificações",
-          "views": 236
+          "views": 255
         },
         {
           "label": "Página do canal",
-          "views": 145
+          "views": 191
         },
         {
           "label": "Outra página do YouTube",
-          "views": 49
+          "views": 51
         },
         {
           "label": "Link externo",
@@ -794,41 +805,41 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 38.3
+          "pct": 35.3
         },
         {
           "label": "65+ · Homens",
-          "pct": 22.2
+          "pct": 22.6
         },
         {
           "label": "45-54 · Homens",
-          "pct": 10.2
-        },
-        {
-          "label": "55-64 · Mulheres",
-          "pct": 6.9
+          "pct": 11.3
         },
         {
           "label": "35-44 · Homens",
-          "pct": 6.3
-        },
-        {
-          "label": "55-64 · Homens",
-          "pct": 5.7
+          "pct": 8.5
         },
         {
           "label": "45-54 · Mulheres",
-          "pct": 5.5
+          "pct": 6.8
+        },
+        {
+          "label": "55-64 · Mulheres",
+          "pct": 6.1
+        },
+        {
+          "label": "55-64 · Homens",
+          "pct": 5
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 4.8
+          "pct": 4.3
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 7243
+          "views": 7877
         },
         {
           "label": "Portugal",
@@ -842,33 +853,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 9894
+          "views": 10606
         },
         {
           "label": "Computador",
-          "views": 758
+          "views": 810
         },
         {
           "label": "TV",
-          "views": 315
+          "views": 333
         },
         {
           "label": "Tablet",
-          "views": 194
+          "views": 201
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 7618
+          "views": 8232
         },
         {
           "label": "Explorar/Início",
-          "views": 1791
+          "views": 1892
         },
         {
           "label": "Página de exibição",
-          "views": 1750
+          "views": 1824
         },
         {
           "label": "Incorporado em site",
@@ -878,11 +889,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 10173
+          "views": 10881
         },
         {
           "label": "Inscritos",
-          "views": 988
+          "views": 1069
         }
       ]
     }
@@ -893,10 +904,10 @@
         "id": "ijgbrEF5l-E",
         "title": "ORAÇÃO NÃO É SILÊNCIO #Shorts",
         "thumb": "https://i.ytimg.com/vi/ijgbrEF5l-E/mqdefault.jpg",
-        "views": 1424,
+        "views": 1428,
         "likes": 62,
         "comments": 0,
-        "minutes": 107,
+        "minutes": 108,
         "subsGained": 3,
         "avgDuration": 15
       },
@@ -904,18 +915,40 @@
         "id": "M99XVY39Tk0",
         "title": "Caminho 130 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/M99XVY39Tk0/mqdefault.jpg",
-        "views": 648,
-        "likes": 44,
+        "views": 662,
+        "likes": 47,
         "comments": 3,
-        "minutes": 54,
+        "minutes": 55,
         "subsGained": 0,
         "avgDuration": 16
+      },
+      {
+        "id": "frAwIBOvazs",
+        "title": "Caminho 132 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/frAwIBOvazs/mqdefault.jpg",
+        "views": 631,
+        "likes": 24,
+        "comments": 0,
+        "minutes": 23,
+        "subsGained": 0,
+        "avgDuration": 9
+      },
+      {
+        "id": "Km4kqyeLWiM",
+        "title": "Caminho 131 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/Km4kqyeLWiM/mqdefault.jpg",
+        "views": 630,
+        "likes": 46,
+        "comments": 2,
+        "minutes": 141,
+        "subsGained": 1,
+        "avgDuration": 41
       },
       {
         "id": "uD2wtA92RAU",
         "title": "Caminho, 117 - Oração | São Josemaría Escrivá  #sãojosemariaescrivá #caminho #sulco #forja #opusdei",
         "thumb": "https://i.ytimg.com/vi/uD2wtA92RAU/mqdefault.jpg",
-        "views": 610,
+        "views": 613,
         "likes": 18,
         "comments": 0,
         "minutes": 38,
@@ -923,26 +956,15 @@
         "avgDuration": 15
       },
       {
-        "id": "Km4kqyeLWiM",
-        "title": "Caminho 131 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/Km4kqyeLWiM/mqdefault.jpg",
-        "views": 593,
-        "likes": 44,
-        "comments": 1,
-        "minutes": 137,
-        "subsGained": 1,
-        "avgDuration": 43
-      },
-      {
-        "id": "frAwIBOvazs",
-        "title": "Caminho 132 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/frAwIBOvazs/mqdefault.jpg",
-        "views": 547,
-        "likes": 20,
+        "id": "yDiwBB073_Y",
+        "title": "Caminho 133 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/yDiwBB073_Y/mqdefault.jpg",
+        "views": 579,
+        "likes": 38,
         "comments": 0,
-        "minutes": 19,
-        "subsGained": 0,
-        "avgDuration": 8
+        "minutes": 38,
+        "subsGained": 3,
+        "avgDuration": 11
       },
       {
         "id": "_7PAmBlJ4Qk",
@@ -970,12 +992,12 @@
         "id": "icfZTfLixpc",
         "title": "A ESPERANÇA DO CRISTÃO (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg",
-        "views": 444,
+        "views": 450,
         "likes": 2,
         "comments": 1,
-        "minutes": 145,
+        "minutes": 152,
         "subsGained": 1,
-        "avgDuration": 102
+        "avgDuration": 104
       },
       {
         "id": "wy60p3Znl9g",
@@ -1011,17 +1033,6 @@
         "avgDuration": 8
       },
       {
-        "id": "yDiwBB073_Y",
-        "title": "Caminho 133 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/yDiwBB073_Y/mqdefault.jpg",
-        "views": 354,
-        "likes": 28,
-        "comments": 0,
-        "minutes": 24,
-        "subsGained": 3,
-        "avgDuration": 12
-      },
-      {
         "id": "eFLxRBeIjS0",
         "title": "Caminho 125 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/eFLxRBeIjS0/mqdefault.jpg",
@@ -1036,23 +1047,23 @@
         "id": "OfO4nU-MNng",
         "title": "PORQUE VERÃO A DEUS (Parte 1 de 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/OfO4nU-MNng/mqdefault.jpg",
-        "views": 303,
+        "views": 306,
         "likes": 8,
         "comments": 1,
-        "minutes": 298,
+        "minutes": 299,
         "subsGained": 0,
-        "avgDuration": 191
+        "avgDuration": 190
       },
       {
         "id": "KnTr-LDA8J0",
         "title": "VIDA DE FÉ (Parte 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/KnTr-LDA8J0/mqdefault.jpg",
-        "views": 269,
+        "views": 273,
         "likes": 5,
         "comments": 0,
-        "minutes": 79,
+        "minutes": 85,
         "subsGained": 2,
-        "avgDuration": 87
+        "avgDuration": 88
       }
     ]
   },
@@ -1165,6 +1176,10 @@
       [
         0,
         "20260922"
+      ],
+      [
+        4,
+        "20260923"
       ]
     ],
     "M99XVY39Tk0": [
@@ -1183,6 +1198,42 @@
       [
         35,
         "20260922"
+      ],
+      [
+        14,
+        "20260923"
+      ]
+    ],
+    "frAwIBOvazs": [
+      [
+        267,
+        "20260921"
+      ],
+      [
+        280,
+        "20260922"
+      ],
+      [
+        84,
+        "20260923"
+      ]
+    ],
+    "Km4kqyeLWiM": [
+      [
+        127,
+        "20260920"
+      ],
+      [
+        299,
+        "20260921"
+      ],
+      [
+        167,
+        "20260922"
+      ],
+      [
+        37,
+        "20260923"
       ]
     ],
     "uD2wtA92RAU": [
@@ -1285,132 +1336,20 @@
       [
         0,
         "20260922"
-      ]
-    ],
-    "Km4kqyeLWiM": [
-      [
-        127,
-        "20260920"
-      ],
-      [
-        299,
-        "20260921"
-      ],
-      [
-        167,
-        "20260922"
-      ]
-    ],
-    "frAwIBOvazs": [
-      [
-        267,
-        "20260921"
-      ],
-      [
-        280,
-        "20260922"
-      ]
-    ],
-    "_7PAmBlJ4Qk": [
-      [
-        151,
-        "20260829"
-      ],
-      [
-        159,
-        "20260830"
-      ],
-      [
-        46,
-        "20260831"
-      ],
-      [
-        46,
-        "20260901"
-      ],
-      [
-        12,
-        "20260902"
-      ],
-      [
-        14,
-        "20260903"
-      ],
-      [
-        5,
-        "20260904"
-      ],
-      [
-        5,
-        "20260905"
-      ],
-      [
-        4,
-        "20260906"
-      ],
-      [
-        6,
-        "20260907"
-      ],
-      [
-        6,
-        "20260908"
-      ],
-      [
-        4,
-        "20260909"
-      ],
-      [
-        7,
-        "20260910"
-      ],
-      [
-        9,
-        "20260911"
       ],
       [
         3,
-        "20260912"
-      ],
+        "20260923"
+      ]
+    ],
+    "yDiwBB073_Y": [
       [
-        10,
-        "20260913"
-      ],
-      [
-        10,
-        "20260914"
-      ],
-      [
-        8,
-        "20260915"
-      ],
-      [
-        1,
-        "20260916"
-      ],
-      [
-        2,
-        "20260917"
-      ],
-      [
-        1,
-        "20260918"
-      ],
-      [
-        1,
-        "20260919"
-      ],
-      [
-        0,
-        "20260920"
-      ],
-      [
-        2,
-        "20260921"
-      ],
-      [
-        1,
+        354,
         "20260922"
+      ],
+      [
+        225,
+        "20260923"
       ]
     ]
   }
