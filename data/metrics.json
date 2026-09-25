@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T10:27:04.271Z",
+  "generatedAt": "2026-09-25T15:27:24.489Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -445,7 +445,7 @@
         "20260924"
       ],
       [
-        "753",
+        "754",
         "20260925"
       ]
     ]
@@ -756,7 +756,7 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 6354
+          "views": 6344
         },
         {
           "label": "Inscritos (feed)",
@@ -764,11 +764,11 @@
         },
         {
           "label": "Busca no YouTube",
-          "views": 1266
+          "views": 1264
         },
         {
           "label": "Vídeos relacionados",
-          "views": 750
+          "views": 751
         },
         {
           "label": "Notificações",
@@ -842,7 +842,7 @@
       "device": [
         {
           "label": "Celular",
-          "views": 9902
+          "views": 9894
         },
         {
           "label": "Computador",
@@ -850,7 +850,7 @@
         },
         {
           "label": "TV",
-          "views": 319
+          "views": 315
         },
         {
           "label": "Tablet",
@@ -860,15 +860,15 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 7630
+          "views": 7618
         },
         {
           "label": "Explorar/Início",
-          "views": 1790
+          "views": 1791
         },
         {
           "label": "Página de exibição",
-          "views": 1751
+          "views": 1750
         },
         {
           "label": "Incorporado em site",
@@ -878,11 +878,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 10182
+          "views": 10173
         },
         {
           "label": "Inscritos",
-          "views": 991
+          "views": 988
         }
       ]
     }
