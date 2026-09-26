@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T22:41:59.456Z",
+  "generatedAt": "2026-09-26T00:54:34.624Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -21,6 +21,10 @@
       [
         "7",
         "20260925"
+      ],
+      [
+        "7",
+        "20260926"
       ]
     ],
     "2.1": [
@@ -447,22 +451,15 @@
       [
         "755",
         "20260925"
+      ],
+      [
+        "756",
+        "20260926"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        495,
-        108,
-        54,
-        2,
-        1,
-        20,
-        0,
-        1,
-        "20260827"
-      ],
       [
         594,
         94,
@@ -767,15 +764,15 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 6827
+          "views": 6451
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2418
+          "views": 2379
         },
         {
           "label": "Busca no YouTube",
-          "views": 1344
+          "views": 1278
         },
         {
           "label": "Vídeos relacionados",
@@ -783,11 +780,11 @@
         },
         {
           "label": "Notificações",
-          "views": 255
+          "views": 246
         },
         {
           "label": "Página do canal",
-          "views": 191
+          "views": 188
         },
         {
           "label": "Outra página do YouTube",
@@ -795,7 +792,7 @@
         },
         {
           "label": "Link externo",
-          "views": 35
+          "views": 33
         }
       ]
     }
@@ -839,7 +836,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 7877
+          "views": 7489
         },
         {
           "label": "Portugal",
@@ -853,33 +850,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 10606
+          "views": 10145
         },
         {
           "label": "Computador",
-          "views": 810
+          "views": 795
         },
         {
           "label": "TV",
-          "views": 333
+          "views": 322
         },
         {
           "label": "Tablet",
-          "views": 201
+          "views": 193
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 8232
+          "views": 7807
         },
         {
           "label": "Explorar/Início",
-          "views": 1892
+          "views": 1861
         },
         {
           "label": "Página de exibição",
-          "views": 1824
+          "views": 1785
         },
         {
           "label": "Incorporado em site",
@@ -889,11 +886,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 10881
+          "views": 10403
         },
         {
           "label": "Inscritos",
-          "views": 1069
+          "views": 1052
         }
       ]
     }
@@ -904,12 +901,12 @@
         "id": "ijgbrEF5l-E",
         "title": "ORAÇÃO NÃO É SILÊNCIO #Shorts",
         "thumb": "https://i.ytimg.com/vi/ijgbrEF5l-E/mqdefault.jpg",
-        "views": 1428,
-        "likes": 62,
+        "views": 1013,
+        "likes": 43,
         "comments": 0,
-        "minutes": 108,
-        "subsGained": 3,
-        "avgDuration": 15
+        "minutes": 84,
+        "subsGained": 1,
+        "avgDuration": 16
       },
       {
         "id": "M99XVY39Tk0",
@@ -1069,10 +1066,6 @@
   },
   "videoDaily": {
     "ijgbrEF5l-E": [
-      [
-        415,
-        "20260827"
-      ],
       [
         538,
         "20260828"
