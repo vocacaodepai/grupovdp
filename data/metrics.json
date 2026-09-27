@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T23:31:44.674Z",
+  "generatedAt": "2026-09-27T01:43:52.009Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -25,6 +25,10 @@
       [
         "7",
         "20260926"
+      ],
+      [
+        "7",
+        "20260927"
       ]
     ],
     "2.1": [
@@ -455,22 +459,15 @@
       [
         "762",
         "20260926"
+      ],
+      [
+        "764",
+        "20260927"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        594,
-        94,
-        37,
-        2,
-        0,
-        20,
-        0,
-        1,
-        "20260828"
-      ],
       [
         799,
         633,
@@ -775,31 +772,31 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 7486
+          "views": 6984
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2485
+          "views": 2465
         },
         {
           "label": "Busca no YouTube",
-          "views": 1325
+          "views": 1264
         },
         {
           "label": "Vídeos relacionados",
-          "views": 791
+          "views": 789
         },
         {
           "label": "Notificações",
-          "views": 270
+          "views": 268
         },
         {
           "label": "Página do canal",
-          "views": 198
+          "views": 193
         },
         {
           "label": "Outra página do YouTube",
-          "views": 56
+          "views": 54
         },
         {
           "label": "Link externo",
@@ -813,41 +810,41 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 35.9
+          "pct": 33.2
         },
         {
           "label": "65+ · Homens",
-          "pct": 21.8
+          "pct": 21.1
         },
         {
           "label": "45-54 · Homens",
-          "pct": 11.1
+          "pct": 12.1
         },
         {
           "label": "45-54 · Mulheres",
-          "pct": 7.3
-        },
-        {
-          "label": "35-44 · Homens",
-          "pct": 6.8
+          "pct": 7.9
         },
         {
           "label": "55-64 · Mulheres",
-          "pct": 6.8
+          "pct": 7.4
         },
         {
           "label": "55-64 · Homens",
-          "pct": 6.8
+          "pct": 7.4
+        },
+        {
+          "label": "35-44 · Homens",
+          "pct": 7.3
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 3.4
+          "pct": 3.7
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 8492
+          "views": 8134
         },
         {
           "label": "Portugal",
@@ -865,33 +862,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11299
+          "views": 10786
         },
         {
           "label": "Computador",
-          "views": 852
+          "views": 804
         },
         {
           "label": "TV",
-          "views": 344
+          "views": 328
         },
         {
           "label": "Tablet",
-          "views": 211
+          "views": 194
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 8906
+          "views": 8362
         },
         {
           "label": "Explorar/Início",
-          "views": 1946
+          "views": 1931
         },
         {
           "label": "Página de exibição",
-          "views": 1851
+          "views": 1816
         },
         {
           "label": "Incorporado em site",
@@ -901,28 +898,17 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 11559
+          "views": 10970
         },
         {
           "label": "Inscritos",
-          "views": 1147
+          "views": 1142
         }
       ]
     }
   },
   "itemVideos": {
     "2.2": [
-      {
-        "id": "ijgbrEF5l-E",
-        "title": "ORAÇÃO NÃO É SILÊNCIO #Shorts",
-        "thumb": "https://i.ytimg.com/vi/ijgbrEF5l-E/mqdefault.jpg",
-        "views": 1015,
-        "likes": 43,
-        "comments": 0,
-        "minutes": 84,
-        "subsGained": 1,
-        "avgDuration": 16
-      },
       {
         "id": "frAwIBOvazs",
         "title": "Caminho 132 - Santa Pureza - Sao Josemaria Escriva",
@@ -999,6 +985,17 @@
         "minutes": 1239,
         "subsGained": 21,
         "avgDuration": 220
+      },
+      {
+        "id": "ijgbrEF5l-E",
+        "title": "ORAÇÃO NÃO É SILÊNCIO #Shorts",
+        "thumb": "https://i.ytimg.com/vi/ijgbrEF5l-E/mqdefault.jpg",
+        "views": 477,
+        "likes": 24,
+        "comments": 0,
+        "minutes": 50,
+        "subsGained": 0,
+        "avgDuration": 20
       },
       {
         "id": "PuN0N_bgMmM",
@@ -1080,120 +1077,6 @@
     ]
   },
   "videoDaily": {
-    "ijgbrEF5l-E": [
-      [
-        538,
-        "20260828"
-      ],
-      [
-        261,
-        "20260829"
-      ],
-      [
-        171,
-        "20260830"
-      ],
-      [
-        15,
-        "20260831"
-      ],
-      [
-        2,
-        "20260901"
-      ],
-      [
-        0,
-        "20260902"
-      ],
-      [
-        3,
-        "20260903"
-      ],
-      [
-        6,
-        "20260904"
-      ],
-      [
-        0,
-        "20260905"
-      ],
-      [
-        0,
-        "20260906"
-      ],
-      [
-        0,
-        "20260907"
-      ],
-      [
-        0,
-        "20260908"
-      ],
-      [
-        0,
-        "20260909"
-      ],
-      [
-        2,
-        "20260910"
-      ],
-      [
-        0,
-        "20260911"
-      ],
-      [
-        0,
-        "20260912"
-      ],
-      [
-        0,
-        "20260913"
-      ],
-      [
-        4,
-        "20260914"
-      ],
-      [
-        0,
-        "20260915"
-      ],
-      [
-        0,
-        "20260916"
-      ],
-      [
-        0,
-        "20260917"
-      ],
-      [
-        5,
-        "20260918"
-      ],
-      [
-        0,
-        "20260919"
-      ],
-      [
-        0,
-        "20260920"
-      ],
-      [
-        2,
-        "20260921"
-      ],
-      [
-        0,
-        "20260922"
-      ],
-      [
-        4,
-        "20260923"
-      ],
-      [
-        2,
-        "20260924"
-      ]
-    ],
     "frAwIBOvazs": [
       [
         261,
@@ -1281,6 +1164,116 @@
       ],
       [
         26,
+        "20260924"
+      ]
+    ],
+    "uD2wtA92RAU": [
+      [
+        210,
+        "20260829"
+      ],
+      [
+        261,
+        "20260830"
+      ],
+      [
+        86,
+        "20260831"
+      ],
+      [
+        10,
+        "20260901"
+      ],
+      [
+        6,
+        "20260902"
+      ],
+      [
+        0,
+        "20260903"
+      ],
+      [
+        5,
+        "20260904"
+      ],
+      [
+        6,
+        "20260905"
+      ],
+      [
+        0,
+        "20260906"
+      ],
+      [
+        5,
+        "20260907"
+      ],
+      [
+        2,
+        "20260908"
+      ],
+      [
+        0,
+        "20260909"
+      ],
+      [
+        3,
+        "20260910"
+      ],
+      [
+        3,
+        "20260911"
+      ],
+      [
+        5,
+        "20260912"
+      ],
+      [
+        0,
+        "20260913"
+      ],
+      [
+        1,
+        "20260914"
+      ],
+      [
+        1,
+        "20260915"
+      ],
+      [
+        0,
+        "20260916"
+      ],
+      [
+        2,
+        "20260917"
+      ],
+      [
+        1,
+        "20260918"
+      ],
+      [
+        0,
+        "20260919"
+      ],
+      [
+        1,
+        "20260920"
+      ],
+      [
+        2,
+        "20260921"
+      ],
+      [
+        0,
+        "20260922"
+      ],
+      [
+        3,
+        "20260923"
+      ],
+      [
+        0,
         "20260924"
       ]
     ]
