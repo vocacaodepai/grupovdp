@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T23:13:27.301Z",
+  "generatedAt": "2026-09-28T01:42:34.746Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -29,6 +29,10 @@
       [
         "7",
         "20260927"
+      ],
+      [
+        "7",
+        "20260928"
       ]
     ],
     "2.1": [
@@ -463,22 +467,15 @@
       [
         "769",
         "20260927"
+      ],
+      [
+        "770",
+        "20260928"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        799,
-        633,
-        133,
-        11,
-        0,
-        59,
-        2,
-        8,
-        "20260829"
-      ],
       [
         930,
         481,
@@ -783,35 +780,35 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 7730
+          "views": 7194
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2619
+          "views": 2554
         },
         {
           "label": "Busca no YouTube",
-          "views": 1338
+          "views": 1302
         },
         {
           "label": "Vídeos relacionados",
-          "views": 801
+          "views": 681
         },
         {
           "label": "Notificações",
-          "views": 283
+          "views": 260
         },
         {
           "label": "Página do canal",
-          "views": 198
+          "views": 187
         },
         {
           "label": "Outra página do YouTube",
-          "views": 57
+          "views": 54
         },
         {
           "label": "Link externo",
-          "views": 38
+          "views": 34
         }
       ]
     }
@@ -821,41 +818,41 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 34.5
+          "pct": 33.1
         },
         {
           "label": "65+ · Homens",
-          "pct": 20.4
+          "pct": 21.1
         },
         {
           "label": "45-54 · Homens",
-          "pct": 10.8
-        },
-        {
-          "label": "55-64 · Mulheres",
-          "pct": 8.9
+          "pct": 9.6
         },
         {
           "label": "55-64 · Homens",
-          "pct": 8.4
+          "pct": 9.4
+        },
+        {
+          "label": "55-64 · Mulheres",
+          "pct": 8.3
         },
         {
           "label": "45-54 · Mulheres",
-          "pct": 7.1
+          "pct": 7.5
         },
         {
           "label": "35-44 · Homens",
-          "pct": 6.6
+          "pct": 7.3
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 3.3
+          "pct": 3.7
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 8907
+          "views": 8353
         },
         {
           "label": "Portugal",
@@ -873,33 +870,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11733
+          "views": 11028
         },
         {
           "label": "Computador",
-          "views": 832
+          "views": 790
         },
         {
           "label": "TV",
-          "views": 347
+          "views": 315
         },
         {
           "label": "Tablet",
-          "views": 214
+          "views": 194
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 9198
+          "views": 8602
         },
         {
           "label": "Explorar/Início",
-          "views": 2049
+          "views": 1999
         },
         {
           "label": "Página de exibição",
-          "views": 1876
+          "views": 1723
         },
         {
           "label": "Incorporado em site",
@@ -909,11 +906,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 11890
+          "views": 11140
         },
         {
           "label": "Inscritos",
-          "views": 1236
+          "views": 1187
         }
       ]
     }
@@ -987,39 +984,6 @@
         "avgDuration": 40
       },
       {
-        "id": "uD2wtA92RAU",
-        "title": "Caminho, 117 - Oração | São Josemaría Escrivá  #sãojosemariaescrivá #caminho #sulco #forja #opusdei",
-        "thumb": "https://i.ytimg.com/vi/uD2wtA92RAU/mqdefault.jpg",
-        "views": 617,
-        "likes": 18,
-        "comments": 0,
-        "minutes": 39,
-        "subsGained": 1,
-        "avgDuration": 15
-      },
-      {
-        "id": "_7PAmBlJ4Qk",
-        "title": "TU ÉS FILHO DE DEUS: A INTIMIDADE QUE CURA TODA QUEDA | SÃO JOSEMARIA ESCRIVÁ",
-        "thumb": "https://i.ytimg.com/vi/_7PAmBlJ4Qk/mqdefault.jpg",
-        "views": 513,
-        "likes": 45,
-        "comments": 7,
-        "minutes": 1239,
-        "subsGained": 21,
-        "avgDuration": 220
-      },
-      {
-        "id": "ijgbrEF5l-E",
-        "title": "ORAÇÃO NÃO É SILÊNCIO #Shorts",
-        "thumb": "https://i.ytimg.com/vi/ijgbrEF5l-E/mqdefault.jpg",
-        "views": 480,
-        "likes": 25,
-        "comments": 0,
-        "minutes": 51,
-        "subsGained": 0,
-        "avgDuration": 20
-      },
-      {
         "id": "PuN0N_bgMmM",
         "title": "Caminho 124 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/PuN0N_bgMmM/mqdefault.jpg",
@@ -1064,15 +1028,26 @@
         "avgDuration": 13
       },
       {
-        "id": "wk1NKhGLxrg",
-        "title": "Caminho, 116 - Oração | São Josemaría Escrivá  #sãojosemariaescrivá #caminho #sulco #forja #opusdei",
-        "thumb": "https://i.ytimg.com/vi/wk1NKhGLxrg/mqdefault.jpg",
-        "views": 396,
-        "likes": 24,
+        "id": "uD2wtA92RAU",
+        "title": "Caminho, 117 - Oração | São Josemaría Escrivá  #sãojosemariaescrivá #caminho #sulco #forja #opusdei",
+        "thumb": "https://i.ytimg.com/vi/uD2wtA92RAU/mqdefault.jpg",
+        "views": 407,
+        "likes": 6,
         "comments": 0,
-        "minutes": 15,
-        "subsGained": 0,
-        "avgDuration": 8
+        "minutes": 23,
+        "subsGained": 1,
+        "avgDuration": 13
+      },
+      {
+        "id": "_7PAmBlJ4Qk",
+        "title": "TU ÉS FILHO DE DEUS: A INTIMIDADE QUE CURA TODA QUEDA | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/_7PAmBlJ4Qk/mqdefault.jpg",
+        "views": 362,
+        "likes": 22,
+        "comments": 5,
+        "minutes": 724,
+        "subsGained": 11,
+        "avgDuration": 208
       },
       {
         "id": "eFLxRBeIjS0",
@@ -1084,6 +1059,28 @@
         "minutes": 30,
         "subsGained": 0,
         "avgDuration": 19
+      },
+      {
+        "id": "OfO4nU-MNng",
+        "title": "PORQUE VERÃO A DEUS (Parte 1 de 2) | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/OfO4nU-MNng/mqdefault.jpg",
+        "views": 310,
+        "likes": 8,
+        "comments": 1,
+        "minutes": 310,
+        "subsGained": 0,
+        "avgDuration": 191
+      },
+      {
+        "id": "wk1NKhGLxrg",
+        "title": "Caminho, 116 - Oração | São Josemaría Escrivá  #sãojosemariaescrivá #caminho #sulco #forja #opusdei",
+        "thumb": "https://i.ytimg.com/vi/wk1NKhGLxrg/mqdefault.jpg",
+        "views": 299,
+        "likes": 15,
+        "comments": 0,
+        "minutes": 12,
+        "subsGained": 0,
+        "avgDuration": 8
       }
     ]
   },
