@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T01:42:34.746Z",
+  "generatedAt": "2026-09-28T07:41:03.909Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -469,7 +469,7 @@
         "20260927"
       ],
       [
-        "770",
+        "771",
         "20260928"
       ]
     ]
@@ -780,7 +780,7 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 7194
+          "views": 7186
         },
         {
           "label": "Inscritos (feed)",
@@ -870,7 +870,7 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11028
+          "views": 11021
         },
         {
           "label": "Computador",
@@ -888,15 +888,15 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 8602
+          "views": 8595
         },
         {
           "label": "Explorar/Início",
-          "views": 1999
+          "views": 2000
         },
         {
           "label": "Página de exibição",
-          "views": 1723
+          "views": 1722
         },
         {
           "label": "Incorporado em site",
@@ -906,7 +906,7 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 11140
+          "views": 11133
         },
         {
           "label": "Inscritos",
@@ -946,7 +946,7 @@
         "views": 759,
         "likes": 27,
         "comments": 0,
-        "minutes": 28,
+        "minutes": 29,
         "subsGained": 0,
         "avgDuration": 9
       },
