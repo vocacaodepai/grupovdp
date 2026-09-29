@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T21:50:01.273Z",
+  "generatedAt": "2026-09-29T01:18:56.387Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -33,6 +33,10 @@
       [
         "7",
         "20260928"
+      ],
+      [
+        "7",
+        "20260929"
       ]
     ],
     "2.1": [
@@ -471,22 +475,15 @@
       [
         "779",
         "20260928"
+      ],
+      [
+        "778",
+        "20260929"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        930,
-        481,
-        97,
-        8,
-        1,
-        37,
-        4,
-        9,
-        "20260830"
-      ],
       [
         329,
         275,
@@ -752,7 +749,7 @@
         "20260923"
       ],
       [
-        1251,
+        1244,
         233,
         47,
         6,
@@ -791,35 +788,35 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 7781
+          "views": 7196
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2650
+          "views": 2495
         },
         {
           "label": "Busca no YouTube",
-          "views": 1364
+          "views": 1306
         },
         {
           "label": "Vídeos relacionados",
-          "views": 725
+          "views": 631
         },
         {
           "label": "Notificações",
-          "views": 304
+          "views": 289
         },
         {
           "label": "Página do canal",
-          "views": 194
+          "views": 192
         },
         {
           "label": "Outra página do YouTube",
-          "views": 57
+          "views": 54
         },
         {
           "label": "Link externo",
-          "views": 34
+          "views": 31
         }
       ]
     }
@@ -829,41 +826,41 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 32.7
+          "pct": 31.4
         },
         {
           "label": "65+ · Homens",
-          "pct": 22.3
-        },
-        {
-          "label": "55-64 · Mulheres",
-          "pct": 9.8
-        },
-        {
-          "label": "55-64 · Homens",
-          "pct": 9.8
+          "pct": 21.9
         },
         {
           "label": "45-54 · Homens",
-          "pct": 8.7
+          "pct": 10
+        },
+        {
+          "label": "55-64 · Mulheres",
+          "pct": 9
+        },
+        {
+          "label": "55-64 · Homens",
+          "pct": 8.4
         },
         {
           "label": "45-54 · Mulheres",
-          "pct": 6.8
+          "pct": 7.8
         },
         {
           "label": "35-44 · Homens",
-          "pct": 6.6
+          "pct": 7.7
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 3.4
+          "pct": 3.9
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 9032
+          "views": 8379
         },
         {
           "label": "Portugal",
@@ -881,33 +878,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11803
+          "views": 10961
         },
         {
           "label": "Computador",
-          "views": 814
+          "views": 785
         },
         {
           "label": "TV",
-          "views": 348
+          "views": 312
         },
         {
           "label": "Tablet",
-          "views": 206
+          "views": 183
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 9284
+          "views": 8614
         },
         {
           "label": "Explorar/Início",
-          "views": 2081
+          "views": 1961
         },
         {
           "label": "Página de exibição",
-          "views": 1803
+          "views": 1663
         },
         {
           "label": "Incorporado em site",
@@ -917,11 +914,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 11901
+          "views": 11040
         },
         {
           "label": "Inscritos",
-          "views": 1270
+          "views": 1201
         }
       ]
     }
@@ -1039,28 +1036,6 @@
         "avgDuration": 13
       },
       {
-        "id": "uD2wtA92RAU",
-        "title": "Caminho, 117 - Oração | São Josemaría Escrivá  #sãojosemariaescrivá #caminho #sulco #forja #opusdei",
-        "thumb": "https://i.ytimg.com/vi/uD2wtA92RAU/mqdefault.jpg",
-        "views": 407,
-        "likes": 6,
-        "comments": 0,
-        "minutes": 23,
-        "subsGained": 1,
-        "avgDuration": 13
-      },
-      {
-        "id": "_7PAmBlJ4Qk",
-        "title": "TU ÉS FILHO DE DEUS: A INTIMIDADE QUE CURA TODA QUEDA | SÃO JOSEMARIA ESCRIVÁ",
-        "thumb": "https://i.ytimg.com/vi/_7PAmBlJ4Qk/mqdefault.jpg",
-        "views": 362,
-        "likes": 22,
-        "comments": 5,
-        "minutes": 724,
-        "subsGained": 11,
-        "avgDuration": 208
-      },
-      {
         "id": "OxcPmErm41g",
         "title": "Caminho 136 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/OxcPmErm41g/mqdefault.jpg",
@@ -1092,6 +1067,28 @@
         "minutes": 312,
         "subsGained": 0,
         "avgDuration": 188
+      },
+      {
+        "id": "KnTr-LDA8J0",
+        "title": "VIDA DE FÉ (Parte 2) | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/KnTr-LDA8J0/mqdefault.jpg",
+        "views": 279,
+        "likes": 6,
+        "comments": 0,
+        "minutes": 102,
+        "subsGained": 2,
+        "avgDuration": 99
+      },
+      {
+        "id": "7SgO4ltfgmI",
+        "title": "PORQUE VERÃO A DEUS (Parte 2 de 2) | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/7SgO4ltfgmI/mqdefault.jpg",
+        "views": 227,
+        "likes": 16,
+        "comments": 1,
+        "minutes": 243,
+        "subsGained": 6,
+        "avgDuration": 116
       }
     ]
   },
