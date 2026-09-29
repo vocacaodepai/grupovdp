@@ -28,6 +28,17 @@ jobs:
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
         run: node scripts/refresh-youtube.mjs
 
+      - name: Buscar GA4, Search Console e AdSense dos sites
+        continue-on-error: true
+        env:
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+          GA4_PROPERTY_PORTALDAAI: ${{ secrets.GA4_PROPERTY_PORTALDAAI }}
+          GA4_PROPERTY_VOCACAODEMAE: ${{ secrets.GA4_PROPERTY_VOCACAODEMAE }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          ADSENSE_REFRESH_TOKEN: ${{ secrets.ADSENSE_REFRESH_TOKEN }}
+        run: node scripts/refresh-sites.mjs
+
       - name: Publicar se algo mudou
         run: |
           git config user.name "vdp-bot"
