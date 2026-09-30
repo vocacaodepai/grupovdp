@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T02:01:11.582Z",
+  "generatedAt": "2026-09-30T08:22:26.070Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -1274,7 +1274,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-09-30T02:01:11.635Z",
+      "generatedAt": "2026-09-30T08:22:26.129Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1284,7 +1284,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-09-30T02:01:11.635Z",
+      "generatedAt": "2026-09-30T08:22:26.129Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
