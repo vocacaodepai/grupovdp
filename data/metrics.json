@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T19:12:45.178Z",
+  "generatedAt": "2026-10-03T22:09:02.613Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -983,7 +983,7 @@
         "id": "yzMdMrC3Qjk",
         "title": "Caminho 135 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/yzMdMrC3Qjk/mqdefault.jpg",
-        "views": 1008,
+        "views": 1006,
         "likes": 71,
         "comments": 4,
         "minutes": 76,
@@ -994,7 +994,7 @@
         "id": "7Pmw_bK9I-s",
         "title": "Caminho 137 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7Pmw_bK9I-s/mqdefault.jpg",
-        "views": 854,
+        "views": 850,
         "likes": 35,
         "comments": 2,
         "minutes": 53,
@@ -1027,7 +1027,7 @@
         "id": "AxUKvnrYrSA",
         "title": "Caminho 138 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/AxUKvnrYrSA/mqdefault.jpg",
-        "views": 749,
+        "views": 740,
         "likes": 41,
         "comments": 1,
         "minutes": 87,
@@ -1060,7 +1060,7 @@
         "id": "6x_sG_e9kAE",
         "title": "Caminho 139 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/6x_sG_e9kAE/mqdefault.jpg",
-        "views": 650,
+        "views": 648,
         "likes": 60,
         "comments": 2,
         "minutes": 44,
@@ -1192,7 +1192,7 @@
         "20260927"
       ],
       [
-        37,
+        35,
         "20260928"
       ],
       [
@@ -1218,7 +1218,7 @@
         "20260927"
       ],
       [
-        333,
+        329,
         "20260928"
       ],
       [
@@ -1328,7 +1328,7 @@
         "20260927"
       ],
       [
-        424,
+        415,
         "20260928"
       ],
       [
@@ -1349,7 +1349,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-03T19:12:45.232Z",
+      "generatedAt": "2026-10-03T22:09:02.666Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1359,7 +1359,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-03T19:12:45.232Z",
+      "generatedAt": "2026-10-03T22:09:02.666Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
