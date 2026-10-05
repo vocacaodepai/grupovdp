@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T07:55:05.266Z",
+  "generatedAt": "2026-10-05T16:48:38.699Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -1117,17 +1117,6 @@
         "avgDuration": 9
       },
       {
-        "id": "bZq73PlLr6g",
-        "title": "Caminho 140 - São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/bZq73PlLr6g/mqdefault.jpg",
-        "views": 423,
-        "likes": 37,
-        "comments": 3,
-        "minutes": 32,
-        "subsGained": 0,
-        "avgDuration": 13
-      },
-      {
         "id": "gsiLPtndSzQ",
         "title": "Caminho 122 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/gsiLPtndSzQ/mqdefault.jpg",
@@ -1135,6 +1124,17 @@
         "likes": 17,
         "comments": 0,
         "minutes": 18,
+        "subsGained": 0,
+        "avgDuration": 13
+      },
+      {
+        "id": "bZq73PlLr6g",
+        "title": "Caminho 140 - São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/bZq73PlLr6g/mqdefault.jpg",
+        "views": 423,
+        "likes": 37,
+        "comments": 3,
+        "minutes": 32,
         "subsGained": 0,
         "avgDuration": 13
       }
@@ -1378,7 +1378,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-05T07:55:05.306Z",
+      "generatedAt": "2026-10-05T16:48:38.741Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1388,7 +1388,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-05T07:55:05.306Z",
+      "generatedAt": "2026-10-05T16:48:38.741Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
