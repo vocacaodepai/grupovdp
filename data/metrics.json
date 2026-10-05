@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T23:02:38.794Z",
+  "generatedAt": "2026-10-05T01:51:58.921Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -57,6 +57,10 @@
       [
         "8",
         "20261004"
+      ],
+      [
+        "8",
+        "20261005"
       ]
     ],
     "2.1": [
@@ -519,22 +523,15 @@
       [
         "793",
         "20261004"
+      ],
+      [
+        "793",
+        "20261005"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        71,
-        41,
-        68,
-        0,
-        2,
-        1,
-        0,
-        0,
-        "20260905"
-      ],
       [
         46,
         85,
@@ -839,19 +836,19 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 9501
+          "views": 9490
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2620
+          "views": 2610
         },
         {
           "label": "Busca no YouTube",
-          "views": 1581
+          "views": 1552
         },
         {
           "label": "Vídeos relacionados",
-          "views": 794
+          "views": 780
         },
         {
           "label": "Notificações",
@@ -859,11 +856,11 @@
         },
         {
           "label": "Página do canal",
-          "views": 263
+          "views": 262
         },
         {
           "label": "Outra página do YouTube",
-          "views": 56
+          "views": 55
         },
         {
           "label": "Link externo",
@@ -911,7 +908,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 11077
+          "views": 11010
         },
         {
           "label": "Portugal",
@@ -929,15 +926,15 @@
       "device": [
         {
           "label": "Celular",
-          "views": 13782
+          "views": 13722
         },
         {
           "label": "Computador",
-          "views": 919
+          "views": 911
         },
         {
           "label": "TV",
-          "views": 389
+          "views": 386
         },
         {
           "label": "Tablet",
@@ -947,15 +944,15 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11252
+          "views": 11224
         },
         {
           "label": "Explorar/Início",
-          "views": 2051
+          "views": 2047
         },
         {
           "label": "Página de exibição",
-          "views": 1996
+          "views": 1957
         },
         {
           "label": "Incorporado em site",
@@ -965,11 +962,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 13783
+          "views": 13724
         },
         {
           "label": "Inscritos",
-          "views": 1520
+          "views": 1508
         }
       ]
     }
@@ -1381,7 +1378,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-04T23:02:38.849Z",
+      "generatedAt": "2026-10-05T01:51:58.989Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1391,7 +1388,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-04T23:02:38.849Z",
+      "generatedAt": "2026-10-05T01:51:58.989Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
