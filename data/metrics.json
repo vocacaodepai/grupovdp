@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T13:42:46.871Z",
+  "generatedAt": "2026-10-07T19:33:31.156Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -844,6 +844,17 @@
         1,
         1,
         "20261004"
+      ],
+      [
+        367,
+        41,
+        23,
+        1,
+        1,
+        17,
+        2,
+        0,
+        "20261005"
       ]
     ]
   },
@@ -852,23 +863,23 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 9442
+          "views": 9716
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2654
+          "views": 2689
         },
         {
           "label": "Busca no YouTube",
-          "views": 1559
+          "views": 1593
         },
         {
           "label": "Vídeos relacionados",
-          "views": 794
+          "views": 797
         },
         {
           "label": "Notificações",
-          "views": 398
+          "views": 416
         },
         {
           "label": "Página do canal",
@@ -880,7 +891,7 @@
         },
         {
           "label": "Link externo",
-          "views": 51
+          "views": 52
         }
       ]
     }
@@ -924,7 +935,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 10948
+          "views": 11177
         },
         {
           "label": "Portugal",
@@ -946,33 +957,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 13746
+          "views": 14084
         },
         {
           "label": "Computador",
-          "views": 918
+          "views": 933
         },
         {
           "label": "TV",
-          "views": 393
+          "views": 400
         },
         {
           "label": "Tablet",
-          "views": 207
+          "views": 214
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11188
+          "views": 11501
         },
         {
           "label": "Explorar/Início",
-          "views": 2084
+          "views": 2113
         },
         {
           "label": "Página de exibição",
-          "views": 1990
+          "views": 2015
         },
         {
           "label": "Incorporado em site",
@@ -982,11 +993,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 13733
+          "views": 14058
         },
         {
           "label": "Inscritos",
-          "views": 1533
+          "views": 1575
         }
       ]
     }
@@ -997,8 +1008,8 @@
         "id": "wKYW-xQPB2c",
         "title": "Caminho 134 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/wKYW-xQPB2c/mqdefault.jpg",
-        "views": 1152,
-        "likes": 52,
+        "views": 1156,
+        "likes": 53,
         "comments": 4,
         "minutes": 51,
         "subsGained": 4,
@@ -1008,7 +1019,7 @@
         "id": "yzMdMrC3Qjk",
         "title": "Caminho 135 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/yzMdMrC3Qjk/mqdefault.jpg",
-        "views": 1015,
+        "views": 1017,
         "likes": 71,
         "comments": 5,
         "minutes": 77,
@@ -1019,7 +1030,7 @@
         "id": "7Pmw_bK9I-s",
         "title": "Caminho 137 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7Pmw_bK9I-s/mqdefault.jpg",
-        "views": 857,
+        "views": 860,
         "likes": 36,
         "comments": 2,
         "minutes": 54,
@@ -1052,7 +1063,7 @@
         "id": "AxUKvnrYrSA",
         "title": "Caminho 138 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/AxUKvnrYrSA/mqdefault.jpg",
-        "views": 752,
+        "views": 753,
         "likes": 43,
         "comments": 1,
         "minutes": 88,
@@ -1074,7 +1085,7 @@
         "id": "6x_sG_e9kAE",
         "title": "Caminho 139 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/6x_sG_e9kAE/mqdefault.jpg",
-        "views": 676,
+        "views": 679,
         "likes": 61,
         "comments": 2,
         "minutes": 46,
@@ -1096,7 +1107,7 @@
         "id": "icfZTfLixpc",
         "title": "A ESPERANÇA DO CRISTÃO (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg",
-        "views": 481,
+        "views": 482,
         "likes": 3,
         "comments": 1,
         "minutes": 193,
@@ -1115,6 +1126,17 @@
         "avgDuration": 14
       },
       {
+        "id": "bZq73PlLr6g",
+        "title": "Caminho 140 - São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/bZq73PlLr6g/mqdefault.jpg",
+        "views": 450,
+        "likes": 41,
+        "comments": 3,
+        "minutes": 35,
+        "subsGained": 0,
+        "avgDuration": 14
+      },
+      {
         "id": "wy60p3Znl9g",
         "title": "Caminho 121 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/wy60p3Znl9g/mqdefault.jpg",
@@ -1123,17 +1145,6 @@
         "comments": 0,
         "minutes": 31,
         "subsGained": 2,
-        "avgDuration": 14
-      },
-      {
-        "id": "bZq73PlLr6g",
-        "title": "Caminho 140 - São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/bZq73PlLr6g/mqdefault.jpg",
-        "views": 445,
-        "likes": 40,
-        "comments": 3,
-        "minutes": 35,
-        "subsGained": 0,
         "avgDuration": 14
       },
       {
@@ -1209,6 +1220,10 @@
       [
         0,
         "20261004"
+      ],
+      [
+        4,
+        "20261005"
       ]
     ],
     "yzMdMrC3Qjk": [
@@ -1255,6 +1270,10 @@
       [
         5,
         "20261004"
+      ],
+      [
+        2,
+        "20261005"
       ]
     ],
     "7Pmw_bK9I-s": [
@@ -1293,6 +1312,10 @@
       [
         4,
         "20261004"
+      ],
+      [
+        3,
+        "20261005"
       ]
     ],
     "yDiwBB073_Y": [
@@ -1347,6 +1370,10 @@
       [
         0,
         "20261004"
+      ],
+      [
+        0,
+        "20261005"
       ]
     ],
     "frAwIBOvazs": [
@@ -1405,6 +1432,10 @@
       [
         3,
         "20261004"
+      ],
+      [
+        0,
+        "20261005"
       ]
     ],
     "AxUKvnrYrSA": [
@@ -1439,6 +1470,10 @@
       [
         6,
         "20261004"
+      ],
+      [
+        1,
+        "20261005"
       ]
     ]
   },
@@ -1446,7 +1481,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-07T13:42:46.926Z",
+      "generatedAt": "2026-10-07T19:33:31.213Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1456,7 +1491,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-07T13:42:46.926Z",
+      "generatedAt": "2026-10-07T19:33:31.213Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
