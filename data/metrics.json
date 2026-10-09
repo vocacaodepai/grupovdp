@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T22:21:54.752Z",
+  "generatedAt": "2026-10-09T02:20:36.323Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -73,6 +73,10 @@
       [
         "8",
         "20261008"
+      ],
+      [
+        "8",
+        "20261009"
       ]
     ],
     "2.1": [
@@ -551,22 +555,15 @@
       [
         "793",
         "20261008"
+      ],
+      [
+        "794",
+        "20261009"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        453,
-        214,
-        114,
-        1,
-        0,
-        20,
-        0,
-        13,
-        "20260909"
-      ],
       [
         588,
         295,
@@ -871,35 +868,35 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 9987
+          "views": 9770
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2705
+          "views": 2547
         },
         {
           "label": "Busca no YouTube",
-          "views": 1632
+          "views": 1590
         },
         {
           "label": "Vídeos relacionados",
-          "views": 799
+          "views": 783
         },
         {
           "label": "Notificações",
-          "views": 412
+          "views": 408
         },
         {
           "label": "Página do canal",
-          "views": 313
+          "views": 307
         },
         {
           "label": "Outra página do YouTube",
-          "views": 64
+          "views": 61
         },
         {
           "label": "Link externo",
-          "views": 58
+          "views": 53
         }
       ]
     }
@@ -943,7 +940,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 11555
+          "views": 11284
         },
         {
           "label": "Portugal",
@@ -965,33 +962,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 14444
+          "views": 14042
         },
         {
           "label": "Computador",
-          "views": 944
+          "views": 903
         },
         {
           "label": "TV",
-          "views": 416
+          "views": 410
         },
         {
           "label": "Tablet",
-          "views": 216
+          "views": 212
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11862
+          "views": 11607
         },
         {
           "label": "Explorar/Início",
-          "views": 2127
+          "views": 1992
         },
         {
           "label": "Página de exibição",
-          "views": 2029
+          "views": 1966
         },
         {
           "label": "Incorporado em site",
@@ -1001,11 +998,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 14430
+          "views": 14016
         },
         {
           "label": "Inscritos",
-          "views": 1592
+          "views": 1553
         }
       ]
     }
@@ -1156,17 +1153,6 @@
         "avgDuration": 14
       },
       {
-        "id": "wy60p3Znl9g",
-        "title": "Caminho 121 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/wy60p3Znl9g/mqdefault.jpg",
-        "views": 446,
-        "likes": 14,
-        "comments": 0,
-        "minutes": 31,
-        "subsGained": 2,
-        "avgDuration": 14
-      },
-      {
         "id": "OxcPmErm41g",
         "title": "Caminho 136 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/OxcPmErm41g/mqdefault.jpg",
@@ -1176,6 +1162,17 @@
         "minutes": 18,
         "subsGained": 3,
         "avgDuration": 9
+      },
+      {
+        "id": "gsiLPtndSzQ",
+        "title": "Caminho 122 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/gsiLPtndSzQ/mqdefault.jpg",
+        "views": 423,
+        "likes": 17,
+        "comments": 0,
+        "minutes": 18,
+        "subsGained": 0,
+        "avgDuration": 13
       }
     ]
   },
@@ -1513,7 +1510,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-08T22:21:54.803Z",
+      "generatedAt": "2026-10-09T02:20:36.377Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1523,7 +1520,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-08T22:21:54.803Z",
+      "generatedAt": "2026-10-09T02:20:36.377Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
