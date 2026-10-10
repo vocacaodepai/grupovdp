@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T21:04:21.160Z",
+  "generatedAt": "2026-10-10T00:44:41.489Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -77,6 +77,10 @@
       [
         "8",
         "20261009"
+      ],
+      [
+        "8",
+        "20261010"
       ]
     ],
     "2.1": [
@@ -559,22 +563,15 @@
       [
         "794",
         "20261009"
+      ],
+      [
+        "795",
+        "20261010"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        588,
-        295,
-        83,
-        8,
-        2,
-        22,
-        0,
-        4,
-        "20260910"
-      ],
       [
         270,
         118,
@@ -879,35 +876,35 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10005
+          "views": 9783
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2598
+          "views": 2401
         },
         {
           "label": "Busca no YouTube",
-          "views": 1644
+          "views": 1592
         },
         {
           "label": "Vídeos relacionados",
-          "views": 789
+          "views": 704
         },
         {
           "label": "Notificações",
-          "views": 408
+          "views": 406
         },
         {
           "label": "Página do canal",
-          "views": 318
+          "views": 298
         },
         {
           "label": "Outra página do YouTube",
-          "views": 61
+          "views": 55
         },
         {
           "label": "Link externo",
-          "views": 56
+          "views": 55
         }
       ]
     }
@@ -917,27 +914,27 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 30.6
+          "pct": 30.9
         },
         {
           "label": "65+ · Homens",
-          "pct": 24.6
+          "pct": 24.8
         },
         {
           "label": "45-54 · Homens",
-          "pct": 10.1
+          "pct": 9.7
         },
         {
           "label": "35-44 · Homens",
-          "pct": 7.8
+          "pct": 7.9
         },
         {
           "label": "45-54 · Mulheres",
-          "pct": 7.8
+          "pct": 7.5
         },
         {
           "label": "55-64 · Mulheres",
-          "pct": 6.9
+          "pct": 7
         },
         {
           "label": "55-64 · Homens",
@@ -951,7 +948,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 11580
+          "views": 11178
         },
         {
           "label": "Portugal",
@@ -973,33 +970,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 14374
+          "views": 13877
         },
         {
           "label": "Computador",
-          "views": 912
+          "views": 858
         },
         {
           "label": "TV",
-          "views": 427
+          "views": 404
         },
         {
           "label": "Tablet",
-          "views": 214
+          "views": 200
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11881
-        },
-        {
-          "label": "Explorar/Início",
-          "views": 2027
+          "views": 11600
         },
         {
           "label": "Página de exibição",
-          "views": 2017
+          "views": 1875
+        },
+        {
+          "label": "Explorar/Início",
+          "views": 1862
         },
         {
           "label": "Incorporado em site",
@@ -1009,11 +1006,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 14347
+          "views": 13798
         },
         {
           "label": "Inscritos",
-          "views": 1582
+          "views": 1543
         }
       ]
     }
@@ -1513,7 +1510,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-09T21:04:21.221Z",
+      "generatedAt": "2026-10-10T00:44:41.526Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1523,7 +1520,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-09T21:04:21.221Z",
+      "generatedAt": "2026-10-10T00:44:41.526Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
