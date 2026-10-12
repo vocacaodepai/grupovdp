@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T02:39:38.393Z",
+  "generatedAt": "2026-10-12T09:46:05.954Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -892,7 +892,7 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 9606
+          "views": 9604
         },
         {
           "label": "Inscritos (feed)",
@@ -986,7 +986,7 @@
       "device": [
         {
           "label": "Celular",
-          "views": 13557
+          "views": 13555
         },
         {
           "label": "Computador",
@@ -1004,15 +1004,15 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11396
+          "views": 11394
         },
         {
           "label": "Página de exibição",
-          "views": 1813
+          "views": 1812
         },
         {
           "label": "Explorar/Início",
-          "views": 1792
+          "views": 1793
         },
         {
           "label": "Incorporado em site",
@@ -1022,7 +1022,7 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 13503
+          "views": 13501
         },
         {
           "label": "Inscritos",
@@ -1574,7 +1574,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-12T02:39:38.449Z",
+      "generatedAt": "2026-10-12T09:46:06.010Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1584,7 +1584,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-12T02:39:38.449Z",
+      "generatedAt": "2026-10-12T09:46:06.010Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
