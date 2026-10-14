@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T21:14:50.258Z",
+  "generatedAt": "2026-10-14T00:20:39.527Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -93,6 +93,10 @@
       [
         "8",
         "20261013"
+      ],
+      [
+        "8",
+        "20261014"
       ]
     ],
     "2.1": [
@@ -591,22 +595,15 @@
       [
         "795",
         "20261013"
+      ],
+      [
+        "795",
+        "20261014"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        454,
-        210,
-        84,
-        3,
-        0,
-        36,
-        0,
-        6,
-        "20260914"
-      ],
       [
         362,
         305,
@@ -911,23 +908,23 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 9028
+          "views": 8779
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2274
+          "views": 2200
         },
         {
           "label": "Busca no YouTube",
-          "views": 1586
+          "views": 1519
         },
         {
           "label": "Vídeos relacionados",
-          "views": 664
+          "views": 622
         },
         {
           "label": "Notificações",
-          "views": 392
+          "views": 376
         },
         {
           "label": "Página do canal",
@@ -935,11 +932,11 @@
         },
         {
           "label": "Link externo",
-          "views": 62
+          "views": 59
         },
         {
           "label": "Outra página do YouTube",
-          "views": 52
+          "views": 51
         }
       ]
     }
@@ -983,11 +980,11 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 10716
+          "views": 10370
         },
         {
           "label": "Portugal",
-          "views": 96
+          "views": 69
         },
         {
           "label": "IT",
@@ -1005,47 +1002,47 @@
       "device": [
         {
           "label": "Celular",
-          "views": 13005
+          "views": 12609
         },
         {
           "label": "Computador",
-          "views": 795
+          "views": 760
         },
         {
           "label": "TV",
-          "views": 417
+          "views": 401
         },
         {
           "label": "Tablet",
-          "views": 174
+          "views": 167
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 10801
+          "views": 10475
         },
         {
           "label": "Página de exibição",
-          "views": 1825
+          "views": 1746
         },
         {
           "label": "Explorar/Início",
-          "views": 1763
+          "views": 1715
         },
         {
           "label": "Incorporado em site",
-          "views": 4
+          "views": 3
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12907
+          "views": 12514
         },
         {
           "label": "Inscritos",
-          "views": 1486
+          "views": 1425
         }
       ]
     }
@@ -1207,15 +1204,15 @@
         "avgDuration": 176
       },
       {
-        "id": "eFLxRBeIjS0",
-        "title": "Caminho 125 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/eFLxRBeIjS0/mqdefault.jpg",
-        "views": 343,
-        "likes": 11,
+        "id": "6Z-UdZ2o2AI",
+        "title": "COM A FORÇA DO AMOR (Parte 2 de 2) | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/6Z-UdZ2o2AI/mqdefault.jpg",
+        "views": 304,
+        "likes": 9,
         "comments": 0,
-        "minutes": 31,
-        "subsGained": 0,
-        "avgDuration": 19
+        "minutes": 85,
+        "subsGained": 2,
+        "avgDuration": 66
       }
     ]
   },
@@ -1641,7 +1638,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-13T21:14:50.305Z",
+      "generatedAt": "2026-10-14T00:20:39.571Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1651,7 +1648,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-13T21:14:50.305Z",
+      "generatedAt": "2026-10-14T00:20:39.571Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
