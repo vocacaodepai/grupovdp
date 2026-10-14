@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T15:05:33.583Z",
+  "generatedAt": "2026-10-14T19:19:03.129Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -900,6 +900,17 @@
         0,
         0,
         "20261011"
+      ],
+      [
+        67,
+        55,
+        102,
+        1,
+        0,
+        3,
+        0,
+        0,
+        "20261012"
       ]
     ]
   },
@@ -908,19 +919,19 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 8779
+          "views": 8787
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2200
+          "views": 2212
         },
         {
           "label": "Busca no YouTube",
-          "views": 1519
+          "views": 1551
         },
         {
           "label": "Vídeos relacionados",
-          "views": 622
+          "views": 635
         },
         {
           "label": "Notificações",
@@ -936,7 +947,7 @@
         },
         {
           "label": "Outra página do YouTube",
-          "views": 51
+          "views": 52
         }
       ]
     }
@@ -980,7 +991,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 10370
+          "views": 10421
         },
         {
           "label": "Portugal",
@@ -1002,33 +1013,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12609
+          "views": 12664
         },
         {
           "label": "Computador",
-          "views": 760
+          "views": 766
         },
         {
           "label": "TV",
-          "views": 401
+          "views": 403
         },
         {
           "label": "Tablet",
-          "views": 167
+          "views": 171
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 10475
+          "views": 10496
         },
         {
           "label": "Página de exibição",
-          "views": 1746
+          "views": 1785
         },
         {
           "label": "Explorar/Início",
-          "views": 1715
+          "views": 1722
         },
         {
           "label": "Incorporado em site",
@@ -1038,11 +1049,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12514
+          "views": 12574
         },
         {
           "label": "Inscritos",
-          "views": 1425
+          "views": 1432
         }
       ]
     }
@@ -1064,7 +1075,7 @@
         "id": "yzMdMrC3Qjk",
         "title": "Caminho 135 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/yzMdMrC3Qjk/mqdefault.jpg",
-        "views": 1022,
+        "views": 1023,
         "likes": 71,
         "comments": 5,
         "minutes": 77,
@@ -1086,7 +1097,7 @@
         "id": "yDiwBB073_Y",
         "title": "Caminho 133 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/yDiwBB073_Y/mqdefault.jpg",
-        "views": 864,
+        "views": 866,
         "likes": 59,
         "comments": 0,
         "minutes": 70,
@@ -1097,7 +1108,7 @@
         "id": "S76HYsh21Pw",
         "title": "Caminho 141 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/S76HYsh21Pw/mqdefault.jpg",
-        "views": 805,
+        "views": 807,
         "likes": 45,
         "comments": 3,
         "minutes": 78,
@@ -1108,7 +1119,7 @@
         "id": "frAwIBOvazs",
         "title": "Caminho 132 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/frAwIBOvazs/mqdefault.jpg",
-        "views": 803,
+        "views": 804,
         "likes": 28,
         "comments": 0,
         "minutes": 31,
@@ -1127,6 +1138,17 @@
         "avgDuration": 21
       },
       {
+        "id": "6x_sG_e9kAE",
+        "title": "Caminho 139 - São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/6x_sG_e9kAE/mqdefault.jpg",
+        "views": 694,
+        "likes": 61,
+        "comments": 3,
+        "minutes": 47,
+        "subsGained": 2,
+        "avgDuration": 12
+      },
+      {
         "id": "Km4kqyeLWiM",
         "title": "Caminho 131 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/Km4kqyeLWiM/mqdefault.jpg",
@@ -1138,21 +1160,10 @@
         "avgDuration": 39
       },
       {
-        "id": "6x_sG_e9kAE",
-        "title": "Caminho 139 - São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/6x_sG_e9kAE/mqdefault.jpg",
-        "views": 692,
-        "likes": 61,
-        "comments": 3,
-        "minutes": 47,
-        "subsGained": 2,
-        "avgDuration": 12
-      },
-      {
         "id": "M99XVY39Tk0",
         "title": "Caminho 130 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/M99XVY39Tk0/mqdefault.jpg",
-        "views": 684,
+        "views": 686,
         "likes": 49,
         "comments": 3,
         "minutes": 57,
@@ -1163,18 +1174,18 @@
         "id": "icfZTfLixpc",
         "title": "A ESPERANÇA DO CRISTÃO (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg",
-        "views": 484,
+        "views": 485,
         "likes": 3,
         "comments": 1,
         "minutes": 194,
         "subsGained": 1,
-        "avgDuration": 113
+        "avgDuration": 112
       },
       {
         "id": "bZq73PlLr6g",
         "title": "Caminho 140 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/bZq73PlLr6g/mqdefault.jpg",
-        "views": 463,
+        "views": 466,
         "likes": 42,
         "comments": 3,
         "minutes": 36,
@@ -1196,23 +1207,23 @@
         "id": "sFxJtXIKQBE",
         "title": "Vida de Oração (Parte 1) — Amigos de Deus | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/sFxJtXIKQBE/mqdefault.jpg",
-        "views": 406,
+        "views": 407,
         "likes": 51,
         "comments": 3,
-        "minutes": 749,
+        "minutes": 756,
         "subsGained": 13,
-        "avgDuration": 176
+        "avgDuration": 177
       },
       {
         "id": "6Z-UdZ2o2AI",
         "title": "COM A FORÇA DO AMOR (Parte 2 de 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/6Z-UdZ2o2AI/mqdefault.jpg",
-        "views": 304,
+        "views": 307,
         "likes": 9,
         "comments": 0,
-        "minutes": 85,
+        "minutes": 90,
         "subsGained": 2,
-        "avgDuration": 66
+        "avgDuration": 69
       }
     ]
   },
@@ -1293,6 +1304,10 @@
       [
         0,
         "20261011"
+      ],
+      [
+        0,
+        "20261012"
       ]
     ],
     "yzMdMrC3Qjk": [
@@ -1367,6 +1382,10 @@
       [
         2,
         "20261011"
+      ],
+      [
+        1,
+        "20261012"
       ]
     ],
     "7Pmw_bK9I-s": [
@@ -1433,6 +1452,10 @@
       [
         0,
         "20261011"
+      ],
+      [
+        0,
+        "20261012"
       ]
     ],
     "yDiwBB073_Y": [
@@ -1515,6 +1538,10 @@
       [
         0,
         "20261011"
+      ],
+      [
+        2,
+        "20261012"
       ]
     ],
     "S76HYsh21Pw": [
@@ -1545,6 +1572,10 @@
       [
         3,
         "20261011"
+      ],
+      [
+        2,
+        "20261012"
       ]
     ],
     "frAwIBOvazs": [
@@ -1631,6 +1662,10 @@
       [
         0,
         "20261011"
+      ],
+      [
+        1,
+        "20261012"
       ]
     ]
   },
@@ -1638,7 +1673,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-14T15:05:33.639Z",
+      "generatedAt": "2026-10-14T19:19:03.169Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1648,7 +1683,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-14T15:05:33.639Z",
+      "generatedAt": "2026-10-14T19:19:03.169Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
