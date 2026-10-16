@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T23:59:39.721Z",
+  "generatedAt": "2026-10-16T04:19:15.753Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -101,6 +101,10 @@
       [
         "8",
         "20261015"
+      ],
+      [
+        "8",
+        "20261016"
       ]
     ],
     "2.1": [
@@ -607,22 +611,15 @@
       [
         "795",
         "20261015"
+      ],
+      [
+        "795",
+        "20261016"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        220,
-        29,
-        26,
-        1,
-        0,
-        5,
-        1,
-        5,
-        "20260916"
-      ],
       [
         359,
         142,
@@ -745,8 +742,8 @@
         "20260927"
       ],
       [
-        1029,
-        344,
+        1009,
+        335,
         59,
         10,
         1,
@@ -767,7 +764,7 @@
         "20260929"
       ],
       [
-        681,
+        680,
         329,
         85,
         7,
@@ -927,27 +924,27 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 8626
+          "views": 8581
         },
         {
           "label": "Inscritos (feed)",
-          "views": 2194
+          "views": 2131
         },
         {
           "label": "Busca no YouTube",
-          "views": 1523
+          "views": 1434
         },
         {
           "label": "Vídeos relacionados",
-          "views": 608
+          "views": 603
         },
         {
           "label": "Notificações",
-          "views": 365
+          "views": 357
         },
         {
           "label": "Página do canal",
-          "views": 289
+          "views": 284
         },
         {
           "label": "Link externo",
@@ -999,7 +996,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 10306
+          "views": 10184
         },
         {
           "label": "Portugal",
@@ -1021,33 +1018,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12451
+          "views": 12277
         },
         {
           "label": "Computador",
-          "views": 757
+          "views": 720
         },
         {
           "label": "TV",
-          "views": 386
+          "views": 378
         },
         {
           "label": "Tablet",
-          "views": 170
+          "views": 169
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 10312
+          "views": 10200
         },
         {
           "label": "Página de exibição",
-          "views": 1743
+          "views": 1692
         },
         {
           "label": "Explorar/Início",
-          "views": 1708
+          "views": 1651
         },
         {
           "label": "Incorporado em site",
@@ -1057,11 +1054,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12328
+          "views": 12145
         },
         {
           "label": "Inscritos",
-          "views": 1438
+          "views": 1401
         }
       ]
     }
@@ -1182,12 +1179,12 @@
         "id": "icfZTfLixpc",
         "title": "A ESPERANÇA DO CRISTÃO (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg",
-        "views": 485,
-        "likes": 3,
-        "comments": 1,
-        "minutes": 194,
+        "views": 475,
+        "likes": 1,
+        "comments": 0,
+        "minutes": 187,
         "subsGained": 1,
-        "avgDuration": 112
+        "avgDuration": 115
       },
       {
         "id": "bZq73PlLr6g",
@@ -1705,7 +1702,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-15T23:59:39.776Z",
+      "generatedAt": "2026-10-16T04:19:15.905Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1715,7 +1712,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-15T23:59:39.776Z",
+      "generatedAt": "2026-10-16T04:19:15.905Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
