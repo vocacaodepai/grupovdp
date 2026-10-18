@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T22:55:45.091Z",
+  "generatedAt": "2026-10-18T00:40:48.946Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -109,6 +109,10 @@
       [
         "8",
         "20261017"
+      ],
+      [
+        "8",
+        "20261018"
       ]
     ],
     "2.1": [
@@ -623,22 +627,15 @@
       [
         "797",
         "20261017"
+      ],
+      [
+        "799",
+        "20261018"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        529,
-        202,
-        118,
-        1,
-        0,
-        17,
-        0,
-        3,
-        "20260918"
-      ],
       [
         426,
         159,
@@ -943,27 +940,27 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 8933
+          "views": 8791
         },
         {
           "label": "Inscritos (feed)",
-          "views": 1929
+          "views": 1682
         },
         {
           "label": "Busca no YouTube",
-          "views": 1470
+          "views": 1408
         },
         {
           "label": "Vídeos relacionados",
-          "views": 615
+          "views": 589
         },
         {
           "label": "Notificações",
-          "views": 366
+          "views": 331
         },
         {
           "label": "Página do canal",
-          "views": 283
+          "views": 269
         },
         {
           "label": "Link externo",
@@ -971,7 +968,7 @@
         },
         {
           "label": "Outra página do YouTube",
-          "views": 61
+          "views": 59
         }
       ]
     }
@@ -1015,7 +1012,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 10408
+          "views": 10144
         },
         {
           "label": "Portugal",
@@ -1037,33 +1034,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12476
+          "views": 12006
         },
         {
           "label": "Computador",
-          "views": 709
+          "views": 671
         },
         {
           "label": "TV",
-          "views": 397
+          "views": 380
         },
         {
           "label": "Tablet",
-          "views": 176
+          "views": 172
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 10586
+          "views": 10369
         },
         {
           "label": "Página de exibição",
-          "views": 1700
+          "views": 1605
         },
         {
           "label": "Explorar/Início",
-          "views": 1471
+          "views": 1254
         },
         {
           "label": "Incorporado em site",
@@ -1073,11 +1070,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12307
+          "views": 11847
         },
         {
           "label": "Inscritos",
-          "views": 1453
+          "views": 1384
         }
       ]
     }
@@ -1228,17 +1225,6 @@
         "avgDuration": 179
       },
       {
-        "id": "icfZTfLixpc",
-        "title": "A ESPERANÇA DO CRISTÃO (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
-        "thumb": "https://i.ytimg.com/vi/icfZTfLixpc/mqdefault.jpg",
-        "views": 323,
-        "likes": 1,
-        "comments": 0,
-        "minutes": 125,
-        "subsGained": 0,
-        "avgDuration": 112
-      },
-      {
         "id": "6Z-UdZ2o2AI",
         "title": "COM A FORÇA DO AMOR (Parte 2 de 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/6Z-UdZ2o2AI/mqdefault.jpg",
@@ -1248,6 +1234,17 @@
         "minutes": 99,
         "subsGained": 2,
         "avgDuration": 71
+      },
+      {
+        "id": "UXvVLvJ9wZE",
+        "title": "Santa Pureza — Ponto 145 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/UXvVLvJ9wZE/mqdefault.jpg",
+        "views": 308,
+        "likes": 15,
+        "comments": 0,
+        "minutes": 28,
+        "subsGained": 0,
+        "avgDuration": 18
       }
     ]
   },
@@ -1769,7 +1766,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-17T22:55:45.167Z",
+      "generatedAt": "2026-10-18T00:40:48.999Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1779,7 +1776,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-17T22:55:45.167Z",
+      "generatedAt": "2026-10-18T00:40:48.999Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
