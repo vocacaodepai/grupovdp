@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T06:47:58.997Z",
+  "generatedAt": "2026-10-19T14:04:21.771Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -637,7 +637,7 @@
         "20261018"
       ],
       [
-        "802",
+        "803",
         "20261019"
       ]
     ]
@@ -948,7 +948,7 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 9199
+          "views": 9191
         },
         {
           "label": "Inscritos (feed)",
@@ -1042,7 +1042,7 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12270
+          "views": 12262
         },
         {
           "label": "Computador",
@@ -1060,7 +1060,7 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 10766
+          "views": 10758
         },
         {
           "label": "Página de exibição",
@@ -1078,7 +1078,7 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12115
+          "views": 12107
         },
         {
           "label": "Inscritos",
@@ -1798,7 +1798,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-19T06:47:59.054Z",
+      "generatedAt": "2026-10-19T14:04:21.829Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1808,7 +1808,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-19T06:47:59.054Z",
+      "generatedAt": "2026-10-19T14:04:21.829Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
