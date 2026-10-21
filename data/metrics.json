@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T12:28:54.698Z",
+  "generatedAt": "2026-10-21T17:35:49.657Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -653,7 +653,7 @@
         "20261020"
       ],
       [
-        "803",
+        "804",
         "20261021"
       ]
     ]
@@ -727,8 +727,8 @@
         "20260927"
       ],
       [
-        1029,
-        344,
+        1009,
+        335,
         59,
         10,
         1,
@@ -749,7 +749,7 @@
         "20260929"
       ],
       [
-        681,
+        680,
         329,
         85,
         7,
@@ -925,9 +925,9 @@
         "20261015"
       ],
       [
-        685,
-        74,
-        30,
+        680,
+        77,
+        32,
         3,
         1,
         42,
@@ -1204,7 +1204,7 @@
         "id": "7QN9COshEx0",
         "title": "Coração — Ponto 146 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7QN9COshEx0/mqdefault.jpg",
-        "views": 527,
+        "views": 523,
         "likes": 34,
         "comments": 0,
         "minutes": 30,
@@ -1215,7 +1215,7 @@
         "id": "UXvVLvJ9wZE",
         "title": "Santa Pureza — Ponto 145 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/UXvVLvJ9wZE/mqdefault.jpg",
-        "views": 492,
+        "views": 491,
         "likes": 26,
         "comments": 0,
         "minutes": 42,
@@ -1754,7 +1754,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-21T12:28:54.752Z",
+      "generatedAt": "2026-10-21T17:35:49.706Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1764,7 +1764,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-21T12:28:54.752Z",
+      "generatedAt": "2026-10-21T17:35:49.706Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
