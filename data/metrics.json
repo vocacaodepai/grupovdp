@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T23:26:43.139Z",
+  "generatedAt": "2026-10-21T01:52:02.119Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -121,6 +121,10 @@
       [
         "8",
         "20261020"
+      ],
+      [
+        "8",
+        "20261021"
       ]
     ],
     "2.1": [
@@ -647,22 +651,15 @@
       [
         "804",
         "20261020"
+      ],
+      [
+        "803",
+        "20261021"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        944,
-        187,
-        39,
-        3,
-        0,
-        53,
-        2,
-        2,
-        "20260921"
-      ],
       [
         945,
         87,
@@ -967,27 +964,27 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10389
+          "views": 9624
         },
         {
           "label": "Inscritos (feed)",
-          "views": 1505
+          "views": 1427
         },
         {
           "label": "Busca no YouTube",
-          "views": 1452
+          "views": 1377
         },
         {
           "label": "Vídeos relacionados",
-          "views": 559
+          "views": 544
         },
         {
           "label": "Notificações",
-          "views": 329
+          "views": 319
         },
         {
           "label": "Página do canal",
-          "views": 253
+          "views": 252
         },
         {
           "label": "Link externo",
@@ -995,7 +992,7 @@
         },
         {
           "label": "Outra página do YouTube",
-          "views": 63
+          "views": 58
         }
       ]
     }
@@ -1005,53 +1002,49 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 32.3
+          "pct": 34.2
         },
         {
           "label": "65+ · Homens",
-          "pct": 25.3
+          "pct": 26.4
         },
         {
           "label": "45-54 · Homens",
-          "pct": 9.3
-        },
-        {
-          "label": "35-44 · Homens",
-          "pct": 7.5
+          "pct": 9
         },
         {
           "label": "45-54 · Mulheres",
-          "pct": 7.2
+          "pct": 6.9
         },
         {
           "label": "55-64 · Mulheres",
-          "pct": 6.6
+          "pct": 6.4
+        },
+        {
+          "label": "35-44 · Homens",
+          "pct": 6.1
         },
         {
           "label": "55-64 · Homens",
-          "pct": 5.9
+          "pct": 5.5
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 4.3
+          "pct": 3.7
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 11608
+          "views": 10888
         },
         {
           "label": "Portugal",
-          "views": 103
+          "views": 68
         },
         {
           "label": "IT",
           "views": 41
-        },
-        {
-          "label": "PK",
-          "views": 16
         },
         {
           "label": "ES",
@@ -1061,33 +1054,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 13373
+          "views": 12528
         },
         {
           "label": "Computador",
-          "views": 677
+          "views": 616
         },
         {
           "label": "TV",
-          "views": 403
+          "views": 377
         },
         {
           "label": "Tablet",
-          "views": 201
+          "views": 184
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11942
+          "views": 11099
         },
         {
           "label": "Página de exibição",
-          "views": 1617
+          "views": 1548
         },
         {
           "label": "Explorar/Início",
-          "views": 1095
+          "views": 1058
         },
         {
           "label": "Incorporado em site",
@@ -1097,11 +1090,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 13276
+          "views": 12398
         },
         {
           "label": "Inscritos",
-          "views": 1380
+          "views": 1309
         }
       ]
     }
@@ -1164,17 +1157,6 @@
         "avgDuration": 14
       },
       {
-        "id": "frAwIBOvazs",
-        "title": "Caminho 132 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/frAwIBOvazs/mqdefault.jpg",
-        "views": 810,
-        "likes": 29,
-        "comments": 0,
-        "minutes": 32,
-        "subsGained": 0,
-        "avgDuration": 9
-      },
-      {
         "id": "S76HYsh21Pw",
         "title": "Caminho 141 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/S76HYsh21Pw/mqdefault.jpg",
@@ -1208,15 +1190,15 @@
         "avgDuration": 12
       },
       {
-        "id": "Km4kqyeLWiM",
-        "title": "Caminho 131 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/Km4kqyeLWiM/mqdefault.jpg",
-        "views": 576,
-        "likes": 43,
-        "comments": 2,
-        "minutes": 136,
-        "subsGained": 1,
-        "avgDuration": 43
+        "id": "frAwIBOvazs",
+        "title": "Caminho 132 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/frAwIBOvazs/mqdefault.jpg",
+        "views": 549,
+        "likes": 21,
+        "comments": 0,
+        "minutes": 23,
+        "subsGained": 0,
+        "avgDuration": 10
       },
       {
         "id": "7QN9COshEx0",
@@ -1272,6 +1254,17 @@
         "minutes": 781,
         "subsGained": 13,
         "avgDuration": 177
+      },
+      {
+        "id": "l6wTDPqi5lY",
+        "title": "Coração — Ponto 148 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/l6wTDPqi5lY/mqdefault.jpg",
+        "views": 347,
+        "likes": 19,
+        "comments": 0,
+        "minutes": 10,
+        "subsGained": 0,
+        "avgDuration": 8
       }
     ]
   },
@@ -1698,97 +1691,41 @@
         "20261018"
       ]
     ],
-    "frAwIBOvazs": [
+    "S76HYsh21Pw": [
       [
-        261,
-        "20260921"
-      ],
-      [
-        280,
-        "20260922"
-      ],
-      [
-        84,
-        "20260923"
-      ],
-      [
-        116,
-        "20260924"
-      ],
-      [
-        18,
-        "20260925"
-      ],
-      [
-        3,
-        "20260926"
-      ],
-      [
-        5,
-        "20260927"
-      ],
-      [
-        15,
-        "20260928"
-      ],
-      [
-        7,
-        "20260929"
-      ],
-      [
-        1,
-        "20260930"
-      ],
-      [
-        2,
-        "20261001"
-      ],
-      [
-        2,
-        "20261002"
-      ],
-      [
-        0,
-        "20261003"
-      ],
-      [
-        3,
-        "20261004"
-      ],
-      [
-        0,
+        296,
         "20261005"
       ],
       [
-        2,
+        265,
         "20261006"
       ],
       [
-        0,
+        213,
         "20261007"
       ],
       [
-        0,
+        24,
         "20261008"
       ],
       [
-        0,
+        3,
         "20261009"
       ],
       [
-        4,
+        1,
         "20261010"
       ],
       [
-        0,
+        3,
         "20261011"
       ],
       [
-        1,
+        2,
         "20261012"
       ],
       [
-        0,
+        1,
         "20261013"
       ],
       [
@@ -1796,7 +1733,7 @@
         "20261014"
       ],
       [
-        1,
+        0,
         "20261015"
       ],
       [
@@ -1804,11 +1741,11 @@
         "20261016"
       ],
       [
-        2,
+        0,
         "20261017"
       ],
       [
-        3,
+        1,
         "20261018"
       ]
     ]
@@ -1817,7 +1754,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-20T23:26:43.192Z",
+      "generatedAt": "2026-10-21T01:52:02.174Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1827,7 +1764,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-20T23:26:43.192Z",
+      "generatedAt": "2026-10-21T01:52:02.174Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
