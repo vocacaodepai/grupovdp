@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T17:35:49.657Z",
+  "generatedAt": "2026-10-21T20:52:48.621Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -956,6 +956,17 @@
         0,
         3,
         "20261018"
+      ],
+      [
+        274,
+        70,
+        63,
+        1,
+        0,
+        18,
+        0,
+        0,
+        "20261019"
       ]
     ]
   },
@@ -964,23 +975,23 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 9624
+          "views": 9820
         },
         {
           "label": "Inscritos (feed)",
-          "views": 1427
+          "views": 1445
         },
         {
           "label": "Busca no YouTube",
-          "views": 1377
+          "views": 1415
         },
         {
           "label": "Vídeos relacionados",
-          "views": 544
+          "views": 556
         },
         {
           "label": "Notificações",
-          "views": 319
+          "views": 329
         },
         {
           "label": "Página do canal",
@@ -1036,7 +1047,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 10888
+          "views": 11074
         },
         {
           "label": "Portugal",
@@ -1054,33 +1065,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12528
+          "views": 12775
         },
         {
           "label": "Computador",
-          "views": 616
+          "views": 631
         },
         {
           "label": "TV",
-          "views": 377
+          "views": 384
         },
         {
           "label": "Tablet",
-          "views": 184
+          "views": 189
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11099
+          "views": 11321
         },
         {
           "label": "Página de exibição",
-          "views": 1548
+          "views": 1587
         },
         {
           "label": "Explorar/Início",
-          "views": 1058
+          "views": 1071
         },
         {
           "label": "Incorporado em site",
@@ -1090,11 +1101,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12398
+          "views": 12636
         },
         {
           "label": "Inscritos",
-          "views": 1309
+          "views": 1345
         }
       ]
     }
@@ -1113,6 +1124,17 @@
         "avgDuration": 11
       },
       {
+        "id": "NW_VDiYDzmo",
+        "title": "Coração — Ponto 147 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/NW_VDiYDzmo/mqdefault.jpg",
+        "views": 1094,
+        "likes": 64,
+        "comments": 0,
+        "minutes": 46,
+        "subsGained": 4,
+        "avgDuration": 10
+      },
+      {
         "id": "yzMdMrC3Qjk",
         "title": "Caminho 135 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/yzMdMrC3Qjk/mqdefault.jpg",
@@ -1124,21 +1146,10 @@
         "avgDuration": 14
       },
       {
-        "id": "NW_VDiYDzmo",
-        "title": "Coração — Ponto 147 | Caminho de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/NW_VDiYDzmo/mqdefault.jpg",
-        "views": 997,
-        "likes": 60,
-        "comments": 0,
-        "minutes": 42,
-        "subsGained": 4,
-        "avgDuration": 11
-      },
-      {
         "id": "7Pmw_bK9I-s",
         "title": "Caminho 137 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7Pmw_bK9I-s/mqdefault.jpg",
-        "views": 892,
+        "views": 893,
         "likes": 37,
         "comments": 2,
         "minutes": 56,
@@ -1149,10 +1160,10 @@
         "id": "yDiwBB073_Y",
         "title": "Caminho 133 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/yDiwBB073_Y/mqdefault.jpg",
-        "views": 872,
+        "views": 874,
         "likes": 59,
         "comments": 0,
-        "minutes": 70,
+        "minutes": 71,
         "subsGained": 4,
         "avgDuration": 14
       },
@@ -1160,7 +1171,7 @@
         "id": "S76HYsh21Pw",
         "title": "Caminho 141 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/S76HYsh21Pw/mqdefault.jpg",
-        "views": 809,
+        "views": 811,
         "likes": 45,
         "comments": 3,
         "minutes": 79,
@@ -1171,7 +1182,7 @@
         "id": "AxUKvnrYrSA",
         "title": "Caminho 138 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/AxUKvnrYrSA/mqdefault.jpg",
-        "views": 767,
+        "views": 768,
         "likes": 44,
         "comments": 1,
         "minutes": 89,
@@ -1204,10 +1215,10 @@
         "id": "7QN9COshEx0",
         "title": "Coração — Ponto 146 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7QN9COshEx0/mqdefault.jpg",
-        "views": 523,
-        "likes": 34,
+        "views": 535,
+        "likes": 35,
         "comments": 0,
-        "minutes": 30,
+        "minutes": 31,
         "subsGained": 2,
         "avgDuration": 18
       },
@@ -1215,10 +1226,10 @@
         "id": "UXvVLvJ9wZE",
         "title": "Santa Pureza — Ponto 145 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/UXvVLvJ9wZE/mqdefault.jpg",
-        "views": 491,
-        "likes": 26,
+        "views": 495,
+        "likes": 27,
         "comments": 0,
-        "minutes": 42,
+        "minutes": 43,
         "subsGained": 0,
         "avgDuration": 16
       },
@@ -1226,12 +1237,23 @@
         "id": "bZq73PlLr6g",
         "title": "Caminho 140 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/bZq73PlLr6g/mqdefault.jpg",
-        "views": 466,
+        "views": 467,
         "likes": 42,
         "comments": 3,
         "minutes": 36,
         "subsGained": 1,
         "avgDuration": 14
+      },
+      {
+        "id": "l6wTDPqi5lY",
+        "title": "Coração — Ponto 148 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/l6wTDPqi5lY/mqdefault.jpg",
+        "views": 452,
+        "likes": 29,
+        "comments": 0,
+        "minutes": 16,
+        "subsGained": 0,
+        "avgDuration": 10
       },
       {
         "id": "OxcPmErm41g",
@@ -1248,23 +1270,12 @@
         "id": "sFxJtXIKQBE",
         "title": "Vida de Oração (Parte 1) — Amigos de Deus | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/sFxJtXIKQBE/mqdefault.jpg",
-        "views": 420,
-        "likes": 53,
+        "views": 425,
+        "likes": 54,
         "comments": 3,
-        "minutes": 781,
-        "subsGained": 13,
-        "avgDuration": 177
-      },
-      {
-        "id": "l6wTDPqi5lY",
-        "title": "Coração — Ponto 148 | Caminho de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/l6wTDPqi5lY/mqdefault.jpg",
-        "views": 347,
-        "likes": 19,
-        "comments": 0,
-        "minutes": 10,
-        "subsGained": 0,
-        "avgDuration": 8
+        "minutes": 788,
+        "subsGained": 14,
+        "avgDuration": 178
       }
     ]
   },
@@ -1373,6 +1384,24 @@
       [
         0,
         "20261018"
+      ],
+      [
+        0,
+        "20261019"
+      ]
+    ],
+    "NW_VDiYDzmo": [
+      [
+        477,
+        "20261017"
+      ],
+      [
+        520,
+        "20261018"
+      ],
+      [
+        97,
+        "20261019"
       ]
     ],
     "yzMdMrC3Qjk": [
@@ -1475,16 +1504,10 @@
       [
         0,
         "20261018"
-      ]
-    ],
-    "NW_VDiYDzmo": [
-      [
-        477,
-        "20261017"
       ],
       [
-        520,
-        "20261018"
+        0,
+        "20261019"
       ]
     ],
     "7Pmw_bK9I-s": [
@@ -1579,6 +1602,10 @@
       [
         3,
         "20261018"
+      ],
+      [
+        1,
+        "20261019"
       ]
     ],
     "yDiwBB073_Y": [
@@ -1689,6 +1716,10 @@
       [
         1,
         "20261018"
+      ],
+      [
+        2,
+        "20261019"
       ]
     ],
     "S76HYsh21Pw": [
@@ -1747,6 +1778,10 @@
       [
         1,
         "20261018"
+      ],
+      [
+        2,
+        "20261019"
       ]
     ]
   },
@@ -1754,7 +1789,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-21T17:35:49.706Z",
+      "generatedAt": "2026-10-21T20:52:48.814Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1764,7 +1799,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-21T17:35:49.706Z",
+      "generatedAt": "2026-10-21T20:52:48.814Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
