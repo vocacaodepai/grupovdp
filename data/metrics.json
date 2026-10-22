@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T23:50:29.612Z",
+  "generatedAt": "2026-10-22T01:59:11.678Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -125,6 +125,10 @@
       [
         "8",
         "20261021"
+      ],
+      [
+        "8",
+        "20261022"
       ]
     ],
     "2.1": [
@@ -655,22 +659,15 @@
       [
         "808",
         "20261021"
+      ],
+      [
+        "808",
+        "20261022"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        945,
-        87,
-        18,
-        5,
-        0,
-        62,
-        1,
-        3,
-        "20260922"
-      ],
       [
         789,
         138,
@@ -727,8 +724,8 @@
         "20260927"
       ],
       [
-        1009,
-        335,
+        1029,
+        344,
         59,
         10,
         1,
@@ -749,7 +746,7 @@
         "20260929"
       ],
       [
-        680,
+        681,
         329,
         85,
         7,
@@ -925,8 +922,8 @@
         "20261015"
       ],
       [
-        680,
-        77,
+        685,
+        74,
         32,
         3,
         1,
@@ -975,27 +972,27 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 9820
+          "views": 9014
         },
         {
           "label": "Inscritos (feed)",
-          "views": 1445
+          "views": 1391
         },
         {
           "label": "Busca no YouTube",
-          "views": 1415
+          "views": 1358
         },
         {
           "label": "Vídeos relacionados",
-          "views": 556
+          "views": 543
         },
         {
           "label": "Notificações",
-          "views": 329
+          "views": 318
         },
         {
           "label": "Página do canal",
-          "views": 252
+          "views": 250
         },
         {
           "label": "Link externo",
@@ -1003,7 +1000,7 @@
         },
         {
           "label": "Outra página do YouTube",
-          "views": 58
+          "views": 56
         }
       ]
     }
@@ -1013,49 +1010,49 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 34.2
+          "pct": 34.5
         },
         {
           "label": "65+ · Homens",
-          "pct": 26.4
+          "pct": 27.4
         },
         {
           "label": "45-54 · Homens",
-          "pct": 9
-        },
-        {
-          "label": "45-54 · Mulheres",
-          "pct": 6.9
+          "pct": 8.1
         },
         {
           "label": "55-64 · Mulheres",
-          "pct": 6.4
+          "pct": 7.1
         },
         {
-          "label": "35-44 · Homens",
-          "pct": 6.1
+          "label": "45-54 · Mulheres",
+          "pct": 6.5
         },
         {
           "label": "55-64 · Homens",
-          "pct": 5.5
+          "pct": 6.1
+        },
+        {
+          "label": "35-44 · Homens",
+          "pct": 5.7
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 3.7
+          "pct": 2.5
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 11074
-        },
-        {
-          "label": "Portugal",
-          "views": 68
+          "views": 10371
         },
         {
           "label": "IT",
           "views": 41
+        },
+        {
+          "label": "Portugal",
+          "views": 34
         },
         {
           "label": "ES",
@@ -1065,33 +1062,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12775
+          "views": 11903
         },
         {
           "label": "Computador",
-          "views": 631
+          "views": 595
         },
         {
           "label": "TV",
-          "views": 384
+          "views": 357
         },
         {
           "label": "Tablet",
-          "views": 189
+          "views": 179
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11321
+          "views": 10461
         },
         {
           "label": "Página de exibição",
-          "views": 1587
+          "views": 1538
         },
         {
           "label": "Explorar/Início",
-          "views": 1071
+          "views": 1035
         },
         {
           "label": "Incorporado em site",
@@ -1101,11 +1098,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12636
+          "views": 11759
         },
         {
           "label": "Inscritos",
-          "views": 1345
+          "views": 1277
         }
       ]
     }
@@ -1157,17 +1154,6 @@
         "avgDuration": 11
       },
       {
-        "id": "yDiwBB073_Y",
-        "title": "Caminho 133 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/yDiwBB073_Y/mqdefault.jpg",
-        "views": 874,
-        "likes": 59,
-        "comments": 0,
-        "minutes": 71,
-        "subsGained": 4,
-        "avgDuration": 14
-      },
-      {
         "id": "S76HYsh21Pw",
         "title": "Caminho 141 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/S76HYsh21Pw/mqdefault.jpg",
@@ -1201,17 +1187,6 @@
         "avgDuration": 12
       },
       {
-        "id": "frAwIBOvazs",
-        "title": "Caminho 132 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/frAwIBOvazs/mqdefault.jpg",
-        "views": 549,
-        "likes": 21,
-        "comments": 0,
-        "minutes": 23,
-        "subsGained": 0,
-        "avgDuration": 10
-      },
-      {
         "id": "7QN9COshEx0",
         "title": "Coração — Ponto 146 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7QN9COshEx0/mqdefault.jpg",
@@ -1221,6 +1196,17 @@
         "minutes": 31,
         "subsGained": 2,
         "avgDuration": 18
+      },
+      {
+        "id": "yDiwBB073_Y",
+        "title": "Caminho 133 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/yDiwBB073_Y/mqdefault.jpg",
+        "views": 520,
+        "likes": 31,
+        "comments": 0,
+        "minutes": 46,
+        "subsGained": 1,
+        "avgDuration": 15
       },
       {
         "id": "UXvVLvJ9wZE",
@@ -1276,6 +1262,17 @@
         "minutes": 788,
         "subsGained": 14,
         "avgDuration": 178
+      },
+      {
+        "id": "6Z-UdZ2o2AI",
+        "title": "COM A FORÇA DO AMOR (Parte 2 de 2) | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/6Z-UdZ2o2AI/mqdefault.jpg",
+        "views": 317,
+        "likes": 10,
+        "comments": 0,
+        "minutes": 103,
+        "subsGained": 2,
+        "avgDuration": 71
       }
     ]
   },
@@ -1608,120 +1605,6 @@
         "20261019"
       ]
     ],
-    "yDiwBB073_Y": [
-      [
-        354,
-        "20260922"
-      ],
-      [
-        225,
-        "20260923"
-      ],
-      [
-        146,
-        "20260924"
-      ],
-      [
-        63,
-        "20260925"
-      ],
-      [
-        30,
-        "20260926"
-      ],
-      [
-        3,
-        "20260927"
-      ],
-      [
-        0,
-        "20260928"
-      ],
-      [
-        4,
-        "20260929"
-      ],
-      [
-        3,
-        "20260930"
-      ],
-      [
-        13,
-        "20261001"
-      ],
-      [
-        1,
-        "20261002"
-      ],
-      [
-        2,
-        "20261003"
-      ],
-      [
-        0,
-        "20261004"
-      ],
-      [
-        0,
-        "20261005"
-      ],
-      [
-        4,
-        "20261006"
-      ],
-      [
-        2,
-        "20261007"
-      ],
-      [
-        4,
-        "20261008"
-      ],
-      [
-        7,
-        "20261009"
-      ],
-      [
-        3,
-        "20261010"
-      ],
-      [
-        0,
-        "20261011"
-      ],
-      [
-        2,
-        "20261012"
-      ],
-      [
-        1,
-        "20261013"
-      ],
-      [
-        1,
-        "20261014"
-      ],
-      [
-        1,
-        "20261015"
-      ],
-      [
-        2,
-        "20261016"
-      ],
-      [
-        0,
-        "20261017"
-      ],
-      [
-        1,
-        "20261018"
-      ],
-      [
-        2,
-        "20261019"
-      ]
-    ],
     "S76HYsh21Pw": [
       [
         296,
@@ -1783,13 +1666,107 @@
         2,
         "20261019"
       ]
+    ],
+    "AxUKvnrYrSA": [
+      [
+        167,
+        "20260927"
+      ],
+      [
+        415,
+        "20260928"
+      ],
+      [
+        107,
+        "20260929"
+      ],
+      [
+        28,
+        "20260930"
+      ],
+      [
+        23,
+        "20261001"
+      ],
+      [
+        6,
+        "20261002"
+      ],
+      [
+        0,
+        "20261003"
+      ],
+      [
+        6,
+        "20261004"
+      ],
+      [
+        1,
+        "20261005"
+      ],
+      [
+        6,
+        "20261006"
+      ],
+      [
+        2,
+        "20261007"
+      ],
+      [
+        1,
+        "20261008"
+      ],
+      [
+        0,
+        "20261009"
+      ],
+      [
+        0,
+        "20261010"
+      ],
+      [
+        0,
+        "20261011"
+      ],
+      [
+        0,
+        "20261012"
+      ],
+      [
+        2,
+        "20261013"
+      ],
+      [
+        2,
+        "20261014"
+      ],
+      [
+        0,
+        "20261015"
+      ],
+      [
+        0,
+        "20261016"
+      ],
+      [
+        0,
+        "20261017"
+      ],
+      [
+        1,
+        "20261018"
+      ],
+      [
+        1,
+        "20261019"
+      ]
     ]
   },
   "sites": {
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-21T23:50:29.663Z",
+      "generatedAt": "2026-10-22T01:59:11.733Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1799,7 +1776,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-21T23:50:29.663Z",
+      "generatedAt": "2026-10-22T01:59:11.733Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
