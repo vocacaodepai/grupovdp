@@ -43,6 +43,33 @@ são tabelas separadas, que o site não lê.
 - **Agentes e rotinas** (`scripts/agente.mjs`): precisam só da variável
   `LISIEUX_STATUS_SECRET`. A URL e a chave pública vêm do `config.js`.
 
+### Como uma rotina aparece no escritório
+
+Cada rotina agendada tem um agente fixo no escritório, com id `rt-*` (lista
+completa, com a empresa, o blog e quantos subagentes cada uma abre, em
+`escritorio/data.js`, constante `ROUTINES`). A rotina só precisa avisar o
+começo e o fim. O jeito mais simples é pelo conector do Supabase, sem copiar
+o segredo para lugar nenhum:
+
+```sql
+-- no começo (e, se quiser, a cada etapa, trocando a tarefa)
+select agent_id from public.lisieux_set_status(
+  (select value from public.lisieux_secrets where name = 'writer'),
+  'rt-escriva', 'work', 'Caminho, Sulco e Forja do dia', 'f2', null);
+-- no fim (também se algo falhou)
+select agent_id from public.lisieux_set_status(
+  (select value from public.lisieux_secrets where name = 'writer'),
+  'rt-escriva', 'rest', '', 'f2', null);
+```
+
+Enquanto o agente fixo está em `work`, o escritório mostra sozinho os
+subagentes que aquela rotina abre ao mesmo tempo. Quem fica mais de 90
+minutos em `work` sem aviso volta para o descanso (`staleMinutes` em
+`escritorio/config.js`), por isso as rotinas longas avisam a cada etapa.
+
+Rotinas que rodam numa conversa fixa só aceitam mudança no texto pedida
+dentro daquela conversa.
+
 ### Onde ver o segredo de escrita
 
 O segredo foi gerado aleatoriamente dentro do banco e **não está no

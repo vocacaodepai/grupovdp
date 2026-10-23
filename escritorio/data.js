@@ -3,7 +3,7 @@
  *
  * window.LisieuxRoster
  *   KEY ("vdp-office-v2")       lista da equipe no localStorage
- *   COMPANIES (getter)          [{ id, num, name, short, label }] — "chefia", "f1".."f8", "central"
+ *   COMPANIES (getter)          [{ id, num, name, short, label }] — "chefia", "f1".."f9", "central"
  *   companies()                 idem (nomes das frentes lidos de "vdp-painel-state-v1" quando existirem)
  *   company(id) / companyName(id)
  *   load()                      lista saneada do localStorage (sem nada salvo => seed())
@@ -11,8 +11,10 @@
  *   seed()                      equipe sugerida: Diretoria (Bruno + Esposa) + redator(a) e pesquisador(a) por empresa
  *   sanitize(list)              id ^[a-z0-9-]{2,40}$, textos cortados, empresa desconhecida => "central", máx. 80
  *   robots(metrics, now?)       os 3 robôs reais, com estado calculado a partir de data/metrics.json
+ *   routines()                  agentes fixos, um por rotina agendada real (ids "rt-*"; o status vem do ao vivo)
+ *   BLOGS                       os blogs da empresa 09 (key, name, short, domain), na ordem das baias do escritório
  *   look(person)                visual determinístico (pele, cabelo, penteado, roupa) a partir do id
- *   merge(roster, robots, liveMap, demoMap, liveMode)  lista final (ao vivo sobrepõe por id; demo só com liveMode "off")
+ *   merge(roster, robots, liveMap, demoMap, liveMode)  lista final: robôs + rotinas + equipe (ao vivo sobrepõe por id; demo só com liveMode "off")
  *   kindLabel(kind), roleIcon(person), newId(name, list)
  * Tudo que vem do localStorage ou do servidor é tratado como texto não confiável (quem desenha usa textContent).
  */
@@ -23,12 +25,14 @@
   var hasOwn = function(o, k){ return !!o && Object.prototype.hasOwnProperty.call(o, k); };
 
   var DEFAULT_NAMES = { f1:"Vocação de Pai", f2:"Apostolado São José", f3:"Vocação de Mãe", f4:"Pai de Negócios",
-                        f5:"Ateliê Lisieux", f6:"Pequena Via", f7:"Flor de Lisieux", f8:"Apostas" };
+                        f5:"Ateliê Lisieux", f6:"Pequena Via", f7:"Flor de Lisieux", f8:"Apostas", f9:"Blogs" };
   var DEFAULT_SHORT = { f1:"VOCAÇÃO DE PAI", f2:"APOSTOLADO", f3:"VOCAÇÃO DE MÃE", f4:"PAI DE NEGÓCIOS",
-                        f5:"ATELIÊ LISIEUX", f6:"PEQUENA VIA", f7:"FLOR DE LISIEUX", f8:"APOSTAS" };
-  var COMPANY_IDS = ["chefia", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "central"];
-  var KINDS = { chefia:"Diretoria", agente:"Agente IA", funcionario:"Funcionário", robo:"Robô real" };
-  var ORIGINS = { chefia:"diretoria", agente:"agente IA", funcionario:"funcionário", robo:"robô real" };
+                        f5:"ATELIÊ LISIEUX", f6:"PEQUENA VIA", f7:"FLOR DE LISIEUX", f8:"APOSTAS", f9:"BLOGS" };
+  var FRONTS = 9;
+  var COMPANY_IDS = ["chefia", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "central"];
+  var KINDS = { chefia:"Diretoria", agente:"Agente IA", funcionario:"Funcionário", robo:"Robô real", rotina:"Rotina real", ajudante:"Subagente" };
+  var ORIGINS = { chefia:"diretoria", agente:"agente IA", funcionario:"funcionário", robo:"robô real", rotina:"rotina real", ajudante:"subagente da rotina" };
+  var RESERVED_RE = /^(auto|rt)-/;          // ids dos robôs e das rotinas: a equipe editável nunca usa
 
   function pad2(n){ return (n<10 ? "0" : "")+n; }
   function clean(s, n){
@@ -55,12 +59,12 @@
   function companies(){
     var fr = readFronts();
     var out = [{ id:"chefia", num:0, name:"Diretoria", short:"DIRETORIA", label:"Diretoria" }];
-    for(var i=1; i<=8; i++){
+    for(var i=1; i<=FRONTS; i++){
       var id = "f"+i, f = hasOwn(fr, id) && fr[id] && typeof fr[id]==="object" ? fr[id] : null;
       var nm = f && typeof f.name==="string" && clean(f.name, 40) ? clean(f.name, 40) : DEFAULT_NAMES[id];
       out.push({ id:id, num:i, name:nm, short:nm===DEFAULT_NAMES[id] ? DEFAULT_SHORT[id] : shortOf(nm), label:pad2(i)+" · "+nm });
     }
-    out.push({ id:"central", num:9, name:"Central de dados", short:"CENTRAL DE DADOS", label:"Central de dados" });
+    out.push({ id:"central", num:FRONTS+1, name:"Central de dados", short:"CENTRAL DE DADOS", label:"Central de dados" });
     return out;
   }
   function company(id){
@@ -106,7 +110,7 @@
       if(!a || typeof a!=="object") continue;
       var name = clean(a.name, 32) || "Sem nome";
       var id = typeof a.id==="string" ? a.id.trim().toLowerCase() : "";
-      if(!ID_RE.test(id) || id.indexOf("auto-")===0) id = newId(name, out);
+      if(!ID_RE.test(id) || RESERVED_RE.test(id)) id = newId(name, out);
       id = uniq(id, seen); seen[id] = 1;
       var comp = typeof a.company==="string" && COMPANY_IDS.indexOf(a.company)>=0 ? a.company : "central";
       var kind = (a.kind==="chefia" || a.kind==="agente" || a.kind==="funcionario") ? a.kind : (comp==="chefia" ? "chefia" : "agente");
@@ -181,6 +185,78 @@
     return [yt, st, lr];
   }
 
+  // ---------- rotinas reais (agendadas no Claude) ----------
+  // Um agente por rotina. Ficam fixos (não entram na equipe editável) e só mudam de estado pelo ao vivo:
+  // a rotina chama public.lisieux_set_status com o id abaixo no começo ("work") e no fim ("rest").
+  var BLOGS = [
+    { key:"portal",   name:"Portal da AI",        short:"PORTAL DA AI",        domain:"portaldaai.com.br" },
+    { key:"bitcoin",  name:"Blog do Bitcoin",     short:"BLOG DO BITCOIN",     domain:"blogdobitcoin.com.br" },
+    { key:"politica", name:"Política Diária",     short:"POLÍTICA DIÁRIA",     domain:"politicadiaria.com.br" },
+    { key:"saude",    name:"Saúde na Minha Vida", short:"SAÚDE NA MINHA VIDA", domain:"saudenaminhavida.com.br" },
+    { key:"review",   name:"Review Produtos",     short:"REVIEW PRODUTOS",     domain:"reviewprodutos.com.br" },
+    { key:"grama",    name:"Blog da Grama",       short:"BLOG DA GRAMA",       domain:"blogdagrama.com.br" },
+    { key:"yangled",  name:"Yang LED",            short:"YANG LED",            domain:"yangled.com.br" }
+  ];
+  // Equipe de cada rotina, contada no texto da própria rotina: quem lidera (a sessão agendada) + os subagentes
+  // que ela abre AO MESMO TEMPO (aparecem no escritório só enquanto a rotina trabalha) + o total por execução.
+  var R5 = ["Redator", "Redatora", "Redator", "Redatora", "Redator"];
+  var ROUTINES = [
+    // [id, nome, função, empresa, blog, subagentes simultâneos, agentes por execução, como trabalha]
+    ["rt-escriva",            "Escrivá Todo Dia",        "Redator · Caminho, Sulco e Forja",     "f2", null, [], 1, "1 agente faz Caminho, Sulco e Forja em sequência"],
+    ["rt-vocacaodemae",       "Conteúdo do dia",         "Editora · artigos, reviews e loja",    "f3", null, ["Redatora", "Redator", "Redatora", "Redator", "Redatora"], 16, "editora + 15 subagentes, até 5 ao mesmo tempo (comparativos e reviews)"],
+    ["rt-jogador",            "Vocação de Jogador",      "Redator · mercado da bola, 3 posts",   "f8", null, [], 1, "1 agente faz e agenda os 3 carrosséis"],
+    ["rt-vasco",              "Tudo Sobre Vasco",        "Redator · 4 posts por dia",            "f8", null, [], 1, "1 agente faz e agenda os 4 posts"],
+    ["rt-motivacao",          "Motivação",               "Redatora · 3 posts por dia",           "f8", null, [], 1, "1 agente faz e agenda os 3 posts"],
+    ["rt-portal-noticias",    "Portal da AI · Notícias", "Redator · de hora em hora",            "f9", "portal", [], 1, "1 agente por rodada"],
+    ["rt-portal-artigos",     "Portal da AI · Artigos",  "Redatora · 15 artigos por dia",        "f9", "portal", [], 1, "1 agente escreve os 5 artigos de cada rodada (3 rodadas)"],
+    ["rt-portal-indica",      "Portal da AI · Indica",   "Pesquisador · 5 produtos por dia",     "f9", "portal", [], 1, "1 agente faz os 5 AI Indica"],
+    ["rt-bitcoin-noticias",   "Bitcoin · Notícias",      "Redator · de hora em hora",            "f9", "bitcoin", ["Executor"], 2, "coordenador + 1 agente executor"],
+    ["rt-bitcoin-artigos",    "Bitcoin · Artigos",       "Redatora · 10 artigos por dia",        "f9", "bitcoin", ["Executor"].concat(R5), 7, "coordenador + executor + 5 redatores em paralelo (2 rodadas)"],
+    ["rt-bitcoin-indica",     "Bitcoin · Cripto Indica", "Pesquisador · loja e indicações",      "f9", "bitcoin", ["Executor"], 2, "coordenador + 1 agente executor"],
+    ["rt-bitcoin-manutencao", "Bitcoin · Manutenção",    "Analista · dados, erros e segurança",  "f9", "bitcoin", ["Executor"], 2, "coordenador + 1 agente executor"],
+    ["rt-politica-noticias",  "Política · Notícias",     "Redator · de hora em hora",            "f9", "politica", ["Executor"], 2, "coordenador + 1 agente executor"],
+    ["rt-politica-checagem",  "Política · Checagem",     "Pesquisadora · boatos, 3 rodadas",     "f9", "politica", ["Executor"], 2, "coordenador + 1 agente executor"],
+    ["rt-politica-eleicoes",  "Política · Eleições",     "Analista · dados das eleições",        "f9", "politica", ["Executor"], 2, "coordenador + 1 agente executor"],
+    ["rt-politica-congresso", "Política · Congresso",    "Analista · dados do Congresso",        "f9", "politica", [], 1, "1 agente"],
+    ["rt-politica-livros",    "Política · Livros",       "Redatora · 3 resenhas por dia",        "f9", "politica", [], 1, "1 agente escreve as 3 resenhas"],
+    ["rt-saude-noticias",     "Saúde · Notícias",        "Redatora · a cada 2 horas",            "f9", "saude", [], 1, "1 agente por rodada"],
+    ["rt-saude-guias",        "Saúde · Guias",           "Redator · 10 guias por dia",           "f9", "saude", [], 1, "1 agente escreve os 5 guias de cada rodada (2 rodadas)"],
+    ["rt-saude-produtos",     "Saúde · Produtos",        "Pesquisadora · 20 produtos por dia",   "f9", "saude", R5, 11, "1 + 10 redatores, 5 por vez (2 rodadas)"],
+    ["rt-saude-manutencao",   "Saúde · Manutenção",      "Analista · erros e segurança",         "f9", "saude", [], 1, "1 agente"],
+    ["rt-review-lote",        "Review Produtos",         "Redator · 20 reviews por dia",         "f9", "review", R5, 6, "1 + 5 redatores em paralelo (4 rodadas)"],
+    ["rt-grama-noticias",     "Grama · Notícias",        "Redatora · 3 rodadas por dia",         "f9", "grama", [], 1, "1 agente por rodada"],
+    ["rt-grama-artigos",      "Grama · Artigos",         "Redator · 5 artigos por dia",          "f9", "grama", [], 1, "1 agente escreve os 5 artigos"],
+    ["rt-grama-produtos",     "Grama · Produtos",        "Pesquisador · 20 produtos por dia",    "f9", "grama", R5, 21, "1 + 20 redatores, em 4 lotes de 5"],
+    ["rt-yangled-blog",       "Yang LED · Blog",         "Redatora · 5 artigos por dia",         "f9", "yangled", [], 1, "1 agente escreve os 5 artigos"]
+  ];
+  function routines(){
+    return ROUTINES.map(function(r){
+      var p = { id:r[0], name:r[1], role:r[2], company:r[3], kind:"rotina", status:"rest", task:"",
+                team:{ helpers:r[5].length, perRun:r[6], how:r[7] } };
+      if(r[4]) p.blog = r[4];
+      return p;
+    });
+  }
+  // subagentes de uma rotina que está trabalhando (ids "<rotina>-1".."-n"); somem quando ela termina
+  function helpersOf(q){
+    var r = null;
+    for(var i=0; i<ROUTINES.length; i++) if(ROUTINES[i][0]===q.id){ r = ROUTINES[i]; break; }
+    if(!r || q.status!=="work") return [];
+    return r[5].map(function(label, k){
+      var h = { id:q.id+"-"+(k+1), name:label+" "+(k+1), role:"Subagente · "+r[1], company:r[3], kind:"ajudante",
+                status:"work", task:q.task, lead:q.id };
+      if(r[4]) h.blog = r[4];
+      if(q.live){ h.live = true; h.stale = q.stale; h.updatedAt = q.updatedAt; h.origin = "ao vivo"; }
+      else if(q.demo){ h.demo = true; h.origin = ORIGINS.ajudante; }
+      else h.origin = ORIGINS.ajudante;
+      return h;
+    });
+  }
+  function blogName(key){
+    for(var i=0; i<BLOGS.length; i++) if(BLOGS[i].key===key) return BLOGS[i].name;
+    return "";
+  }
+
   // ---------- visual determinístico ----------
   function hash(s){ var h = 2166136261; s = String(s||""); for(var i=0; i<s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h>>>0; }
   var SKINS = ["#fbc2a6", "#f0b29a", "#a77264", "#fbc2a6", "#f0b29a"];
@@ -206,15 +282,15 @@
     if(hasOwn(SPECIAL, p.id)) o = JSON.parse(JSON.stringify(SPECIAL[p.id]));
     else if(p.kind==="robo") o = { skin:SKINS[h%2], hair:"#58545b", hairStyle:"buzz", shirt:"#dfe0ea", pants:"#3c4878" };
     else {
-      var fem = isFem(p);
+      var fem = isFem(p.kind==="ajudante" ? { name:p.name, role:p.name } : p);
       o = { skin:SKINS[h%SKINS.length], hair:HAIRS[(h>>>3)%HAIRS.length],
             hairStyle:fem ? STYLES_F[(h>>>6)%STYLES_F.length] : STYLES_M[(h>>>6)%STYLES_M.length],
             shirt:SHIRTS[(h>>>9)%SHIRTS.length], pants:PANTS[(h>>>12)%PANTS.length] };
       if(p.kind==="chefia"){ o.shirt = "#dfe0ea"; if(fem){ o.pants = "#863c3d"; o.skirt = true; } else o.jacket = "#333545"; }
-      if(p.kind==="agente" && (h>>>15)%3===0) o.jacket = "#333545";
+      if((p.kind==="agente" || p.kind==="rotina" || p.kind==="ajudante") && (h>>>15)%3===0) o.jacket = "#333545";
     }
     var lk = cleanLook(p.look); if(lk) for(var k in lk) if(hasOwn(lk, k)) o[k] = lk[k];
-    o.badge = (p.kind==="agente" || p.kind==="robo") ? "A" : null;
+    o.badge = (p.kind==="agente" || p.kind==="robo" || p.kind==="rotina" || p.kind==="ajudante") ? "A" : null;
     return o;
   }
 
@@ -223,7 +299,7 @@
     if(!p) return "clip";
     if(p.kind==="robo") return "chart";
     if(p.kind==="chefia" || p.company==="chefia") return "star";
-    var r = clean(p.role, 40).toLowerCase();
+    var r = clean(p.kind==="ajudante" ? p.name : p.role, 40).toLowerCase();
     if(/redat|escrit|roteir|copy|revis|edit/.test(r)) return "pencil";
     if(/pesquis|analis|dados|curad/.test(r)) return "search";
     return "clip";
@@ -232,7 +308,7 @@
   // ---------- lista final ----------
   function merge(roster, robotsList, liveMap, demoMap, liveMode){
     var out = [], ids = {}, liveOn = !!liveMode && liveMode!=="off";
-    (robotsList||[]).concat(roster||[]).forEach(function(p){
+    (robotsList||[]).concat(routines(), roster||[]).forEach(function(p){
       if(!p || !p.id || ids[p.id]) return;
       ids[p.id] = 1;
       var q = {}; for(var k in p) if(hasOwn(p, k)) q[k] = p[k];
@@ -250,6 +326,7 @@
         q.demo = true;
       }
       out.push(q);
+      if(q.kind==="rotina") helpersOf(q).forEach(function(h){ if(!ids[h.id]){ ids[h.id] = 1; out.push(h); } });
     });
     return out;
   }
@@ -258,7 +335,8 @@
     KEY:KEY, STATE_KEY:STATE_KEY, MAX:MAX, ID_RE:ID_RE, COMPANY_IDS:COMPANY_IDS.slice(),
     companies:companies, company:company,
     companyName:function(id){ return company(id).name; },
-    load:load, save:save, seed:seed, sanitize:sanitize, robots:robots, look:look, merge:merge,
+    load:load, save:save, seed:seed, sanitize:sanitize, robots:robots, routines:routines, look:look, merge:merge,
+    BLOGS:BLOGS.map(function(b){ return { key:b.key, name:b.name, short:b.short, domain:b.domain }; }), blogName:blogName, FRONTS:FRONTS,
     kindLabel:function(k){ return KINDS[k] || "Agente IA"; },
     roleIcon:roleIcon, newId:newId, shortOf:shortOf, clean:clean
   };

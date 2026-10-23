@@ -9,5 +9,5 @@ window.LISIEUX_CONFIG = window.LISIEUX_CONFIG || {
   supabaseUrl: "https://apizwpstssjhiccrhwxu.supabase.co",
   supabaseAnonKey: "sb_publishable_NeQxLf7OUBPQLj-KnyGLLA_wUnoFeOm", // publicável (pública)
   pollMs: 4000,         // consulta (ms) quando o tempo real cai; mínimo 1000
-  staleMinutes: 30      // "trabalhando" há mais que isso sem aviso => descanso
+  staleMinutes: 90      // "trabalhando" há mais que isso sem aviso => descanso (rotinas longas avisam a cada etapa)
 };

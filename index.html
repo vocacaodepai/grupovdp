@@ -284,12 +284,31 @@
     min-height:0;
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    grid-template-rows:repeat(3,1fr);
+    grid-template-rows:repeat(3,minmax(0,1fr)) auto;   /* 4ª linha: frentes além do anel (09 Blogs) */
     gap:clamp(8px,1.3vw,14px);
   }
+  .card.wide{                                          /* carta larga e baixa: título · número · chips · estágio numa linha */
+    grid-column:1 / -1;
+    display:grid;
+    grid-template-columns:minmax(140px,auto) minmax(130px,auto) minmax(0,1fr) minmax(150px,.55fr);
+    grid-template-rows:auto auto;
+    column-gap:clamp(14px,2vw,28px);
+    row-gap:2px;
+    align-items:center;
+    padding-block:clamp(8px,1vw,12px);
+  }
+  .card.wide > *{ grid-column:3; grid-row:1 / span 2; min-width:0; }
+  .card.wide > .card-top{ grid-column:1; grid-row:1; justify-content:flex-start; align-items:center; }
+  .card.wide > .name{ grid-column:1; grid-row:2; }
+  .card.wide > .card-stat{ grid-column:2; grid-row:1 / span 2; flex-wrap:wrap; row-gap:0; }
+  .card.wide > .card-bottom{ grid-column:4; grid-row:1 / span 2; margin-top:0; }
+  .card.wide > .card-pulse{ display:none; }
   @media (max-width:720px){
     .grid{ grid-template-columns:1fr 1fr; grid-template-rows:none; height:auto; }
-    .grid > .card{ order:var(--num, 0); min-height:150px; }   /* decisão consciente (§16): hub primeiro, cartas 01→08 em ordem numérica */
+    .grid > .card{ order:var(--num, 0); min-height:150px; }   /* decisão consciente (§16): hub primeiro, cartas 01→09 em ordem numérica */
+    .grid > .card.wide{ display:flex; align-items:stretch; padding-block:clamp(10px,1.3vw,16px); }
+    .grid > .card.wide > .card-top{ justify-content:space-between; align-items:flex-start; }
+    .grid > .card.wide > .card-bottom{ margin-top:auto; }
     .grid > .hub{ grid-column:1 / -1; order:-1; }
   }
   @media (max-width:460px){
@@ -1165,7 +1184,7 @@
   .home-hint kbd, .pal-hint kbd, .pal-foot kbd, .sc-keys kbd{ font:inherit; border:1px solid var(--border); border-radius:4px; padding:0 5px; background:var(--surface-2); color:var(--text-2); }
   .hint-btn{ border:none; background:none; color:inherit; font:inherit; cursor:pointer; padding:2px 4px; border-radius:var(--r-sm); }
   .hint-btn:hover{ color:var(--text); }
-  @media (max-width:720px), (max-height:700px){ .home-hint{ display:none; } }
+  @media (max-width:720px), (max-height:820px){ .home-hint{ display:none; } }   /* telas baixas: a 4ª linha (09) precisa do espaço */
 
   /* folhas (paleta e atalhos): centradas no desktop, sheet inferior 70dvh no mobile; fade + scale .98→1 em 120ms (§14) */
   .sheet-backdrop{ position:fixed; inset:0; z-index:300; background:rgba(10,13,20,.45); display:flex; align-items:flex-start; justify-content:center; padding:min(12vh,110px) 16px 16px; }
@@ -1301,6 +1320,7 @@
   .office-table .kind{ font-family:var(--font-mono); font-size:10px; border:1px solid var(--border); border-radius:4px; padding:1px 6px; white-space:nowrap; color:var(--text-2); }
   .office-table .kind-agente{ border-color:#7c97f0; color:#5d78d6; }
   .office-table .kind-robo{ border-color:var(--accent); color:var(--accent); }
+  .office-table .kind-rotina{ border-color:var(--st-good); color:var(--st-good); }
   .office-table .kind-chefia{ border-color:#d4aa62; color:#a77d2f; }
   .office-table .ro{ font-family:var(--font-mono); font-size:10px; color:var(--text-muted); }
   .office-table button{ border:1px solid var(--border); background:var(--surface-2); color:var(--text-2); border-radius:6px; padding:3px 9px; font-size:11px; cursor:pointer; margin-right:4px; }
@@ -1347,7 +1367,7 @@
 <main class="grid" id="grid" aria-label="Frentes do grupo">
   <div class="status-msg" style="grid-column:1/-1;grid-row:1/-1;">carregando…</div>
 </main>
-<p class="home-hint" id="homeHint"><kbd class="kbd-meta">⌘K</kbd> buscar · <kbd>1</kbd>–<kbd>8</kbd> frentes · <kbd>g</kbd> visão geral · <button type="button" class="hint-btn" id="hintKeys" title="Atalhos de teclado (?)"><kbd>?</kbd> atalhos</button></p>
+<p class="home-hint" id="homeHint"><kbd class="kbd-meta">⌘K</kbd> buscar · <kbd>1</kbd>–<kbd>9</kbd> frentes · <kbd>g</kbd> visão geral · <button type="button" class="hint-btn" id="hintKeys" title="Atalhos de teclado (?)"><kbd>?</kbd> atalhos</button></p>
 
 <script src="escritorio/data.js"></script>
 <script>
@@ -1358,6 +1378,7 @@
   // Clockwise from top-left, so each card's number (01-08) reads in clock order:
   // 01 top-left, 02 top-center, 03 top-right, 04 right, 05 bottom-right,
   // 06 bottom-center, 07 bottom-left, 08 left, back to 01.
+  // Frentes além do anel (09 Blogs) entram numa 4ª linha, em cartas largas.
   var LAYOUT = ["f1","f2","f3","f8","hub","f4","f7","f6","f5"];
   var STORAGE_KEY = "vdp-painel-state-v1";
 
@@ -1416,6 +1437,15 @@
           {field:"IGEV9999",label:"Engajamento", isPercent:true}
         ]}},
         {id:"8.3", label:"Motivação", status:"pendente", source:{provider:"metricool", metrics:[{field:"IGEV01",label:"Seguidores IG"}]}}
+      ]},
+      f9: { num:9, name:"Blogs", category:"Sites e blogs", stage:2, notes:"", goal:{text:"",target:null}, items:[
+        {id:"9.1", label:"Portal da AI", status:"ativo", note:"portaldaai.com.br · 3 rotinas: notícias de hora em hora, 15 artigos e 5 AI Indica por dia"},
+        {id:"9.2", label:"Blog do Bitcoin", status:"andamento", note:"blogdobitcoin.com.br ainda não está no ar (domínio estacionado) · 4 rotinas prontas: notícias, artigos, Cripto Indica e manutenção"},
+        {id:"9.3", label:"Política Diária", status:"ativo", note:"politicadiaria.com.br · 5 rotinas: notícias, checagem, eleições, Congresso e livros"},
+        {id:"9.4", label:"Saúde na Minha Vida", status:"ativo", note:"saudenaminhavida.com.br · 4 rotinas: notícias, guias, produtos e manutenção"},
+        {id:"9.5", label:"Review Produtos", status:"ativo", note:"reviewprodutos.com.br · 1 rotina: lote de 5 reviews, 4 vezes por dia"},
+        {id:"9.6", label:"Blog da Grama", status:"ativo", note:"blogdagrama.com.br · 3 rotinas: notícias, artigos e produtos"},
+        {id:"9.7", label:"Yang LED", status:"ativo", note:"yangled.com.br · 1 rotina: 5 artigos por dia no blog"}
       ]}
     }
   };
@@ -1712,11 +1742,22 @@
     return base;
   }
   function gridOrder(){                                            // desktop: LAYOUT (ordem de relógio); ≤720px: hub primeiro e 01→08 — o DOM segue a ordem visual (§16/§17, Tab e leitor de tela)
-    return isMobile() ? ["hub"].concat(frontsAsArray().map(function(f){ return f.key; })) : LAYOUT;
+    var keys = frontsAsArray().map(function(f){ return f.key; });
+    return isMobile() ? ["hub"].concat(keys) : LAYOUT.concat(keys.filter(function(k){ return LAYOUT.indexOf(k)<0; }));
+  }
+  function gridRowsTemplate(){                                     // desktop: linha do anel sem itens (só texto) fica mais baixa; cartas largas = linha "auto"
+    if(isMobile()) return "";
+    var rows = [0, 3, 6].map(function(i){
+      var heavy = LAYOUT.slice(i, i+3).some(function(k){ var f = k!=="hub" && frontOf(k); return k==="hub" || (f && f.items.length>0); });
+      return heavy ? "minmax(0,1fr)" : "minmax(0,.82fr)";
+    });
+    var wide = frontsAsArray().some(function(f){ return LAYOUT.indexOf(f.key)<0; });
+    return rows.join(" ") + (wide ? " auto" : "");
   }
   function renderGrid(){
     var focusSel = gridFocusSelector();
     grid.innerHTML = "";
+    grid.style.gridTemplateRows = gridRowsTemplate();
     gridOrder().forEach(function(key){
       if(key === "hub"){ grid.appendChild(renderHub()); return; }
       var f = frontOf(key);
@@ -1776,6 +1817,10 @@
     var whole = Math.abs(v-Math.round(v))<0.005;
     try{ return v.toLocaleString("pt-BR", { style:"currency", currency:"BRL", minimumFractionDigits:whole ? 0 : 2, maximumFractionDigits:whole ? 0 : 2 }); }catch(e){ return fmtCurrency(v); }
   }
+  function frontRoutines(key){                                     // rotinas reais da frente (escritorio/data.js), 0 sem o módulo
+    var R = window.LisieuxRoster;
+    try{ return R && R.routines ? R.routines().filter(function(p){ return p.company===key; }).length : 0; }catch(e){ return 0; }
+  }
   function frontLatestRevenue(key){                                // {month, total} do mês mais recente com lançamento, ou null
     var byMonth = {};
     frontRevenueEntries(key).forEach(function(e){ var a = numOrNull(e.amount); if(a===null) return; byMonth[e.month] = (byMonth[e.month]||0)+a; });
@@ -1790,7 +1835,11 @@
       return '<div class="card-stat"><span class="card-stat-empty">sem conta conectada · receita: sem lançamento</span></div>';
     }
     var m = primaryMetricFor(f);
-    if(!m) return '<div class="card-stat"><span class="card-stat-empty">sem dado conectado ainda</span></div>';
+    if(!m){
+      var rts = frontRoutines(key);                                // sem métrica: quantas rotinas reais trabalham para a frente (escritório)
+      if(rts) return '<div class="card-stat"><span class="card-stat-value">'+rts+'</span><span class="card-stat-delta" title="rotinas agendadas que aparecem no escritório">'+(rts===1 ? "rotina diária" : "rotinas diárias")+(LAYOUT.indexOf(key)<0 ? "" : " · sem métrica conectada")+'</span></div>';
+      return '<div class="card-stat"><span class="card-stat-empty">sem dado conectado ainda</span></div>';
+    }
     var d = deltaNamed(m.points, 7), dd = deltaFromNamed(d, { noPct:true }), st = staleness(m.points, m.provider);
     var title = d ? fmtDeltaNamed(d)+" · base "+fmtNumber(d.ref)+" em "+fmtDateDM(d.since) : "sem histórico ainda";
     var spark = m.points.length>1 ? '<span class="card-stat-spark">'+sparklineSvg(m.points, { w:72, h:18, color:"var(--s1)", windowFrom:d ? d.since : null, dotR:2.5 })+'</span>' : '';
@@ -1816,7 +1865,7 @@
 
   function renderCard(key, f){
     var el = document.createElement("div");
-    el.className = "card";
+    el.className = LAYOUT.indexOf(key)<0 ? "card wide" : "card";
     el.tabIndex = 0;
     el.setAttribute("role","button");
     el.setAttribute("aria-label","Abrir "+f.name);
@@ -3397,7 +3446,7 @@
     var current = nodes.filter(function(nd){ return nd.key===o.current; })[0];
     out += '<defs><radialGradient id="hubGrad" cx="50%" cy="45%" r="60%"><stop offset="0%" style="stop-color:var(--accent-soft)"/><stop offset="100%" style="stop-color:var(--surface)"/></radialGradient></defs>';
     nodes.forEach(function(nd, i){
-      var k = nd.num, th = -135+(k-1)*45, r = nd.connected ? (nd.aMax>0 ? 7+9*Math.sqrt(nd.audience/nd.aMax) : 7) : 6;
+      var k = nd.num, th = -135+i*360/nodes.length, r = nd.connected ? (nd.aMax>0 ? 7+9*Math.sqrt(nd.audience/nd.aMax) : 7) : 6;
       var isCur = current && nd.key===current.key;
       if(sm) r = isCur ? 7 : (nd.connected ? (nd.aMax>0 ? 4+3*Math.sqrt(nd.audience/nd.aMax) : 4) : 4);
       var p = polar(cx, cy, R, th), ring = r+(sm ? 3 : 4);
@@ -4658,6 +4707,9 @@
       if(typeof f.category!=="string") f.category = f.category==null ? "" : String(f.category);
       var n = parseInt(f.num, 10); f.num = isFinite(n) ? n : 0;
     });
+    Object.keys(SEED_DATA.fronts).forEach(function(k){            // frente nova publicada (ex.: 09 Blogs) também aparece para quem já tem edições salvas
+      if(!Object.prototype.hasOwnProperty.call(s.fronts, k)) s.fronts[k] = JSON.parse(JSON.stringify(SEED_DATA.fronts[k]));
+    });
     if(!s.revenue || typeof s.revenue!=="object") s.revenue = { entries:[] };
     if(!Array.isArray(s.revenue.entries)) s.revenue.entries = [];
     return s;
@@ -4697,7 +4749,7 @@
     renderGrid();
     return true;
   }
-  function paletteEntries(){                                       // Frentes (8) · Subprojetos (todos os itens) · Visão geral (4 abas) · Ações
+  function paletteEntries(){                                       // Frentes (9) · Subprojetos (todos os itens) · Visão geral (4 abas) · Ações
     var out = [];
     frontsAsArray().forEach(function(f){
       out.push({ group:"fronts", label:num2(f.num)+" · "+f.name+" · "+f.category, keys:[f.name, f.category, num2(f.num), String(f.num)], kbd:String(f.num), icon:"front", run:function(){ go("#/p/"+f.key); } });
@@ -4783,7 +4835,7 @@
     var results = palSearch(paletteEntries(), query);
     palList.textContent = ""; palItems = []; palActive = -1;
     if(!results.length){
-      palList.appendChild(h("div", { class:"pal-empty", role:"presentation" }, t`Nada encontrado para “${String(query||"").trim()}”. Tente o número da frente (1–8) ou o nome do subprojeto.`));
+      palList.appendChild(h("div", { class:"pal-empty", role:"presentation" }, t`Nada encontrado para “${String(query||"").trim()}”. Tente o número da frente (1–9) ou o nome do subprojeto.`));
       palInput.removeAttribute("aria-activedescendant");
       palStatus.textContent = "Nada encontrado";
       return;
@@ -4856,7 +4908,7 @@
   // ---- sheet "Atalhos de teclado" (?) ----
   var SHORTCUTS = [
     { keys:[KBD_META, "/"], sep:" ou ", desc:"buscar no painel (frentes, subprojetos, visão geral, ações)" },
-    { keys:["1", "8"], sep:" – ", desc:"abrir a frente 01 a 08" },
+    { keys:["1", "9"], sep:" – ", desc:"abrir a frente 01 a 09" },
     { keys:["g"], desc:"visão geral do grupo" },
     { keys:["o"], desc:"abrir o escritório (agentes por frente)" },
     { keys:["m"], desc:"alternar o modo gráfico dos cards" },
@@ -4928,7 +4980,7 @@
     if(k==="/"){ e.preventDefault(); openPalette(); return; }
     if(k==="?"){ e.preventDefault(); openSheet(); return; }
     if(e.shiftKey) return;
-    if(/^[1-8]$/.test(k)){ if(frontOf("f"+k)){ e.preventDefault(); go("#/p/f"+k); } return; }
+    if(/^[1-9]$/.test(k)){ if(frontOf("f"+k)){ e.preventDefault(); go("#/p/f"+k); } return; }
     if(k==="g"){ e.preventDefault(); go("#/geral"); return; }
     if(k==="o"){ e.preventDefault(); go("#/escritorio"); return; }
     if(k==="m"){ e.preventDefault(); if(graphToggle) graphToggle.click(); announce(graphMode ? "Modo gráfico ligado" : "Modo gráfico desligado"); return; }
@@ -4992,18 +5044,21 @@
     officeSaveList(list, name+(editing ? " foi atualizado" : " entrou no escritório")+(rec.status==="work" ? " e está trabalhando" : ""), "#officeAdd");
   }
   function officeTable(team){
-    var R = officeApi();
+    var R = officeApi(), fixedKind = { robo:1, rotina:1 }, nRot = 0;
+    team = team.filter(function(p){ return !fixedKind[p.kind]; }).concat(team.filter(function(p){ return fixedKind[p.kind]; }));   // equipe editável primeiro; robôs e rotinas reais depois
     var rows = team.map(function(p){
-      var working = p.status==="work", robo = p.kind==="robo";
-      var acts = robo ? h("span", { class:"ro", text:"automático" }) : [
+      var working = p.status==="work", robo = p.kind==="robo", rotina = p.kind==="rotina", blog = p.blog && R.blogName ? R.blogName(p.blog) : "";
+      if(rotina) nRot++;
+      var role = (p.role || "—") + (rotina && p.team ? " · " + (p.team.perRun===1 ? "1 agente" : p.team.perRun + " agentes") + " por execução" : "");
+      var acts = robo ? h("span", { class:"ro", text:"automático" }) : rotina ? h("span", { class:"ro", text:"pela rotina" }) : [
         h("button", { type:"button", dataset:{ officeToggle:p.id }, "aria-label":working ? "Mandar "+p.name+" descansar" : "Colocar "+p.name+" para trabalhar", text:working ? "descansar" : "trabalhar", onClick:function(){ officeToggle(p.id); } }),
         h("button", { type:"button", "aria-label":"Editar "+p.name, text:"editar", onClick:function(){ OFFICE.editing = p.id; OFFICE.creating = false; officeRenderTeam("#offName"); } }),
         h("button", { type:"button", "aria-label":"Remover "+p.name, text:"remover", onClick:function(){ officeRemove(p.id); } })
       ];
       return h("tr", { dataset:{ person:p.id } }, [
         h("th", { scope:"row", text:p.name }),
-        h("td", { text:p.role || "—" }),
-        h("td", { text:R.company(p.company).label }),
+        h("td", { text:role, title:rotina && p.team ? p.team.how : null }),
+        h("td", { text:R.company(p.company).label + (blog ? " · " + blog : "") }),
         h("td", null, h("span", { class:"kind kind-"+p.kind, text:R.kindLabel(p.kind) })),
         h("td", null, h("span", { class:"st "+(working ? "work" : "rest"), text:working ? "▲ trabalhando" : "• descansando" })),
         h("td", { class:"task", text:p.task || "—" }),
@@ -5011,7 +5066,7 @@
       ]);
     });
     return h("div", { class:"office-table-wrap" }, h("table", { class:"office-table" }, [
-      h("caption", { text:"Equipe do escritório ("+team.length+" pessoas)" }),
+      h("caption", { text:"Equipe do escritório ("+team.length+" pessoas"+(nRot ? ", "+nRot+" delas são rotinas reais; os subagentes aparecem no escritório só enquanto a rotina trabalha" : "")+")" }),
       h("thead", null, h("tr", null, ["Nome", "Função", "Empresa", "Tipo", "Estado", "Tarefa", "Ações"].map(function(c){ return h("th", { scope:"col", text:c }); }))),
       h("tbody", null, rows)
     ]));

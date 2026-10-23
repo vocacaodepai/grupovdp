@@ -45,6 +45,8 @@
   .area-btn:hover{ background:rgba(255,255,255,.07); }
   .area-btn:focus-visible{ outline:2px solid var(--blue); outline-offset:-2px; }
   .area-btn[aria-current="true"]{ background:rgba(124,151,240,.18); color:#fff; box-shadow:inset 3px 0 0 var(--blue); }
+  .area-btn.sub{ padding:6px 10px 6px 26px; font-size:13px; color:var(--mut); }
+  .area-btn.sub[aria-current="true"]{ color:#fff; }
   .drawer .sep{ height:1px; background:var(--line); margin:6px 4px 12px; }
   .sw-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 10px; }
   .sw-row label{ font:500 14px/1.2 var(--sans); }
@@ -88,6 +90,8 @@
   .card dl{ margin:0; display:grid; grid-template-columns:auto 1fr; gap:6px 12px; font:13px/1.35 var(--sans); }
   .card dt{ color:var(--mut); }
   .card dd{ margin:0; overflow-wrap:anywhere; }
+  .card .dl-row{ display:contents; }
+  .card .dl-row[hidden]{ display:none; }
   .card dd[data-state="work"]{ color:#8fe3a3; }
   .card dd[data-state="rest"]{ color:#c9c9d6; }
   .card-x{ position:absolute; top:8px; right:8px; width:30px; height:30px; border-radius:50%; border:0; background:rgba(255,255,255,.08); color:#fff; cursor:pointer; font:18px/1 var(--sans); }
@@ -152,6 +156,7 @@
     <dt>Estado</dt><dd id="cardState"></dd>
     <dt>Tarefa</dt><dd id="cardTask"></dd>
     <dt>Origem</dt><dd id="cardOrigin"></dd>
+    <div id="cardTeamRow" class="dl-row" hidden><dt>Equipe</dt><dd id="cardTeam"></dd></div>
   </dl>
 </section>
 

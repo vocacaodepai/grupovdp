@@ -1,9 +1,11 @@
 /* Painel Lisieux — Escritório do Grupo Lisieux (motor da página escritorio/index.html).
  *
- * Mundo de 44×27 tiles de 16 px (704×432 px de jogo), montado só com os sprites próprios de
+ * Mundo de 44×45 tiles de 16 px (704×720 px de jogo), montado só com os sprites próprios de
  * sprites-office.js (of_*), sprites-lounge.js (dc_*, lg_*) e sprites-chars.js (pessoas).
  *   - parede norte com placas 01–04; parede interna com placas 05–08; uma fileira de 3 cubículos por empresa;
- *   - embaixo: Diretoria (mesa executiva), Central de dados (estação de 6 monitores + mesa de reunião) e Copa.
+ *   - no meio: Diretoria (mesa executiva), Central de dados (estação de 6 monitores + mesa de reunião) e Copa;
+ *   - embaixo, a ala 09 Blogs: uma fileira de cubículos por blog, do tamanho da equipe da rotina, e a mesa de pauta.
+ * Rotinas reais (data.js) têm um agente fixo; os subagentes que a rotina abre aparecem só enquanto ela trabalha.
  * Pessoas: "work" anda até o próprio lugar e senta digitando (monitor aceso + balão); "rest" vai para a copa.
  * Dados: LisieuxRoster (data.js) + robôs reais (../data/metrics.json a cada 60 s) + LisieuxLive (live.js).
  * O Modo Demo (padrão, só com o ao vivo desligado) troca alguém de estado a cada ~3 s e nunca grava nada.
@@ -16,7 +18,7 @@
   function $(id){ return document.getElementById(id); }
   if(!R || !PX || !CH || !LG || !SP.of_cub_a || !SP.lg_sofa_l){ var fe = $("fatal"); if(fe) fe.hidden = false; return; }
 
-  var TILE = 16, TW = 44, TH = 27, WW = TW*TILE, WH = TH*TILE;
+  var TILE = 16, TW = 44, TH = 45, WW = TW*TILE, WH = TH*TILE;
   var QS = null; try{ QS = new URLSearchParams(location.search); }catch(e){}
   var EMBED = !!(QS && QS.get("embed")==="1");
   var mqReduce = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
@@ -160,7 +162,24 @@
     { x0:0,   x1:160, y:288, sp:"of_wall", endL:false, endR:"edge" },           // Diretoria (porta em 160–192)
     { x0:192, x1:336, y:288, sp:"of_wall", endL:"toco", endR:"edge" },          // Central (porta em 336–368)
     { x0:368, x1:512, y:288, sp:"of_wall", endL:"edge", endR:"toco" },
-    { x0:544, x1:704, y:288, sp:"of_wall_brick", endL:"edge", endR:false }      // Copa (porta em 512–544)
+    { x0:544, x1:704, y:288, sp:"of_wall_brick", endL:"edge", endR:false },     // Copa (porta em 512–544)
+    { x0:0,   x1:256, y:432, sp:"of_wall", endL:false, endR:"edge" },           // ala 09 Blogs (portas em 256–288 e 576–608)
+    { x0:288, x1:576, y:432, sp:"of_wall", endL:"edge", endR:"edge" },
+    { x0:608, x1:704, y:432, sp:"of_wall", endL:"edge", endR:false },
+    { x0:16,  x1:112, y:576, sp:"of_wall", endL:"edge", endR:"edge" },          // parede interna da ala (fileira de baixo)
+    { x0:144, x1:288, y:576, sp:"of_wall", endL:"edge", endR:"edge" },
+    { x0:320, x1:464, y:576, sp:"of_wall", endL:"edge", endR:"edge" },
+    { x0:496, x1:688, y:576, sp:"of_wall", endL:"edge", endR:"edge" }
+  ];
+  // ala 09 Blogs: blog -> coluna (tile), faixa (linha das cadeiras de trás), módulos (2 lugares cada) e topo da parede da placa
+  var BLOG_LAYOUT = [
+    { key:"bitcoin",  x0:1,  T:29, n:5, wall:432 },
+    { key:"saude",    x0:18, T:29, n:4, wall:432 },
+    { key:"yangled",  x0:32, T:29, n:1, wall:432 },
+    { key:"portal",   x0:1,  T:38, n:2, wall:576 },
+    { key:"politica", x0:9,  T:38, n:3, wall:576 },
+    { key:"review",   x0:20, T:38, n:3, wall:576 },
+    { key:"grama",    x0:31, T:38, n:4, wall:576 }
   ];
   var TOCOS = [ { x:192, y0:320, y1:432 }, { x:506, y0:320, y1:432 } ];
   var WOOD = [ { c0:0, c1:11, r0:20, r1:26 }, { c0:32, c1:43, r0:20, r1:26 } ];
@@ -206,33 +225,41 @@
       return s;
     }
 
-    // ---------- cubículos: uma fileira de 3 módulos por empresa ----------
+    // ---------- cubículos: uma fileira de n módulos (2 lugares cada) ----------
     var VARIANTS = ["of_cub_a", "of_cub_b", "of_cub_c"];
-    BLOCKS.forEach(function(cid, bi){
-      var band = bi<4 ? 0 : 1, x0 = BX[bi%4], T = BT[band], bx = x0*TILE, by = T*TILE + 12;
-      for(var ty=T+1; ty<=T+3; ty++) for(var tx=x0; tx<=x0+8; tx++) block(tx, ty);
+    function cubicleRow(group, area, x0, T, n, top, vi){
+      var bx = x0*TILE, by = T*TILE + 12;
+      for(var ty=T+1; ty<=T+3; ty++) for(var tx=x0; tx<=x0+3*n-1; tx++) block(tx, ty);
       var front = [], back = [];
-      for(var m=0; m<3; m++){
+      for(var m=0; m<n; m++){
         var sx = bx + 48*m + 25;
-        obj(VARIANTS[(bi+m)%3], sx, by+42, { solid:null });
+        obj(VARIANTS[(vi+m)%3], sx, by+42, { solid:null });
         obj("of_chair_down", sx, by+8, { solid:null });
         obj("of_chair_up", sx, by+59, { solid:null });
-        back.push(seat({ id:cid+"-b"+m, x:sx, y:by+7, dir:"down", sortY:by+8.5, stand:[tileOf(sx), T], area:cid,
+        back.push(seat({ id:group+"-b"+m, x:sx, y:by+7, dir:"down", sortY:by+8.5, stand:[tileOf(sx), T], area:area,
                          badge:{ x:sx, y:by+11 }, bubble:"side" }));
-        var fs = seat({ id:cid+"-f"+m, x:sx, y:by+47, dir:"up", sortY:by+42.6, stand:[tileOf(sx), T+4], area:cid,
+        var fs = seat({ id:group+"-f"+m, x:sx, y:by+47, dir:"up", sortY:by+42.6, stand:[tileOf(sx), T+4], area:area,
                         badge:{ x:sx, y:by+57 }, bubbleTip:by+18 });
         fs.monitor = obj("of_mon_off", sx, by+31, { solid:null, sortY:by+42.5, draw:monitorDrawer(fs) });
         front.push(fs);
       }
-      obj("of_cub_post", bx+144+1, by+42, { solid:null });
-      w.blockSeats[cid] = [front[0], back[1], front[2], back[0], front[1], back[2]];
-      // vagas "em pé" quando a empresa tem mais de 6 pessoas trabalhando
-      w.overflow[cid] = [0, 2, 3, 5, 6, 8].map(function(dx, k){
-        return { id:cid+"-o"+k, x:(x0+dx)*TILE+8, y:(T+4)*TILE+12, dir:"up", pose:"idle", sortY:(T+4)*TILE+12, stand:[x0+dx, T+4], kind:"stand", area:cid, occ:null };
-      });
-      var top = band ? 144 : 0;
-      w.areas[cid] = { x:bx-10, y:top, w:167, h:(by+60) - top };
+      obj("of_cub_post", bx+48*n+1, by+42, { solid:null });
+      // ordem de ocupação espalhada (frente/trás alternados), igual para todas as fileiras
+      var order = [];
+      for(var i=0; i<n; i++) order.push(i%2 ? back[i] : front[i]);
+      for(var j=0; j<n; j++) order.push(j%2 ? front[j] : back[j]);
+      w.blockSeats[group] = order;
+      // vagas "em pé" quando a fileira lota
+      var ov = [];
+      for(var dx=0; dx<3*n; dx++) if(dx%3!==1) ov.push({ id:group+"-o"+dx, x:(x0+dx)*TILE+8, y:(T+4)*TILE+12, dir:"up", pose:"idle", sortY:(T+4)*TILE+12, stand:[x0+dx, T+4], kind:"stand", area:area, occ:null });
+      w.overflow[group] = ov;
+      w.areas[area] = { x:bx-10, y:top, w:48*n+23, h:(by+60) - top };
+    }
+    BLOCKS.forEach(function(cid, bi){
+      var band = bi<4 ? 0 : 1;
+      cubicleRow(cid, cid, BX[bi%4], BT[band], 3, band ? 144 : 0, bi);
     });
+    BLOG_LAYOUT.forEach(function(b, i){ cubicleRow("f9:"+b.key, "f9-"+b.key, b.x0, b.T, b.n, b.wall, i+1); });
 
     // ---------- plantas no topo dos corredores (deixam sempre 1 tile livre) ----------
     obj("dc_plant_tall", 168, 41);
@@ -316,6 +343,31 @@
     w.restExtra = [];
     addStandSpots(13, 30, 25, 26, "central", w.restExtra);
     addStandSpots(1, 42, 16, 17, "corredor", w.restExtra);
+
+    // ---------- ala 09 Blogs: mesa de pauta (ao lado da porta da copa), plantas e corredores ----------
+    obj("of_meeting_set", 656, 536, { solid:{ x:633, y:496, w:47, h:40 }, draw:meetingDrawer });
+    w.blogMeet = [];
+    [
+      { x:645, y:491, dir:"down", chair:["of_chair_down", 645, 498], sortY:498.5, stand:[40, 30], badge:{ x:645, y:497 }, bubble:"side" },
+      { x:667, y:491, dir:"down", chair:["of_chair_down", 667, 498], sortY:498.5, stand:[41, 30], badge:{ x:667, y:497 }, bubble:"side" },
+      { x:628, y:522, dir:"right", chair:["of_chair_right", 625, 529], sortY:536.5, stand:[39, 32], badge:{ x:628, y:528 } },
+      { x:684, y:522, dir:"left", chair:["of_chair_left", 687, 529], sortY:536.5, stand:[42, 32], badge:{ x:684, y:528 } },
+      { x:656, y:539, dir:"up", chair:["of_chair_up", 656, 555], sortY:536.6, stand:[41, 34], badge:{ x:656, y:553 } }
+    ].forEach(function(m, k){
+      obj(m.chair[0], m.chair[1], m.chair[2], { solid:null });
+      w.blogMeet.push(seat({ id:"pauta-"+k, x:m.x, y:m.y, dir:m.dir, sortY:m.sortY, stand:m.stand, area:"f9", badge:m.badge, kind:"meeting", bubble:m.bubble }));
+    });
+    obj("dc_plant_tall", 696, 474);
+    obj("dc_plant_s", 568, 474);
+    obj("dc_plant_bush", 8, 698);
+    obj("dc_plant_spiky", 696, 698);
+    w.restBlogs = [];
+    w.blogMeet.forEach(function(m){ used[m.stand[0]+","+m.stand[1]] = 1; });
+    addStandSpots(0, 43, 34, 35, "f9", w.restBlogs);
+    addStandSpots(1, 42, 43, 44, "f9", w.restBlogs);
+    w.blockSeats.f9 = [];
+    w.overflow.f9 = [];
+    w.areas.f9 = { x:0, y:432, w:WW, h:WH - 432 };
     w.areas.tudo = { x:0, y:0, w:WW, h:WH };
     return w;
   }
@@ -338,7 +390,7 @@
     else PX.draw(ctx, "of_station6_off", this.x, this.y);
   }
   function meetingDrawer(ctx, t){
-    var on = W.meetSeats.some(seatWorking);
+    var on = (this.y>432 ? W.blogMeet : W.meetSeats).some(seatWorking);
     PX.draw(ctx, "of_meeting_set", this.x, this.y, { frame:on && !REDUCE ? (Math.floor(t*2.2)%2) : 0 });
   }
 
@@ -410,6 +462,19 @@
     drawSign(ctx, 248, 288, "CENTRAL DE DADOS");
     wallItem(ctx, "dc_tv", 330, 288);
     drawSign(ctx, 432, 288, "GRUPO LISIEUX");
+    // ala 09 Blogs: placa da empresa ao lado da porta da copa + uma placa por blog, sobre a sua fileira
+    var f9 = cmap.f9 || { num:9, short:"BLOGS" };
+    drawSign(ctx, 656, 432, f9.short, (f9.num<10 ? "0" : "")+f9.num);
+    var BSIDE = ["dc_board", "dc_paint_a", "dc_paint_b", "dc_board_pie", "dc_paint_a", "dc_tv", "dc_paint_b"];
+    BLOG_LAYOUT.forEach(function(b, i){
+      var bl = R.BLOGS.filter(function(x){ return x.key===b.key; })[0], bx = b.x0*TILE, wdt = 48*b.n;
+      if(!bl) return;
+      var segL = bx + (b.wall===576 ? 6 : -10), segR = bx + wdt + (b.wall===576 ? -6 : 10), cx = Math.round(bx + wdt/2);
+      var r = drawSign(ctx, cx, b.wall, bl.short);
+      var rightSpace = segR - r.x1 - 4, leftSpace = r.x0 - segL - 4, side = BSIDE[i];
+      if(itemW(side)<=rightSpace) wallItem(ctx, side, Math.round(r.x1 + 2 + rightSpace/2), b.wall);
+      else if(itemW(side)<=leftSpace) wallItem(ctx, side, Math.round(segL + 2 + leftSpace/2), b.wall);
+    });
     bgCanvas = c;
   }
 
@@ -494,7 +559,7 @@
       // passeio: quem está em pé descansando anda uns tiles de vez em quando
       if(e.p.status==="rest" && e.at && e.at.kind==="stand" && clock>e.nextStroll){
         e.nextStroll = clock + rnd(9, 22);
-        var cands = W.rest.concat(W.restExtra).filter(function(r){
+        var cands = W.rest.concat(W.restExtra, W.restBlogs).filter(function(r){
           return r.kind==="stand" && !r.occ && r.area===e.at.area && Math.abs(r.stand[0]-e.at.stand[0]) + Math.abs(r.stand[1]-e.at.stand[1])<=4;
         });
         if(cands.length) goTo(e, pick(cands));
@@ -515,35 +580,51 @@
   }
   function chooseTarget(e, home){
     var p = e.p, cur = e.target;
+    var blogs = p.company==="f9", meet = blogs ? W.blogMeet.concat(W.meetSeats) : W.meetSeats, g = e.group || p.company;
     if(p.status==="work"){
-      if(/reuni/i.test(p.task||"")){
+      if(/reuni|pauta/i.test(p.task||"")){
         if(cur && cur.kind==="meeting") return cur;
-        var m = freeRandom(W.meetSeats); if(m) return m;
+        var m = freeRandom(blogs ? W.blogMeet : W.meetSeats) || freeRandom(meet); if(m) return m;
       }
       if(home) return home;
-      if(cur && (cur.kind==="meeting" || (cur.kind==="stand" && cur.area===p.company))) return cur;
-      var mm = freeOf(W.meetSeats); if(mm) return mm;
-      var ov = freeOf(W.overflow[p.company] || []); if(ov) return ov;
+      if(cur && (cur.kind==="meeting" || (cur.kind==="stand" && cur.area===(W.overflow[g] && W.overflow[g][0] ? W.overflow[g][0].area : p.company)))) return cur;
+      var mm = freeOf(meet); if(mm) return mm;
+      var ov = freeOf(W.overflow[g] || []); if(ov) return ov;
     }
-    if(cur && cur.area && (cur.area==="copa" || cur.area==="corredor" || (cur.area==="central" && cur.kind==="stand")) && W.rest.concat(W.restExtra).indexOf(cur)>=0) return cur;
-    return freeRandom(W.rest, function(r){ return r.kind!=="stand"; }) || freeRandom(W.restExtra) || W.rest[0];
+    var restAll = W.rest.concat(W.restExtra, W.restBlogs);
+    if(cur && cur.area && (cur.area==="copa" || cur.area==="corredor" || (cur.area==="central" && cur.kind==="stand") || (blogs && cur.area==="f9")) && restAll.indexOf(cur)>=0) return cur;
+    if(blogs){ var rb = freeRandom(W.restBlogs); if(rb) return rb; }        // a ala tem os próprios corredores de descanso
+    return freeRandom(W.rest, function(r){ return r.kind!=="stand"; }) || freeRandom(W.restExtra) || freeRandom(W.restBlogs) || W.rest[0];
   }
 
+  function groupOf(p){
+    if(p.kind==="robo") return "robo";
+    if(p.company==="f9" && p.blog && W.blockSeats["f9:"+p.blog]) return "f9:"+p.blog;
+    return p.company;
+  }
   function syncPeople(instant){
     if(!W) return;
     var list = R.merge(roster, robotsList, liveMap, demoActive() ? demoMap : null, liveMode);
     people = list;
     var groups = {}, home = {}, alive = {};
-    list.forEach(function(p){ var g = p.kind==="robo" ? "robo" : p.company; (groups[g] = groups[g] || []).push(p); });
+    list.forEach(function(p){ (groups[groupOf(p)] = groups[groupOf(p)] || []).push(p); });
     Object.keys(groups).forEach(function(g){
       var seats = g==="robo" ? W.stationSeats : g==="chefia" ? W.execSeats : (W.blockSeats[g] || []);
-      groups[g].forEach(function(p, i){ if(seats[i]) home[p.id] = seats[i]; });
+      // quem é fixo tem lugar próprio; os subagentes ocupam os lugares que sobram (nunca o de quem está trabalhando)
+      var fixed = groups[g].filter(function(p){ return p.kind!=="ajudante"; }), taken = {};
+      fixed.forEach(function(p, i){ if(seats[i]){ home[p.id] = seats[i]; if(p.status==="work") taken[i] = 1; } });
+      var k = 0;
+      groups[g].forEach(function(p){
+        if(p.kind!=="ajudante") return;
+        while(k<seats.length && taken[k]) k++;
+        if(k<seats.length){ home[p.id] = seats[k]; taken[k] = 1; }
+      });
     });
     list.forEach(function(p){
       alive[p.id] = 1;
       var e = ents[p.id];
       if(!e) e = ents[p.id] = newEnt(p);
-      e.p = p; e.lk = R.look(p); e.icon = R.roleIcon(p); e.home = home[p.id] || null;
+      e.p = p; e.lk = R.look(p); e.icon = R.roleIcon(p); e.home = home[p.id] || null; e.group = groupOf(p);
     });
     Object.keys(ents).forEach(function(id){
       if(alive[id]) return;
@@ -556,7 +637,7 @@
     list.forEach(function(p){
       var e = ents[p.id], t = e.target;
       if(!t) return;
-      var wantsSeat = p.status==="work", isRestSpot = W.rest.indexOf(t)>=0 || W.restExtra.indexOf(t)>=0;
+      var wantsSeat = p.status==="work", isRestSpot = W.rest.indexOf(t)>=0 || W.restExtra.indexOf(t)>=0 || W.restBlogs.indexOf(t)>=0;
       if((wantsSeat && isRestSpot) || (!wantsSeat && !isRestSpot) || (wantsSeat && e.home && t!==e.home && !/reuni/i.test(p.task||""))){
         if(t.occ===e.id) t.occ = null;
       }
@@ -723,7 +804,7 @@
     clip:["organizando pedidos", "respondendo mensagens", "atualizando a planilha", "reunião de pauta"]
   };
   function demoTask(p){ return pick(TASKS[R.roleIcon(p)] || TASKS.clip); }
-  function demoCandidates(){ return roster.filter(function(p){ return p.kind!=="robo"; }); }
+  function demoCandidates(){ return R.routines().concat(roster).filter(function(p){ return p.kind!=="robo"; }); }
   function demoStart(){
     demoMap = {};
     demoCandidates().forEach(function(p){
@@ -776,11 +857,15 @@
     var list = $("areaList"); if(!list) return;
     list.textContent = "";
     var items = [["tudo", "Ver tudo"], ["chefia", "Diretoria"]];
-    R.companies().forEach(function(c){ if(/^f[1-8]$/.test(c.id)) items.push([c.id, c.label]); });
+    R.companies().forEach(function(c){
+      if(!/^f[1-9]$/.test(c.id)) return;
+      items.push([c.id, c.label]);
+      if(c.id==="f9") R.BLOGS.forEach(function(b){ items.push(["f9-"+b.key, b.name, true]); });
+    });
     items.push(["central", "Central de dados"], ["copa", "Copa"]);
     items.forEach(function(it){
       AREA_LABEL[it[0]] = it[1];
-      var li = el("li"), b = el("button", "area-btn", it[1]);
+      var li = el("li"), b = el("button", "area-btn"+(it[2] ? " sub" : ""), it[1]);
       b.type = "button"; b.setAttribute("data-area", it[0]);
       b.addEventListener("click", function(){ goArea(it[0], false); closeDrawer(true); });
       li.appendChild(b); list.appendChild(li);
@@ -840,6 +925,13 @@
     if(dot) dot.setAttribute("aria-hidden", "true");
   }
   function stateText(p){ return p.status==="work" ? "trabalhando" : "descansando"; }
+  function placeName(p){ var b = p.blog ? R.blogName(p.blog) : ""; return R.company(p.company).name + (b ? " · " + b : ""); }
+  function teamText(p){
+    if(p.kind==="ajudante") return "Aparece só enquanto a rotina trabalha";
+    var t = p.team; if(!t) return "";
+    return (t.perRun===1 ? "1 agente por execução" : t.perRun + " agentes por execução") +
+           (t.helpers ? " · até " + (t.helpers + 1) + " ao mesmo tempo" : "") + " (" + t.how + ")";
+  }
   function updateA11y(){
     var work = people.filter(function(p){ return p.status==="work"; }).length;
     var label = "Escritório do Grupo Lisieux em pixel art: " + people.length + " pessoas, " + work + " trabalhando e " + (people.length - work) + " descansando." +
@@ -848,8 +940,7 @@
     if(!srList) return;
     srList.textContent = "";
     people.forEach(function(p){
-      var co = R.company(p.company);
-      var li = el("li", null, p.name + " — " + (p.role || R.kindLabel(p.kind)) + ", " + co.name + ": " + stateText(p) + (p.status==="work" && p.task ? " (" + p.task + ")" : "") + ".");
+      var li = el("li", null, p.name + " — " + (p.role || R.kindLabel(p.kind)) + ", " + placeName(p) + ": " + stateText(p) + (p.status==="work" && p.task ? " (" + p.task + ")" : "") + ".");
       srList.appendChild(li);
     });
   }
@@ -862,7 +953,7 @@
     if(!tip) return;
     tip.textContent = "";
     tip.appendChild(el("b", null, e.p.name));
-    tip.appendChild(el("span", "tip-role", (e.p.role || R.kindLabel(e.p.kind)) + " · " + R.company(e.p.company).name));
+    tip.appendChild(el("span", "tip-role", (e.p.role || R.kindLabel(e.p.kind)) + " · " + placeName(e.p)));
     tip.appendChild(el("span", "tip-task", e.p.status==="work" ? cap1(e.p.task || "trabalhando") : "Descansando" + (e.p.task ? " · " + e.p.task : "")));
     tip.hidden = false;
     var r = tip.getBoundingClientRect(), x = clientX + 14, y = clientY + 14;
@@ -875,7 +966,9 @@
     var p = e.p;
     $("cardName").textContent = p.name;
     $("cardRole").textContent = p.role || R.kindLabel(p.kind);
-    $("cardCompany").textContent = R.company(p.company).name;
+    $("cardCompany").textContent = placeName(p);
+    var tm = teamText(p), tr = $("cardTeamRow");
+    if(tr){ tr.hidden = !tm; $("cardTeam").textContent = tm; }
     var st = $("cardState"); st.textContent = cap1(stateText(p)) + (p.stale ? " (sem aviso recente)" : ""); st.setAttribute("data-state", p.status);
     $("cardTask").textContent = p.task ? cap1(p.task) : "—";
     $("cardOrigin").textContent = cap1(originText(p));
