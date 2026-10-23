@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T09:34:03.539Z",
+  "generatedAt": "2026-10-23T14:24:19.290Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -669,7 +669,7 @@
         "20261022"
       ],
       [
-        "810",
+        "812",
         "20261023"
       ]
     ]
@@ -1121,7 +1121,7 @@
         "id": "NW_VDiYDzmo",
         "title": "Coração — Ponto 147 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/NW_VDiYDzmo/mqdefault.jpg",
-        "views": 1133,
+        "views": 1128,
         "likes": 67,
         "comments": 0,
         "minutes": 53,
@@ -1198,7 +1198,7 @@
         "id": "l6wTDPqi5lY",
         "title": "Coração — Ponto 148 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/l6wTDPqi5lY/mqdefault.jpg",
-        "views": 607,
+        "views": 603,
         "likes": 35,
         "comments": 0,
         "minutes": 21,
@@ -1291,7 +1291,7 @@
         "20261017"
       ],
       [
-        520,
+        515,
         "20261018"
       ],
       [
@@ -1794,7 +1794,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-23T09:34:03.594Z",
+      "generatedAt": "2026-10-23T14:24:19.330Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1804,7 +1804,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-23T09:34:03.594Z",
+      "generatedAt": "2026-10-23T14:24:19.330Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
