@@ -1321,6 +1321,7 @@
   .office-table .kind-agente{ border-color:#7c97f0; color:#5d78d6; }
   .office-table .kind-robo{ border-color:var(--accent); color:var(--accent); }
   .office-table .kind-rotina{ border-color:var(--st-good); color:var(--st-good); }
+  .office-table .kind-socio{ border-color:#c8902c; color:#a8761c; }
   .office-table .kind-chefia{ border-color:#d4aa62; color:#a77d2f; }
   .office-table .ro{ font-family:var(--font-mono); font-size:10px; color:var(--text-muted); }
   .office-table button{ border:1px solid var(--border); background:var(--surface-2); color:var(--text-2); border-radius:6px; padding:3px 9px; font-size:11px; cursor:pointer; margin-right:4px; }
@@ -5044,13 +5045,13 @@
     officeSaveList(list, name+(editing ? " foi atualizado" : " entrou no escritório")+(rec.status==="work" ? " e está trabalhando" : ""), "#officeAdd");
   }
   function officeTable(team){
-    var R = officeApi(), fixedKind = { robo:1, rotina:1 }, nRot = 0;
+    var R = officeApi(), fixedKind = { robo:1, rotina:1, socio:1, recepcao:1, limpeza:1 }, nRot = 0;
     team = team.filter(function(p){ return !fixedKind[p.kind]; }).concat(team.filter(function(p){ return fixedKind[p.kind]; }));   // equipe editável primeiro; robôs e rotinas reais depois
     var rows = team.map(function(p){
       var working = p.status==="work", robo = p.kind==="robo", rotina = p.kind==="rotina", blog = p.blog && R.blogName ? R.blogName(p.blog) : "";
       if(rotina) nRot++;
       var role = (p.role || "—") + (rotina && p.team ? " · " + (p.team.perRun===1 ? "1 agente" : p.team.perRun + " agentes") + " por execução" : "");
-      var acts = robo ? h("span", { class:"ro", text:"automático" }) : rotina ? h("span", { class:"ro", text:"pela rotina" }) : [
+      var acts = robo ? h("span", { class:"ro", text:"automático" }) : rotina ? h("span", { class:"ro", text:"pela rotina" }) : fixedKind[p.kind] ? h("span", { class:"ro", text:"fixo" }) : [
         h("button", { type:"button", dataset:{ officeToggle:p.id }, "aria-label":working ? "Mandar "+p.name+" descansar" : "Colocar "+p.name+" para trabalhar", text:working ? "descansar" : "trabalhar", onClick:function(){ officeToggle(p.id); } }),
         h("button", { type:"button", "aria-label":"Editar "+p.name, text:"editar", onClick:function(){ OFFICE.editing = p.id; OFFICE.creating = false; officeRenderTeam("#offName"); } }),
         h("button", { type:"button", "aria-label":"Remover "+p.name, text:"remover", onClick:function(){ officeRemove(p.id); } })
@@ -5058,7 +5059,7 @@
       return h("tr", { dataset:{ person:p.id } }, [
         h("th", { scope:"row", text:p.name }),
         h("td", { text:role, title:rotina && p.team ? p.team.how : null }),
-        h("td", { text:R.company(p.company).label + (blog ? " · " + blog : "") }),
+        h("td", { text:(p.kind==="recepcao" || p.kind==="limpeza") && R.placeOf ? R.placeOf(p) : R.company(p.company).label + (blog ? " · " + blog : "") }),
         h("td", null, h("span", { class:"kind kind-"+p.kind, text:R.kindLabel(p.kind) })),
         h("td", null, h("span", { class:"st "+(working ? "work" : "rest"), text:working ? "▲ trabalhando" : "• descansando" })),
         h("td", { class:"task", text:p.task || "—" }),

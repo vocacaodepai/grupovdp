@@ -101,7 +101,9 @@
     search:{ pal:{ b:"#6f86e8", l:"#c9d0e6" }, rows:[".bbb...", "bl..b..", "b...b..", "b...b..", ".bbbb..", "....bb.", ".....bb"] },
     chart:{ pal:{ o:K, g:"#57a252", b:"#408edd", r:"#d72f2b" }, rows:[".......", ".....r.", "...b.r.", ".g.b.r.", ".g.b.r.", ".g.b.r.", "ooooooo"] },
     star:{ pal:{ a:"#e9901e", y:"#f2c833" }, rows:["...a...", "..aya..", "aayyyaa", ".ayyya.", "..aya..", ".aa.aa.", ".a...a."] },
-    clip:{ pal:{ o:K, l:"#9e9fa6" }, rows:["..ooo..", ".oo.oo.", ".o...o.", ".olllo.", ".o...o.", ".olllo.", ".ooooo."] }
+    clip:{ pal:{ o:K, l:"#9e9fa6" }, rows:["..ooo..", ".oo.oo.", ".o...o.", ".olllo.", ".o...o.", ".olllo.", ".ooooo."] },
+    phone:{ pal:{ o:K, r:"#d72f2b" }, rows:["oo.....", "ooo....", ".oo....", "..oo...", "...oo.r", "....ooo", ".....oo"] },
+    talk:{ pal:{ o:K }, rows:[".......", ".......", ".......", "o.o.o..", ".......", ".......", "......."].map(function(r){ return "." + r.slice(0, 6); }) }
   };
   var iconCache = {};
   function iconCanvas(name){
@@ -284,6 +286,9 @@
     obj("lg_crib", 160, 360, { solid:{ x:145, y:336, w:30, h:26 } });          // berço, para quando as crianças vierem junto
     obj("lg_stroller", 140, 412);                                              // carrinho de bebê
     obj("lg_sofa_v_e", 16, 424, { solid:{ x:8, y:390, w:17, h:34 } });         // sofá encostado na parede da esquerda
+    w.salaSeats = [77, 88, 99].map(function(sx, k){
+      return seat({ id:"sala-"+k, x:sx, y:423, dir:"down", sortY:428.5, stand:[tileOf(sx), 26], area:"chefia", kind:"sofa" });
+    });
     w.areas.chefia = { x:0, y:288, w:192, h:144 };
 
     // ---------- Central de dados ----------
@@ -292,17 +297,23 @@
       obj("of_chair_orange_up", sx, 391, { solid:null });
       w.stationSeats.push(seat({ id:"robo-"+k, x:sx, y:375, dir:"up", sortY:376.5, stand:[tileOf(sx), 24], area:"central", badge:{ x:sx, y:389 } }));
     });
-    obj("of_meeting_set", 400, 392, { solid:{ x:377, y:352, w:47, h:40 }, draw:meetingDrawer });
+    // mesa de reunião do Grupo Lisieux: sócios, Bruno e Andressa conversam aqui (8 lugares)
+    obj("of_conf_table", 440, 392, { solid:{ x:404, y:360, w:72, h:32 } });
     var MS = [
-      { x:389, y:347, dir:"down", chair:["of_chair_down", 389, 354], sortY:354.5, stand:[24, 21], badge:{ x:389, y:353 }, bubble:"side" },
-      { x:411, y:347, dir:"down", chair:["of_chair_down", 411, 354], sortY:354.5, stand:[25, 21], badge:{ x:411, y:353 }, bubble:"side" },
-      { x:372, y:378, dir:"right", chair:["of_chair_right", 369, 385], sortY:392.5, stand:[23, 23], badge:{ x:372, y:384 } },
-      { x:428, y:378, dir:"left", chair:["of_chair_left", 431, 385], sortY:392.5, stand:[26, 23], badge:{ x:428, y:384 } },
-      { x:400, y:395, dir:"up", chair:["of_chair_up", 400, 411], sortY:392.6, stand:[25, 25], badge:{ x:400, y:409 } }
+      { x:416, y:347, dir:"down", chair:["of_chair_down", 416, 354], sortY:354.5, stand:[26, 21], bubble:"side" },
+      { x:440, y:347, dir:"down", chair:["of_chair_down", 440, 354], sortY:354.5, stand:[27, 21], bubble:"side" },
+      { x:464, y:347, dir:"down", chair:["of_chair_down", 464, 354], sortY:354.5, stand:[29, 21], bubble:"side" },
+      { x:399, y:378, dir:"right", chair:["of_chair_right", 396, 385], sortY:392.5, stand:[24, 23] },
+      { x:481, y:378, dir:"left", chair:["of_chair_left", 484, 385], sortY:392.5, stand:[30, 23] },
+      { x:416, y:395, dir:"up", chair:["of_chair_up", 416, 411], sortY:392.6, stand:[26, 25] },
+      { x:440, y:395, dir:"up", chair:["of_chair_up", 440, 411], sortY:392.6, stand:[27, 25] },
+      { x:464, y:395, dir:"up", chair:["of_chair_up", 464, 411], sortY:392.6, stand:[29, 25] }
     ];
     MS.forEach(function(m, k){
       obj(m.chair[0], m.chair[1], m.chair[2], { solid:null });
-      w.meetSeats.push(seat({ id:"reuniao-"+k, x:m.x, y:m.y, dir:m.dir, sortY:m.sortY, stand:m.stand, area:"central", badge:m.badge, kind:"meeting", bubble:m.bubble }));
+      var st = seat({ id:"reuniao-"+k, x:m.x, y:m.y, dir:m.dir, sortY:m.sortY, stand:m.stand, area:"central", kind:"meeting", bubble:m.bubble });
+      st.board = true;
+      w.meetSeats.push(st);
     });
     obj("dc_plant_tall", 494, 330);
     obj("dc_plant_bush", 215, 428);
@@ -335,7 +346,7 @@
     rest({ id:"maq-2", x:606, y:347, dir:"up", pose:"idle", sortY:347, stand:[37, 21], kind:"stand" });
     rest({ id:"maq-3", x:640, y:347, dir:"up", pose:"idle", sortY:347, stand:[40, 21], kind:"stand" });
     // os outros tiles livres da copa viram lugares "em pé"
-    var used = {}; w.rest.forEach(function(r){ used[r.stand[0]+","+r.stand[1]] = 1; });
+    var used = {}; w.rest.concat(w.meetSeats, w.salaSeats).forEach(function(r){ used[r.stand[0]+","+r.stand[1]] = 1; });
     var standDirs = ["down", "left", "right", "down"];
     function addStandSpots(c0, c1, r0, r1, area, list){
       for(var ty=r0; ty<=r1; ty++) for(var tx=c0; tx<=c1; tx++){
@@ -351,46 +362,57 @@
     addStandSpots(13, 30, 25, 26, "central", w.restExtra);
     addStandSpots(1, 42, 16, 17, "corredor", w.restExtra);
 
-    // ---------- Área de descanso (embaixo): café, sofás e mesas para quem está descansando ----------
-    obj("dc_shelf", 24, 473, { solid:{ x:9, y:456, w:31, h:20 } });
-    obj("dc_plant_tall", 236, 474);
-    obj("dc_plant_bush", 364, 472);
-    obj("lg_cooler", 385, 472);
-    obj("lg_coffee", 414, 472);
-    obj("lg_vending", 448, 472);
-    obj("dc_plant_spiky", 474, 472);
-    obj("dc_plant_s", 500, 472);
-    obj("dc_plant_tall", 690, 474);
-    w.floorRugs.push(["lg_rug_lilac", 408, 524]);
-    obj("lg_table_set", 408, 517, { solid:{ x:400, y:500, w:16, h:16 } });
-    obj("lg_sofa_l", 472, 556, { solid:{ x:454, y:516, w:44, h:42 } });
-    obj("lg_sofa_h", 408, 556, { solid:{ x:388, y:535, w:40, h:22 } });
-    w.floorRugs.push(["lg_rug", 120, 556]);
-    obj("lg_sofa_h", 120, 572, { solid:{ x:100, y:551, w:40, h:22 } });
+    // ---------- Recepção (embaixo, à esquerda): balcão com duas recepcionistas; bandeiras na parede ----------
+    obj("of_reception", 128, 536, { solid:{ x:80, y:512, w:96, h:25 } });
+    w.receptionSeats = [104, 152].map(function(sx, k){
+      obj("of_chair_exec_down", sx, 502, { solid:null });
+      return seat({ id:"recepcao-"+k, x:sx, y:495, dir:"down", sortY:502.5, stand:[tileOf(sx), 30], area:"recepcao", bubble:"side" });
+    });
+    w.floorRugs.push(["lg_rug", 120, 588]);
+    obj("lg_sofa_h", 120, 604, { solid:{ x:100, y:583, w:40, h:22 } });          // espera
+    obj("dc_plant_tall", 248, 474);
+    obj("dc_plant_bush", 8, 604);
+    obj("dc_plant_s", 20, 474);
+    w.areas.recepcao = { x:0, y:432, w:256, h:WH - 432 };
+
+    // ---------- Área de descanso: café, sinuca, sofás e mesas para quem está descansando ----------
+    obj("dc_plant_bush", 428, 472);
+    obj("lg_cooler", 449, 472);
+    obj("lg_coffee", 478, 472);
+    obj("lg_vending", 512, 472);
+    obj("dc_plant_spiky", 538, 472);
+    obj("dc_plant_s", 564, 472);
+    w.coffee = [[606, 328], [478, 472]];                                            // de onde sai a fumacinha do café
+    w.floorRugs.push(["lg_rug_lilac", 472, 524]);
+    obj("lg_table_set", 472, 517, { solid:{ x:464, y:500, w:16, h:16 } });
+    obj("lg_sofa_l", 536, 556, { solid:{ x:518, y:516, w:44, h:42 } });
+    obj("lg_sofa_h", 472, 556, { solid:{ x:452, y:535, w:40, h:22 } });
     obj("lg_sofa_h", 232, 572, { solid:{ x:212, y:551, w:40, h:22 } });
     obj("lg_sofa_h", 312, 572, { solid:{ x:292, y:551, w:40, h:22 } });
     obj("lg_sofa_h", 680, 600, { solid:{ x:660, y:579, w:40, h:22 } });
     obj("lg_pool", 592, 540, { solid:{ x:566, y:512, w:52, h:30 } });          // sinuca
-    obj("dc_plant_bush", 8, 604);
     obj("dc_plant_spiky", 640, 604);
     function lounge(o){ var r = rest(o); r.area = "lounge"; return r; }
-    lounge({ id:"lsofa-l1", x:459, y:537, dir:"down", sortY:556.5, stand:[28, 35], kind:"sofa" });
-    lounge({ id:"lsofa-l2", x:471, y:537, dir:"down", sortY:556.5, stand:[29, 35], kind:"sofa" });
-    lounge({ id:"lsofa-l3", x:487, y:546, dir:"down", sortY:556.5, stand:[30, 35], kind:"sofa" });
+    lounge({ id:"lsofa-l1", x:523, y:537, dir:"down", sortY:556.5, stand:[32, 35], kind:"sofa" });
+    lounge({ id:"lsofa-l2", x:535, y:537, dir:"down", sortY:556.5, stand:[33, 35], kind:"sofa" });
+    lounge({ id:"lsofa-l3", x:551, y:546, dir:"down", sortY:556.5, stand:[34, 35], kind:"sofa" });
     // sofás retos: [x do assento, coluna do lugar em pé, base do sofá, linha do lugar em pé]
-    [[397, 24, 556, 35], [408, 25, 556, 35], [419, 26, 556, 35], [109, 6, 572, 36], [120, 7, 572, 36], [131, 8, 572, 36],
+    [[461, 28, 556, 35], [472, 29, 556, 35], [483, 30, 556, 35], [109, 6, 604, 37], [120, 7, 604, 37], [131, 8, 604, 37],
      [221, 13, 572, 36], [232, 14, 572, 36], [243, 15, 572, 36], [301, 18, 572, 36], [312, 19, 572, 36], [323, 20, 572, 36],
      [669, 41, 600, 37], [680, 42, 600, 37], [691, 43, 600, 37]].forEach(function(a, k){
       lounge({ id:"lsofa-h"+k, x:a[0], y:a[2]-5, dir:"down", sortY:a[2]+0.5, stand:[a[1], a[3]], kind:"sofa" });
     });
-    lounge({ id:"lbanco-1", x:394, y:513, dir:"right", sortY:517.5, stand:[24, 32], kind:"stool" });
-    lounge({ id:"lbanco-2", x:422, y:513, dir:"left", sortY:517.5, stand:[26, 32], kind:"stool" });
-    lounge({ id:"lmaq-1", x:385, y:491, dir:"up", pose:"idle", sortY:491, stand:[24, 30], kind:"stand" });
-    lounge({ id:"lmaq-2", x:414, y:491, dir:"up", pose:"idle", sortY:491, stand:[25, 30], kind:"stand" });
-    lounge({ id:"lmaq-3", x:448, y:491, dir:"up", pose:"idle", sortY:491, stand:[28, 30], kind:"stand" });
+    lounge({ id:"lbanco-1", x:458, y:513, dir:"right", sortY:517.5, stand:[28, 32], kind:"stool" });
+    lounge({ id:"lbanco-2", x:486, y:513, dir:"left", sortY:517.5, stand:[30, 32], kind:"stool" });
+    lounge({ id:"lmaq-1", x:449, y:491, dir:"up", pose:"idle", sortY:491, stand:[28, 30], kind:"stand" });
+    lounge({ id:"lmaq-2", x:478, y:491, dir:"up", pose:"idle", sortY:491, stand:[29, 30], kind:"stand" });
+    lounge({ id:"lmaq-3", x:512, y:491, dir:"up", pose:"idle", sortY:491, stand:[32, 30], kind:"stand" });
+    w.receptionSeats.forEach(function(r){ used[r.stand[0]+","+r.stand[1]] = 1; });
     w.rest.forEach(function(r){ used[r.stand[0]+","+r.stand[1]] = 1; });
-    addStandSpots(0, 43, 29, 37, "lounge", w.rest);
-    w.areas.lounge = { x:0, y:432, w:704, h:WH - 432 };
+    addStandSpots(16, 43, 29, 37, "lounge", w.rest);
+    w.restExtra = w.restExtra || [];
+    addStandSpots(0, 15, 34, 36, "recepcao", w.restExtra);                         // quem espera na recepção
+    w.areas.lounge = { x:256, y:432, w:448, h:WH - 432 };
 
     // ---------- ala 09 Blogs (à direita): placa da empresa + mesa de pauta no alto, corredores de descanso ----------
     obj("of_meeting_set", 1032, 104, { solid:{ x:1009, y:64, w:47, h:40 }, draw:meetingDrawer });
@@ -416,6 +438,18 @@
     w.blockSeats.f9 = [];
     w.overflow.f9 = [];
     w.areas.f9 = { x:704, y:0, w:WW - 704, h:WH };
+    // pontos de chão livres por onde o pessoal da limpeza passa (fora de qualquer lugar de sentar/ficar)
+    var taken = {};
+    [w.execSeats, w.stationSeats, w.meetSeats, w.blogMeet, w.receptionSeats, w.salaSeats, w.rest, w.restExtra, w.restBlogs].forEach(function(l){
+      (l||[]).forEach(function(r){ taken[r.stand[0]+","+r.stand[1]] = 1; });
+    });
+    Object.keys(w.blockSeats).forEach(function(g){ w.blockSeats[g].forEach(function(r){ taken[r.stand[0]+","+r.stand[1]] = 1; }); });
+    Object.keys(w.overflow).forEach(function(g){ w.overflow[g].forEach(function(r){ taken[r.stand[0]+","+r.stand[1]] = 1; }); });
+    w.cleanSpots = [];
+    for(var cy=2; cy<TH-1; cy++) for(var cx=1; cx<TW-1; cx++){
+      if(!w.grid[cy*TW+cx] || taken[cx+","+cy]) continue;
+      w.cleanSpots.push({ id:"limpa-"+cx+"-"+cy, x:cx*TILE+8, y:cy*TILE+12, dir:"down", pose:"idle", sortY:cy*TILE+12, stand:[cx, cy], kind:"clean", area:"limpeza", occ:null });
+    }
     w.areas.tudo = { x:0, y:0, w:WW, h:WH };
     return w;
   }
@@ -511,13 +545,14 @@
     wallItem(ctx, "dc_tv", 330, 288);
     drawSign(ctx, 432, 288, "GRUPO LISIEUX");
     // Área de descanso
-    var rl = drawSign(ctx, 128, 432, "ÁREA DE DESCANSO");
-    if(itemW("dc_crucifix")<=rl.x0 - 48) wallItem(ctx, "dc_crucifix", Math.round((rl.x0 + 42)/2), 432);   // à direita da estante
-    if(itemW("dc_aparecida")<=226 - rl.x1) wallItem(ctx, "dc_aparecida", Math.round((rl.x1 + 228)/2), 432);   // Nossa Senhora Aparecida
-    wallItem(ctx, "dc_flag_br", 344, 432);
-    wallItem(ctx, "dc_tv", 432, 432);
-    wallItem(ctx, "dc_paint_a", 520, 432);
-    wallItem(ctx, "dc_paint_b", 656, 432);
+    // Recepção: bandeiras grandes do Brasil e do Vaticano dos dois lados da placa
+    wallItem(ctx, "dc_flag_br_big", 44, 432);
+    drawSign(ctx, 128, 432, "RECEPÇÃO");
+    wallItem(ctx, "dc_flag_va", 212, 432);
+    // Área de descanso: placa, Nossa Senhora Aparecida e o crucifixo
+    drawSign(ctx, 352, 432, "ÁREA DE DESCANSO");
+    wallItem(ctx, "dc_aparecida", 636, 432);
+    wallItem(ctx, "dc_crucifix", 678, 432);
     // ala 09 Blogs: placa da empresa sobre a mesa de pauta + uma placa por blog, sobre a sua fileira
     var f9 = cmap.f9 || { num:9, short:"BLOGS" };
     drawSign(ctx, 1032, 0, f9.short, (f9.num<10 ? "0" : "")+f9.num);
@@ -622,7 +657,16 @@
         if(cands.length) goTo(e, pick(cands));
       }
     }
-    if(e.p.status==="rest" && e.mode!=="walk"){
+    if(e.p.kind==="chefia" && e.p.status!=="work" && e.mode!=="walk" && clock>(e.hangNext||0)){
+      e.hangNext = clock + rnd(50, 110);
+      e.hang = e.hang==="board" ? "sala" : "board";
+      var nt = chooseTarget(e, e.home); if(nt && nt!==e.target) goTo(e, nt);
+    }
+    if(e.p.kind==="limpeza" && e.mode==="stand" && clock>(e.nextClean||0)){
+      e.nextClean = clock + rnd(7, 14);
+      var cs = nearbyClean(e); if(cs){ if(e.target && e.target.occ===e.id) e.target.occ = null; goTo(e, cs); }
+    }
+    if(e.p.status==="rest" && e.mode!=="walk" && e.p.kind!=="chefia"){
       if(clock>e.zNext){ e.zOn = !e.zOn; e.zNext = clock + (e.zOn ? rnd(2.5, 4) : rnd(5, 13)); }
     } else e.zOn = false;
   }
@@ -635,13 +679,28 @@
     if(pref){ var p = free.filter(pref); if(p.length && Math.random()<0.6) return pick(p); }
     return pick(free);
   }
+  var SPECIAL_KINDS = { socio:1, recepcao:1, limpeza:1 };
+  function nearbyClean(e){
+    var t = e.tile || (e.target ? e.target.stand : [20, 17]);
+    var c = W.cleanSpots.filter(function(r){ return !r.occ && Math.abs(r.stand[0]-t[0]) + Math.abs(r.stand[1]-t[1])<=10; });
+    return c.length ? pick(c) : freeRandom(W.cleanSpots);
+  }
   function chooseTarget(e, home){
     var p = e.p, cur = e.target;
-    var blogs = p.company==="f9", meet = blogs ? W.blogMeet.concat(W.meetSeats) : W.meetSeats, g = e.group || p.company;
+    if(p.kind==="socio" || p.kind==="recepcao") return home || cur || freeRandom(W.meetSeats) || W.rest[0];
+    if(p.kind==="limpeza") return (cur && cur.kind==="clean") ? cur : nearbyClean(e);
+    if(p.kind==="chefia" && p.status!=="work"){                     // Bruno e Andressa: ora na Diretoria, ora na mesa do Grupo Lisieux
+      var inSala = W.salaSeats.indexOf(cur)>=0, inBoard = cur && cur.board;
+      if((e.hang==="board" && inBoard) || (e.hang!=="board" && inSala)) return cur;
+      var t = e.hang==="board" ? freeOf(W.meetSeats.slice().reverse()) : freeRandom(W.salaSeats);
+      if(t) return t;
+    }
+    // a mesa do Grupo Lisieux é dos sócios e da Diretoria; a ala 09 tem a própria mesa de pauta
+    var blogs = p.company==="f9", meet = blogs ? W.blogMeet : [], g = e.group || p.company;
     if(p.status==="work"){
-      if(/reuni|pauta/i.test(p.task||"")){
-        if(cur && cur.kind==="meeting") return cur;
-        var m = freeRandom(blogs ? W.blogMeet : W.meetSeats) || freeRandom(meet); if(m) return m;
+      if(blogs && /reuni|pauta/i.test(p.task||"")){
+        if(cur && cur.kind==="meeting" && !cur.board) return cur;
+        var m = freeRandom(W.blogMeet); if(m) return m;
       }
       if(home) return home;
       if(cur && (cur.kind==="meeting" || (cur.kind==="stand" && cur.area===(W.overflow[g] && W.overflow[g][0] ? W.overflow[g][0].area : p.company)))) return cur;
@@ -656,6 +715,9 @@
 
   function groupOf(p){
     if(p.kind==="robo") return "robo";
+    if(p.kind==="socio") return "board";
+    if(p.kind==="recepcao") return "recepcao";
+    if(p.kind==="limpeza") return "limpeza";
     if(p.company==="f9" && p.blog && W.blockSeats["f9:"+p.blog]) return "f9:"+p.blog;
     return p.company;
   }
@@ -666,7 +728,7 @@
     var groups = {}, home = {}, alive = {};
     list.forEach(function(p){ (groups[groupOf(p)] = groups[groupOf(p)] || []).push(p); });
     Object.keys(groups).forEach(function(g){
-      var seats = g==="robo" ? W.stationSeats : g==="chefia" ? W.execSeats : (W.blockSeats[g] || []);
+      var seats = g==="robo" ? W.stationSeats : g==="chefia" ? W.execSeats : g==="board" ? W.meetSeats : g==="recepcao" ? W.receptionSeats : (W.blockSeats[g] || []);
       // quem é fixo tem lugar próprio; os subagentes ocupam os lugares que sobram (nunca o de quem está trabalhando)
       var fixed = groups[g].filter(function(p){ return p.kind!=="ajudante"; }), taken = {};
       fixed.forEach(function(p, i){ if(seats[i]){ home[p.id] = seats[i]; if(p.status==="work") taken[i] = 1; } });
@@ -682,6 +744,7 @@
       var e = ents[p.id];
       if(!e) e = ents[p.id] = newEnt(p);
       e.p = p; e.lk = R.look(p); e.icon = R.roleIcon(p); e.home = home[p.id] || null; e.group = groupOf(p);
+      if(p.kind==="chefia" && !e.hang){ e.hang = p.id==="chefia-esposa" ? "sala" : "board"; e.hangNext = clock + rnd(40, 90); }
     });
     Object.keys(ents).forEach(function(id){
       if(alive[id]) return;
@@ -693,7 +756,7 @@
     // primeiro solta quem muda de estado (libera vagas), depois escolhe
     list.forEach(function(p){
       var e = ents[p.id], t = e.target;
-      if(!t) return;
+      if(!t || SPECIAL_KINDS[p.kind] || (p.kind==="chefia" && p.status!=="work" && (t.board || W.salaSeats.indexOf(t)>=0))) return;
       var wantsSeat = p.status==="work", isRestSpot = W.rest.indexOf(t)>=0 || W.restExtra.indexOf(t)>=0 || W.restBlogs.indexOf(t)>=0;
       if((wantsSeat && isRestSpot) || (!wantsSeat && !isRestSpot) || (wantsSeat && e.home && t!==e.home && !/reuni/i.test(p.task||""))){
         if(t.occ===e.id) t.occ = null;
@@ -722,7 +785,7 @@
     else if(e.mode==="sit"){ pose = (e.p.status==="work" && !e.pauseTyping && !REDUCE) ? "sit-type" : (e.p.status==="work" ? "sit-type" : "sit"); step = e.p.status==="work" ? e.typeStep : 0; }
     else { pose = "idle"; step = REDUCE ? 0 : e.step; }
     return CH.frame({ dir:e.dir, pose:pose, step:step, skin:lk.skin, hair:lk.hair, hairStyle:lk.hairStyle, shirt:lk.shirt,
-                      pants:lk.pants, jacket:lk.jacket, skirt:lk.skirt, badge:null });
+                      pants:lk.pants, jacket:lk.jacket, skirt:lk.skirt, crown:lk.crown, cape:lk.cape, badge:null });
   }
   function drawWorld(t){
     wctx.drawImage(bgCanvas, 0, 0);
@@ -736,7 +799,8 @@
       var it = items[i];
       if(it.ent){
         var e = it.ent, f = entFrame(e);
-        wctx.drawImage(f, Math.round(e.x) - CH.OX, Math.round(e.y) - CH.OY);
+        wctx.drawImage(f, Math.round(e.x) - CH.OX, Math.round(e.y) - (f.oy || CH.OY));
+        if(e.p.kind==="limpeza") drawCleaning(e);
       } else if(it.draw) it.draw(wctx, t);
       else PX.draw(wctx, it.name, it.x, it.y);
     }
@@ -746,12 +810,20 @@
       if(e.mode==="sit" && e.at && e.at.badge) CH.drawBadge(wctx, e.lk.badge, e.at.badge.x, e.at.badge.y);
       else CH.drawBadge(wctx, e.lk.badge, e.x, e.y);
     });
+    drawSteam();
+    var board = Object.keys(ents).map(function(id){ return ents[id]; })
+      .filter(function(e){ return e.placed && e.mode==="sit" && e.at && e.at.board && (e.p.kind==="socio" || e.p.kind==="chefia"); })
+      .sort(function(a, b){ return a.id<b.id ? -1 : 1; });
+    var speaker = board.length ? board[Math.floor((clock + 0.5)/3.2) % board.length] : null;   // um fala de cada vez
     Object.keys(ents).forEach(function(id){
-      var e = ents[id]; if(!e.placed) return;
-      var head = Math.round(e.y) - 22;
-      if(e.p.status==="work" && e.mode!=="walk"){
-        if(e.mode==="sit" && e.at && e.at.bubble==="side") drawBubbleSide(wctx, e.x + 9, head + 2, e.icon);
-        else drawBubble(wctx, e.x, e.mode==="sit" && e.at && e.at.bubbleTip ? e.at.bubbleTip : head - 1, e.icon);
+      var e = ents[id]; e.bubTop = null; if(!e.placed) return;
+      var head = Math.round(e.y) - 22, icon = e.icon, k = e.p.kind;
+      var atBoard = e.mode==="sit" && e.at && e.at.board && (k==="socio" || k==="chefia");
+      if(atBoard){ if(e!==speaker) return; icon = "talk"; }
+      if(k==="recepcao") icon = Math.floor((clock + e.phase)/4) % 2 ? "phone" : "pencil";
+      if(atBoard || (e.p.status==="work" && e.mode!=="walk" && k!=="limpeza")){
+        if(e.mode==="sit" && e.at && e.at.bubble==="side") drawBubbleSide(wctx, e.x + 9, head + 2, icon);
+        else { var tipY = e.mode==="sit" && e.at && e.at.bubbleTip ? e.at.bubbleTip : head - 1; drawBubble(wctx, e.x, tipY, icon); e.bubTop = tipY - 13; }
       }
       else if(e.zOn && !REDUCE){
         var ph = (clock*0.8 + e.phase) % 1;
@@ -764,6 +836,60 @@
       wctx.fillStyle = "rgba(124,151,240,0.9)";
       if(he.mode!=="sit"){ wctx.fillRect(hx-5, hy, 11, 1); wctx.fillRect(hx-6, hy-1, 1, 1); wctx.fillRect(hx+6, hy-1, 1, 1); }
     }
+  }
+
+  function drawSteam(){                                           // fumacinha das xícaras de café: nuvenzinhas que sobem, crescem e somem
+    if(REDUCE || !W.coffee) return;
+    W.coffee.forEach(function(c){
+      [[0, -17], [4, -15]].forEach(function(o, j){
+        for(var i=0; i<4; i++){
+          var ph = (clock*0.45 + i/4 + j*0.13) % 1, a = 0.9*(1 - ph*ph), sz = ph<0.25 ? 1 : ph<0.6 ? 2 : 3;
+          var x = Math.round(c[0] + o[0] + Math.sin(clock*1.9 + i*1.7 + j*2)*1.6 - sz/2), y = Math.round(c[1] + o[1] - ph*16);
+          wctx.fillStyle = "rgba(244,246,252," + a.toFixed(2) + ")";
+          wctx.fillRect(x, y, sz, sz>1 ? sz - 1 : 1);
+        }
+      });
+    });
+  }
+  function drawCleaning(e){
+    var left = e.dir==="left", wig = (e.mode==="stand" && !REDUCE) ? Math.round(Math.sin(clock*6 + e.phase)) : 0;
+    if(e.mode==="stand") PX.draw(wctx, "lg_bucket", Math.round(e.x) + (left ? 10 : -10), Math.round(e.y) + 1);
+    PX.draw(wctx, "lg_mop", Math.round(e.x) + (left ? -6 : 6) + wig, Math.round(e.y) + 1);
+  }
+
+  // ---------- nomes acima de cada pessoa (desenhados na tela, nítidos em qualquer zoom; sem empilhar) ----------
+  var NAMES_KEY = "vdp-office-names-v1", namesOn = true, nameW = {};
+  try{ if(localStorage.getItem(NAMES_KEY)==="0") namesOn = false; }catch(e){}
+  function shortName(n){
+    var w = String(n||"").split(" ");
+    return ((w[0]==="Dona" || w[0]==="Seu") && w[1] ? w[0] + " " + w[1] : w[0]).slice(0, 14);
+  }
+  function drawNames(){
+    if(!namesOn) return;
+    var z = cam.z; if(z/dpr < 0.75) return;                       // longe demais: os nomes não caberiam
+    var o = origin(), fs = Math.round(11*dpr), padX = Math.round(4*dpr), h = Math.round(15*dpr), gap = Math.round(2*dpr), m = Math.round(dpr);
+    sctx.setTransform(1, 0, 0, 1, 0, 0);
+    sctx.font = "600 " + fs + "px system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
+    sctx.textAlign = "center"; sctx.textBaseline = "middle";
+    var rank = function(e){ var k = e.p.kind; return k==="chefia" ? 0 : k==="socio" ? 1 : e.p.status==="work" ? 2 : 3; };
+    var list = Object.keys(ents).map(function(id){ return ents[id]; }).filter(function(e){ return e.placed; })
+      .sort(function(a, b){ return rank(a) - rank(b) || a.y - b.y; });
+    var placed = [];
+    function hits(r){ for(var i=0; i<placed.length; i++){ var q = placed[i]; if(r.x < q.x + q.w + m && q.x < r.x + r.w + m && r.y < q.y + q.h + m && q.y < r.y + r.h + m) return true; } return false; }
+    list.forEach(function(e){
+      var txt = shortName(e.p.name); if(!txt) return;
+      var w = nameW[txt]; if(w==null) w = nameW[txt] = sctx.measureText(txt).width;
+      var headTop = e.y - 22 - (e.lk && e.lk.crown ? 5 : 0), topW = e.bubTop!=null ? Math.min(headTop, e.bubTop) : headTop;
+      var bw = Math.ceil(w) + padX*2, r = { x:Math.round(o.x + e.x*z - bw/2), y:Math.round(o.y + topW*z) - gap - h, w:bw, h:h };
+      if(r.x + r.w < 0 || r.x > VW || r.y + r.h < 0 || r.y > VH) return;
+      if(hits(r)){ r.y -= h + gap; if(hits(r)) return; }
+      placed.push(r);
+      sctx.fillStyle = "rgba(20,22,36,0.74)";
+      if(sctx.roundRect){ sctx.beginPath(); sctx.roundRect(r.x, r.y, r.w, r.h, Math.round(4*dpr)); sctx.fill(); } else sctx.fillRect(r.x, r.y, r.w, r.h);
+      var k = e.p.kind;
+      sctx.fillStyle = k==="chefia" ? "#f6d36b" : k==="socio" ? "#c9d7ff" : "#ffffff";
+      sctx.fillText(txt, r.x + r.w/2, r.y + h/2 + m*0.5);
+    });
   }
 
   // ---------- câmera ----------
@@ -919,7 +1045,7 @@
       items.push([c.id, c.label]);
       if(c.id==="f9") R.BLOGS.forEach(function(b){ items.push(["f9-"+b.key, b.name, true]); });
     });
-    items.push(["central", "Central de dados"], ["copa", "Copa"], ["lounge", "Área de descanso"]);
+    items.push(["central", "Central de dados"], ["copa", "Copa"], ["recepcao", "Recepção"], ["lounge", "Área de descanso"]);
     items.forEach(function(it){
       AREA_LABEL[it[0]] = it[1];
       var li = el("li"), b = el("button", "area-btn"+(it[2] ? " sub" : ""), it[1]);
@@ -982,7 +1108,7 @@
     if(dot) dot.setAttribute("aria-hidden", "true");
   }
   function stateText(p){ return p.status==="work" ? "trabalhando" : "descansando"; }
-  function placeName(p){ var b = p.blog ? R.blogName(p.blog) : ""; return R.company(p.company).name + (b ? " · " + b : ""); }
+  function placeName(p){ return R.placeOf ? R.placeOf(p) : R.company(p.company).name; }
   function teamText(p){
     if(p.kind==="ajudante") return "Aparece só enquanto a rotina trabalha";
     var t = p.team; if(!t) return "";
@@ -1153,6 +1279,14 @@
   document.addEventListener("pointerdown", function(ev){
     if(!drawer.hidden && !drawer.contains(ev.target) && ev.target!==menuBtn && !menuBtn.contains(ev.target)) closeDrawer(false);
   });
+  var namesSw = $("namesSw");
+  if(namesSw){
+    namesSw.setAttribute("aria-checked", namesOn ? "true" : "false");
+    namesSw.addEventListener("click", function(){
+      namesOn = !namesOn; namesSw.setAttribute("aria-checked", namesOn ? "true" : "false");
+      try{ localStorage.setItem(NAMES_KEY, namesOn ? "1" : "0"); }catch(e){}
+    });
+  }
   var demoSw = $("demoSw");
   if(demoSw) demoSw.addEventListener("click", function(){ if(!demoSw.disabled) setDemo(!demoOn, true); });
   var cc = $("cardClose"); if(cc) cc.addEventListener("click", function(){ closeCard(); screen.focus({ preventScroll:true }); });
@@ -1236,6 +1370,7 @@
     stepCam(dt);
     drawWorld(clock);
     blitScreen();
+    drawNames();
   }
   requestAnimationFrame(loop);
 

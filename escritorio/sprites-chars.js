@@ -6,6 +6,8 @@
 //   W = 16, H = 24, OX = 8, OY = 23   quadro 16×24; âncora = ponto dos pés (x=8, y=23)
 //   hairStyles                          ids dos penteados
 //   frame(opts)  → canvas em cache. 16×24; com badge vira 16×32 (a âncora continua em 8,23)
+//                  opts.crown "king" | "tiara" (coroa grande de rei / tiara de princesa) e opts.cape (cor da capa
+//                  de rei, com gola de arminho): o quadro ganha 4 linhas em cima; a âncora fica em canvas.oy
 //   badge(tipo)  → canvas 11×9 do selo ("A" ou "chefe") para a camada de UI
 //   preview()    → folha com todas as direções × poses × passos para 4 visuais
 //   validate()   → lista de erros dos moldes (vazia = ok)
@@ -998,6 +1000,52 @@
     ]}
   };
 
+  // ---------- coroa de rei (11×6), tiara de princesa (9×4) e capa ----------
+  var CROWN = {
+    king: [
+      ".o...o...o.",
+      "oGo.oGo.oGo",
+      "oGGoGGGoGGo",
+      "oGrGGuGGrGo",
+      "ogggggggggo",
+      "ooooooooooo"
+    ],
+    tiara: [
+      "...o.o...",
+      "..oGoGo..",
+      ".oGGuGGo.",
+      ".ooooooo."
+    ]
+  };
+  var CROWN_PAL = { o:T.contorno, g:T.ouro, G:T.ouroClaro, r:"#d72f2b", u:"#3f63d8" };
+  // capa: atrás do corpo (borda de 2 px dos ombros até a barra) vista de frente/lado; cobrindo as costas vista de trás;
+  // gola de arminho (branca com pintinhas) nos ombros
+  function applyCape(buf, top, rows, pal, view, cape){
+    var dark = darkOf(cape), body = {}, y, x, t0 = -1;
+    [pal.c, pal.C, pal.L, pal.j, pal.J, pal.k].forEach(function(c){ body[norm(c)] = 1; });
+    for(y=0; y<rows.length; y++){ if(/[cjCJLk]/.test(rows[y])){ t0 = y; break; } }
+    if(t0<0) return;
+    var last = rows.length - 2;
+    for(y=t0; y<=last; y++){
+      var r = buf[y + top], mn = -1, mx = -1;
+      for(x=0; x<W; x++) if(r[x]){ if(mn<0) mn = x; mx = x; }
+      if(mn<0) continue;
+      if(view==="up"){
+        for(x=mn; x<=mx; x++){ var c = r[x] && norm(r[x]); if(c && (body[c] || c===norm(pal.p) || c===norm(pal.P))) r[x] = (x>mx-2 ? dark : cape); }
+      } else {
+        if(y<t0+1) continue;
+        if(mn-1>=0 && !r[mn-1]) r[mn-1] = view==="side" ? cape : dark;
+        if(mx+1<W && !r[mx+1]) r[mx+1] = cape;
+        if(mn-2>=0 && !r[mn-2]) r[mn-2] = T.contorno;
+        if(mx+2<W && !r[mx+2]) r[mx+2] = T.contorno;
+      }
+    }
+    for(y=t0; y<=t0+1; y++){
+      var row = buf[y + top];
+      for(x=0; x<W; x++){ var cc = row[x] && norm(row[x]); if(cc && (body[cc] || cc===norm(cape) || cc===norm(dark))) row[x] = (y===t0+1 && x%3===1) ? T.contorno : T.branco; }
+    }
+  }
+
   // ---------- composição ----------
   function newBuf(h){ var b = [], y, x, r; for(y=0; y<h; y++){ r = []; for(x=0; x<W; x++) r.push(null); b.push(r); } return b; }
   function stamp(buf, rows, dy, pal, mirror, x0){
@@ -1034,21 +1082,26 @@
     var pose = opts.pose || "idle", step = (opts.step|0) & 3;
     var style = HAIR[opts.hairStyle] ? opts.hairStyle : "short";
     var badge = opts.badge==="A" || opts.badge==="chefe" ? opts.badge : null;
-    var key = [dir,pose,step,opts.skin,opts.hair,style,opts.shirt,opts.pants,opts.jacket,opts.shoes,badge,opts.skirt?1:0].join("|");
+    var crown = opts.crown==="king" || opts.crown==="tiara" ? opts.crown : null, cape = opts.cape ? norm(opts.cape) : null;
+    var key = [dir,pose,step,opts.skin,opts.hair,style,opts.shirt,opts.pants,opts.jacket,opts.shoes,badge,opts.skirt?1:0,crown,cape].join("|");
     if(cache[key]) return cache[key];
     var view = (dir==="left" || dir==="right") ? "side" : dir, mirror = dir==="left";
     var pal = makePal(opts);
     var pk = poseKey(pose, step), bp = BODY[view][pk];
     var headDy = bp.head + (pose==="idle" && step===1 ? 1 : 0);
-    var buf = newBuf(badge ? H_BADGE : H);
+    var top = (crown || cape) ? 4 : 0;
+    var buf = newBuf((badge ? H_BADGE : H) + top);
     var rows = bp.rows, sk = opts.skirt && SKIRT[view][pk];
     if(sk){ rows = rows.slice(); for(var y in sk) rows[+y] = sk[y]; }
-    stamp(buf, rows, 0, pal, mirror);
-    stamp(buf, FACE[view], headDy, pal, mirror);
-    stamp(buf, HAIR[style][view], headDy, pal, mirror);
-    if(bp.over) stamp(buf, bp.over, 0, pal, mirror);
-    if(badge) stamp(buf, BADGE[badge].rows, BADGE_Y, BADGE[badge].pal, false, BADGE_X);
+    stamp(buf, rows, top, pal, mirror);
+    if(cape) applyCape(buf, top, rows, pal, view, cape);
+    stamp(buf, FACE[view], headDy + top, pal, mirror);
+    stamp(buf, HAIR[style][view], headDy + top, pal, mirror);
+    if(crown){ var cr = CROWN[crown]; stamp(buf, cr, headDy + top + 5 - cr.length, CROWN_PAL, false, Math.floor((W - cr[0].length)/2)); }
+    if(bp.over) stamp(buf, bp.over, top, pal, mirror);
+    if(badge) stamp(buf, BADGE[badge].rows, BADGE_Y + top, BADGE[badge].pal, false, BADGE_X);
     var c = toCanvas(buf);
+    c.oy = OY + top;
     cache[key] = c;
     return c;
   }
