@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T21:22:12.941Z",
+  "generatedAt": "2026-10-23T00:02:53.426Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -129,6 +129,10 @@
       [
         "8",
         "20261022"
+      ],
+      [
+        "8",
+        "20261023"
       ]
     ],
     "2.1": [
@@ -663,22 +667,15 @@
       [
         "808",
         "20261022"
+      ],
+      [
+        "810",
+        "20261023"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        789,
-        138,
-        38,
-        3,
-        1,
-        39,
-        6,
-        1,
-        "20260923"
-      ],
       [
         1244,
         233,
@@ -724,8 +721,8 @@
         "20260927"
       ],
       [
-        1029,
-        344,
+        1009,
+        335,
         59,
         10,
         1,
@@ -746,7 +743,7 @@
         "20260929"
       ],
       [
-        681,
+        680,
         329,
         85,
         7,
@@ -922,8 +919,8 @@
         "20261015"
       ],
       [
-        685,
-        74,
+        680,
+        77,
         32,
         3,
         1,
@@ -983,27 +980,27 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 9434
-        },
-        {
-          "label": "Inscritos (feed)",
-          "views": 1414
+          "views": 8951
         },
         {
           "label": "Busca no YouTube",
-          "views": 1387
+          "views": 1307
+        },
+        {
+          "label": "Inscritos (feed)",
+          "views": 1275
         },
         {
           "label": "Vídeos relacionados",
-          "views": 561
+          "views": 542
         },
         {
           "label": "Notificações",
-          "views": 332
+          "views": 313
         },
         {
           "label": "Página do canal",
-          "views": 310
+          "views": 264
         },
         {
           "label": "Link externo",
@@ -1011,7 +1008,7 @@
         },
         {
           "label": "Outra página do YouTube",
-          "views": 61
+          "views": 59
         }
       ]
     }
@@ -1021,41 +1018,41 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 33.7
+          "pct": 35.4
         },
         {
           "label": "65+ · Homens",
-          "pct": 26.8
-        },
-        {
-          "label": "45-54 · Homens",
-          "pct": 7.9
+          "pct": 26.9
         },
         {
           "label": "55-64 · Mulheres",
-          "pct": 6.9
+          "pct": 7.5
         },
         {
-          "label": "45-54 · Mulheres",
-          "pct": 6.3
+          "label": "45-54 · Homens",
+          "pct": 7
         },
         {
           "label": "55-64 · Homens",
-          "pct": 6
+          "pct": 6.4
         },
         {
-          "label": "35-44 · Homens",
+          "label": "45-54 · Mulheres",
           "pct": 5.5
         },
         {
+          "label": "35-44 · Homens",
+          "pct": 4
+        },
+        {
           "label": "13-17 · Homens",
-          "pct": 3.2
+          "pct": 3.5
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 10886
+          "views": 10252
         },
         {
           "label": "IT",
@@ -1073,33 +1070,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12443
+          "views": 11731
         },
         {
           "label": "Computador",
-          "views": 607
+          "views": 555
         },
         {
           "label": "TV",
-          "views": 366
+          "views": 348
         },
         {
           "label": "Tablet",
-          "views": 190
+          "views": 183
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 10980
+          "views": 10366
         },
         {
           "label": "Página de exibição",
-          "views": 1582
+          "views": 1508
         },
         {
           "label": "Explorar/Início",
-          "views": 1044
+          "views": 943
         },
         {
           "label": "Incorporado em site",
@@ -1109,28 +1106,17 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12283
+          "views": 11575
         },
         {
           "label": "Inscritos",
-          "views": 1325
+          "views": 1244
         }
       ]
     }
   },
   "itemVideos": {
     "2.2": [
-      {
-        "id": "wKYW-xQPB2c",
-        "title": "Caminho 134 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/wKYW-xQPB2c/mqdefault.jpg",
-        "views": 1171,
-        "likes": 54,
-        "comments": 4,
-        "minutes": 52,
-        "subsGained": 4,
-        "avgDuration": 10
-      },
       {
         "id": "NW_VDiYDzmo",
         "title": "Coração — Ponto 147 | Caminho de São Josemaría Escrivá",
@@ -1152,6 +1138,17 @@
         "minutes": 78,
         "subsGained": 5,
         "avgDuration": 14
+      },
+      {
+        "id": "wKYW-xQPB2c",
+        "title": "Caminho 134 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/wKYW-xQPB2c/mqdefault.jpg",
+        "views": 998,
+        "likes": 43,
+        "comments": 3,
+        "minutes": 45,
+        "subsGained": 3,
+        "avgDuration": 11
       },
       {
         "id": "7Pmw_bK9I-s",
@@ -1220,17 +1217,6 @@
         "avgDuration": 18
       },
       {
-        "id": "yDiwBB073_Y",
-        "title": "Caminho 133 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/yDiwBB073_Y/mqdefault.jpg",
-        "views": 522,
-        "likes": 31,
-        "comments": 0,
-        "minutes": 46,
-        "subsGained": 1,
-        "avgDuration": 15
-      },
-      {
         "id": "UXvVLvJ9wZE",
         "title": "Santa Pureza — Ponto 145 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/UXvVLvJ9wZE/mqdefault.jpg",
@@ -1278,130 +1264,27 @@
         "id": "6Z-UdZ2o2AI",
         "title": "COM A FORÇA DO AMOR (Parte 2 de 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/6Z-UdZ2o2AI/mqdefault.jpg",
-        "views": 317,
-        "likes": 10,
+        "views": 314,
+        "likes": 9,
         "comments": 0,
-        "minutes": 103,
+        "minutes": 96,
         "subsGained": 2,
-        "avgDuration": 71
+        "avgDuration": 69
+      },
+      {
+        "id": "yDiwBB073_Y",
+        "title": "Caminho 133 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/yDiwBB073_Y/mqdefault.jpg",
+        "views": 297,
+        "likes": 21,
+        "comments": 0,
+        "minutes": 32,
+        "subsGained": 1,
+        "avgDuration": 18
       }
     ]
   },
   "videoDaily": {
-    "wKYW-xQPB2c": [
-      [
-        173,
-        "20260923"
-      ],
-      [
-        509,
-        "20260924"
-      ],
-      [
-        199,
-        "20260925"
-      ],
-      [
-        128,
-        "20260926"
-      ],
-      [
-        120,
-        "20260927"
-      ],
-      [
-        9,
-        "20260928"
-      ],
-      [
-        5,
-        "20260929"
-      ],
-      [
-        5,
-        "20260930"
-      ],
-      [
-        3,
-        "20261001"
-      ],
-      [
-        0,
-        "20261002"
-      ],
-      [
-        1,
-        "20261003"
-      ],
-      [
-        0,
-        "20261004"
-      ],
-      [
-        4,
-        "20261005"
-      ],
-      [
-        5,
-        "20261006"
-      ],
-      [
-        0,
-        "20261007"
-      ],
-      [
-        0,
-        "20261008"
-      ],
-      [
-        1,
-        "20261009"
-      ],
-      [
-        1,
-        "20261010"
-      ],
-      [
-        0,
-        "20261011"
-      ],
-      [
-        0,
-        "20261012"
-      ],
-      [
-        6,
-        "20261013"
-      ],
-      [
-        0,
-        "20261014"
-      ],
-      [
-        0,
-        "20261015"
-      ],
-      [
-        0,
-        "20261016"
-      ],
-      [
-        0,
-        "20261017"
-      ],
-      [
-        0,
-        "20261018"
-      ],
-      [
-        0,
-        "20261019"
-      ],
-      [
-        2,
-        "20261020"
-      ]
-    ],
     "NW_VDiYDzmo": [
       [
         477,
@@ -1527,6 +1410,116 @@
       ],
       [
         3,
+        "20261020"
+      ]
+    ],
+    "wKYW-xQPB2c": [
+      [
+        509,
+        "20260924"
+      ],
+      [
+        199,
+        "20260925"
+      ],
+      [
+        128,
+        "20260926"
+      ],
+      [
+        120,
+        "20260927"
+      ],
+      [
+        9,
+        "20260928"
+      ],
+      [
+        5,
+        "20260929"
+      ],
+      [
+        5,
+        "20260930"
+      ],
+      [
+        3,
+        "20261001"
+      ],
+      [
+        0,
+        "20261002"
+      ],
+      [
+        1,
+        "20261003"
+      ],
+      [
+        0,
+        "20261004"
+      ],
+      [
+        4,
+        "20261005"
+      ],
+      [
+        5,
+        "20261006"
+      ],
+      [
+        0,
+        "20261007"
+      ],
+      [
+        0,
+        "20261008"
+      ],
+      [
+        1,
+        "20261009"
+      ],
+      [
+        1,
+        "20261010"
+      ],
+      [
+        0,
+        "20261011"
+      ],
+      [
+        0,
+        "20261012"
+      ],
+      [
+        6,
+        "20261013"
+      ],
+      [
+        0,
+        "20261014"
+      ],
+      [
+        0,
+        "20261015"
+      ],
+      [
+        0,
+        "20261016"
+      ],
+      [
+        0,
+        "20261017"
+      ],
+      [
+        0,
+        "20261018"
+      ],
+      [
+        0,
+        "20261019"
+      ],
+      [
+        2,
         "20261020"
       ]
     ],
@@ -1801,7 +1794,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-22T21:22:12.996Z",
+      "generatedAt": "2026-10-23T00:02:53.483Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1811,7 +1804,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-22T21:22:12.996Z",
+      "generatedAt": "2026-10-23T00:02:53.483Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
