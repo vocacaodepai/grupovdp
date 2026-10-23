@@ -29,6 +29,9 @@
           display:grid; place-items:center; cursor:pointer; top:calc(12px + var(--safe-t)); -webkit-tap-highlight-color:transparent;
           box-shadow:0 1px 0 rgba(255,255,255,.06) inset, 0 2px 8px rgba(0,0,0,.35); transition:background .15s ease; }
   .round:hover{ background:var(--ui-hi); }
+  .round, .chip{ transition:opacity .3s ease, background .15s ease; }
+  html.idle .round, html.idle .chip{ opacity:0; pointer-events:none; }   /* parado há 3 s: só o escritório na tela, como num vídeo */
+  @media (prefers-reduced-motion: reduce){ .round, .chip{ transition:none; } }
   .round:focus-visible{ outline:2px solid var(--blue); outline-offset:2px; }
   .round svg{ display:block; }
   #menuBtn{ left:calc(12px + var(--safe-l)); }

@@ -1,10 +1,11 @@
 /* Painel Lisieux — Escritório do Grupo Lisieux (motor da página escritorio/index.html).
  *
- * Mundo de 44×45 tiles de 16 px (704×720 px de jogo), montado só com os sprites próprios de
- * sprites-office.js (of_*), sprites-lounge.js (dc_*, lg_*) e sprites-chars.js (pessoas).
+ * Mundo de 68×38 tiles de 16 px (1088×608 px de jogo, quase 16:9: em tela cheia cabe inteiro, sem faixas), montado
+ * só com os sprites próprios de sprites-office.js (of_*), sprites-lounge.js (dc_*, lg_*) e sprites-chars.js (pessoas).
  *   - parede norte com placas 01–04; parede interna com placas 05–08; uma fileira de 3 cubículos por empresa;
  *   - no meio: Diretoria (mesa executiva), Central de dados (estação de 6 monitores + mesa de reunião) e Copa;
- *   - embaixo, a ala 09 Blogs: uma fileira de cubículos por blog, do tamanho da equipe da rotina, e a mesa de pauta.
+ *   - embaixo: Área de descanso (sofás, café, mesas);
+ *   - à direita, a ala 09 Blogs em 4 faixas: uma fileira de cubículos por blog, do tamanho da equipe, e a mesa de pauta.
  * Rotinas reais (data.js) têm um agente fixo; os subagentes que a rotina abre aparecem só enquanto ela trabalha.
  * Pessoas: "work" anda até o próprio lugar e senta digitando (monitor aceso + balão); "rest" vai para a copa.
  * Dados: LisieuxRoster (data.js) + robôs reais (../data/metrics.json a cada 60 s) + LisieuxLive (live.js).
@@ -18,7 +19,7 @@
   function $(id){ return document.getElementById(id); }
   if(!R || !PX || !CH || !LG || !SP.of_cub_a || !SP.lg_sofa_l){ var fe = $("fatal"); if(fe) fe.hidden = false; return; }
 
-  var TILE = 16, TW = 44, TH = 45, WW = TW*TILE, WH = TH*TILE;
+  var TILE = 16, TW = 68, TH = 38, WW = TW*TILE, WH = TH*TILE;
   var QS = null; try{ QS = new URLSearchParams(location.search); }catch(e){}
   var EMBED = !!(QS && QS.get("embed")==="1");
   var mqReduce = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
@@ -154,7 +155,7 @@
   var BLOCKS = ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8"];
   var WALLS = [
     // endL/endR: "edge" = ponta livre (contorno de 1 px, como a copa da referência); "toco" = desce uma parede lateral
-    { x0:0,   x1:704, y:0,   sp:"of_wall", endL:false, endR:false },            // parede norte
+    { x0:0,   x1:1088, y:0,  sp:"of_wall", endL:false, endR:false },            // parede norte (empresas 01–04 e a ala 09)
     { x0:16,  x1:160, y:144, sp:"of_wall", endL:"edge", endR:"edge" },          // parede interna (atrás das empresas 05–08)
     { x0:192, x1:336, y:144, sp:"of_wall", endL:"edge", endR:"edge" },
     { x0:368, x1:512, y:144, sp:"of_wall", endL:"edge", endR:"edge" },
@@ -163,26 +164,30 @@
     { x0:192, x1:336, y:288, sp:"of_wall", endL:"toco", endR:"edge" },          // Central (porta em 336–368)
     { x0:368, x1:512, y:288, sp:"of_wall", endL:"edge", endR:"toco" },
     { x0:544, x1:704, y:288, sp:"of_wall_brick", endL:"edge", endR:false },     // Copa (porta em 512–544)
-    { x0:0,   x1:256, y:432, sp:"of_wall", endL:false, endR:"edge" },           // ala 09 Blogs (portas em 256–288 e 576–608)
+    { x0:0,   x1:256, y:432, sp:"of_wall", endL:false, endR:"edge" },           // Área de descanso (portas em 256–288 e 576–608)
     { x0:288, x1:576, y:432, sp:"of_wall", endL:"edge", endR:"edge" },
     { x0:608, x1:704, y:432, sp:"of_wall", endL:"edge", endR:false },
-    { x0:16,  x1:112, y:576, sp:"of_wall", endL:"edge", endR:"edge" },          // parede interna da ala (fileira de baixo)
-    { x0:144, x1:288, y:576, sp:"of_wall", endL:"edge", endR:"edge" },
-    { x0:320, x1:464, y:576, sp:"of_wall", endL:"edge", endR:"edge" },
-    { x0:496, x1:688, y:576, sp:"of_wall", endL:"edge", endR:"edge" }
+    { x0:720, x1:912, y:144, sp:"of_wall", endL:"edge", endR:"edge" },          // ala 09 Blogs: faixas 2, 3 e 4
+    { x0:944, x1:1040, y:144, sp:"of_wall", endL:"edge", endR:"edge" },
+    { x0:704, x1:864, y:288, sp:"of_wall", endL:"toco", endR:"edge" },
+    { x0:896, x1:1040, y:288, sp:"of_wall", endL:"edge", endR:"edge" },
+    { x0:704, x1:912, y:432, sp:"of_wall", endL:"toco", endR:"edge" },
+    { x0:928, x1:1008, y:432, sp:"of_wall", endL:"edge", endR:"edge" }
   ];
   // ala 09 Blogs: blog -> coluna (tile), faixa (linha das cadeiras de trás), módulos (2 lugares cada) e topo da parede da placa
   var BLOG_LAYOUT = [
-    { key:"bitcoin",  x0:1,  T:29, n:5, wall:432 },
-    { key:"saude",    x0:18, T:29, n:4, wall:432 },
-    { key:"yangled",  x0:32, T:29, n:1, wall:432 },
-    { key:"portal",   x0:1,  T:38, n:2, wall:576 },
-    { key:"politica", x0:9,  T:38, n:3, wall:576 },
-    { key:"review",   x0:20, T:38, n:3, wall:576 },
-    { key:"grama",    x0:31, T:38, n:4, wall:576 }
+    { key:"bitcoin",  x0:45, T:2,  n:5, wall:0 },
+    { key:"saude",    x0:45, T:11, n:4, wall:144 },
+    { key:"portal",   x0:59, T:11, n:2, wall:144 },
+    { key:"politica", x0:45, T:20, n:3, wall:288 },
+    { key:"review",   x0:56, T:20, n:3, wall:288 },
+    { key:"grama",    x0:45, T:29, n:4, wall:432 },
+    { key:"yangled",  x0:59, T:29, n:1, wall:432 }
   ];
-  var TOCOS = [ { x:192, y0:320, y1:432 }, { x:506, y0:320, y1:432 } ];
-  var WOOD = [ { c0:0, c1:11, r0:20, r1:26 }, { c0:32, c1:43, r0:20, r1:26 } ];
+  var TOCOS = [ { x:192, y0:320, y1:432 }, { x:506, y0:320, y1:432 },
+                // divisa com a ala 09: portas no corredor (linhas 16–17) e na Área de descanso (linhas 35–37)
+                { x:704, y0:32, y1:256 }, { x:704, y0:320, y1:432 }, { x:704, y0:464, y1:560 } ];
+  var WOOD = [ { c0:0, c1:11, r0:20, r1:26 }, { c0:32, c1:43, r0:20, r1:26 }, { c0:0, c1:43, r0:29, r1:37 } ];
 
   var W = null;            // mundo montado (layout fixo; só as placas mudam com os nomes)
   var bgCanvas = null;     // piso + paredes + decoração de parede + placas
@@ -344,30 +349,67 @@
     addStandSpots(13, 30, 25, 26, "central", w.restExtra);
     addStandSpots(1, 42, 16, 17, "corredor", w.restExtra);
 
-    // ---------- ala 09 Blogs: mesa de pauta (ao lado da porta da copa), plantas e corredores ----------
-    obj("of_meeting_set", 656, 536, { solid:{ x:633, y:496, w:47, h:40 }, draw:meetingDrawer });
+    // ---------- Área de descanso (embaixo): café, sofás e mesas para quem está descansando ----------
+    obj("dc_shelf", 24, 473, { solid:{ x:9, y:456, w:31, h:20 } });
+    obj("dc_plant_bush", 56, 472);
+    obj("dc_plant_tall", 236, 474);
+    obj("dc_plant_bush", 364, 472);
+    obj("lg_cooler", 385, 472);
+    obj("lg_coffee", 414, 472);
+    obj("lg_vending", 448, 472);
+    obj("dc_plant_spiky", 474, 472);
+    obj("dc_plant_s", 500, 472);
+    obj("dc_plant_tall", 690, 474);
+    w.floorRugs.push(["lg_rug_lilac", 408, 524]);
+    obj("lg_table_set", 408, 517, { solid:{ x:400, y:500, w:16, h:16 } });
+    obj("lg_sofa_l", 472, 556, { solid:{ x:454, y:516, w:44, h:42 } });
+    obj("lg_sofa_h", 408, 556, { solid:{ x:388, y:535, w:40, h:22 } });
+    w.floorRugs.push(["lg_rug", 120, 556]);
+    obj("lg_sofa_h", 120, 572, { solid:{ x:100, y:551, w:40, h:22 } });
+    obj("lg_sofa_h", 232, 572, { solid:{ x:212, y:551, w:40, h:22 } });
+    obj("dc_plant_bush", 8, 604);
+    obj("dc_plant_spiky", 640, 604);
+    function lounge(o){ var r = rest(o); r.area = "lounge"; return r; }
+    lounge({ id:"lsofa-l1", x:459, y:537, dir:"down", sortY:556.5, stand:[28, 35], kind:"sofa" });
+    lounge({ id:"lsofa-l2", x:471, y:537, dir:"down", sortY:556.5, stand:[29, 35], kind:"sofa" });
+    lounge({ id:"lsofa-l3", x:487, y:546, dir:"down", sortY:556.5, stand:[30, 35], kind:"sofa" });
+    [[397, 24], [408, 25], [419, 26], [109, 6], [120, 7], [131, 8], [221, 13], [232, 14], [243, 15]].forEach(function(a, k){
+      var base = a[0]<300 ? 572 : 556;
+      lounge({ id:"lsofa-h"+k, x:a[0], y:base-5, dir:"down", sortY:base+0.5, stand:[a[1], base===572 ? 36 : 35], kind:"sofa" });
+    });
+    lounge({ id:"lbanco-1", x:394, y:513, dir:"right", sortY:517.5, stand:[24, 32], kind:"stool" });
+    lounge({ id:"lbanco-2", x:422, y:513, dir:"left", sortY:517.5, stand:[26, 32], kind:"stool" });
+    lounge({ id:"lmaq-1", x:385, y:491, dir:"up", pose:"idle", sortY:491, stand:[24, 30], kind:"stand" });
+    lounge({ id:"lmaq-2", x:414, y:491, dir:"up", pose:"idle", sortY:491, stand:[25, 30], kind:"stand" });
+    lounge({ id:"lmaq-3", x:448, y:491, dir:"up", pose:"idle", sortY:491, stand:[28, 30], kind:"stand" });
+    w.rest.forEach(function(r){ used[r.stand[0]+","+r.stand[1]] = 1; });
+    addStandSpots(0, 43, 29, 37, "lounge", w.rest);
+    w.areas.lounge = { x:0, y:432, w:704, h:WH - 432 };
+
+    // ---------- ala 09 Blogs (à direita): placa da empresa + mesa de pauta no alto, corredores de descanso ----------
+    obj("of_meeting_set", 1032, 104, { solid:{ x:1009, y:64, w:47, h:40 }, draw:meetingDrawer });
     w.blogMeet = [];
     [
-      { x:645, y:491, dir:"down", chair:["of_chair_down", 645, 498], sortY:498.5, stand:[40, 30], badge:{ x:645, y:497 }, bubble:"side" },
-      { x:667, y:491, dir:"down", chair:["of_chair_down", 667, 498], sortY:498.5, stand:[41, 30], badge:{ x:667, y:497 }, bubble:"side" },
-      { x:628, y:522, dir:"right", chair:["of_chair_right", 625, 529], sortY:536.5, stand:[39, 32], badge:{ x:628, y:528 } },
-      { x:684, y:522, dir:"left", chair:["of_chair_left", 687, 529], sortY:536.5, stand:[42, 32], badge:{ x:684, y:528 } },
-      { x:656, y:539, dir:"up", chair:["of_chair_up", 656, 555], sortY:536.6, stand:[41, 34], badge:{ x:656, y:553 } }
+      { x:1021, y:59, dir:"down", chair:["of_chair_down", 1021, 66], sortY:66.5, stand:[63, 3], badge:{ x:1021, y:65 }, bubble:"side" },
+      { x:1043, y:59, dir:"down", chair:["of_chair_down", 1043, 66], sortY:66.5, stand:[65, 3], badge:{ x:1043, y:65 }, bubble:"side" },
+      { x:1004, y:90, dir:"right", chair:["of_chair_right", 1001, 97], sortY:104.5, stand:[62, 5], badge:{ x:1004, y:96 } },
+      { x:1060, y:90, dir:"left", chair:["of_chair_left", 1063, 97], sortY:104.5, stand:[66, 5], badge:{ x:1060, y:96 } },
+      { x:1032, y:107, dir:"up", chair:["of_chair_up", 1032, 123], sortY:104.6, stand:[64, 7], badge:{ x:1032, y:121 } }
     ].forEach(function(m, k){
       obj(m.chair[0], m.chair[1], m.chair[2], { solid:null });
       w.blogMeet.push(seat({ id:"pauta-"+k, x:m.x, y:m.y, dir:m.dir, sortY:m.sortY, stand:m.stand, area:"f9", badge:m.badge, kind:"meeting", bubble:m.bubble }));
     });
-    obj("dc_plant_tall", 696, 474);
-    obj("dc_plant_s", 568, 474);
-    obj("dc_plant_bush", 8, 698);
-    obj("dc_plant_spiky", 696, 698);
+    obj("dc_plant_tall", 1078, 194);
+    obj("dc_plant_s", 1078, 330);
+    obj("dc_plant_bush", 1040, 474);
+    obj("dc_plant_spiky", 1078, 474);
+    obj("dc_plant_bush", 1078, 604);
     w.restBlogs = [];
     w.blogMeet.forEach(function(m){ used[m.stand[0]+","+m.stand[1]] = 1; });
-    addStandSpots(0, 43, 34, 35, "f9", w.restBlogs);
-    addStandSpots(1, 42, 43, 44, "f9", w.restBlogs);
+    [[7, 8], [16, 17], [25, 26], [34, 37]].forEach(function(r){ addStandSpots(45, 67, r[0], r[1], "f9", w.restBlogs); });
     w.blockSeats.f9 = [];
     w.overflow.f9 = [];
-    w.areas.f9 = { x:0, y:432, w:WW, h:WH - 432 };
+    w.areas.f9 = { x:704, y:0, w:WW - 704, h:WH };
     w.areas.tudo = { x:0, y:0, w:WW, h:WH };
     return w;
   }
@@ -390,7 +432,7 @@
     else PX.draw(ctx, "of_station6_off", this.x, this.y);
   }
   function meetingDrawer(ctx, t){
-    var on = (this.y>432 ? W.blogMeet : W.meetSeats).some(seatWorking);
+    var on = (this.x>704 ? W.blogMeet : W.meetSeats).some(seatWorking);
     PX.draw(ctx, "of_meeting_set", this.x, this.y, { frame:on && !REDUCE ? (Math.floor(t*2.2)%2) : 0 });
   }
 
@@ -462,14 +504,20 @@
     drawSign(ctx, 248, 288, "CENTRAL DE DADOS");
     wallItem(ctx, "dc_tv", 330, 288);
     drawSign(ctx, 432, 288, "GRUPO LISIEUX");
-    // ala 09 Blogs: placa da empresa ao lado da porta da copa + uma placa por blog, sobre a sua fileira
+    // Área de descanso
+    var rl = drawSign(ctx, 128, 432, "ÁREA DE DESCANSO");
+    if(itemW("dc_paint_a")<=rl.x0 - 8) wallItem(ctx, "dc_paint_a", Math.round(rl.x0/2), 432);
+    wallItem(ctx, "dc_tv", 432, 432);
+    wallItem(ctx, "dc_paint_b", 656, 432);
+    // ala 09 Blogs: placa da empresa sobre a mesa de pauta + uma placa por blog, sobre a sua fileira
     var f9 = cmap.f9 || { num:9, short:"BLOGS" };
-    drawSign(ctx, 656, 432, f9.short, (f9.num<10 ? "0" : "")+f9.num);
+    drawSign(ctx, 1032, 0, f9.short, (f9.num<10 ? "0" : "")+f9.num);
     var BSIDE = ["dc_board", "dc_paint_a", "dc_paint_b", "dc_board_pie", "dc_paint_a", "dc_tv", "dc_paint_b"];
     BLOG_LAYOUT.forEach(function(b, i){
       var bl = R.BLOGS.filter(function(x){ return x.key===b.key; })[0], bx = b.x0*TILE, wdt = 48*b.n;
       if(!bl) return;
-      var segL = bx + (b.wall===576 ? 6 : -10), segR = bx + wdt + (b.wall===576 ? -6 : 10), cx = Math.round(bx + wdt/2);
+      var cx = Math.round(bx + wdt/2), segL = bx - 10, segR = bx + wdt + 10;
+      WALLS.forEach(function(wl){ if(wl.y===b.wall && wl.x0<=cx && cx<wl.x1 && wl.x1 - wl.x0<400){ segL = wl.x0 + 6; segR = wl.x1 - 6; } });
       var r = drawSign(ctx, cx, b.wall, bl.short);
       var rightSpace = segR - r.x1 - 4, leftSpace = r.x0 - segL - 4, side = BSIDE[i];
       if(itemW(side)<=rightSpace) wallItem(ctx, side, Math.round(r.x1 + 2 + rightSpace/2), b.wall);
@@ -592,7 +640,7 @@
       var ov = freeOf(W.overflow[g] || []); if(ov) return ov;
     }
     var restAll = W.rest.concat(W.restExtra, W.restBlogs);
-    if(cur && cur.area && (cur.area==="copa" || cur.area==="corredor" || (cur.area==="central" && cur.kind==="stand") || (blogs && cur.area==="f9")) && restAll.indexOf(cur)>=0) return cur;
+    if(cur && cur.area && (cur.area==="copa" || cur.area==="lounge" || cur.area==="corredor" || (cur.area==="central" && cur.kind==="stand") || (blogs && cur.area==="f9")) && restAll.indexOf(cur)>=0) return cur;
     if(blogs){ var rb = freeRandom(W.restBlogs); if(rb) return rb; }        // a ala tem os próprios corredores de descanso
     return freeRandom(W.rest, function(r){ return r.kind!=="stand"; }) || freeRandom(W.restExtra) || freeRandom(W.restBlogs) || W.rest[0];
   }
@@ -862,7 +910,7 @@
       items.push([c.id, c.label]);
       if(c.id==="f9") R.BLOGS.forEach(function(b){ items.push(["f9-"+b.key, b.name, true]); });
     });
-    items.push(["central", "Central de dados"], ["copa", "Copa"]);
+    items.push(["central", "Central de dados"], ["copa", "Copa"], ["lounge", "Área de descanso"]);
     items.forEach(function(it){
       AREA_LABEL[it[0]] = it[1];
       var li = el("li"), b = el("button", "area-btn"+(it[2] ? " sub" : ""), it[1]);
@@ -1116,6 +1164,19 @@
     var fsChange = function(){ var on = !!(document.fullscreenElement || document.webkitFullscreenElement); fsBtn.setAttribute("aria-label", on ? "Sair da tela cheia" : "Tela cheia"); fsBtn.classList.toggle("is-on", on); };
     document.addEventListener("fullscreenchange", fsChange); document.addEventListener("webkitfullscreenchange", fsChange);
   }
+
+  // botões e selo somem depois de 3 s parado (o escritório inteiro fica limpo na tela, como num vídeo) e voltam ao mexer
+  var idleT = 0, rootEl = document.documentElement;
+  function wake(){
+    rootEl.classList.remove("idle"); clearTimeout(idleT);
+    idleT = setTimeout(function(){
+      var ae = document.activeElement;
+      if(!drawer.hidden || (card && !card.hidden) || (ae && ae.closest && ae.closest(".round, .drawer"))){ wake(); return; }
+      rootEl.classList.add("idle");
+    }, 3000);
+  }
+  ["pointermove", "pointerdown", "keydown", "wheel"].forEach(function(t){ document.addEventListener(t, wake, { passive:true, capture:true }); });
+  wake();
 
   window.addEventListener("storage", function(ev){
     if(ev.key===R.KEY || ev.key===null){ roster = R.load(); if(demoActive()){ var keep = {}; roster.forEach(function(p){ if(demoMap[p.id]) keep[p.id] = demoMap[p.id]; }); demoMap = keep; } syncPeople(false); }

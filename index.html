@@ -1303,7 +1303,7 @@
   .office-ghost{ border:1px solid var(--border); background:var(--surface-2); color:var(--text-2); border-radius:999px; padding:6px 12px; font-family:var(--font-mono); font-size:10.5px; cursor:pointer; }
   .office-ghost:hover, .office-act:hover{ filter:brightness(1.06); border-color:var(--accent); }
   .office-act:focus-visible, .office-ghost:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
-  .office-frame{ display:block; width:100%; aspect-ratio:16/9; max-height:72vh; border:1px solid var(--border); border-radius:var(--r-lg); background:#141420; color-scheme:dark; }
+  .office-frame{ display:block; width:min(100%, calc(78vh * 16 / 9)); margin-inline:auto; aspect-ratio:16/9; border:1px solid var(--border); border-radius:var(--r-lg); background:#141420; color-scheme:dark; }   /* sempre 16:9, como um vídeo: o escritório inteiro sem faixas */
   .office-team-head{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 12px; margin:22px 0 6px; }
   .office-team-head h2{ font-family:var(--font-serif); font-size:16px; margin:0; }
   .office-team-head .btns{ display:flex; flex-wrap:wrap; gap:8px; }
