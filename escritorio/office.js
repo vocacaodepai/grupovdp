@@ -864,28 +864,46 @@
     var w = String(n||"").split(" ");
     return ((w[0]==="Dona" || w[0]==="Seu") && w[1] ? w[0] + " " + w[1] : w[0]).slice(0, 14);
   }
+  var namesShown = 0;
   function drawNames(){
+    namesShown = 0;
     if(!namesOn) return;
-    var z = cam.z; if(z/dpr < 0.75) return;                       // longe demais: os nomes não caberiam
-    var o = origin(), fs = Math.round(11*dpr), padX = Math.round(4*dpr), h = Math.round(15*dpr), gap = Math.round(2*dpr), m = Math.round(dpr);
+    // tamanho acompanha o zoom (8 px de CSS no escritório inteiro numa janela pequena, 11 px em tela cheia)
+    var z = cam.z, sc = z/dpr, css = Math.max(8, Math.min(11, 7 + sc*2.2));
+    var o = origin(), fs = Math.round(css*dpr), padX = Math.round((css<9.5 ? 2.5 : 4)*dpr), h = Math.round((css + 4)*dpr),
+        gap = Math.max(1, Math.round((css<9.5 ? 1 : 2)*dpr)), m = Math.max(1, Math.round(dpr*0.5)), rad = Math.round((css<9.5 ? 3 : 4)*dpr);
     sctx.setTransform(1, 0, 0, 1, 0, 0);
     sctx.font = "600 " + fs + "px system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
     sctx.textAlign = "center"; sctx.textBaseline = "middle";
     var rank = function(e){ var k = e.p.kind; return k==="chefia" ? 0 : k==="socio" ? 1 : e.p.status==="work" ? 2 : 3; };
     var list = Object.keys(ents).map(function(id){ return ents[id]; }).filter(function(e){ return e.placed; })
-      .sort(function(a, b){ return rank(a) - rank(b) || a.y - b.y; });
+      .sort(function(a, b){ return rank(a) - rank(b) || a.y - b.y || a.x - b.x; });
     var placed = [];
     function hits(r){ for(var i=0; i<placed.length; i++){ var q = placed[i]; if(r.x < q.x + q.w + m && q.x < r.x + r.w + m && r.y < q.y + q.h + m && q.y < r.y + r.h + m) return true; } return false; }
+    function inView(r){ return r.x >= 0 && r.y >= 0 && r.x + r.w <= VW && r.y + r.h <= VH; }
     list.forEach(function(e){
       var txt = shortName(e.p.name); if(!txt) return;
-      var w = nameW[txt]; if(w==null) w = nameW[txt] = sctx.measureText(txt).width;
+      var key = fs + "|" + txt, w = nameW[key]; if(w==null) w = nameW[key] = sctx.measureText(txt).width;
       var headTop = e.y - 22 - (e.lk && e.lk.crown ? 5 : 0), topW = e.bubTop!=null ? Math.min(headTop, e.bubTop) : headTop;
-      var bw = Math.ceil(w) + padX*2, r = { x:Math.round(o.x + e.x*z - bw/2), y:Math.round(o.y + topW*z) - gap - h, w:bw, h:h };
-      if(r.x + r.w < 0 || r.x > VW || r.y + r.h < 0 || r.y > VH) return;
-      if(hits(r)){ r.y -= h + gap; if(hits(r)) return; }
-      placed.push(r);
+      var bw = Math.ceil(w) + padX*2, cx = Math.round(o.x + e.x*z), top = Math.round(o.y + topW*z), feet = Math.round(o.y + (e.y + 2)*z),
+          side = Math.round(9*z), midY = Math.round(o.y + (e.y - 12)*z) - Math.round(h/2);
+      // onde tentar, em ordem: acima da cabeça, um degrau mais acima, embaixo dos pés, à direita e à esquerda
+      var tries = [
+        { x:cx - bw/2, y:top - gap - h },
+        { x:cx - bw/2, y:top - 2*(gap + h) },
+        { x:cx - bw/2, y:feet + gap },
+        { x:cx + side, y:midY },
+        { x:cx - side - bw, y:midY }
+      ];
+      var r = null;
+      for(var i=0; i<tries.length && !r; i++){
+        var c = { x:Math.round(tries[i].x), y:Math.round(tries[i].y), w:bw, h:h };
+        if(inView(c) && !hits(c)) r = c;
+      }
+      if(!r) return;
+      placed.push(r); namesShown++;
       sctx.fillStyle = "rgba(20,22,36,0.74)";
-      if(sctx.roundRect){ sctx.beginPath(); sctx.roundRect(r.x, r.y, r.w, r.h, Math.round(4*dpr)); sctx.fill(); } else sctx.fillRect(r.x, r.y, r.w, r.h);
+      if(sctx.roundRect){ sctx.beginPath(); sctx.roundRect(r.x, r.y, r.w, r.h, rad); sctx.fill(); } else sctx.fillRect(r.x, r.y, r.w, r.h);
       var k = e.p.kind;
       sctx.fillStyle = k==="chefia" ? "#f6d36b" : k==="socio" ? "#c9d7ff" : "#ffffff";
       sctx.fillText(txt, r.x + r.w/2, r.y + h/2 + m*0.5);
@@ -1381,6 +1399,7 @@
     liveMode:function(){ return liveMode; },
     demo:function(){ return demoActive(); },
     grid:function(){ return Array.prototype.slice.call(W.grid); },
+    names:function(){ return { on:namesOn, shown:namesShown, people:Object.keys(ents).filter(function(id){ return ents[id].placed; }).length }; },
     size:{ w:WW, h:WH, tiles:[TW, TH] }
   };
 })();
