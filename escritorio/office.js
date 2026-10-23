@@ -281,7 +281,9 @@
     w.floorRugs.push(["lg_rug", 88, 396]);
     obj("lg_sofa_h", 88, 428, { solid:{ x:68, y:407, w:40, h:22 } });
     obj("dc_plant_bush", 176, 428);
-    obj("dc_plant_s", 10, 428);
+    obj("lg_crib", 160, 360, { solid:{ x:145, y:336, w:30, h:26 } });          // berço, para quando as crianças vierem junto
+    obj("lg_stroller", 140, 412);                                              // carrinho de bebê
+    obj("lg_sofa_v_e", 16, 424, { solid:{ x:8, y:390, w:17, h:34 } });         // sofá encostado na parede da esquerda
     w.areas.chefia = { x:0, y:288, w:192, h:144 };
 
     // ---------- Central de dados ----------
@@ -351,7 +353,6 @@
 
     // ---------- Área de descanso (embaixo): café, sofás e mesas para quem está descansando ----------
     obj("dc_shelf", 24, 473, { solid:{ x:9, y:456, w:31, h:20 } });
-    obj("dc_plant_bush", 56, 472);
     obj("dc_plant_tall", 236, 474);
     obj("dc_plant_bush", 364, 472);
     obj("lg_cooler", 385, 472);
@@ -367,15 +368,20 @@
     w.floorRugs.push(["lg_rug", 120, 556]);
     obj("lg_sofa_h", 120, 572, { solid:{ x:100, y:551, w:40, h:22 } });
     obj("lg_sofa_h", 232, 572, { solid:{ x:212, y:551, w:40, h:22 } });
+    obj("lg_sofa_h", 312, 572, { solid:{ x:292, y:551, w:40, h:22 } });
+    obj("lg_sofa_h", 680, 600, { solid:{ x:660, y:579, w:40, h:22 } });
+    obj("lg_pool", 592, 540, { solid:{ x:566, y:512, w:52, h:30 } });          // sinuca
     obj("dc_plant_bush", 8, 604);
     obj("dc_plant_spiky", 640, 604);
     function lounge(o){ var r = rest(o); r.area = "lounge"; return r; }
     lounge({ id:"lsofa-l1", x:459, y:537, dir:"down", sortY:556.5, stand:[28, 35], kind:"sofa" });
     lounge({ id:"lsofa-l2", x:471, y:537, dir:"down", sortY:556.5, stand:[29, 35], kind:"sofa" });
     lounge({ id:"lsofa-l3", x:487, y:546, dir:"down", sortY:556.5, stand:[30, 35], kind:"sofa" });
-    [[397, 24], [408, 25], [419, 26], [109, 6], [120, 7], [131, 8], [221, 13], [232, 14], [243, 15]].forEach(function(a, k){
-      var base = a[0]<300 ? 572 : 556;
-      lounge({ id:"lsofa-h"+k, x:a[0], y:base-5, dir:"down", sortY:base+0.5, stand:[a[1], base===572 ? 36 : 35], kind:"sofa" });
+    // sofás retos: [x do assento, coluna do lugar em pé, base do sofá, linha do lugar em pé]
+    [[397, 24, 556, 35], [408, 25, 556, 35], [419, 26, 556, 35], [109, 6, 572, 36], [120, 7, 572, 36], [131, 8, 572, 36],
+     [221, 13, 572, 36], [232, 14, 572, 36], [243, 15, 572, 36], [301, 18, 572, 36], [312, 19, 572, 36], [323, 20, 572, 36],
+     [669, 41, 600, 37], [680, 42, 600, 37], [691, 43, 600, 37]].forEach(function(a, k){
+      lounge({ id:"lsofa-h"+k, x:a[0], y:a[2]-5, dir:"down", sortY:a[2]+0.5, stand:[a[1], a[3]], kind:"sofa" });
     });
     lounge({ id:"lbanco-1", x:394, y:513, dir:"right", sortY:517.5, stand:[24, 32], kind:"stool" });
     lounge({ id:"lbanco-2", x:422, y:513, dir:"left", sortY:517.5, stand:[26, 32], kind:"stool" });
@@ -497,17 +503,20 @@
       if(side[1] && itemW(side[1])<=rightSpace) wallItem(ctx, side[1], Math.round(r.x1 + 2 + rightSpace/2), top);
     });
     // Diretoria
-    wallItem(ctx, "dc_paint_a", 54, 288);
+    wallItem(ctx, "dc_crucifix", 54, 288);
     drawSign(ctx, 100, 288, "DIRETORIA");
-    wallItem(ctx, "dc_paint_b", 143, 288);
+    wallItem(ctx, "dc_sagrado", 143, 288);
     // Central de dados
     drawSign(ctx, 248, 288, "CENTRAL DE DADOS");
     wallItem(ctx, "dc_tv", 330, 288);
     drawSign(ctx, 432, 288, "GRUPO LISIEUX");
     // Área de descanso
     var rl = drawSign(ctx, 128, 432, "ÁREA DE DESCANSO");
-    if(itemW("dc_paint_a")<=rl.x0 - 8) wallItem(ctx, "dc_paint_a", Math.round(rl.x0/2), 432);
+    if(itemW("dc_crucifix")<=rl.x0 - 48) wallItem(ctx, "dc_crucifix", Math.round((rl.x0 + 42)/2), 432);   // à direita da estante
+    if(itemW("dc_aparecida")<=226 - rl.x1) wallItem(ctx, "dc_aparecida", Math.round((rl.x1 + 228)/2), 432);   // Nossa Senhora Aparecida
+    wallItem(ctx, "dc_flag_br", 344, 432);
     wallItem(ctx, "dc_tv", 432, 432);
+    wallItem(ctx, "dc_paint_a", 520, 432);
     wallItem(ctx, "dc_paint_b", 656, 432);
     // ala 09 Blogs: placa da empresa sobre a mesa de pauta + uma placa por blog, sobre a sua fileira
     var f9 = cmap.f9 || { num:9, short:"BLOGS" };
