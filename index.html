@@ -1274,90 +1274,47 @@
     .card{ transition:none; }
     .card:hover{ transform:none; }
   }
-  /* ---- Escritório (RPG do Grupo Lisieux) ---- */
+  /* ---- Escritório do Grupo Lisieux: a cena em pixel art mora em escritorio/ (iframe aqui); este painel edita a equipe ---- */
   .office-btn{ display:inline-flex; align-items:center; gap:6px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); border-radius:999px; padding:5px 12px; font-family:var(--font-mono); font-size:10.5px; cursor:pointer; }
   .office-btn:hover{ border-color:var(--accent); }
   @media (max-width:720px){ .office-btn-txt{ display:none; } .office-btn{ padding:6px 10px; } }
-  .office-sum{ display:flex; flex-wrap:wrap; gap:6px 16px; font-family:var(--font-mono); font-size:11px; color:var(--text-2); margin:2px 0 8px; }
-  .office-sum b{ color:var(--text); font-family:var(--font-sans); font-weight:600; font-size:13px; }
-  .office-note{ font-size:12.5px; line-height:1.5; color:var(--text-2); margin:0 0 12px; max-width:78ch; }
-  .office-bar{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:0 0 12px; }
-  .office-seg{ display:inline-flex; border:1px solid var(--border); border-radius:999px; background:var(--surface-2); padding:2px; }
-  .office-seg button{ border:none; background:none; color:var(--text-muted); font-family:var(--font-mono); font-size:10.5px; padding:5px 12px; border-radius:999px; cursor:pointer; }
-  .office-seg button[aria-checked="true"]{ background:var(--accent-soft); color:var(--accent); }
-  .office-act{ border:1px solid var(--accent); background:var(--accent-soft); color:var(--accent); border-radius:999px; padding:6px 14px; font-family:var(--font-sans); font-size:12.5px; font-weight:600; cursor:pointer; }
+  .office-tools{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:0 0 12px; }
+  .office-note{ font-size:12.5px; line-height:1.5; color:var(--text-2); margin:0; max-width:78ch; }
+  .office-act{ display:inline-flex; align-items:center; gap:6px; border:1px solid var(--accent); background:var(--accent-soft); color:var(--accent); border-radius:999px; padding:6px 14px; font-family:var(--font-sans); font-size:12.5px; font-weight:600; cursor:pointer; text-decoration:none; }
   .office-ghost{ border:1px solid var(--border); background:var(--surface-2); color:var(--text-2); border-radius:999px; padding:6px 12px; font-family:var(--font-mono); font-size:10.5px; cursor:pointer; }
   .office-ghost:hover, .office-act:hover{ filter:brightness(1.06); border-color:var(--accent); }
-
-  .office-viewport{ position:relative; width:100%; border:1px solid var(--border); border-radius:var(--r-lg); background:var(--surface-2); }
-  .office-stage.flat{ padding:12px; }
-  .office-floor{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
-  @media (max-width:900px){ .office-stage.flat .office-floor{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
-  @media (max-width:560px){ .office-stage.flat .office-floor{ grid-template-columns:minmax(0,1fr); } }
-
-  .room{ position:relative; min-height:178px; border:2px solid color-mix(in oklab, var(--rc) 45%, var(--border)); border-radius:8px; background:color-mix(in oklab, var(--rc) 9%, var(--surface)); padding:30px 8px 8px; display:flex; flex-direction:column; gap:4px; }
-  .room-sign{ position:absolute; left:8px; top:5px; display:flex; align-items:center; gap:6px; max-width:calc(100% - 16px); font-family:var(--font-serif); font-weight:600; font-size:12.5px; color:var(--text); text-decoration:none; white-space:nowrap; }
-  .room-sign:hover .room-name{ text-decoration:underline; }
-  .room-sign .num{ font-family:var(--font-mono); font-size:9.5px; font-weight:400; color:var(--rc); border:1px solid var(--rc); border-radius:4px; padding:0 4px; }
-  .room-sign .room-name{ overflow:hidden; text-overflow:ellipsis; }
-  .room-meta{ position:absolute; right:8px; top:8px; font-family:var(--font-mono); font-size:9px; color:var(--text-muted); }
-  .room-desks{ display:flex; gap:4px; justify-content:space-around; align-items:flex-end; margin-top:auto; }
-  .room-queue{ font-family:var(--font-mono); font-size:9px; color:var(--text-muted); text-align:right; }
-  .desk{ position:relative; width:92px; display:flex; flex-direction:column; align-items:center; padding-top:36px; }
-  .plaque{ position:absolute; top:-2px; left:50%; margin-left:-52px; width:104px; min-height:24px; padding:3px 5px; border:1px solid var(--accent); border-radius:5px; background:var(--surface); color:var(--text); font-size:9px; line-height:1.25; text-align:center; box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center; overflow-wrap:anywhere; }
-  .plaque::after{ content:""; position:absolute; left:50%; bottom:-5px; margin-left:-4px; width:7px; height:7px; background:var(--surface); border-right:1px solid var(--accent); border-bottom:1px solid var(--accent); transform:rotate(45deg); }
-  .monitor{ width:38px; height:22px; border-radius:3px; background:#1b2230; border:2px solid color-mix(in oklab, var(--text) 35%, var(--border)); display:flex; align-items:center; justify-content:center; }
-  .monitor .scr{ display:block; width:26px; height:11px; border-radius:1px; background:#2a3347; }
-  .desk.is-on .monitor .scr{ background:linear-gradient(90deg, var(--accent) 0 35%, #7fb0ff 35% 60%, var(--accent) 60%); background-size:200% 100%; animation:scrn 2.4s linear infinite; }
-  @keyframes scrn{ to{ background-position:-200% 0; } }
-  .deskbar{ width:64px; height:6px; border-radius:3px; background:color-mix(in oklab, #9a7b55 70%, var(--border)); margin-top:2px; }
-  .seat-empty{ display:block; height:46px; }
-  .agent-mover{ display:inline-block; }
-  .agent{ display:flex; flex-direction:column; align-items:center; border:none; background:none; padding:0 2px; cursor:pointer; color:var(--text); font:inherit; border-radius:8px; }
-  .agent:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
-  .agent-bb{ position:relative; display:flex; flex-direction:column; align-items:center; }
-  .sprite{ position:relative; width:26px; height:34px; display:block; }
-  .sprite .hd{ display:block; width:14px; height:14px; margin:0 auto; border-radius:50%; background:linear-gradient(#3b2a20 0 42%, #e8b894 42%); border:1px solid rgba(0,0,0,.25); }
-  .sprite .bd{ display:block; width:22px; height:14px; margin:1px auto 0; border-radius:6px 6px 3px 3px; background:var(--ac); border:1px solid rgba(0,0,0,.2); }
-  .sprite .lg{ display:block; width:14px; height:5px; margin:0 auto; background:linear-gradient(90deg, #2c3441 0 45%, transparent 45% 55%, #2c3441 55%); border-radius:0 0 2px 2px; }
-  .agent.is-work .sprite .bd{ animation:typ .5s ease-in-out infinite alternate; }
-  .agent.is-rest .sprite{ animation:bob 3.2s ease-in-out infinite; }
-  @keyframes typ{ to{ transform:translateY(1px); } }
-  @keyframes bob{ 50%{ transform:translateY(-1.5px); } }
-  .zzz{ position:absolute; top:-12px; right:-8px; font-family:var(--font-mono); font-size:9px; color:var(--text-muted); animation:zz 2.4s ease-in-out infinite; }
-  @keyframes zz{ 0%{ opacity:0; transform:translateY(4px); } 50%{ opacity:1; } 100%{ opacity:0; transform:translateY(-4px); } }
-  .aname{ font-family:var(--font-mono); font-size:9px; color:var(--text-2); max-width:70px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .abadge{ position:absolute; top:-2px; left:-6px; font-size:9px; color:var(--accent); }
-  .agent.is-planned .sprite{ opacity:.78; }
-  .agent.is-sel .aname{ color:var(--accent); font-weight:600; text-decoration:underline; }
-  .lounge{ display:flex; flex-wrap:wrap; gap:2px 4px; align-items:flex-end; justify-content:center; min-height:48px; padding:4px 6px 8px; border-radius:8px; background:color-mix(in oklab, var(--text-muted) 10%, var(--surface)); border:1px dashed var(--border); position:relative; }
-  .lounge-label{ flex-basis:100%; text-align:center; font-family:var(--font-mono); font-size:9px; color:var(--text-muted); }
-  .room.is-hub .room-desks .desk{ width:84px; }
-  .room.is-hub .desk{ padding-top:28px; }
-
-  .office-table-wrap{ overflow-x:auto; margin-top:18px; }
-  .office-table{ width:100%; border-collapse:collapse; font-size:12.5px; }
+  .office-act:focus-visible, .office-ghost:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .office-frame{ display:block; width:100%; aspect-ratio:16/9; max-height:72vh; border:1px solid var(--border); border-radius:var(--r-lg); background:#141420; color-scheme:dark; }
+  .office-team-head{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 12px; margin:22px 0 6px; }
+  .office-team-head h2{ font-family:var(--font-serif); font-size:16px; margin:0; }
+  .office-team-head .btns{ display:flex; flex-wrap:wrap; gap:8px; }
+  .office-table-wrap{ overflow-x:auto; margin-top:10px; }
+  .office-table{ width:100%; min-width:760px; border-collapse:collapse; font-size:12.5px; }
   .office-table caption{ text-align:left; font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--text-muted); padding:0 0 8px; }
   .office-table th{ text-align:left; font-family:var(--font-mono); font-size:9.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); font-weight:400; padding:6px 8px; border-bottom:1px solid var(--border); }
+  .office-table tbody th{ font-family:var(--font-sans); font-size:12.5px; text-transform:none; letter-spacing:0; color:var(--text); font-weight:600; }
   .office-table td{ padding:7px 8px; border-bottom:1px solid var(--border); vertical-align:middle; }
-  .office-table td .st{ font-family:var(--font-mono); font-size:10.5px; }
+  .office-table td.task{ max-width:280px; overflow-wrap:anywhere; color:var(--text-2); }
+  .office-table td.acts{ white-space:nowrap; }
+  .office-table td .st{ font-family:var(--font-mono); font-size:10.5px; white-space:nowrap; }
   .office-table .st.work{ color:var(--delta-up); } .office-table .st.rest{ color:var(--text-muted); }
+  .office-table .kind{ font-family:var(--font-mono); font-size:10px; border:1px solid var(--border); border-radius:4px; padding:1px 6px; white-space:nowrap; color:var(--text-2); }
+  .office-table .kind-agente{ border-color:#7c97f0; color:#5d78d6; }
+  .office-table .kind-robo{ border-color:var(--accent); color:var(--accent); }
+  .office-table .kind-chefia{ border-color:#d4aa62; color:#a77d2f; }
+  .office-table .ro{ font-family:var(--font-mono); font-size:10px; color:var(--text-muted); }
   .office-table button{ border:1px solid var(--border); background:var(--surface-2); color:var(--text-2); border-radius:6px; padding:3px 9px; font-size:11px; cursor:pointer; margin-right:4px; }
   .office-table button:hover{ border-color:var(--accent); color:var(--text); }
+  .office-table button:focus-visible{ outline:2px solid var(--accent); outline-offset:1px; }
   .office-editor{ margin-top:18px; border:1px solid var(--border); border-radius:var(--r-lg); background:var(--surface); padding:14px 16px; max-width:640px; }
   .office-editor h2{ font-family:var(--font-serif); font-size:15px; margin:0 0 4px; }
   .office-editor p{ font-size:12px; color:var(--text-2); margin:0 0 10px; line-height:1.5; }
+  .office-editor code{ font-family:var(--font-mono); font-size:11px; background:var(--surface-2); border:1px solid var(--border); border-radius:4px; padding:0 4px; }
   .office-editor .row{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-bottom:8px; }
   @media (max-width:560px){ .office-editor .row{ grid-template-columns:1fr; } }
   .office-editor label{ display:flex; flex-direction:column; gap:3px; font-family:var(--font-mono); font-size:9.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); }
   .office-editor input, .office-editor select{ border:1px solid var(--border); background:var(--surface-2); color:var(--text); border-radius:8px; padding:8px 10px; font-family:var(--font-sans); font-size:13px; text-transform:none; letter-spacing:0; }
   .office-editor .btns{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
-  @media (prefers-reduced-motion: reduce){ .desk.is-on .monitor .scr, .agent.is-work .sprite .bd, .agent.is-rest .sprite, .zzz{ animation:none; } .zzz{ opacity:1; } }
-  .office-viewport.px{ background:#d8d6e8; padding:0; overflow:hidden; }
-  .px-scroll{ overflow-x:auto; }
-  .px-canvas{ display:block; width:100%; min-width:760px; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; }
-  .px-canvas{ image-rendering:pixelated; }
-  .office-demo-chip{ font-family:var(--font-mono); font-size:9.5px; border:1px solid var(--accent); color:var(--accent); border-radius:4px; padding:1px 6px; }
 </style>
 </head>
 <body>
@@ -1392,6 +1349,7 @@
 </main>
 <p class="home-hint" id="homeHint"><kbd class="kbd-meta">⌘K</kbd> buscar · <kbd>1</kbd>–<kbd>8</kbd> frentes · <kbd>g</kbd> visão geral · <button type="button" class="hint-btn" id="hintKeys" title="Atalhos de teclado (?)"><kbd>?</kbd> atalhos</button></p>
 
+<script src="escritorio/data.js"></script>
 <script>
 (function(){
   var STAGES = ["Ideação","Estruturação","Execução","Consolidado"];
@@ -4991,488 +4949,149 @@
     document.addEventListener("keydown", globalKeys);
   }
 
-  // ==== Escritório (RPG do Grupo Lisieux): mapa aéreo das frentes com agentes que descansam ou trabalham ====
-  //      Honestidade: os 3 "robôs" são reais (coleta do YouTube, coleta dos sites, motor de leituras) e o estado deles vem dos dados.
-  //      Os demais agentes são EQUIPE PLANEJADA, definida e editada pelo dono (localStorage "vdp-office-v1"); nada aqui finge atividade.
-  var OFFICE_KEY = "vdp-office-v1", OFFICE_VIEW_KEY = "vdp-office-view-v1";
-  var OFFICE_SEED = [
-    { id:"s1",  name:"Bento", role:"Roteirista de vídeos",   front:"f1", status:"rest", task:"", planned:true },
-    { id:"s2",  name:"Clara", role:"Social media",           front:"f1", status:"rest", task:"", planned:true },
-    { id:"s3",  name:"Davi",  role:"Curador de conteúdo",    front:"f2", status:"rest", task:"", planned:true },
-    { id:"s4",  name:"Elisa", role:"Redatora do site",       front:"f3", status:"rest", task:"", planned:true },
-    { id:"s5",  name:"Fábio", role:"Analista financeiro",    front:"f4", status:"rest", task:"", planned:true },
-    { id:"s6",  name:"Gabi",  role:"Gestora da loja",        front:"f5", status:"rest", task:"", planned:true },
-    { id:"s7",  name:"Hugo",  role:"Gestor da loja",         front:"f6", status:"rest", task:"", planned:true },
-    { id:"s8",  name:"Íris",  role:"Atendimento e eventos",  front:"f7", status:"rest", task:"", planned:true },
-    { id:"s9",  name:"Joel",  role:"Analista de dados",      front:"f8", status:"rest", task:"", planned:true },
-    { id:"s10", name:"Claude", role:"Construtor do painel",  front:"hub", status:"rest", task:"", planned:true }
-  ];
-  var OFFICE = { agents:null, selected:null, creating:false, view:null, listening:false, demo:{}, demoOn:false, demoTimer:0, feed:[], feedTimer:0, feedAt:null };
-  function officeSanitize(list){
-    if(!Array.isArray(list)) return null;
-    var out = [];
-    list.slice(0, 60).forEach(function(a, i){
-      if(!a || typeof a!=="object") return;
-      var front = (a.front==="hub" || (typeof a.front==="string" && /^f[1-8]$/.test(a.front))) ? a.front : "hub";
-      out.push({ id:String(a.id || ("m"+i)).slice(0, 40), name:String(a.name || "Agente").slice(0, 24), role:String(a.role || "").slice(0, 40),
-                 front:front, status:a.status==="work" ? "work" : "rest", task:String(a.task || "").slice(0, 44), planned:!!a.planned });
-    });
-    return out;
+  // ==== Escritório do Grupo Lisieux ====
+  //      A cena em pixel art é a página escritorio/ (aqui dentro de um iframe, com ?embed=1). Este painel só mostra e edita a EQUIPE,
+  //      que fica no localStorage "vdp-office-v2" e é lida/gravada por window.LisieuxRoster (escritorio/data.js). Ao salvar, o iframe
+  //      recebe o evento "storage" e redesenha sozinho. Os 3 robôs (Robô YouTube, Robô dos Sites, Analista de Leituras) são reais:
+  //      o estado deles vem de data/metrics.json e não se edita. Todo texto vindo do usuário entra por textContent (via h()).
+  var OFFICE = { editing:null, creating:false };
+  function officeApi(){ return window.LisieuxRoster || null; }
+  function officeMetrics(){ return metricsDataLoaded ? { generatedAt:metricsGeneratedAt, sites:SITES_DATA } : null; }
+  function officeTeam(){ var R = officeApi(); return R ? R.merge(R.load(), R.robots(officeMetrics()), null, null, "off") : []; }
+  function officeSaveList(list, msg, focusSel){
+    var R = officeApi(); if(!R) return false;
+    var saved = R.save(list);
+    if(!saved){ announce("Não deu para salvar: o navegador bloqueou o armazenamento local"); return false; }
+    officeRenderTeam(focusSel); if(msg) announce(msg);
+    return true;
   }
-  function officeLoad(){
-    if(OFFICE.agents) return;
-    var l = null;
-    try{ l = officeSanitize(JSON.parse(localStorage.getItem(OFFICE_KEY))); }catch(e){}
-    OFFICE.agents = l || JSON.parse(JSON.stringify(OFFICE_SEED));
-    if(!OFFICE.view){
-      try{ OFFICE.view = localStorage.getItem(OFFICE_VIEW_KEY); }catch(e){}
-      if(OFFICE.view!=="pixel" && OFFICE.view!=="flat") OFFICE.view = window.innerWidth>=1000 ? "pixel" : "flat";
+  function officeToggle(id){
+    var R = officeApi(), list = R.load(), who = null;
+    list = list.map(function(p){ if(p.id!==id) return p; var q = JSON.parse(JSON.stringify(p)); q.status = p.status==="work" ? "rest" : "work"; who = q; return q; });
+    if(who) officeSaveList(list, who.name+(who.status==="work" ? " foi para a mesa" : " foi descansar na copa"), '[data-office-toggle="'+id+'"]');
+  }
+  function officeRemove(id){
+    var R = officeApi(), list = R.load(), p = list.filter(function(x){ return x.id===id; })[0];
+    if(!p || !window.confirm("Remover "+p.name+" do escritório?")) return;
+    if(OFFICE.editing===id) OFFICE.editing = null;
+    officeSaveList(list.filter(function(x){ return x.id!==id; }), p.name+" saiu do escritório", "#officeAdd");
+  }
+  function officeCommit(){
+    var R = officeApi(), $ = function(id){ return document.getElementById(id); };
+    var name = ($("offName").value || "").trim();
+    if(!name){ $("offName").focus(); announce("Escreva um nome"); return; }
+    var rec = { name:name, role:($("offRole").value || "").trim(), company:$("offCompany").value, kind:$("offKind").value,
+                status:$("offStatus").value==="work" ? "work" : "rest", task:($("offTask").value || "").trim() };
+    var list = R.load(), editing = OFFICE.editing;
+    if(editing){ list = list.map(function(p){ if(p.id!==editing) return p; var q = JSON.parse(JSON.stringify(p)); for(var k in rec) q[k] = rec[k]; return q; }); }
+    else {
+      if(list.length>=R.MAX){ announce("O escritório já tem "+R.MAX+" pessoas, o máximo"); return; }
+      rec.id = R.newId(name, list); list.push(rec);
     }
+    OFFICE.editing = null; OFFICE.creating = false;
+    officeSaveList(list, name+(editing ? " foi atualizado" : " entrou no escritório")+(rec.status==="work" ? " e está trabalhando" : ""), "#officeAdd");
   }
-  function officeSave(){ try{ localStorage.setItem(OFFICE_KEY, JSON.stringify(OFFICE.agents)); }catch(e){} }
-  function officeAuto(){                                           // robôs reais: estado calculado dos dados, nunca editável
-    var live = currentLiveState(), when = metricsGeneratedAt ? hhmm(metricsGeneratedAt) : "—";
-    var out = [];
-    out.push({ id:"auto-yt", name:"Robô YouTube", role:"Coleta o YouTube a cada 5 min", front:"f2", auto:true, status:live==="live" ? "work" : "rest",
-      task:live==="live" ? "Coletando YouTube · última leitura "+when : (live==="late" ? "Esperando a próxima coleta · última "+when : "Sem conexão com os dados"),
-      note:"Robô real (GitHub Actions). Trabalha quando a última coleta tem menos de 15 minutos." });
-    var okSources = 0, anySite = false;
-    Object.keys(SITES_DATA || {}).forEach(function(k){
-      anySite = true; var st = SITES_DATA[k] || {}, er = st.errors || {};
-      ["ga4", "searchConsole", "adsense"].forEach(function(src){ if(st[src] && !er[src]) okSources++; });
-    });
-    out.push({ id:"auto-sites", name:"Robô dos Sites", role:"GA4 · Search Console · AdSense", front:"hub", auto:true, status:okSources>0 ? "work" : "rest",
-      task:okSources>0 ? okSources+" fonte"+(okSources===1 ? "" : "s")+" de sites ativa"+(okSources===1 ? "" : "s") : (anySite ? "Dormindo: faltam as credenciais do Google" : "Sem dados de sites"),
-      note:"Robô real. Acorda quando os secrets do GA4/Search Console/AdSense estiverem configurados." });
-    var n = 0; try{ n = groupRanking().length; }catch(e){}
-    out.push({ id:"auto-insights", name:"Analista de Leituras", role:"Escreve as frases do dia", front:"hub", auto:true, status:(metricsDataLoaded && n>0) ? "work" : "rest",
-      task:(metricsDataLoaded && n>0) ? "Escrevendo "+n+" leitura"+(n===1 ? "" : "s")+" do dia" : "Sem dados para ler",
-      note:"Motor de insights do painel (roda no seu navegador)." });
-    return out;
-  }
-  function officeAll(){
-    var manual = (OFFICE.agents || []).map(function(a){
-      var d = OFFICE.demo[a.id]; if(!d) return a;
-      var y = JSON.parse(JSON.stringify(a)); y.status = d.status; y.task = d.task; y.demo = true; return y;
-    });
-    var byId = {}; manual.forEach(function(a, i){ byId[a.id] = i; });
-    var extra = [];
-    (OFFICE.feed || []).forEach(function(f){
-      if(byId[f.id]!==undefined){ var y = JSON.parse(JSON.stringify(manual[byId[f.id]])); y.status = f.status; y.task = f.task; y.feed = true; manual[byId[f.id]] = y; }
-      else { var z = JSON.parse(JSON.stringify(f)); z.feed = true; extra.push(z); }
-    });
-    return officeAuto().concat(manual, extra);
-  }
-  function officeAgentById(id){ var all = officeAll(); for(var i=0;i<all.length;i++){ if(all[i].id===id) return all[i]; } return null; }
-  function officeRoomName(key){ if(key==="hub") return "Central e descanso"; var f = frontOf(key); return f ? f.name : key; }
-  function officeAccent(key){ if(key==="hub") return "var(--text-muted)"; var f = frontOf(key); return f ? "var(--s"+Math.min(8, Math.max(1, f.num))+")" : "var(--text-muted)"; }
-
-  function officeAgentEl(a){
-    var working = a.status==="work";
-    var label = a.name+", "+(a.role || "agente")+(working ? " — trabalhando"+(a.task ? ": "+a.task : "") : " — descansando")+(a.auto ? " (robô real)" : (a.planned ? " (planejado)" : ""));
-    var inner = h("span", { class:"agent-bb" }, [
-      working ? null : h("span", { class:"zzz", "aria-hidden":"true", text:"z z" }),
-      h("span", { class:"sprite", "aria-hidden":"true" }, [h("i", { class:"hd" }), h("i", { class:"bd" }), h("i", { class:"lg" })]),
-      h("span", { class:"aname", text:a.name }),
-      a.auto ? h("span", { class:"abadge", "aria-hidden":"true", text:"⚙" }) : null
-    ]);
-    var btn = h("button", { type:"button", class:"agent"+(working ? " is-work" : " is-rest")+(a.auto ? " is-auto" : "")+(a.planned ? " is-planned" : "")+(OFFICE.selected===a.id ? " is-sel" : ""),
-      style:{ "--ac":officeAccent(a.front) }, dataset:{ agent:a.id }, "aria-label":label, title:label, onClick:function(){ officeSelect(a.id); } }, inner);
-    return h("span", { class:"agent-mover", dataset:{ moveId:a.id } }, btn);
-  }
-  function officeDesk(a){
-    return h("div", { class:"desk"+(a ? " is-on" : "") }, [
-      a ? h("div", { class:"plaque bb", text:a.task || "Trabalhando…" }) : null,
-      h("div", { class:"monitor bb", "aria-hidden":"true" }, h("i", { class:"scr" })),
-      h("div", { class:"deskbar", "aria-hidden":"true" }),
-      a ? officeAgentEl(a) : h("span", { class:"seat-empty", "aria-hidden":"true" })
-    ]);
-  }
-  function officeRoom(key, agents){
-    var isHub = key==="hub", f = isHub ? null : frontOf(key);
-    var team = agents.filter(function(a){ return a.front===key; });
-    var working = team.filter(function(a){ return a.status==="work"; });
-    var desks = []; for(var i=0;i<3;i++) desks.push(officeDesk(working[i]));
-    var queue = working.length>3 ? h("div", { class:"room-queue", text:"+"+(working.length-3)+" esperando mesa" }) : null;
-    var resting = isHub ? agents.filter(function(a){ return a.status!=="work"; }) : [];
-    var sign = isHub
-      ? h("span", { class:"room-sign bb" }, [h("span", { class:"room-name", text:"Central · descanso" })])
-      : h("a", { class:"room-sign bb", href:"#/p/"+key, "aria-label":"Abrir o projeto "+f.name }, [h("span", { class:"num", text:num2(f.num) }), h("span", { class:"room-name", text:f.name })]);
-    var meta = isHub ? (resting.length+" descansando") : (team.length ? team.length+" na equipe · "+working.length+" ativo"+(working.length===1 ? "" : "s") : "sem equipe");
-    return h("section", { class:"room"+(isHub ? " is-hub" : ""), style:{ "--rc":officeAccent(key) }, "aria-label":(isHub ? "Central e sala de descanso" : "Sala "+f.name)+": "+meta }, [
-      sign,
-      h("span", { class:"room-meta bb", text:meta, "aria-hidden":"true" }),
-      h("div", { class:"room-desks" }, desks),
-      queue,
-      isHub ? h("div", { class:"lounge" }, [resting.length ? null : h("span", { class:"lounge-label", text:"todos trabalhando" })].concat(resting.map(officeAgentEl))) : null
-    ]);
-  }
-
-  function officeSummary(all){
-    var w = all.filter(function(a){ return a.status==="work"; }).length, pl = all.filter(function(a){ return a.planned; }).length, au = all.filter(function(a){ return a.auto; }).length;
-    return h("div", { class:"office-sum", role:"status" }, [
-      h("span", null, [h("b", { text:String(w) }), " trabalhando"]), h("span", null, [h("b", { text:String(all.length-w) }), " descansando"]),
-      h("span", null, [h("b", { text:String(au) }), " robôs reais"]), h("span", null, [h("b", { text:String(pl) }), " planejados"]), OFFICE.demoOn ? h("span", { class:"office-demo-chip", text:"DEMO · só nesta tela" }) : null
-    ]);
-  }
-  function officeBar(){
-    var seg = h("div", { class:"office-seg", role:"radiogroup", "aria-label":"Vista do escritório" }, [["pixel", "Pixel"], ["flat", "Planta"]].map(function(v){
-      return h("button", { type:"button", role:"radio", "aria-checked":OFFICE.view===v[0] ? "true" : "false", id:"officeView-"+v[0], text:v[1], onClick:function(){
-        OFFICE.view = v[0]; try{ localStorage.setItem(OFFICE_VIEW_KEY, OFFICE.view); }catch(e){} officeRender("#officeView-"+v[0]); } });
-    }));
-    return h("div", { class:"office-bar" }, [
-      seg,
-      h("button", { type:"button", class:"office-act", id:"officeHire", text:"＋ Contratar agente", onClick:function(){ OFFICE.creating = true; OFFICE.selected = null; officeRender("#offName"); } }),
-      h("button", { type:"button", class:"office-ghost", id:"officeDemo", "aria-pressed":OFFICE.demoOn ? "true" : "false", text:OFFICE.demoOn ? "■ Parar demonstração" : "▶ Modo demonstração", onClick:function(){ officeDemoToggle(); } }),
-      h("button", { type:"button", class:"office-ghost", id:"officeSeed", text:"Restaurar equipe sugerida", onClick:function(){
-        if(!window.confirm("Isso troca a equipe planejada pela sugestão original (os robôs reais não mudam). Continuar?")) return;
-        OFFICE.agents = JSON.parse(JSON.stringify(OFFICE_SEED)); OFFICE.selected = null; OFFICE.creating = false; officeSave(); officeRender("#officeSeed"); announce("Equipe sugerida restaurada"); } })
-    ]);
-  }
-  function officeRoster(all){
-    var rows = all.map(function(a){
-      var working = a.status==="work";
-      var actions = [h("button", { type:"button", "aria-label":"Ver detalhes de "+a.name, text:"detalhes", onClick:function(){ officeSelect(a.id); } })];
-      if(!a.auto && !a.feed) actions.unshift(h("button", { type:"button", "aria-label":(working ? "Mandar "+a.name+" descansar" : "Colocar "+a.name+" para trabalhar"), text:working ? "descansar" : "trabalhar", onClick:function(){ officeToggle(a.id); } }));
-      return h("tr", null, [
-        h("th", { scope:"row", style:{ fontWeight:"600" }, text:a.name }), h("td", { text:a.role || "—" }), h("td", { text:officeRoomName(a.front) }),
+  function officeTable(team){
+    var R = officeApi();
+    var rows = team.map(function(p){
+      var working = p.status==="work", robo = p.kind==="robo";
+      var acts = robo ? h("span", { class:"ro", text:"automático" }) : [
+        h("button", { type:"button", dataset:{ officeToggle:p.id }, "aria-label":working ? "Mandar "+p.name+" descansar" : "Colocar "+p.name+" para trabalhar", text:working ? "descansar" : "trabalhar", onClick:function(){ officeToggle(p.id); } }),
+        h("button", { type:"button", "aria-label":"Editar "+p.name, text:"editar", onClick:function(){ OFFICE.editing = p.id; OFFICE.creating = false; officeRenderTeam("#offName"); } }),
+        h("button", { type:"button", "aria-label":"Remover "+p.name, text:"remover", onClick:function(){ officeRemove(p.id); } })
+      ];
+      return h("tr", { dataset:{ person:p.id } }, [
+        h("th", { scope:"row", text:p.name }),
+        h("td", { text:p.role || "—" }),
+        h("td", { text:R.company(p.company).label }),
+        h("td", null, h("span", { class:"kind kind-"+p.kind, text:R.kindLabel(p.kind) })),
         h("td", null, h("span", { class:"st "+(working ? "work" : "rest"), text:working ? "▲ trabalhando" : "• descansando" })),
-        h("td", { text:working ? (a.task || "—") : "—" }), h("td", { text:a.auto ? "robô real" : (a.feed ? "ao vivo (feed)" : (a.demo ? "demonstração" : (a.planned ? "planejado" : "seu"))) }), h("td", null, actions)
+        h("td", { class:"task", text:p.task || "—" }),
+        h("td", { class:"acts" }, acts)
       ]);
     });
     return h("div", { class:"office-table-wrap" }, h("table", { class:"office-table" }, [
-      h("caption", { text:"Equipe do escritório" }),
-      h("thead", null, h("tr", null, ["Agente", "Função", "Sala", "Estado", "Tarefa", "Origem", ""].map(function(c){ return h("th", { scope:"col", text:c }); }))),
+      h("caption", { text:"Equipe do escritório ("+team.length+" pessoas)" }),
+      h("thead", null, h("tr", null, ["Nome", "Função", "Empresa", "Tipo", "Estado", "Tarefa", "Ações"].map(function(c){ return h("th", { scope:"col", text:c }); }))),
       h("tbody", null, rows)
     ]));
   }
   function officeEditor(){
-    var a = OFFICE.selected ? officeAgentById(OFFICE.selected) : null;
-    if(!a && !OFFICE.creating) return null;
-    if(a && a.auto){
-      return h("section", { class:"office-editor", "aria-labelledby":"offEdTitle" }, [
-        h("h2", { id:"offEdTitle", tabindex:"-1", text:a.name+" · robô real" }), h("p", { text:a.note }),
-        h("p", null, [h("b", { text:"Agora: " }), (a.status==="work" ? "trabalhando — " : "descansando — ")+a.task]),
-        h("div", { class:"btns" }, h("button", { type:"button", class:"office-ghost", text:"fechar", onClick:function(){ OFFICE.selected = null; officeRender(); } }))
-      ]);
-    }
-    var cur = a || { id:"", name:"", role:"", front:"f1", status:"rest", task:"" };
-    var frontOpts = frontsAsArray().map(function(f){ return h("option", { value:f.key, selected:cur.front===f.key, text:num2(f.num)+" · "+f.name }); }).concat([h("option", { value:"hub", selected:cur.front==="hub", text:"Central (descanso e mesas gerais)" })]);
-    var stOpts = [["rest", "Descansando"], ["work", "Trabalhando"]].map(function(s){ return h("option", { value:s[0], selected:cur.status===s[0], text:s[1] }); });
+    if(!OFFICE.creating && !OFFICE.editing) return null;
+    var R = officeApi(), cur = null;
+    if(OFFICE.editing){ cur = R.load().filter(function(p){ return p.id===OFFICE.editing; })[0] || null; if(!cur){ OFFICE.editing = null; return null; } }
+    var p = cur || { name:"", role:"", company:"f1", kind:"agente", status:"rest", task:"" };
+    var opt = function(list, sel){ return list.map(function(o){ return h("option", { value:o[0], selected:o[0]===sel, text:o[1] }); }); };
+    var field = function(label, ctl){ return h("label", null, [label, ctl]); };
     return h("section", { class:"office-editor", "aria-labelledby":"offEdTitle" }, [
-      h("h2", { id:"offEdTitle", tabindex:"-1", text:a ? "Editar "+a.name : "Contratar agente" }),
-      h("p", { text:a && a.planned ? "Este agente é uma sugestão de equipe — edite o nome, a função e a sala, ou remova." : "Quando o status é “trabalhando”, o agente vai para um computador da sala e a plaquinha mostra a tarefa." }),
+      h("h2", { id:"offEdTitle", tabindex:"-1", text:cur ? "Editar "+cur.name : "Adicionar pessoa" }),
+      h("p", null, ["Quem está “trabalhando” vai para a mesa da própria empresa; quem está “descansando” vai para a copa. Agentes IA aparecem com o selo “A”.",
+        cur ? [" Id para o modo ao vivo: ", h("code", { text:cur.id })] : null]),
       h("div", { class:"row" }, [
-        h("label", null, ["Nome", h("input", { id:"offName", type:"text", maxlength:"24", value:cur.name, autocomplete:"off" })]),
-        h("label", null, ["Função", h("input", { id:"offRole", type:"text", maxlength:"40", value:cur.role, autocomplete:"off" })])
+        field("Nome", h("input", { id:"offName", type:"text", maxlength:"32", value:p.name, autocomplete:"off" })),
+        field("Função", h("input", { id:"offRole", type:"text", maxlength:"40", value:p.role, autocomplete:"off", placeholder:"Ex.: Redatora" }))
       ]),
       h("div", { class:"row" }, [
-        h("label", null, ["Sala (frente)", h("select", { id:"offFront" }, frontOpts)]),
-        h("label", null, ["Status", h("select", { id:"offStatus" }, stOpts)])
+        field("Empresa", h("select", { id:"offCompany" }, R.companies().map(function(c){ return h("option", { value:c.id, selected:c.id===p.company, text:c.label }); }))),
+        field("Tipo", h("select", { id:"offKind" }, opt([["agente", "Agente IA"], ["funcionario", "Funcionário"], ["chefia", "Diretoria"]], p.kind)))
       ]),
-      h("label", { style:{ display:"flex", flexDirection:"column", gap:"3px", marginBottom:"8px", fontFamily:"var(--font-mono)", fontSize:"9.5px", textTransform:"uppercase", letterSpacing:".06em", color:"var(--text-muted)" } },
-        ["Tarefa (aparece na plaquinha)", h("input", { id:"offTask", type:"text", maxlength:"44", value:cur.task, autocomplete:"off", placeholder:"Ex.: escrevendo o roteiro de sexta", style:{ border:"1px solid var(--border)", background:"var(--surface-2)", color:"var(--text)", borderRadius:"8px", padding:"8px 10px", fontFamily:"var(--font-sans)", fontSize:"13px", textTransform:"none", letterSpacing:"0" } })]),
+      h("div", { class:"row" }, [
+        field("Estado", h("select", { id:"offStatus" }, opt([["rest", "Descansando"], ["work", "Trabalhando"]], p.status))),
+        field("Tarefa", h("input", { id:"offTask", type:"text", maxlength:"120", value:p.task, autocomplete:"off", placeholder:"Ex.: escrevendo o artigo de sexta" }))
+      ]),
       h("div", { class:"btns" }, [
-        h("button", { type:"button", class:"office-act", id:"offSave", text:a ? "Salvar" : "Contratar", onClick:function(){ officeCommit(a); } }),
-        h("button", { type:"button", class:"office-ghost", text:"cancelar", onClick:function(){ OFFICE.selected = null; OFFICE.creating = false; officeRender("#officeHire"); } }),
-        a ? h("button", { type:"button", class:"office-ghost", text:"remover agente", onClick:function(){
-          if(!window.confirm("Remover "+a.name+" do escritório?")) return;
-          OFFICE.agents = OFFICE.agents.filter(function(x){ return x.id!==a.id; }); OFFICE.selected = null; officeSave(); officeRender("#officeHire"); announce(a.name+" removido"); } }) : null
+        h("button", { type:"button", class:"office-act", id:"offSave", text:cur ? "Salvar" : "Adicionar", onClick:officeCommit }),
+        h("button", { type:"button", class:"office-ghost", id:"offCancel", text:"cancelar", onClick:function(){ OFFICE.editing = null; OFFICE.creating = false; officeRenderTeam("#officeAdd"); } })
       ])
     ]);
   }
-  function officeCommit(a){
-    var name = (document.getElementById("offName").value || "").trim();
-    if(!name){ document.getElementById("offName").focus(); announce("Escreva um nome para o agente"); return; }
-    var rec = { id:a ? a.id : "m"+Date.now()+Math.floor(Math.random()*1000), name:name.slice(0, 24), role:(document.getElementById("offRole").value || "").trim().slice(0, 40),
-                front:document.getElementById("offFront").value, status:document.getElementById("offStatus").value==="work" ? "work" : "rest",
-                task:(document.getElementById("offTask").value || "").trim().slice(0, 44), planned:a ? a.planned : false };
-    rec = officeSanitize([rec])[0];
-    if(a){ OFFICE.agents = OFFICE.agents.map(function(x){ return x.id===a.id ? rec : x; }); } else { OFFICE.agents.push(rec); }
-    OFFICE.selected = rec.id; OFFICE.creating = false; officeSave(); officeRender("#offEdTitle", true); announce(rec.name+(rec.status==="work" ? " foi para o computador" : " está descansando"));
-  }
-  function officeToggle(id){
-    OFFICE.agents = OFFICE.agents.map(function(x){ if(x.id!==id) return x; var y = JSON.parse(JSON.stringify(x)); y.status = x.status==="work" ? "rest" : "work"; return y; });
-    officeSave(); officeRender('[data-move-id="'+id+'"] .agent', true); var a = officeAgentById(id); if(a) announce(a.name+(a.status==="work" ? " foi para o computador" : " foi descansar"));
-  }
-  function officeSelect(id){ OFFICE.selected = id; OFFICE.creating = false; officeRender("#offEdTitle"); }
-
-  function officeOffset(el, stage){ var x = 0, y = 0; while(el && el!==stage){ x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent; } return { x:x, y:y }; }
-  function officePositions(root){
-    var stage = root.querySelector("#officeStage"), pos = {};
-    if(!stage) return pos;
-    Array.prototype.forEach.call(root.querySelectorAll(".agent-mover"), function(m){ pos[m.getAttribute("data-move-id")] = officeOffset(m, stage); });
-    return pos;
-  }
-  function officeFlip(root, before){
-    var reduce = false; try{ reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){}
-    if(reduce) return;
-    var stage = root.querySelector("#officeStage"); if(!stage) return;
-    var moved = [];
-    Array.prototype.forEach.call(root.querySelectorAll(".agent-mover"), function(m){
-      var b = before[m.getAttribute("data-move-id")]; if(!b) return;
-      var n = officeOffset(m, stage), dx = b.x-n.x, dy = b.y-n.y;
-      if(Math.abs(dx)<2 && Math.abs(dy)<2) return;
-      m.style.transition = "none"; m.style.transform = "translate("+dx+"px,"+dy+"px)"; m.style.position = "relative"; m.style.zIndex = "5"; moved.push(m);
-    });
-    if(!moved.length) return;
-    void root.offsetWidth;
-    moved.forEach(function(m){ m.style.transition = "transform 800ms cubic-bezier(.2,.7,.2,1)"; m.style.transform = "translate(0,0)"; setTimeout(function(){ m.style.transition = ""; m.style.transform = ""; m.style.zIndex = ""; }, 900); });
-  }
-  function officeRender(focusSel, animate){
-    var root = document.getElementById("officeRoot"); if(!root) return;
-    var before = animate && OFFICE.view==="flat" ? officePositions(root) : null, sc = panel.scrollTop;
-    var all = officeAll(), isPx = OFFICE.view==="pixel", vp;
-    if(isPx){
-      vp = h("div", { class:"office-viewport px", id:"officeViewport", role:"group", "aria-label":"Escritório do Grupo Lisieux em pixel art. A lista da equipe abaixo traz as mesmas informações em tabela." },
-        h("div", { class:"px-scroll" }, h("canvas", { id:"officeCanvas", class:"px-canvas", "aria-hidden":"true" })));
-    } else {
-      var floor = h("div", { class:"office-floor" }, LAYOUT.map(function(k){ return officeRoom(k, all); }));
-      vp = h("div", { class:"office-viewport", id:"officeViewport", role:"group", "aria-label":"Mapa do escritório do Grupo Lisieux" }, h("div", { class:"office-stage flat", id:"officeStage" }, floor));
-    }
+  function officeRenderTeam(focusSel){
+    var root = document.getElementById("officeTeam"); if(!root) return;
+    var R = officeApi(), sc = panel.scrollTop;
     root.textContent = "";
+    if(!R){ root.appendChild(h("p", { class:"office-note", text:"Não deu para carregar a equipe (escritorio/data.js)." })); return; }
     root.appendChild(frag([
-      officeSummary(all),
-      h("p", { class:"office-note", text:"Quem está trabalhando senta no computador da própria sala, com uma plaquinha da tarefa; quem está descansando vai para a sala de café. Os robôs (A) são reais e seguem os dados do painel; os outros agentes são a equipe que você planeja aqui — edite à vontade." }),
-      officeBar(), vp, officeRoster(all), officeEditor()
+      h("div", { class:"office-team-head" }, [
+        h("h2", { id:"officeTeamTitle", text:"Equipe" }),
+        h("div", { class:"btns" }, [
+          h("button", { type:"button", class:"office-act", id:"officeAdd", text:"＋ Adicionar pessoa", onClick:function(){ OFFICE.creating = true; OFFICE.editing = null; officeRenderTeam("#offName"); } }),
+          h("button", { type:"button", class:"office-ghost", id:"officeSeed", text:"Restaurar equipe sugerida", onClick:function(){
+            if(!window.confirm("Trocar a equipe pela sugerida (Diretoria + redator e pesquisador de cada empresa)? Os robôs reais não mudam.")) return;
+            OFFICE.editing = null; OFFICE.creating = false; officeSaveList(R.seed(), "Equipe sugerida restaurada", "#officeSeed"); } })
+        ])
+      ]),
+      h("p", { class:"office-note", text:"Mudanças aqui aparecem na hora no escritório acima. Os robôs reais seguem os dados do painel; o Modo demonstração do escritório só simula na tela e não grava nada." }),
+      officeTable(officeTeam()),
+      officeEditor()
     ]));
-    if(isPx) pxMount(); else pxStop();
-    if(before) officeFlip(root, before);
     panel.scrollTop = sc;
     if(focusSel){ var el = root.querySelector(focusSel); if(el){ try{ el.focus({ preventScroll:false }); }catch(e){} } }
   }
-  // ---- vista Pixel: escritório em pixel art visto de cima (canvas 2D, sem imagens). Personagens andam até a mesa e à sala de café. ----
-  var PX = { T:16, W:44, H:20, ents:{}, raf:0, last:0, cv:null, ctx:null, bg:null, k:1, mouse:null, hoverId:null, labels:[], colors:null, reduce:false };
-  var PX_PODS = { f1:[0,3], f2:[8,3], f3:[16,3], f4:[24,3], f8:[0,12], f7:[8,12], f6:[16,12], f5:[24,12], hub:[32,3] };
-  var PX_AISLE = 11;                                               // corredor (em tiles) por onde todo mundo anda
-  var PX_SKIN = ["#f1c9a5", "#e0ac7e", "#c68642", "#8d5524", "#f8d9bd"], PX_HAIR = ["#2b1d14", "#4a2f1b", "#8b5a2b", "#1c1c1c", "#d9a441", "#a33a2a"];
-  var PX_LOUNGE = [                                                // [x, y, dir, pose] em tiles
-    [35,13.3,"down","sit"], [37,13.3,"down","sit"], [39,13.3,"down","sit"], [34.4,16,"right","sit"], [39.6,16,"left","sit"], [37,17.3,"up","sit"],
-    [42,13.6,"up","stand"], [33.4,13.7,"right","stand"], [33,17.6,"up","stand"], [42.6,17.5,"up","stand"] ];
-  function pxHash(str){ var x = 0; for(var i=0;i<str.length;i++) x = (x*31 + str.charCodeAt(i)) >>> 0; return x; }
-  function pxSeats(key){
-    var T = PX.T, p = PX_PODS[key], px = p[0]*T, py = p[1]*T, row2 = p[1]>=12, offs = key==="hub" ? [1.5, 5, 8.5] : [0.5, 3, 5.5], out = [];
-    offs.forEach(function(o){
-      var dx = px+o*T;
-      out.push(row2 ? { desk:{ x:dx, y:py+4.4*T, w:2*T, h:T }, x:dx+T, y:py+3.7*T, dir:"down", row2:true } : { desk:{ x:dx, y:py+1.5*T, w:2*T, h:T }, x:dx+T, y:py+3.4*T, dir:"up", row2:false });
-    });
-    return out;
-  }
-  function pxColor(name, fb){ try{ var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim(); return v || fb; }catch(e){ return fb; } }
-  function pxFrontColor(key){ if(key==="hub") return "#7d86a0"; var f = frontOf(key); return pxColor("--s"+(f ? Math.min(8, Math.max(1, f.num)) : 1), "#2a78d6"); }
-  function pxDest(a, idxWork, idxRest){
-    var T = PX.T;
-    if(a.status==="work"){
-      var key = PX_PODS[a.front] ? a.front : "hub", seats = pxSeats(key), pod = PX_PODS[key];
-      if(idxWork<3){ var s = seats[idxWork]; return { k:"w:"+key+":"+idxWork, x:s.x, y:s.y, dir:s.dir, pose:"sit", seat:s }; }
-      return { k:"q:"+key+":"+idxWork, x:pod[0]*T+10+(idxWork-3)*14, y:pod[1]>=12 ? pod[1]*T+2.2*T : pod[1]*T+6.4*T, dir:"up", pose:"stand" };
-    }
-    var sp = PX_LOUNGE[idxRest % PX_LOUNGE.length], jit = Math.floor(idxRest/PX_LOUNGE.length)*5;
-    return { k:"r:"+(idxRest % PX_LOUNGE.length)+":"+jit, x:sp[0]*T+jit, y:sp[1]*T+jit, dir:sp[2], pose:sp[3] };
-  }
-  function pxSync(){
-    var T = PX.T, all = officeAll(), cnt = {}, ri = 0, seen = {};
-    all.forEach(function(a){
-      var d, e = PX.ents[a.id];
-      if(a.status==="work"){ var key = PX_PODS[a.front] ? a.front : "hub"; cnt[key] = cnt[key]||0; d = pxDest(a, cnt[key]++, 0); } else { d = pxDest(a, 0, ri++); }
-      seen[a.id] = 1;
-      if(!e){ e = PX.ents[a.id] = { id:a.id, x:d.x, y:d.y, path:[], pose:d.pose, dir:d.dir, t:Math.random()*10, dk:d.k, seat:d.seat || null }; }
-      else if(e.dk!==d.k){
-        e.dk = d.k; e.seat = null;
-        if(PX.reduce){ e.x = d.x; e.y = d.y; e.pose = d.pose; e.dir = d.dir; e.path = []; e.seat = d.seat || null; }
-        else {
-          var AY = PX_AISLE*T, path = [];
-          if(e.pose==="sit" || Math.abs(e.y-AY)>3) path.push({ x:e.x, y:AY });
-          path.push({ x:d.x, y:AY }); path.push({ x:d.x, y:d.y });
-          e.path = path; e.pose = "walk"; e.final = { pose:d.pose, dir:d.dir, seat:d.seat || null };
-        }
-      }
-      e.a = a; e.hair = PX_HAIR[pxHash(a.id) % PX_HAIR.length]; e.skin = PX_SKIN[(pxHash(a.id)>>3) % PX_SKIN.length]; e.col = pxFrontColor(a.front);
-    });
-    Object.keys(PX.ents).forEach(function(id){ if(!seen[id]) delete PX.ents[id]; });
-  }
-  function pxStep(dt){
-    Object.keys(PX.ents).forEach(function(id){
-      var e = PX.ents[id]; e.t += dt;
-      if(!PX.reduce && e.pose==="stand" && !e.path.length && e.a && e.a.status!=="work"){          // quem descansa em pé dá uma voltinha de vez em quando
-        e.wt = (e.wt===undefined ? 3+Math.random()*6 : e.wt) - dt;
-        if(e.wt<=0){ e.wt = 6+Math.random()*9; var nx = Math.max(33*PX.T, Math.min(43*PX.T, e.x+(Math.random()*40-20))), ny = Math.max(12.5*PX.T, Math.min(18*PX.T, e.y+(Math.random()*20-10))); e.path = [{ x:nx, y:ny }]; e.pose = "walk"; e.final = { pose:"stand", dir:e.dir, seat:null }; }
-      }
-      if(e.path.length){
-        var tg = e.path[0], dx = tg.x-e.x, dy = tg.y-e.y, dist = Math.sqrt(dx*dx+dy*dy), sp = 88*dt;
-        if(dist<=sp){ e.x = tg.x; e.y = tg.y; e.path.shift(); if(!e.path.length && e.final){ e.pose = e.final.pose; e.dir = e.final.dir; e.seat = e.final.seat; e.final = null; } }
-        else { e.x += dx/dist*sp; e.y += dy/dist*sp; if(Math.abs(dx)>Math.abs(dy)) e.dir = dx>0 ? "right" : "left"; else e.dir = dy>0 ? "down" : "up"; }
-      }
-    });
-  }
-  function pxRect(c, col, x, y, w, h){ c.fillStyle = col; c.fillRect(Math.round(x), Math.round(y), w, h); }
-  function pxChar(c, e, hover){
-    var a = e.a || {}, x = Math.round(e.x), y = Math.round(e.y), walking = e.pose==="walk", sit = e.pose==="sit", f = walking ? Math.floor(e.t*8)%2 : 0, bob = (!walking && !PX.reduce && a.status!=="work" && Math.floor(e.t*1.6)%2===0) ? -1 : 0;
-    var col = e.col, dark = "rgba(0,0,0,.25)", fy = sit ? y+4 : y;
-    c.fillStyle = "rgba(0,0,0,.16)"; c.fillRect(x-5, fy-1, 10, 2);
-    if(!sit){ pxRect(c, "#2c3441", x-3, fy-5, 2, 5-(f ? 1 : 0)); pxRect(c, "#2c3441", x+1, fy-5, 2, 5-(f ? 0 : 1)); }
-    var by = fy-11+bob; pxRect(c, col, x-4, by, 8, 6); pxRect(c, dark, x-4, by+5, 8, 1);
-    var armUp = sit && a.status==="work" && !PX.reduce && Math.floor(e.t*6)%2===0;
-    pxRect(c, e.skin, x-5, by+1+(armUp ? 1 : 0), 1, sit ? 3 : 4); pxRect(c, e.skin, x+4, by+1+(armUp ? 0 : 1), 1, sit ? 3 : 4);
-    var hy = by-6; pxRect(c, e.skin, x-3, hy, 6, 6);
-    if(e.dir==="up"){ pxRect(c, e.hair, x-3, hy, 6, 6); }
-    else {
-      pxRect(c, e.hair, x-3, hy, 6, 2);
-      if(e.dir==="left"){ pxRect(c, e.hair, x+1, hy, 2, 5); pxRect(c, "#1b1b1b", x-2, hy+3, 1, 1); }
-      else if(e.dir==="right"){ pxRect(c, e.hair, x-3, hy, 2, 5); pxRect(c, "#1b1b1b", x+1, hy+3, 1, 1); }
-      else { pxRect(c, e.hair, x-3, hy, 1, 3); pxRect(c, e.hair, x+2, hy, 1, 3); pxRect(c, "#1b1b1b", x-2, hy+3, 1, 1); pxRect(c, "#1b1b1b", x+1, hy+3, 1, 1); }
-    }
-    if(a.auto){ pxRect(c, "#1f4fc4", x-8, hy-2, 6, 6); pxRect(c, "#fff", x-7, hy-1, 4, 1); pxRect(c, "#fff", x-7, hy+1, 4, 1); pxRect(c, "#fff", x-7, hy, 1, 3); pxRect(c, "#fff", x-4, hy, 1, 3); }
-    if(hover){ c.strokeStyle = "#fff"; c.lineWidth = 1; c.strokeRect(x-7.5, hy-3.5, 15, 28); }
-    e.headY = hy;
-  }
-  function pxBubble(c, x, y, text, accent, w2){
-    c.font = "6px 'IBM Plex Mono', monospace"; var tw = Math.ceil(c.measureText(text).width), bw = tw+8, bx = Math.round(x-bw/2), by = Math.round(y-12);
-    bx = Math.max(2, Math.min(PX.W*PX.T-bw-2, bx));
-    pxRect(c, accent, bx-1, by-1, bw+2, 12); pxRect(c, "#ffffff", bx, by, bw, 10); pxRect(c, "#ffffff", x-2, by+10, 4, 2); pxRect(c, accent, x-1, by+11, 2, 1);
-    c.fillStyle = "#1c2230"; c.textBaseline = "top"; c.fillText(text, bx+4, by+2);
-  }
-  function pxBuildBg(){
-    var T = PX.T, W = PX.W*T, H = PX.H*T, k = PX.k, bg = document.createElement("canvas"); bg.width = W*k; bg.height = H*k;
-    var c = bg.getContext("2d"); c.scale(k, k); c.imageSmoothingEnabled = false; PX.labels = [];
-    pxRect(c, "#e3e2ef", 0, 0, W, H);
-    for(var gx=0; gx<PX.W; gx++) for(var gy=3; gy<PX.H; gy++){ if((gx+gy)%2===0) pxRect(c, "#dcdbea", gx*T, gy*T, T, T); }
-    pxRect(c, "#c9c6e2", 0, 0, W, 3*T); pxRect(c, "#8f8ab5", 0, 3*T-3, W, 3); pxRect(c, "#b2aed3", 0, 3*T-6, W, 3);
-    // quadro branco, placa, pôsteres, estante
-    pxRect(c, "#6b6791", 11.4*T, 0.35*T, 9.2*T, 2.1*T); pxRect(c, "#ffffff", 11.5*T, 0.45*T, 9*T, 1.9*T);
-    pxRect(c, "#2a78d6", 12.2*T, 1.9*T, 8, 8); pxRect(c, "#eb6834", 12.2*T+10, 1.4*T, 8, 14); pxRect(c, "#1baf7a", 12.2*T+20, 1.1*T, 8, 18); pxRect(c, "#eda100", 12.2*T+30, 1.6*T, 8, 12);
-    c.strokeStyle = "#e34948"; c.lineWidth = 1; c.beginPath(); c.moveTo(12.2*T+60, 2.1*T); c.lineTo(12.2*T+72, 1.4*T); c.lineTo(12.2*T+84, 1.7*T); c.lineTo(12.2*T+96, 0.9*T); c.stroke();
-    pxRect(c, "#3a3563", 22*T, 0.45*T, 8*T, 1.9*T); pxRect(c, "#e6e3ff", 22*T+2, 0.45*T+2, 8*T-4, 1.9*T-4);
-    c.fillStyle = "#3a3563"; c.font = "bold 9px 'IBM Plex Mono', monospace"; c.textBaseline = "middle"; c.textAlign = "center"; c.fillText("GRUPO LISIEUX", 26*T, 1.4*T+1); c.textAlign = "left";
-    [[2,"#eb6834"],[4,"#2a78d6"],[7,"#1baf7a"]].forEach(function(p){ pxRect(c, p[0]*T, 0.5*T, 22, 26, 0); pxRect(c, "#fff", p[0]*T, 0.4*T, 22, 28); pxRect(c, p[1], p[0]*T+3, 0.4*T+3, 16, 14); pxRect(c, "#9a97c4", p[0]*T+3, 0.4*T+20, 16, 2); });
-    pxRect(c, "#7a5a3a", 33*T, 0.3*T, 4*T, 2.3*T); pxRect(c, "#a98255", 33*T+2, 0.3*T+2, 4*T-4, 2.3*T-4);
-    for(var sh=0; sh<2; sh++){ ["#e34948","#2a78d6","#eda100","#1baf7a","#4a3aa7","#e87ba4","#eb6834"].forEach(function(cl, i){ pxRect(c, cl, 33*T+5+i*7, 0.3*T+5+sh*17, 5, 12); }); }
-    // pods
-    Object.keys(PX_PODS).forEach(function(key){
-      var p = PX_PODS[key], x = p[0]*T, y = p[1]*T, w = key==="hub" ? 12*T : 8*T, hh = 7*T, col = pxFrontColor(key);
-      c.globalAlpha = 0.17; pxRect(c, col, x+1, y+1, w-2, hh-2); c.globalAlpha = 0.55; c.strokeStyle = col; c.strokeRect(x+1.5, y+1.5, w-3, hh-3); c.globalAlpha = 1;
-      var name = key==="hub" ? "CENTRAL" : (frontOf(key) ? num2(frontOf(key).num)+" "+String(frontOf(key).name).toUpperCase() : key), maxc = key==="hub" ? 28 : 26; if(name.length>maxc) name = name.slice(0, maxc-1)+"…";
-      c.font = "bold 6px 'IBM Plex Mono', monospace"; var tw = Math.ceil(c.measureText(name).width)+8;
-      pxRect(c, col, x+4, y+4, tw, 10); c.fillStyle = "#ffffff"; c.textBaseline = "top"; c.fillText(name, x+8, y+6);
-      if(key!=="hub") PX.labels.push({ key:key, x:x+4, y:y+4, w:tw, h:10 });
-      pxSeats(key).forEach(function(s){
-        pxRect(c, "#4a5268", s.x-5, s.y-2, 10, 7); pxRect(c, "#3b4254", s.x-4, s.y-1, 8, 5);   // cadeira
-        pxRect(c, "#a98255", s.desk.x, s.desk.y, s.desk.w, s.desk.h); pxRect(c, "#8c6a43", s.desk.x, s.desk.y+s.desk.h-3, s.desk.w, 3);
-        pxRect(c, "#e9e6f7", s.desk.x+4, s.desk.y+s.desk.h-6, 7, 3); pxRect(c, "#f4f1ff", s.desk.x+s.desk.w-9, s.desk.y+3, 5, 4);
-      });
-    });
-    // sala de café
-    pxRect(c, "#e8d9b8", 32*T+1, 10*T, 12*T-2, 9*T); for(var wx=0; wx<12; wx++) for(var wy=0; wy<9; wy++) if((wx+wy)%2===0) pxRect(c, "#dfcda5", 32*T+1+wx*T, 10*T+wy*T, T, T);
-    pxRect(c, "#7f7aa8", 32*T, 10*T, 2, 9*T);
-    pxRect(c, "#5a5f73", 34*T, 12*T, 6*T, 1.6*T); pxRect(c, "#6c728a", 34*T, 12.9*T, 6*T, 0.7*T); pxRect(c, "#4a4f62", 34*T-4, 12*T, 4, 1.8*T); pxRect(c, "#4a4f62", 40*T, 12*T, 4, 1.8*T);
-    pxRect(c, "#b89868", 35.2*T, 15.2*T, 3.6*T, 1.6*T); pxRect(c, "#9a7b55", 35.2*T, 16.5*T, 3.6*T, 4); pxRect(c, "#f4f1ff", 36*T, 15.5*T, 7, 4); pxRect(c, "#f4f1ff", 37.4*T, 15.8*T, 7, 4);
-    pxRect(c, "#3b4254", 41.4*T, 10.4*T, 2.2*T, 1.6*T); pxRect(c, "#e34948", 41.9*T, 10.7*T, 4, 4); pxRect(c, "#f4f1ff", 42.6*T, 11.4*T, 5, 6);
-    pxRect(c, "#9fd0f0", 32.6*T, 11.6*T, 10, 10); pxRect(c, "#cfe8f8", 32.6*T+1, 11.6*T+1, 8, 5); pxRect(c, "#3b4254", 32.6*T, 12.8*T, 10, 5);
-    [[32.5,10.4],[43,17.5],[32.6,17.6],[31,3.4],[31.2,10.2]].forEach(function(pp){ var px = pp[0]*T, py = pp[1]*T; pxRect(c, "#2f7d3a", px, py, 10, 9); pxRect(c, "#46a352", px+2, py-3, 6, 6); pxRect(c, "#2f7d3a", px+3, py-6, 4, 4); pxRect(c, "#8c4f2e", px+2, py+8, 6, 5); });
-    pxRect(c, "#d3d0e8", 0, H-2, W, 2);
-    PX.bg = bg;
-  }
-  function pxDraw(){
-    var c = PX.ctx, T = PX.T, W = PX.W*T, H = PX.H*T; if(!c || !PX.bg) return;
-    c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, c.canvas.width, c.canvas.height); c.drawImage(PX.bg, 0, 0);
-    c.setTransform(PX.k, 0, 0, PX.k, 0, 0); c.imageSmoothingEnabled = false;
-    var list = Object.keys(PX.ents).map(function(id){ return PX.ents[id]; }).sort(function(a, b){ return a.y-b.y; });
-    list.forEach(function(e){ pxChar(c, e, e.id===PX.hoverId); });
-    Object.keys(PX_PODS).forEach(function(key){                    // frente das mesas (cobre as pernas de quem senta do lado de baixo) + telas dos monitores
-      var seats = pxSeats(key), occ = {};
-      list.forEach(function(e){ if(e.pose==="sit" && e.seat){ occ[Math.round(e.seat.x)+","+Math.round(e.seat.y)] = e; } });
-      seats.forEach(function(s){
-        if(s.row2){ pxRect(c, "#a98255", s.desk.x, s.desk.y, s.desk.w, s.desk.h); pxRect(c, "#8c6a43", s.desk.x, s.desk.y+s.desk.h-3, s.desk.w, 3); pxRect(c, "#e9e6f7", s.desk.x+4, s.desk.y+s.desk.h-6, 7, 3); }
-        var on = occ[Math.round(s.x)+","+Math.round(s.y)], mx = s.desk.x+s.desk.w/2-6, my = s.desk.y-7;
-        pxRect(c, "#1b2230", mx, my, 12, 8); pxRect(c, on ? ((!PX.reduce && Math.floor(performance.now()/450)%2) ? "#7fb0ff" : "#4d8dff") : "#2a3347", mx+1, my+1, 10, 5); pxRect(c, "#6c728a", mx+5, my+8, 2, 2);
-        if(on){ pxRect(c, "#fff", mx+2, my+2, 4, 1); pxRect(c, "#fff", mx+2, my+4, 6, 1); }
-      });
-    });
-    list.forEach(function(e){
-      var a = e.a; if(!a) return;
-      if(a.status==="work" && e.pose!=="walk") pxBubble(c, Math.round(e.x), e.headY-4, truncTxt(a.task || "Trabalhando…", 26), pxFrontColor(a.front));
-      else if(a.status!=="work" && e.pose!=="walk"){ c.fillStyle = "#6b7390"; c.font = "6px 'IBM Plex Mono', monospace"; c.textBaseline = "alphabetic"; var zo = PX.reduce ? 0 : (Math.floor(e.t*1.2)%3); c.fillText(zo>=1 ? "z z" : "z", Math.round(e.x)+5, e.headY-1-zo*2); }
-    });
-    var he = PX.hoverId ? PX.ents[PX.hoverId] : null;
-    if(he && he.a){
-      var a2 = he.a, l1 = a2.name+" · "+(a2.role || "agente"), l2 = (a2.status==="work" ? "trabalhando" : "descansando")+(a2.status==="work" && a2.task ? ": "+truncTxt(a2.task, 30) : "");
-      c.font = "6px 'IBM Plex Mono', monospace"; var tw = Math.max(c.measureText(l1).width, c.measureText(l2).width)+10, tx = Math.max(2, Math.min(W-tw-2, he.x-tw/2)), ty = he.y+8; if(ty+22>H) ty = he.headY-26;
-      pxRect(c, "#1c2230", tx, ty, Math.ceil(tw), 20); c.fillStyle = "#ffffff"; c.textBaseline = "top"; c.fillText(l1, tx+5, ty+3); c.fillStyle = "#b8c4e0"; c.fillText(l2, tx+5, ty+11);
-    }
-  }
-  function pxMount(){
-    var cv = document.getElementById("officeCanvas"); if(!cv) return;
-    try{ PX.reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){ PX.reduce = false; }
-    var wrap = cv.parentNode, cssW = Math.max(640, wrap.clientWidth || 900), dpr = window.devicePixelRatio || 1;
-    PX.k = Math.max(1, Math.round(cssW*dpr/(PX.W*PX.T)));
-    cv.width = PX.W*PX.T*PX.k; cv.height = PX.H*PX.T*PX.k; PX.cv = cv; PX.ctx = cv.getContext("2d");
-    pxBuildBg(); pxSync(); pxDraw();
-    cv.addEventListener("mousemove", function(ev){
-      var r = cv.getBoundingClientRect(), mx = (ev.clientX-r.left)/r.width*PX.W*PX.T, my = (ev.clientY-r.top)/r.height*PX.H*PX.T, best = null, bd = 14;
-      Object.keys(PX.ents).forEach(function(id){ var e = PX.ents[id], d = Math.abs(e.x-mx)+Math.abs((e.y-8)-my); if(d<bd){ bd = d; best = id; } });
-      var onLabel = PX.labels.some(function(l){ return mx>=l.x && mx<=l.x+l.w && my>=l.y && my<=l.y+l.h; });
-      PX.hoverId = best; cv.style.cursor = (best || onLabel) ? "pointer" : "default";
-    });
-    cv.addEventListener("mouseleave", function(){ PX.hoverId = null; });
-    cv.addEventListener("click", function(ev){
-      var r = cv.getBoundingClientRect(), mx = (ev.clientX-r.left)/r.width*PX.W*PX.T, my = (ev.clientY-r.top)/r.height*PX.H*PX.T;
-      if(PX.hoverId){ officeSelect(PX.hoverId); return; }
-      for(var i=0;i<PX.labels.length;i++){ var l = PX.labels[i]; if(mx>=l.x && mx<=l.x+l.w && my>=l.y && my<=l.y+l.h){ go("#/p/"+l.key); return; } }
-    });
-    if(!PX.raf){ PX.last = performance.now(); PX.raf = requestAnimationFrame(pxLoop); }
-    officeFeedStart();
-  }
-  function pxLoop(ts){
-    var cv = document.getElementById("officeCanvas");
-    if(!cv){ PX.raf = 0; return; }
-    var dt = Math.min(0.05, (ts-PX.last)/1000); PX.last = ts;
-    if(cv!==PX.cv){ PX.cv = cv; PX.ctx = cv.getContext("2d"); }
-    pxStep(dt); pxDraw(); PX.raf = requestAnimationFrame(pxLoop);
-  }
-  function pxStop(){ if(PX.raf){ cancelAnimationFrame(PX.raf); PX.raf = 0; } }
-
-  // ---- tempo real: lê data/agents-feed.json (se existir) a cada 15 s; modo demonstração local (nunca salvo) ----
-  //      Formato do feed: { "updatedAt":"ISO", "agents":[{ "id":"...", "name":"...", "role":"...", "front":"f1..f8|hub", "status":"work|rest", "task":"..." }] }
-  //      Um id igual ao de um agente seu sobrescreve o estado dele; um id novo aparece como agente "ao vivo".
-  function officeFeedStart(){
-    if(OFFICE.feedTimer) return;
-    var tick = function(){
-      if(!document.getElementById("officeRoot")){ OFFICE.feedTimer = 0; return; }
-      fetch("data/agents-feed.json?t="+Date.now(), { cache:"no-store" }).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(j){
-        var list = officeSanitize((j && j.agents) || []) || [];
-        var sig = JSON.stringify(list);
-        if(sig!==OFFICE.feedSig){ OFFICE.feedSig = sig; OFFICE.feed = list; OFFICE.feedAt = j.updatedAt || null; var ae = document.activeElement; if(!(ae && /INPUT|SELECT|TEXTAREA/.test(ae.tagName) && ae.closest("#officeRoot"))) officeRender(null); else pxSync(); }
-      }).catch(function(){ /* sem feed: tudo certo, só não há agentes ao vivo */ }).then(function(){ OFFICE.feedTimer = setTimeout(tick, 15000); });
-    };
-    OFFICE.feedTimer = setTimeout(tick, 600);
-  }
-  var OFFICE_DEMO_TASKS = ["revisando o roteiro", "respondendo comentários", "planejando a semana", "conferindo as métricas", "escrevendo a legenda", "montando o relatório", "organizando o estoque", "atualizando o site"];
-  function officeDemoTick(){
-    if(!OFFICE.demoOn || !document.getElementById("officeRoot")){ OFFICE.demoTimer = 0; return; }
-    var pool = (OFFICE.agents || []); if(pool.length){
-      var a = pool[Math.floor(Math.random()*pool.length)], cur = OFFICE.demo[a.id] ? OFFICE.demo[a.id].status : a.status;
-      OFFICE.demo[a.id] = cur==="work" ? { status:"rest", task:"" } : { status:"work", task:OFFICE_DEMO_TASKS[Math.floor(Math.random()*OFFICE_DEMO_TASKS.length)] };
-      var ae = document.activeElement; if(!(ae && /INPUT|SELECT|TEXTAREA/.test(ae.tagName) && ae.closest("#officeRoot"))) officeRender(null); else pxSync();
-    }
-    OFFICE.demoTimer = setTimeout(officeDemoTick, 2600);
-  }
-  function officeDemoToggle(){
-    OFFICE.demoOn = !OFFICE.demoOn;
-    if(!OFFICE.demoOn){ OFFICE.demo = {}; clearTimeout(OFFICE.demoTimer); OFFICE.demoTimer = 0; announce("Modo demonstração desligado"); }
-    else { announce("Modo demonstração ligado: os agentes alternam entre trabalhar e descansar só aqui na tela, nada é salvo"); OFFICE.demoTimer = setTimeout(officeDemoTick, 900); }
-    officeRender("#officeDemo");
-  }
-
   function openOffice(){
-    officeLoad();
+    var frame = document.getElementById("officeFrame");
+    if(frame && !overlay.hidden && panel.contains(frame)){ officeRenderTeam(null); return; }   // re-render em lugar: não recarrega o iframe
+    OFFICE.editing = null; OFFICE.creating = false;
     var bc = breadcrumbHtml([{ label:"Início" }, { label:"Escritório" }]);
     openModal(bc+'<div class="panel-head"><div class="panel-title"><div class="page-titles"><h1 class="panel-name" id="pageTitle" tabindex="-1">Escritório do Grupo Lisieux</h1>'+
-      '<div class="panel-kicker">visão aérea · agentes por frente</div></div></div><div class="head-tools">'+searchBtnHtml()+'<button type="button" class="close-btn" id="closeBtn" aria-label="Fechar">×</button></div></div><div id="officeRoot"></div>', "full");
+      '<div class="panel-kicker">pixel art · quem trabalha e quem descansa em cada empresa</div></div></div><div class="head-tools">'+searchBtnHtml()+'<button type="button" class="close-btn" id="closeBtn" aria-label="Fechar">×</button></div></div><div id="officeRoot"></div>', "full");
     panel.setAttribute("aria-labelledby", "pageTitle");
     wireBreadcrumb(panel, [{ onClick:function(){ go(""); } }]);
     document.getElementById("closeBtn").addEventListener("click", function(){ go(""); });
-    officeRender(null);
+    var root = document.getElementById("officeRoot");
+    root.appendChild(frag([
+      h("div", { class:"office-tools" }, [
+        h("a", { class:"office-act", id:"officeOpen", href:"escritorio/", target:"_blank", rel:"noopener", text:"Abrir em outra aba ↗" })
+      ]),
+      h("iframe", { id:"officeFrame", class:"office-frame", title:"Escritório do Grupo Lisieux", src:"escritorio/?embed=1", loading:"lazy", allow:"fullscreen" }),
+      h("div", { id:"officeTeam" })
+    ]));
+    officeRenderTeam(null);
   }
+  window.addEventListener("storage", function(e){                  // equipe editada em outra aba: atualiza a tabela (o iframe se atualiza sozinho)
+    if(e.key!=="vdp-office-v2") return;
+    var ae = document.activeElement, typing = ae && /^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName);
+    if(document.getElementById("officeTeam") && !typing && !OFFICE.creating && !OFFICE.editing) officeRenderTeam(null);
+  });
 
   function boot(){
     state = loadState();
