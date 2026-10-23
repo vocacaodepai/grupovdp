@@ -14,6 +14,9 @@
 --
 -- A página só LÊ (chave anon pública). Quem escreve é o script
 -- scripts/agente.mjs, passando o segredo pela função.
+--
+-- Onde está aplicada hoje (provisório) e como mudar para um Supabase
+-- próprio do Grupo Lisieux: ver supabase/LEIAME.md.
 -- =====================================================================
 
 -- ---------- Tabelas ----------
@@ -129,11 +132,20 @@ begin
 end;
 $$;
 
+-- ---------- Etiquetas (deixam claro, dentro do próprio banco, de quem é isto) ----------
+comment on table public.lisieux_agent_status is
+  'GRUPO LISIEUX — Escritório virtual (vocacaodepai.github.io/grupovdp/escritorio). Status ao vivo dos agentes. PROVISÓRIO neste projeto: mudar para um projeto Supabase próprio do Grupo Lisieux (ver supabase/LEIAME.md no repo vocacaodepai/grupovdp). Não faz parte do site Vocação de Mãe.';
+comment on table public.lisieux_secrets is
+  'GRUPO LISIEUX — Escritório virtual. Segredo de escrita dos agentes (sem leitura pública). PROVISÓRIO neste projeto; ver supabase/LEIAME.md no repo vocacaodepai/grupovdp.';
+comment on function public.lisieux_set_status(text, text, text, text, text, text) is
+  'GRUPO LISIEUX — Escritório virtual. Única porta de escrita do status dos agentes (exige o segredo). PROVISÓRIO neste projeto; ver supabase/LEIAME.md no repo vocacaodepai/grupovdp.';
+
 -- ---------- Segredo de escrita (rodar UMA vez, à mão, no SQL Editor) ----------
--- Troque o texto abaixo por um segredo longo e aleatório (ex.: openssl rand -hex 32).
+-- Gera um segredo aleatório dentro do banco (não aparece em lugar nenhum).
+-- Para ler depois: select value from public.lisieux_secrets where name = 'writer';
 -- O MESMO valor vai na variável LISIEUX_STATUS_SECRET de quem roda scripts/agente.mjs.
 -- NUNCA coloque esse segredo em escritorio/config.js nem no repositório.
 --
 -- insert into public.lisieux_secrets (name, value)
--- values ('writer', 'TROQUE-POR-UM-SEGREDO-LONGO')
--- on conflict (name) do update set value = excluded.value;
+-- values ('writer', replace(gen_random_uuid()::text, '-', '') || replace(gen_random_uuid()::text, '-', ''))
+-- on conflict (name) do nothing;

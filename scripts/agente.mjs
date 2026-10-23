@@ -7,21 +7,35 @@
 //   node scripts/agente.mjs status                                  -> lista todos
 //
 // Variáveis de ambiente:
-//   LISIEUX_SUPABASE_URL       ex.: https://xxxx.supabase.co
-//   LISIEUX_SUPABASE_ANON_KEY  chave anon (pública)
 //   LISIEUX_STATUS_SECRET      segredo de escrita (o mesmo de lisieux_secrets 'writer'); só inicio/fim
+//   LISIEUX_SUPABASE_URL       (opcional) ex.: https://xxxx.supabase.co
+//   LISIEUX_SUPABASE_ANON_KEY  (opcional) chave anon/publicável (pública)
+//     Sem as duas últimas, usa as de escritorio/config.js (ver supabase/LEIAME.md).
 //   LISIEUX_SESSION            (opcional) identificador da sessão, gravado junto
 //
 // Nunca quebra uma sessão: sem variáveis ou sem rede, avisa em uma linha no
 // stderr e sai com código 0. Só sai com 1 em uso errado ou quando o servidor
 // recusa (segredo inválido, agentId inválido...). Sem dependências.
 
+import { readFileSync } from "node:fs";
+
 const TIMEOUT_MS = 8000;
 const ID_RE = /^[a-z0-9-]{2,40}$/;
 
+// URL e chave pública: variável de ambiente ou, se faltar, escritorio/config.js deste repo.
+function fromConfig(field) {
+  try {
+    const src = readFileSync(new URL("../escritorio/config.js", import.meta.url), "utf8");
+    const m = src.match(new RegExp(field + '\\s*:\\s*"([^"]*)"'));
+    return m ? m[1] : "";
+  } catch {
+    return "";
+  }
+}
+
 const [cmd, ...args] = process.argv.slice(2);
-const URL_BASE = (process.env.LISIEUX_SUPABASE_URL || "").trim().replace(/\/+$/, "");
-const ANON = (process.env.LISIEUX_SUPABASE_ANON_KEY || "").trim();
+const URL_BASE = (process.env.LISIEUX_SUPABASE_URL || fromConfig("supabaseUrl")).trim().replace(/\/+$/, "");
+const ANON = (process.env.LISIEUX_SUPABASE_ANON_KEY || fromConfig("supabaseAnonKey")).trim();
 const SECRET = (process.env.LISIEUX_STATUS_SECRET || "").trim();
 const SESSION = (process.env.LISIEUX_SESSION || "").trim().slice(0, 120) || null;
 
