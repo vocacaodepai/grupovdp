@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T18:35:48.476Z",
+  "generatedAt": "2026-10-23T21:39:04.892Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -669,7 +669,7 @@
         "20261022"
       ],
       [
-        "814",
+        "816",
         "20261023"
       ]
     ]
@@ -941,7 +941,7 @@
         "20261017"
       ],
       [
-        971,
+        962,
         69,
         24,
         2,
@@ -972,6 +972,17 @@
         2,
         3,
         "20261020"
+      ],
+      [
+        276,
+        92,
+        84,
+        5,
+        0,
+        29,
+        0,
+        1,
+        "20261021"
       ]
     ]
   },
@@ -980,27 +991,27 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 8943
+          "views": 9147
         },
         {
           "label": "Busca no YouTube",
-          "views": 1305
+          "views": 1335
         },
         {
           "label": "Inscritos (feed)",
-          "views": 1275
+          "views": 1294
         },
         {
           "label": "Vídeos relacionados",
-          "views": 542
+          "views": 555
         },
         {
           "label": "Notificações",
-          "views": 313
+          "views": 320
         },
         {
           "label": "Página do canal",
-          "views": 264
+          "views": 265
         },
         {
           "label": "Link externo",
@@ -1052,7 +1063,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 10252
+          "views": 10434
         },
         {
           "label": "IT",
@@ -1070,33 +1081,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11725
+          "views": 11970
         },
         {
           "label": "Computador",
-          "views": 555
+          "views": 569
         },
         {
           "label": "TV",
-          "views": 347
+          "views": 356
         },
         {
           "label": "Tablet",
-          "views": 181
+          "views": 189
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 10357
+          "views": 10588
         },
         {
           "label": "Página de exibição",
-          "views": 1508
+          "views": 1544
         },
         {
           "label": "Explorar/Início",
-          "views": 943
+          "views": 952
         },
         {
           "label": "Incorporado em site",
@@ -1106,11 +1117,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 11566
+          "views": 11813
         },
         {
           "label": "Inscritos",
-          "views": 1244
+          "views": 1273
         }
       ]
     }
@@ -1121,10 +1132,10 @@
         "id": "NW_VDiYDzmo",
         "title": "Coração — Ponto 147 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/NW_VDiYDzmo/mqdefault.jpg",
-        "views": 1128,
+        "views": 1152,
         "likes": 67,
         "comments": 0,
-        "minutes": 53,
+        "minutes": 54,
         "subsGained": 4,
         "avgDuration": 12
       },
@@ -1198,10 +1209,10 @@
         "id": "l6wTDPqi5lY",
         "title": "Coração — Ponto 148 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/l6wTDPqi5lY/mqdefault.jpg",
-        "views": 603,
-        "likes": 35,
+        "views": 615,
+        "likes": 36,
         "comments": 0,
-        "minutes": 21,
+        "minutes": 22,
         "subsGained": 0,
         "avgDuration": 10
       },
@@ -1253,21 +1264,21 @@
         "id": "sFxJtXIKQBE",
         "title": "Vida de Oração (Parte 1) — Amigos de Deus | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/sFxJtXIKQBE/mqdefault.jpg",
-        "views": 429,
+        "views": 432,
         "likes": 54,
         "comments": 3,
         "minutes": 796,
         "subsGained": 14,
-        "avgDuration": 179
+        "avgDuration": 178
       },
       {
         "id": "6Z-UdZ2o2AI",
         "title": "COM A FORÇA DO AMOR (Parte 2 de 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/6Z-UdZ2o2AI/mqdefault.jpg",
-        "views": 314,
+        "views": 318,
         "likes": 9,
         "comments": 0,
-        "minutes": 96,
+        "minutes": 101,
         "subsGained": 2,
         "avgDuration": 69
       },
@@ -1275,7 +1286,7 @@
         "id": "yDiwBB073_Y",
         "title": "Caminho 133 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/yDiwBB073_Y/mqdefault.jpg",
-        "views": 297,
+        "views": 299,
         "likes": 21,
         "comments": 0,
         "minutes": 32,
@@ -1301,6 +1312,10 @@
       [
         39,
         "20261020"
+      ],
+      [
+        19,
+        "20261021"
       ]
     ],
     "yzMdMrC3Qjk": [
@@ -1411,6 +1426,10 @@
       [
         3,
         "20261020"
+      ],
+      [
+        0,
+        "20261021"
       ]
     ],
     "wKYW-xQPB2c": [
@@ -1521,6 +1540,10 @@
       [
         2,
         "20261020"
+      ],
+      [
+        0,
+        "20261021"
       ]
     ],
     "7Pmw_bK9I-s": [
@@ -1623,6 +1646,10 @@
       [
         4,
         "20261020"
+      ],
+      [
+        0,
+        "20261021"
       ]
     ],
     "S76HYsh21Pw": [
@@ -1689,6 +1716,10 @@
       [
         4,
         "20261020"
+      ],
+      [
+        0,
+        "20261021"
       ]
     ],
     "AxUKvnrYrSA": [
@@ -1787,6 +1818,10 @@
       [
         2,
         "20261020"
+      ],
+      [
+        0,
+        "20261021"
       ]
     ]
   },
@@ -1794,7 +1829,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-23T18:35:48.519Z",
+      "generatedAt": "2026-10-23T21:39:04.951Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1804,7 +1839,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-23T18:35:48.519Z",
+      "generatedAt": "2026-10-23T21:39:04.951Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
