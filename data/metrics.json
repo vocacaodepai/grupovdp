@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T04:25:57.789Z",
+  "generatedAt": "2026-10-24T09:00:53.675Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -677,7 +677,7 @@
         "20261023"
       ],
       [
-        "820",
+        "819",
         "20261024"
       ]
     ]
@@ -718,8 +718,8 @@
         "20260927"
       ],
       [
-        1029,
-        344,
+        1009,
+        335,
         59,
         10,
         1,
@@ -740,7 +740,7 @@
         "20260929"
       ],
       [
-        681,
+        680,
         329,
         85,
         7,
@@ -916,8 +916,8 @@
         "20261015"
       ],
       [
-        685,
-        74,
+        680,
+        77,
         32,
         3,
         1,
@@ -988,11 +988,11 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 8120
+          "views": 8116
         },
         {
           "label": "Busca no YouTube",
-          "views": 1288
+          "views": 1289
         },
         {
           "label": "Inscritos (feed)",
@@ -1074,7 +1074,7 @@
       "device": [
         {
           "label": "Celular",
-          "views": 10823
+          "views": 10820
         },
         {
           "label": "Computador",
@@ -1092,15 +1092,15 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 9496
+          "views": 9493
         },
         {
           "label": "Página de exibição",
-          "views": 1479
+          "views": 1478
         },
         {
           "label": "Explorar/Início",
-          "views": 866
+          "views": 867
         },
         {
           "label": "Incorporado em site",
@@ -1110,11 +1110,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 10664
+          "views": 10662
         },
         {
           "label": "Inscritos",
-          "views": 1178
+          "views": 1177
         }
       ]
     }
@@ -1125,7 +1125,7 @@
         "id": "NW_VDiYDzmo",
         "title": "Coração — Ponto 147 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/NW_VDiYDzmo/mqdefault.jpg",
-        "views": 1152,
+        "views": 1147,
         "likes": 67,
         "comments": 0,
         "minutes": 54,
@@ -1191,10 +1191,10 @@
         "id": "l6wTDPqi5lY",
         "title": "Coração — Ponto 148 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/l6wTDPqi5lY/mqdefault.jpg",
-        "views": 615,
+        "views": 611,
         "likes": 36,
         "comments": 0,
-        "minutes": 22,
+        "minutes": 21,
         "subsGained": 0,
         "avgDuration": 10
       },
@@ -1802,7 +1802,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-24T04:25:57.843Z",
+      "generatedAt": "2026-10-24T09:00:53.722Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1812,7 +1812,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-24T04:25:57.843Z",
+      "generatedAt": "2026-10-24T09:00:53.722Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
