@@ -868,13 +868,15 @@
   function drawNames(){
     namesShown = 0;
     if(!namesOn) return;
-    // tamanho acompanha o zoom (6,5 px de CSS no escritório inteiro numa janela pequena, 9 px em tela cheia)
-    var z = cam.z, sc = z/dpr, css = Math.max(6.5, Math.min(9, 5.6 + sc*1.8));
-    var o = origin(), fs = Math.round(css*dpr), padX = Math.round((css<8 ? 2 : 3)*dpr), h = Math.round((css + 3)*dpr),
+    // tamanho acompanha o zoom (6 px de CSS no escritório inteiro numa janela pequena, 8 px em tela cheia)
+    var z = cam.z, sc = z/dpr, css = Math.max(6, Math.min(8, 5 + sc*1.7));
+    var o = origin(), fs = Math.round(css*dpr), padX = Math.round((css<7.5 ? 1.5 : 2.5)*dpr), h = Math.round((css + 3)*dpr),
         gap = Math.max(1, Math.round(dpr)), m = Math.max(1, Math.round(dpr*0.5)), rad = Math.round(3*dpr);
     sctx.setTransform(1, 0, 0, 1, 0, 0);
     sctx.font = "600 " + fs + "px system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
     sctx.textAlign = "center"; sctx.textBaseline = "middle";
+    // contorno escuro fino: o fundo é translúcido, então ele segura a leitura no piso claro
+    sctx.lineJoin = "round"; sctx.lineWidth = Math.max(1.5, 1.6*dpr); sctx.strokeStyle = "rgba(14,16,28,0.55)";
     var rank = function(e){ var k = e.p.kind; return k==="chefia" ? 0 : k==="socio" ? 1 : e.p.status==="work" ? 2 : 3; };
     var list = Object.keys(ents).map(function(id){ return ents[id]; }).filter(function(e){ return e.placed; })
       .sort(function(a, b){ return rank(a) - rank(b) || a.y - b.y || a.x - b.x; });
@@ -902,10 +904,11 @@
       }
       if(!r) return;
       placed.push(r); namesShown++;
-      sctx.fillStyle = "rgba(20,22,36,0.74)";
+      sctx.fillStyle = "rgba(20,22,36,0.42)";
       if(sctx.roundRect){ sctx.beginPath(); sctx.roundRect(r.x, r.y, r.w, r.h, rad); sctx.fill(); } else sctx.fillRect(r.x, r.y, r.w, r.h);
       var k = e.p.kind;
       sctx.fillStyle = k==="chefia" ? "#f6d36b" : k==="socio" ? "#c9d7ff" : "#ffffff";
+      sctx.strokeText(txt, r.x + r.w/2, r.y + h/2 + m*0.5);
       sctx.fillText(txt, r.x + r.w/2, r.y + h/2 + m*0.5);
     });
   }
