@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T18:35:48.476Z",
+  "generatedAt": "2026-10-24T13:15:35.063Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -133,6 +133,10 @@
       [
         "8",
         "20261023"
+      ],
+      [
+        "8",
+        "20261024"
       ]
     ],
     "2.1": [
@@ -669,24 +673,17 @@
         "20261022"
       ],
       [
-        "814",
+        "816",
         "20261023"
+      ],
+      [
+        "818",
+        "20261024"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        1244,
-        233,
-        47,
-        6,
-        1,
-        82,
-        5,
-        1,
-        "20260924"
-      ],
       [
         1004,
         112,
@@ -721,8 +718,8 @@
         "20260927"
       ],
       [
-        1029,
-        344,
+        1009,
+        335,
         59,
         10,
         1,
@@ -743,7 +740,7 @@
         "20260929"
       ],
       [
-        681,
+        680,
         329,
         85,
         7,
@@ -919,8 +916,8 @@
         "20261015"
       ],
       [
-        685,
-        74,
+        680,
+        77,
         32,
         3,
         1,
@@ -941,7 +938,7 @@
         "20261017"
       ],
       [
-        971,
+        962,
         69,
         24,
         2,
@@ -972,6 +969,17 @@
         2,
         3,
         "20261020"
+      ],
+      [
+        276,
+        92,
+        84,
+        5,
+        0,
+        29,
+        0,
+        1,
+        "20261021"
       ]
     ]
   },
@@ -980,35 +988,35 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 8943
+          "views": 8113
         },
         {
           "label": "Busca no YouTube",
-          "views": 1305
+          "views": 1289
         },
         {
           "label": "Inscritos (feed)",
-          "views": 1275
+          "views": 1188
         },
         {
           "label": "Vídeos relacionados",
-          "views": 542
+          "views": 534
         },
         {
           "label": "Notificações",
-          "views": 313
+          "views": 296
         },
         {
           "label": "Página do canal",
-          "views": 264
+          "views": 255
         },
         {
           "label": "Link externo",
-          "views": 66
+          "views": 65
         },
         {
           "label": "Outra página do YouTube",
-          "views": 59
+          "views": 54
         }
       ]
     }
@@ -1018,45 +1026,41 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 35.4
+          "pct": 34.9
         },
         {
           "label": "65+ · Homens",
-          "pct": 26.9
+          "pct": 28.7
         },
         {
           "label": "55-64 · Mulheres",
-          "pct": 7.5
+          "pct": 7.1
         },
         {
           "label": "45-54 · Homens",
-          "pct": 7
-        },
-        {
-          "label": "55-64 · Homens",
-          "pct": 6.4
-        },
-        {
-          "label": "45-54 · Mulheres",
-          "pct": 5.5
+          "pct": 6.2
         },
         {
           "label": "35-44 · Homens",
-          "pct": 4
+          "pct": 4.8
+        },
+        {
+          "label": "55-64 · Homens",
+          "pct": 4.8
+        },
+        {
+          "label": "45-54 · Mulheres",
+          "pct": 4.6
         },
         {
           "label": "13-17 · Homens",
-          "pct": 3.5
+          "pct": 4.2
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 10252
-        },
-        {
-          "label": "IT",
-          "views": 41
+          "views": 9431
         },
         {
           "label": "Portugal",
@@ -1070,47 +1074,47 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11725
+          "views": 10817
         },
         {
           "label": "Computador",
-          "views": 555
+          "views": 512
         },
         {
           "label": "TV",
-          "views": 347
+          "views": 334
         },
         {
           "label": "Tablet",
-          "views": 181
+          "views": 171
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 10357
+          "views": 9490
         },
         {
           "label": "Página de exibição",
-          "views": 1508
+          "views": 1477
         },
         {
           "label": "Explorar/Início",
-          "views": 943
+          "views": 868
         },
         {
           "label": "Incorporado em site",
-          "views": 2
+          "views": 1
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 11566
+          "views": 10660
         },
         {
           "label": "Inscritos",
-          "views": 1244
+          "views": 1176
         }
       ]
     }
@@ -1121,34 +1125,12 @@
         "id": "NW_VDiYDzmo",
         "title": "Coração — Ponto 147 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/NW_VDiYDzmo/mqdefault.jpg",
-        "views": 1128,
+        "views": 1147,
         "likes": 67,
         "comments": 0,
-        "minutes": 53,
+        "minutes": 54,
         "subsGained": 4,
         "avgDuration": 12
-      },
-      {
-        "id": "yzMdMrC3Qjk",
-        "title": "Caminho 135 — Santa Pureza | São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/yzMdMrC3Qjk/mqdefault.jpg",
-        "views": 1031,
-        "likes": 72,
-        "comments": 5,
-        "minutes": 78,
-        "subsGained": 5,
-        "avgDuration": 14
-      },
-      {
-        "id": "wKYW-xQPB2c",
-        "title": "Caminho 134 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/wKYW-xQPB2c/mqdefault.jpg",
-        "views": 998,
-        "likes": 43,
-        "comments": 3,
-        "minutes": 45,
-        "subsGained": 3,
-        "avgDuration": 11
       },
       {
         "id": "7Pmw_bK9I-s",
@@ -1184,6 +1166,17 @@
         "avgDuration": 21
       },
       {
+        "id": "yzMdMrC3Qjk",
+        "title": "Caminho 135 — Santa Pureza | São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/yzMdMrC3Qjk/mqdefault.jpg",
+        "views": 748,
+        "likes": 42,
+        "comments": 5,
+        "minutes": 60,
+        "subsGained": 2,
+        "avgDuration": 14
+      },
+      {
         "id": "6x_sG_e9kAE",
         "title": "Caminho 139 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/6x_sG_e9kAE/mqdefault.jpg",
@@ -1198,8 +1191,8 @@
         "id": "l6wTDPqi5lY",
         "title": "Coração — Ponto 148 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/l6wTDPqi5lY/mqdefault.jpg",
-        "views": 603,
-        "likes": 35,
+        "views": 611,
+        "likes": 36,
         "comments": 0,
         "minutes": 21,
         "subsGained": 0,
@@ -1228,6 +1221,17 @@
         "avgDuration": 16
       },
       {
+        "id": "wKYW-xQPB2c",
+        "title": "Caminho 134 - Santa Pureza - Sao Josemaria Escriva",
+        "thumb": "https://i.ytimg.com/vi/wKYW-xQPB2c/mqdefault.jpg",
+        "views": 489,
+        "likes": 17,
+        "comments": 0,
+        "minutes": 21,
+        "subsGained": 2,
+        "avgDuration": 10
+      },
+      {
         "id": "bZq73PlLr6g",
         "title": "Caminho 140 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/bZq73PlLr6g/mqdefault.jpg",
@@ -1253,34 +1257,34 @@
         "id": "sFxJtXIKQBE",
         "title": "Vida de Oração (Parte 1) — Amigos de Deus | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/sFxJtXIKQBE/mqdefault.jpg",
-        "views": 429,
+        "views": 432,
         "likes": 54,
         "comments": 3,
         "minutes": 796,
         "subsGained": 14,
-        "avgDuration": 179
+        "avgDuration": 178
       },
       {
         "id": "6Z-UdZ2o2AI",
         "title": "COM A FORÇA DO AMOR (Parte 2 de 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/6Z-UdZ2o2AI/mqdefault.jpg",
-        "views": 314,
-        "likes": 9,
+        "views": 271,
+        "likes": 8,
         "comments": 0,
-        "minutes": 96,
-        "subsGained": 2,
-        "avgDuration": 69
+        "minutes": 91,
+        "subsGained": 1,
+        "avgDuration": 73
       },
       {
-        "id": "yDiwBB073_Y",
-        "title": "Caminho 133 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/yDiwBB073_Y/mqdefault.jpg",
-        "views": 297,
-        "likes": 21,
-        "comments": 0,
-        "minutes": 32,
+        "id": "lhbL0Gmub7g",
+        "title": "Coração — Ponto 149 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/lhbL0Gmub7g/mqdefault.jpg",
+        "views": 270,
+        "likes": 16,
+        "comments": 2,
+        "minutes": 13,
         "subsGained": 1,
-        "avgDuration": 18
+        "avgDuration": 13
       }
     ]
   },
@@ -1301,13 +1305,291 @@
       [
         39,
         "20261020"
+      ],
+      [
+        19,
+        "20261021"
+      ]
+    ],
+    "7Pmw_bK9I-s": [
+      [
+        109,
+        "20260926"
+      ],
+      [
+        296,
+        "20260927"
+      ],
+      [
+        329,
+        "20260928"
+      ],
+      [
+        68,
+        "20260929"
+      ],
+      [
+        38,
+        "20260930"
+      ],
+      [
+        10,
+        "20261001"
+      ],
+      [
+        1,
+        "20261002"
+      ],
+      [
+        2,
+        "20261003"
+      ],
+      [
+        4,
+        "20261004"
+      ],
+      [
+        3,
+        "20261005"
+      ],
+      [
+        7,
+        "20261006"
+      ],
+      [
+        0,
+        "20261007"
+      ],
+      [
+        2,
+        "20261008"
+      ],
+      [
+        5,
+        "20261009"
+      ],
+      [
+        0,
+        "20261010"
+      ],
+      [
+        0,
+        "20261011"
+      ],
+      [
+        0,
+        "20261012"
+      ],
+      [
+        5,
+        "20261013"
+      ],
+      [
+        4,
+        "20261014"
+      ],
+      [
+        5,
+        "20261015"
+      ],
+      [
+        0,
+        "20261016"
+      ],
+      [
+        1,
+        "20261017"
+      ],
+      [
+        3,
+        "20261018"
+      ],
+      [
+        1,
+        "20261019"
+      ],
+      [
+        4,
+        "20261020"
+      ],
+      [
+        0,
+        "20261021"
+      ]
+    ],
+    "S76HYsh21Pw": [
+      [
+        296,
+        "20261005"
+      ],
+      [
+        265,
+        "20261006"
+      ],
+      [
+        213,
+        "20261007"
+      ],
+      [
+        24,
+        "20261008"
+      ],
+      [
+        3,
+        "20261009"
+      ],
+      [
+        1,
+        "20261010"
+      ],
+      [
+        3,
+        "20261011"
+      ],
+      [
+        2,
+        "20261012"
+      ],
+      [
+        1,
+        "20261013"
+      ],
+      [
+        0,
+        "20261014"
+      ],
+      [
+        0,
+        "20261015"
+      ],
+      [
+        0,
+        "20261016"
+      ],
+      [
+        0,
+        "20261017"
+      ],
+      [
+        1,
+        "20261018"
+      ],
+      [
+        2,
+        "20261019"
+      ],
+      [
+        4,
+        "20261020"
+      ],
+      [
+        0,
+        "20261021"
+      ]
+    ],
+    "AxUKvnrYrSA": [
+      [
+        167,
+        "20260927"
+      ],
+      [
+        415,
+        "20260928"
+      ],
+      [
+        107,
+        "20260929"
+      ],
+      [
+        28,
+        "20260930"
+      ],
+      [
+        23,
+        "20261001"
+      ],
+      [
+        6,
+        "20261002"
+      ],
+      [
+        0,
+        "20261003"
+      ],
+      [
+        6,
+        "20261004"
+      ],
+      [
+        1,
+        "20261005"
+      ],
+      [
+        6,
+        "20261006"
+      ],
+      [
+        2,
+        "20261007"
+      ],
+      [
+        1,
+        "20261008"
+      ],
+      [
+        0,
+        "20261009"
+      ],
+      [
+        0,
+        "20261010"
+      ],
+      [
+        0,
+        "20261011"
+      ],
+      [
+        0,
+        "20261012"
+      ],
+      [
+        2,
+        "20261013"
+      ],
+      [
+        2,
+        "20261014"
+      ],
+      [
+        0,
+        "20261015"
+      ],
+      [
+        0,
+        "20261016"
+      ],
+      [
+        0,
+        "20261017"
+      ],
+      [
+        1,
+        "20261018"
+      ],
+      [
+        1,
+        "20261019"
+      ],
+      [
+        2,
+        "20261020"
+      ],
+      [
+        0,
+        "20261021"
       ]
     ],
     "yzMdMrC3Qjk": [
-      [
-        283,
-        "20260924"
-      ],
       [
         395,
         "20260925"
@@ -1411,47 +1693,35 @@
       [
         3,
         "20261020"
-      ]
-    ],
-    "wKYW-xQPB2c": [
-      [
-        509,
-        "20260924"
-      ],
-      [
-        199,
-        "20260925"
-      ],
-      [
-        128,
-        "20260926"
-      ],
-      [
-        120,
-        "20260927"
-      ],
-      [
-        9,
-        "20260928"
-      ],
-      [
-        5,
-        "20260929"
-      ],
-      [
-        5,
-        "20260930"
-      ],
-      [
-        3,
-        "20261001"
       ],
       [
         0,
+        "20261021"
+      ]
+    ],
+    "6x_sG_e9kAE": [
+      [
+        11,
+        "20260928"
+      ],
+      [
+        229,
+        "20260929"
+      ],
+      [
+        357,
+        "20260930"
+      ],
+      [
+        51,
+        "20261001"
+      ],
+      [
+        20,
         "20261002"
       ],
       [
-        1,
+        8,
         "20261003"
       ],
       [
@@ -1459,11 +1729,11 @@
         "20261004"
       ],
       [
-        4,
+        3,
         "20261005"
       ],
       [
-        5,
+        8,
         "20261006"
       ],
       [
@@ -1475,11 +1745,11 @@
         "20261008"
       ],
       [
-        1,
+        5,
         "20261009"
       ],
       [
-        1,
+        0,
         "20261010"
       ],
       [
@@ -1487,11 +1757,11 @@
         "20261011"
       ],
       [
-        0,
+        2,
         "20261012"
       ],
       [
-        6,
+        0,
         "20261013"
       ],
       [
@@ -1503,7 +1773,7 @@
         "20261015"
       ],
       [
-        0,
+        2,
         "20261016"
       ],
       [
@@ -1521,272 +1791,10 @@
       [
         2,
         "20261020"
-      ]
-    ],
-    "7Pmw_bK9I-s": [
-      [
-        109,
-        "20260926"
-      ],
-      [
-        296,
-        "20260927"
-      ],
-      [
-        329,
-        "20260928"
-      ],
-      [
-        68,
-        "20260929"
-      ],
-      [
-        38,
-        "20260930"
-      ],
-      [
-        10,
-        "20261001"
-      ],
-      [
-        1,
-        "20261002"
-      ],
-      [
-        2,
-        "20261003"
-      ],
-      [
-        4,
-        "20261004"
-      ],
-      [
-        3,
-        "20261005"
-      ],
-      [
-        7,
-        "20261006"
       ],
       [
         0,
-        "20261007"
-      ],
-      [
-        2,
-        "20261008"
-      ],
-      [
-        5,
-        "20261009"
-      ],
-      [
-        0,
-        "20261010"
-      ],
-      [
-        0,
-        "20261011"
-      ],
-      [
-        0,
-        "20261012"
-      ],
-      [
-        5,
-        "20261013"
-      ],
-      [
-        4,
-        "20261014"
-      ],
-      [
-        5,
-        "20261015"
-      ],
-      [
-        0,
-        "20261016"
-      ],
-      [
-        1,
-        "20261017"
-      ],
-      [
-        3,
-        "20261018"
-      ],
-      [
-        1,
-        "20261019"
-      ],
-      [
-        4,
-        "20261020"
-      ]
-    ],
-    "S76HYsh21Pw": [
-      [
-        296,
-        "20261005"
-      ],
-      [
-        265,
-        "20261006"
-      ],
-      [
-        213,
-        "20261007"
-      ],
-      [
-        24,
-        "20261008"
-      ],
-      [
-        3,
-        "20261009"
-      ],
-      [
-        1,
-        "20261010"
-      ],
-      [
-        3,
-        "20261011"
-      ],
-      [
-        2,
-        "20261012"
-      ],
-      [
-        1,
-        "20261013"
-      ],
-      [
-        0,
-        "20261014"
-      ],
-      [
-        0,
-        "20261015"
-      ],
-      [
-        0,
-        "20261016"
-      ],
-      [
-        0,
-        "20261017"
-      ],
-      [
-        1,
-        "20261018"
-      ],
-      [
-        2,
-        "20261019"
-      ],
-      [
-        4,
-        "20261020"
-      ]
-    ],
-    "AxUKvnrYrSA": [
-      [
-        167,
-        "20260927"
-      ],
-      [
-        415,
-        "20260928"
-      ],
-      [
-        107,
-        "20260929"
-      ],
-      [
-        28,
-        "20260930"
-      ],
-      [
-        23,
-        "20261001"
-      ],
-      [
-        6,
-        "20261002"
-      ],
-      [
-        0,
-        "20261003"
-      ],
-      [
-        6,
-        "20261004"
-      ],
-      [
-        1,
-        "20261005"
-      ],
-      [
-        6,
-        "20261006"
-      ],
-      [
-        2,
-        "20261007"
-      ],
-      [
-        1,
-        "20261008"
-      ],
-      [
-        0,
-        "20261009"
-      ],
-      [
-        0,
-        "20261010"
-      ],
-      [
-        0,
-        "20261011"
-      ],
-      [
-        0,
-        "20261012"
-      ],
-      [
-        2,
-        "20261013"
-      ],
-      [
-        2,
-        "20261014"
-      ],
-      [
-        0,
-        "20261015"
-      ],
-      [
-        0,
-        "20261016"
-      ],
-      [
-        0,
-        "20261017"
-      ],
-      [
-        1,
-        "20261018"
-      ],
-      [
-        1,
-        "20261019"
-      ],
-      [
-        2,
-        "20261020"
+        "20261021"
       ]
     ]
   },
@@ -1794,7 +1802,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-23T18:35:48.519Z",
+      "generatedAt": "2026-10-24T13:15:35.103Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1804,7 +1812,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-23T18:35:48.519Z",
+      "generatedAt": "2026-10-24T13:15:35.103Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
