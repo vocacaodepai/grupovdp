@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T09:00:53.675Z",
+  "generatedAt": "2026-10-24T13:15:35.063Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -677,7 +677,7 @@
         "20261023"
       ],
       [
-        "819",
+        "818",
         "20261024"
       ]
     ]
@@ -988,7 +988,7 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 8116
+          "views": 8113
         },
         {
           "label": "Busca no YouTube",
@@ -1074,7 +1074,7 @@
       "device": [
         {
           "label": "Celular",
-          "views": 10820
+          "views": 10817
         },
         {
           "label": "Computador",
@@ -1092,15 +1092,15 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 9493
+          "views": 9490
         },
         {
           "label": "Página de exibição",
-          "views": 1478
+          "views": 1477
         },
         {
           "label": "Explorar/Início",
-          "views": 867
+          "views": 868
         },
         {
           "label": "Incorporado em site",
@@ -1110,11 +1110,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 10662
+          "views": 10660
         },
         {
           "label": "Inscritos",
-          "views": 1177
+          "views": 1176
         }
       ]
     }
@@ -1802,7 +1802,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-24T09:00:53.722Z",
+      "generatedAt": "2026-10-24T13:15:35.103Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1812,7 +1812,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-24T09:00:53.722Z",
+      "generatedAt": "2026-10-24T13:15:35.103Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
