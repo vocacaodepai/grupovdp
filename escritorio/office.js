@@ -868,10 +868,10 @@
   function drawNames(){
     namesShown = 0;
     if(!namesOn) return;
-    // tamanho acompanha o zoom (8 px de CSS no escritório inteiro numa janela pequena, 11 px em tela cheia)
-    var z = cam.z, sc = z/dpr, css = Math.max(8, Math.min(11, 7 + sc*2.2));
-    var o = origin(), fs = Math.round(css*dpr), padX = Math.round((css<9.5 ? 2.5 : 4)*dpr), h = Math.round((css + 4)*dpr),
-        gap = Math.max(1, Math.round((css<9.5 ? 1 : 2)*dpr)), m = Math.max(1, Math.round(dpr*0.5)), rad = Math.round((css<9.5 ? 3 : 4)*dpr);
+    // tamanho acompanha o zoom (6,5 px de CSS no escritório inteiro numa janela pequena, 9 px em tela cheia)
+    var z = cam.z, sc = z/dpr, css = Math.max(6.5, Math.min(9, 5.6 + sc*1.8));
+    var o = origin(), fs = Math.round(css*dpr), padX = Math.round((css<8 ? 2 : 3)*dpr), h = Math.round((css + 3)*dpr),
+        gap = Math.max(1, Math.round(dpr)), m = Math.max(1, Math.round(dpr*0.5)), rad = Math.round(3*dpr);
     sctx.setTransform(1, 0, 0, 1, 0, 0);
     sctx.font = "600 " + fs + "px system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
     sctx.textAlign = "center"; sctx.textBaseline = "middle";
