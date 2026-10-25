@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T01:39:41.441Z",
+  "generatedAt": "2026-10-25T06:53:15.498Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -715,8 +715,8 @@
         "20260927"
       ],
       [
-        1029,
-        344,
+        1009,
+        335,
         59,
         10,
         1,
@@ -737,7 +737,7 @@
         "20260929"
       ],
       [
-        681,
+        680,
         329,
         85,
         7,
@@ -913,8 +913,8 @@
         "20261015"
       ],
       [
-        685,
-        74,
+        680,
+        77,
         32,
         3,
         1,
@@ -946,7 +946,7 @@
         "20261018"
       ],
       [
-        274,
+        271,
         70,
         63,
         1,
@@ -957,7 +957,7 @@
         "20261019"
       ],
       [
-        572,
+        569,
         164,
         67,
         1,
@@ -1133,7 +1133,7 @@
         "id": "NW_VDiYDzmo",
         "title": "Coração — Ponto 147 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/NW_VDiYDzmo/mqdefault.jpg",
-        "views": 1153,
+        "views": 1151,
         "likes": 69,
         "comments": 0,
         "minutes": 55,
@@ -1210,7 +1210,7 @@
         "id": "7QN9COshEx0",
         "title": "Coração — Ponto 146 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7QN9COshEx0/mqdefault.jpg",
-        "views": 542,
+        "views": 540,
         "likes": 36,
         "comments": 0,
         "minutes": 31,
@@ -1307,7 +1307,7 @@
         "20261018"
       ],
       [
-        97,
+        95,
         "20261019"
       ],
       [
@@ -1730,7 +1730,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-25T01:39:41.495Z",
+      "generatedAt": "2026-10-25T06:53:15.848Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1740,7 +1740,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-25T01:39:41.495Z",
+      "generatedAt": "2026-10-25T06:53:15.848Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
