@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T16:33:20.797Z",
+  "generatedAt": "2026-10-25T19:14:02.478Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -988,6 +988,17 @@
         2,
         0,
         "20261022"
+      ],
+      [
+        1572,
+        192,
+        38,
+        11,
+        2,
+        102,
+        1,
+        0,
+        "20261023"
       ]
     ]
   },
@@ -996,35 +1007,35 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 8340
+          "views": 9800
         },
         {
           "label": "Busca no YouTube",
-          "views": 1292
+          "views": 1351
         },
         {
           "label": "Inscritos (feed)",
-          "views": 1055
+          "views": 1079
         },
         {
           "label": "Vídeos relacionados",
-          "views": 535
+          "views": 547
         },
         {
           "label": "Notificações",
-          "views": 299
+          "views": 312
         },
         {
           "label": "Página do canal",
-          "views": 250
+          "views": 251
         },
         {
           "label": "Link externo",
-          "views": 62
+          "views": 63
         },
         {
           "label": "Outra página do YouTube",
-          "views": 54
+          "views": 56
         }
       ]
     }
@@ -1034,45 +1045,45 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 36.2
+          "pct": 34.3
         },
         {
           "label": "65+ · Homens",
-          "pct": 31.2
-        },
-        {
-          "label": "45-54 · Homens",
-          "pct": 6.3
+          "pct": 29
         },
         {
           "label": "35-44 · Homens",
-          "pct": 4.9
-        },
-        {
-          "label": "45-54 · Mulheres",
-          "pct": 4.7
+          "pct": 7
         },
         {
           "label": "55-64 · Mulheres",
-          "pct": 4.6
-        },
-        {
-          "label": "13-17 · Homens",
-          "pct": 4.3
+          "pct": 6.2
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 3.3
+          "pct": 5.1
+        },
+        {
+          "label": "45-54 · Homens",
+          "pct": 5.1
+        },
+        {
+          "label": "55-64 · Homens",
+          "pct": 4.8
+        },
+        {
+          "label": "45-54 · Mulheres",
+          "pct": 3.8
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 9559
+          "views": 10824
         },
         {
           "label": "Portugal",
-          "views": 89
+          "views": 162
         },
         {
           "label": "ES",
@@ -1082,33 +1093,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 10901
+          "views": 12356
         },
         {
           "label": "Computador",
-          "views": 522
+          "views": 566
         },
         {
           "label": "TV",
-          "views": 338
+          "views": 370
         },
         {
           "label": "Tablet",
-          "views": 171
+          "views": 212
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 9700
+          "views": 11218
         },
         {
           "label": "Página de exibição",
-          "views": 1471
+          "views": 1512
         },
         {
           "label": "Explorar/Início",
-          "views": 762
+          "views": 775
         },
         {
           "label": "Incorporado em site",
@@ -1118,11 +1129,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 10801
+          "views": 12326
         },
         {
           "label": "Inscritos",
-          "views": 1133
+          "views": 1180
         }
       ]
     }
@@ -1133,12 +1144,23 @@
         "id": "NW_VDiYDzmo",
         "title": "Coração — Ponto 147 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/NW_VDiYDzmo/mqdefault.jpg",
-        "views": 1151,
-        "likes": 69,
+        "views": 1162,
+        "likes": 71,
         "comments": 0,
-        "minutes": 55,
+        "minutes": 56,
         "subsGained": 4,
         "avgDuration": 12
+      },
+      {
+        "id": "ta_1h2Ns24Q",
+        "title": "Coração — Ponto 152 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/ta_1h2Ns24Q/mqdefault.jpg",
+        "views": 1125,
+        "likes": 78,
+        "comments": 0,
+        "minutes": 64,
+        "subsGained": 7,
+        "avgDuration": 16
       },
       {
         "id": "7Pmw_bK9I-s",
@@ -1150,6 +1172,17 @@
         "minutes": 56,
         "subsGained": 4,
         "avgDuration": 11
+      },
+      {
+        "id": "hVyCUSfYgew",
+        "title": "Coração — Ponto 150 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/hVyCUSfYgew/mqdefault.jpg",
+        "views": 828,
+        "likes": 58,
+        "comments": 1,
+        "minutes": 44,
+        "subsGained": 6,
+        "avgDuration": 12
       },
       {
         "id": "S76HYsh21Pw",
@@ -1166,33 +1199,33 @@
         "id": "AxUKvnrYrSA",
         "title": "Caminho 138 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/AxUKvnrYrSA/mqdefault.jpg",
-        "views": 770,
-        "likes": 44,
+        "views": 772,
+        "likes": 45,
         "comments": 1,
         "minutes": 89,
         "subsGained": 2,
         "avgDuration": 21
       },
       {
+        "id": "vW6rnl3gfyw",
+        "title": "Coração — Ponto 151 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/vW6rnl3gfyw/mqdefault.jpg",
+        "views": 734,
+        "likes": 38,
+        "comments": 0,
+        "minutes": 35,
+        "subsGained": 2,
+        "avgDuration": 14
+      },
+      {
         "id": "6x_sG_e9kAE",
         "title": "Caminho 139 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/6x_sG_e9kAE/mqdefault.jpg",
-        "views": 698,
-        "likes": 61,
-        "comments": 3,
+        "views": 703,
+        "likes": 62,
+        "comments": 4,
         "minutes": 48,
         "subsGained": 2,
-        "avgDuration": 12
-      },
-      {
-        "id": "hVyCUSfYgew",
-        "title": "Coração — Ponto 150 | Caminho de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/hVyCUSfYgew/mqdefault.jpg",
-        "views": 683,
-        "likes": 50,
-        "comments": 1,
-        "minutes": 35,
-        "subsGained": 4,
         "avgDuration": 12
       },
       {
@@ -1216,17 +1249,6 @@
         "minutes": 31,
         "subsGained": 2,
         "avgDuration": 18
-      },
-      {
-        "id": "vW6rnl3gfyw",
-        "title": "Coração — Ponto 151 | Caminho de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/vW6rnl3gfyw/mqdefault.jpg",
-        "views": 507,
-        "likes": 26,
-        "comments": 0,
-        "minutes": 25,
-        "subsGained": 2,
-        "avgDuration": 15
       },
       {
         "id": "UXvVLvJ9wZE",
@@ -1254,12 +1276,12 @@
         "id": "sFxJtXIKQBE",
         "title": "Vida de Oração (Parte 1) — Amigos de Deus | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/sFxJtXIKQBE/mqdefault.jpg",
-        "views": 419,
+        "views": 427,
         "likes": 52,
         "comments": 1,
-        "minutes": 793,
+        "minutes": 827,
         "subsGained": 14,
-        "avgDuration": 183
+        "avgDuration": 187
       },
       {
         "id": "yzMdMrC3Qjk",
@@ -1282,17 +1304,6 @@
         "minutes": 12,
         "subsGained": 3,
         "avgDuration": 8
-      },
-      {
-        "id": "wKYW-xQPB2c",
-        "title": "Caminho 134 - Santa Pureza - Sao Josemaria Escriva",
-        "thumb": "https://i.ytimg.com/vi/wKYW-xQPB2c/mqdefault.jpg",
-        "views": 291,
-        "likes": 11,
-        "comments": 0,
-        "minutes": 14,
-        "subsGained": 0,
-        "avgDuration": 9
       }
     ]
   },
@@ -1321,6 +1332,16 @@
       [
         6,
         "20261022"
+      ],
+      [
+        11,
+        "20261023"
+      ]
+    ],
+    "ta_1h2Ns24Q": [
+      [
+        1125,
+        "20261023"
       ]
     ],
     "7Pmw_bK9I-s": [
@@ -1431,6 +1452,24 @@
       [
         2,
         "20261022"
+      ],
+      [
+        0,
+        "20261023"
+      ]
+    ],
+    "hVyCUSfYgew": [
+      [
+        184,
+        "20261021"
+      ],
+      [
+        499,
+        "20261022"
+      ],
+      [
+        145,
+        "20261023"
       ]
     ],
     "S76HYsh21Pw": [
@@ -1505,6 +1544,10 @@
       [
         0,
         "20261022"
+      ],
+      [
+        0,
+        "20261023"
       ]
     ],
     "AxUKvnrYrSA": [
@@ -1611,118 +1654,10 @@
       [
         0,
         "20261022"
-      ]
-    ],
-    "6x_sG_e9kAE": [
-      [
-        11,
-        "20260928"
-      ],
-      [
-        229,
-        "20260929"
-      ],
-      [
-        357,
-        "20260930"
-      ],
-      [
-        51,
-        "20261001"
-      ],
-      [
-        20,
-        "20261002"
-      ],
-      [
-        8,
-        "20261003"
-      ],
-      [
-        0,
-        "20261004"
-      ],
-      [
-        3,
-        "20261005"
-      ],
-      [
-        8,
-        "20261006"
-      ],
-      [
-        0,
-        "20261007"
-      ],
-      [
-        0,
-        "20261008"
-      ],
-      [
-        5,
-        "20261009"
-      ],
-      [
-        0,
-        "20261010"
-      ],
-      [
-        0,
-        "20261011"
       ],
       [
         2,
-        "20261012"
-      ],
-      [
-        0,
-        "20261013"
-      ],
-      [
-        0,
-        "20261014"
-      ],
-      [
-        0,
-        "20261015"
-      ],
-      [
-        2,
-        "20261016"
-      ],
-      [
-        0,
-        "20261017"
-      ],
-      [
-        0,
-        "20261018"
-      ],
-      [
-        0,
-        "20261019"
-      ],
-      [
-        2,
-        "20261020"
-      ],
-      [
-        0,
-        "20261021"
-      ],
-      [
-        0,
-        "20261022"
-      ]
-    ],
-    "hVyCUSfYgew": [
-      [
-        184,
-        "20261021"
-      ],
-      [
-        499,
-        "20261022"
+        "20261023"
       ]
     ]
   },
@@ -1730,7 +1665,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-25T16:33:20.852Z",
+      "generatedAt": "2026-10-25T19:14:02.535Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1740,7 +1675,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-25T16:33:20.852Z",
+      "generatedAt": "2026-10-25T19:14:02.535Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
