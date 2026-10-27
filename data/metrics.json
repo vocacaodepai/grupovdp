@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T02:24:32.644Z",
+  "generatedAt": "2026-10-27T14:33:00.743Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -973,7 +973,7 @@
         "20261021"
       ],
       [
-        1102,
+        1089,
         129,
         31,
         2,
@@ -1012,7 +1012,7 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 8708
+          "views": 8683
         },
         {
           "label": "Busca no YouTube",
@@ -1098,7 +1098,7 @@
       "device": [
         {
           "label": "Celular",
-          "views": 10960
+          "views": 10940
         },
         {
           "label": "Computador",
@@ -1110,13 +1110,13 @@
         },
         {
           "label": "Tablet",
-          "views": 186
+          "views": 181
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 9989
+          "views": 9964
         },
         {
           "label": "Página de exibição",
@@ -1134,7 +1134,7 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 10901
+          "views": 10876
         },
         {
           "label": "Inscritos",
@@ -1171,7 +1171,7 @@
         "id": "hVyCUSfYgew",
         "title": "Coração — Ponto 150 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/hVyCUSfYgew/mqdefault.jpg",
-        "views": 860,
+        "views": 857,
         "likes": 58,
         "comments": 1,
         "minutes": 46,
@@ -1193,7 +1193,7 @@
         "id": "vW6rnl3gfyw",
         "title": "Coração — Ponto 151 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/vW6rnl3gfyw/mqdefault.jpg",
-        "views": 794,
+        "views": 785,
         "likes": 43,
         "comments": 0,
         "minutes": 38,
@@ -1363,7 +1363,7 @@
         "20261021"
       ],
       [
-        499,
+        496,
         "20261022"
       ],
       [
@@ -1459,7 +1459,7 @@
     ],
     "vW6rnl3gfyw": [
       [
-        507,
+        498,
         "20261022"
       ],
       [
@@ -1586,7 +1586,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-27T02:24:32.692Z",
+      "generatedAt": "2026-10-27T14:33:00.798Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1596,7 +1596,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-27T02:24:32.692Z",
+      "generatedAt": "2026-10-27T14:33:00.798Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
