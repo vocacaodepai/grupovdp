@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T23:35:34.126Z",
+  "generatedAt": "2026-10-27T02:24:32.644Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -145,6 +145,10 @@
       [
         "8",
         "20261026"
+      ],
+      [
+        "8",
+        "20261027"
       ]
     ],
     "2.1": [
@@ -695,22 +699,15 @@
       [
         "823",
         "20261026"
+      ],
+      [
+        "826",
+        "20261027"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        922,
-        260,
-        55,
-        6,
-        1,
-        44,
-        3,
-        0,
-        "20260927"
-      ],
       [
         1009,
         335,
@@ -1015,31 +1012,31 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 9348
+          "views": 8708
         },
         {
           "label": "Busca no YouTube",
-          "views": 1343
+          "views": 1251
         },
         {
           "label": "Inscritos (feed)",
-          "views": 1007
+          "views": 889
         },
         {
           "label": "Vídeos relacionados",
-          "views": 515
+          "views": 473
         },
         {
           "label": "Notificações",
-          "views": 285
+          "views": 267
         },
         {
           "label": "Página do canal",
-          "views": 245
+          "views": 239
         },
         {
           "label": "Link externo",
-          "views": 63
+          "views": 61
         },
         {
           "label": "Outra página do YouTube",
@@ -1053,41 +1050,41 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 34.9
+          "pct": 35
         },
         {
           "label": "65+ · Homens",
-          "pct": 28.6
+          "pct": 28.1
         },
         {
           "label": "35-44 · Homens",
-          "pct": 7.7
+          "pct": 9
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 5.6
+          "pct": 6.6
         },
         {
           "label": "45-54 · Homens",
-          "pct": 5.5
+          "pct": 4.8
         },
         {
-          "label": "55-64 · Mulheres",
-          "pct": 4.6
+          "label": "13-17 · Homens",
+          "pct": 4.4
         },
         {
           "label": "45-54 · Mulheres",
           "pct": 4.1
         },
         {
-          "label": "55-64 · Homens",
-          "pct": 4
+          "label": "55-64 · Mulheres",
+          "pct": 3.2
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 10338
+          "views": 9618
         },
         {
           "label": "Portugal",
@@ -1101,33 +1098,33 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11803
+          "views": 10960
         },
         {
           "label": "Computador",
-          "views": 552
+          "views": 508
         },
         {
           "label": "TV",
-          "views": 350
+          "views": 331
         },
         {
           "label": "Tablet",
-          "views": 202
+          "views": 186
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 10721
+          "views": 9989
         },
         {
           "label": "Página de exibição",
-          "views": 1479
+          "views": 1381
         },
         {
           "label": "Explorar/Início",
-          "views": 710
+          "views": 618
         },
         {
           "label": "Incorporado em site",
@@ -1137,11 +1134,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 11751
+          "views": 10901
         },
         {
           "label": "Inscritos",
-          "views": 1160
+          "views": 1088
         }
       ]
     }
@@ -1204,28 +1201,6 @@
         "avgDuration": 13
       },
       {
-        "id": "7Pmw_bK9I-s",
-        "title": "Caminho 137 — Santa Pureza | São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/7Pmw_bK9I-s/mqdefault.jpg",
-        "views": 793,
-        "likes": 30,
-        "comments": 2,
-        "minutes": 50,
-        "subsGained": 3,
-        "avgDuration": 11
-      },
-      {
-        "id": "AxUKvnrYrSA",
-        "title": "Caminho 138 — Santa Pureza | São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/AxUKvnrYrSA/mqdefault.jpg",
-        "views": 772,
-        "likes": 45,
-        "comments": 1,
-        "minutes": 89,
-        "subsGained": 2,
-        "avgDuration": 21
-      },
-      {
         "id": "6x_sG_e9kAE",
         "title": "Caminho 139 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/6x_sG_e9kAE/mqdefault.jpg",
@@ -1246,6 +1221,17 @@
         "minutes": 22,
         "subsGained": 0,
         "avgDuration": 10
+      },
+      {
+        "id": "AxUKvnrYrSA",
+        "title": "Caminho 138 — Santa Pureza | São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/AxUKvnrYrSA/mqdefault.jpg",
+        "views": 605,
+        "likes": 35,
+        "comments": 1,
+        "minutes": 50,
+        "subsGained": 2,
+        "avgDuration": 14
       },
       {
         "id": "7QN9COshEx0",
@@ -1270,6 +1256,17 @@
         "avgDuration": 16
       },
       {
+        "id": "7Pmw_bK9I-s",
+        "title": "Caminho 137 — Santa Pureza | São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/7Pmw_bK9I-s/mqdefault.jpg",
+        "views": 497,
+        "likes": 18,
+        "comments": 2,
+        "minutes": 31,
+        "subsGained": 2,
+        "avgDuration": 10
+      },
+      {
         "id": "bZq73PlLr6g",
         "title": "Caminho 140 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/bZq73PlLr6g/mqdefault.jpg",
@@ -1284,12 +1281,12 @@
         "id": "sFxJtXIKQBE",
         "title": "Vida de Oração (Parte 1) — Amigos de Deus | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/sFxJtXIKQBE/mqdefault.jpg",
-        "views": 387,
-        "likes": 44,
+        "views": 323,
+        "likes": 35,
         "comments": 1,
-        "minutes": 794,
-        "subsGained": 13,
-        "avgDuration": 201
+        "minutes": 693,
+        "subsGained": 10,
+        "avgDuration": 208
       },
       {
         "id": "lhbL0Gmub7g",
@@ -1306,12 +1303,12 @@
         "id": "CAb5VIfJ3qI",
         "title": "O TEU TRABALHO PODE SER ORAÇÃO: O SEGREDO DE NAZARÉ | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/CAb5VIfJ3qI/mqdefault.jpg",
-        "views": 226,
+        "views": 221,
         "likes": 11,
         "comments": 0,
-        "minutes": 414,
+        "minutes": 393,
         "subsGained": 3,
-        "avgDuration": 279
+        "avgDuration": 274
       }
     ]
   },
@@ -1474,37 +1471,33 @@
         "20261024"
       ]
     ],
-    "7Pmw_bK9I-s": [
+    "6x_sG_e9kAE": [
       [
-        296,
-        "20260927"
-      ],
-      [
-        329,
+        11,
         "20260928"
       ],
       [
-        68,
+        229,
         "20260929"
       ],
       [
-        38,
+        357,
         "20260930"
       ],
       [
-        10,
+        51,
         "20261001"
       ],
       [
-        1,
+        20,
         "20261002"
       ],
       [
-        2,
+        8,
         "20261003"
       ],
       [
-        4,
+        0,
         "20261004"
       ],
       [
@@ -1512,7 +1505,7 @@
         "20261005"
       ],
       [
-        7,
+        8,
         "20261006"
       ],
       [
@@ -1520,7 +1513,7 @@
         "20261007"
       ],
       [
-        2,
+        0,
         "20261008"
       ],
       [
@@ -1536,39 +1529,39 @@
         "20261011"
       ],
       [
-        0,
+        2,
         "20261012"
       ],
       [
-        5,
+        0,
         "20261013"
       ],
       [
-        4,
+        0,
         "20261014"
       ],
       [
-        5,
+        0,
         "20261015"
       ],
       [
-        0,
+        2,
         "20261016"
       ],
       [
-        1,
+        0,
         "20261017"
       ],
       [
-        3,
+        0,
         "20261018"
       ],
       [
-        1,
+        0,
         "20261019"
       ],
       [
-        4,
+        2,
         "20261020"
       ],
       [
@@ -1576,15 +1569,15 @@
         "20261021"
       ],
       [
-        2,
+        0,
         "20261022"
       ],
       [
-        0,
+        5,
         "20261023"
       ],
       [
-        3,
+        0,
         "20261024"
       ]
     ]
@@ -1593,7 +1586,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-26T23:35:34.165Z",
+      "generatedAt": "2026-10-27T02:24:32.692Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1603,7 +1596,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-26T23:35:34.165Z",
+      "generatedAt": "2026-10-27T02:24:32.692Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
