@@ -13,6 +13,7 @@
 //   of_reception   balcão da recepção com 2 monitores e 2 telefones (as recepcionistas sentam atrás)
 //   of_conf_table  mesa de reunião comprida (Grupo Lisieux), com notebooks, papéis e xícaras
 //   lg_mop / lg_bucket   rodo e balde do pessoal da limpeza
+//   dc_tv_play     TV de parede com um vídeo no ar (botão de play vermelho): os canais de vídeo das empresas
 // Âncoras como em sprites-lounge.js: piso = centro da base; parede = centro da base, com o y em LISIEUX_LOUNGE.wallY.
 (function(){
   "use strict";
@@ -324,6 +325,24 @@
     "..66666.."
   ], 4, 6);
 
+  // ---------- TV de parede com vídeo (24×18): moldura grafite, tela azul-noite, play vermelho e barra de progresso ----------
+  (function(){
+    var g = grid(24, 18);
+    rect(g, 0, 0, 24, 18, "k");
+    rect(g, 1, 1, 22, 16, "M");
+    rect(g, 1, 1, 22, 1, "Q"); rect(g, 1, 1, 1, 15, "Q");
+    rect(g, 2, 2, 20, 12, "k");
+    rect(g, 3, 3, 18, 10, "x");
+    rect(g, 7, 4, 10, 7, "r");
+    rect(g, 8, 4, 8, 1, "R");
+    [[7, 4], [16, 4], [7, 10], [16, 10]].forEach(function(c){ px(g, c[0], c[1], "x"); });
+    [1, 2, 3, 2, 1].forEach(function(n, j){ rect(g, 11, 5 + j, n, 1, "w"); });
+    rect(g, 4, 12, 16, 1, "j");
+    rect(g, 4, 12, 6, 1, "r"); px(g, 10, 12, "w");
+    rect(g, 10, 15, 4, 1, "k"); px(g, 20, 15, "G");
+    def("dc_tv_play", out(g), 12, 17);
+  })();
+
   // ---------- sofá vertical virado para o leste (espelho do lg_sofa_v de sprites-lounge.js) ----------
   if(SP.lg_sofa_v){
     var v = SP.lg_sofa_v;
@@ -333,5 +352,5 @@
   // altura da base dos itens de parede (0 = topo do cap da parede; rodapé em y=31)
   var LG = window.LISIEUX_LOUNGE;
   if(LG && LG.wallY){ LG.wallY.dc_flag_br = 25; LG.wallY.dc_aparecida = 29; LG.wallY.dc_crucifix = 26; LG.wallY.dc_sagrado = 24;
-                      LG.wallY.dc_flag_br_big = 29; LG.wallY.dc_flag_va = 29; }
+                      LG.wallY.dc_flag_br_big = 29; LG.wallY.dc_flag_va = 29; LG.wallY.dc_tv_play = 27; }
 })();

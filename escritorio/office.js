@@ -524,8 +524,8 @@
     });
     TOCOS.forEach(function(tc){ for(var y=tc.y0; y<tc.y1; y+=TILE) PX.draw(ctx, "of_wall_side", tc.x, y); });
 
-    // placas das empresas + quadros nas sobras
-    var SIDE = [["dc_paint_a", "dc_paint_b"], ["dc_paint_b", "dc_board"], ["dc_board_pie", "dc_paint_a"], ["dc_paint_a", "dc_tv"],
+    // placas das empresas + quadros nas sobras (a TV com play marca canal de vídeo: Minha Autoestrada para o Céu, no Apostolado)
+    var SIDE = [["dc_paint_a", "dc_paint_b"], ["dc_tv_play", "dc_board"], ["dc_board_pie", "dc_paint_a"], ["dc_paint_a", "dc_tv"],
                 ["dc_paint_b", "dc_paint_a"], ["dc_board", "dc_paint_b"], ["dc_paint_a", "dc_board_pie"], ["dc_paint_b", "dc_paint_a"]];
     BLOCKS.forEach(function(cid, bi){
       var band = bi<4 ? 0 : 1, bx = BX[bi%4]*TILE, top = band ? 144 : 0;
@@ -556,7 +556,7 @@
     // ala 09 Blogs: placa da empresa sobre a mesa de pauta + uma placa por blog, sobre a sua fileira
     var f9 = cmap.f9 || { num:9, short:"BLOGS" };
     drawSign(ctx, 1032, 0, f9.short, (f9.num<10 ? "0" : "")+f9.num);
-    var BSIDE = ["dc_board", "dc_paint_a", "dc_paint_b", "dc_board_pie", "dc_paint_a", "dc_tv", "dc_paint_b"];
+    var BSIDE = ["dc_board", "dc_paint_a", "dc_paint_b", "dc_tv_play", "dc_paint_a", "dc_tv", "dc_paint_b"];   // Política Diária: TV do canal no YouTube
     BLOG_LAYOUT.forEach(function(b, i){
       var bl = R.BLOGS.filter(function(x){ return x.key===b.key; })[0], bx = b.x0*TILE, wdt = 48*b.n;
       if(!bl) return;

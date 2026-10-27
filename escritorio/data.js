@@ -271,6 +271,7 @@
     { id:"st-joaozinho", name:"Joãozinho", role:"Sócio · São Josemaría Escrivá",       company:"f2", kind:"socio", task:"Reunião do Grupo Lisieux" },
     { id:"st-caio",      name:"Caio",      role:"Sócio · Política Diária, diplomata",  company:"f9", blog:"politica", kind:"socio", task:"Reunião do Grupo Lisieux" },
     { id:"st-penido",    name:"Penido",    role:"Sócio · Escrivá Todo Dia",            company:"f2", kind:"socio", task:"Reunião do Grupo Lisieux" },
+    { id:"st-ciro",      name:"Ciro",      role:"Sócio · Contos de Fence",             company:"f1", kind:"socio", task:"Reunião do Grupo Lisieux" },
     { id:"st-aline",     name:"Aline",     role:"Recepcionista",                       company:"central", kind:"recepcao", task:"Atendendo o telefone e a agenda" },
     { id:"st-carol",     name:"Carol",     role:"Recepcionista",                       company:"central", kind:"recepcao", task:"Atendendo o telefone e a agenda" },
     { id:"st-cida",      name:"Dona Cida", role:"Limpeza",                             company:"central", kind:"limpeza", task:"Limpando o escritório" },
@@ -314,6 +315,7 @@
     "st-joaozinho": { skin:"#fbc2a6", hair:"#a46533", hairStyle:"messy", shirt:"#dfe0ea", jacket:"#4b5a7a", pants:"#393647" },
     "st-caio":      { skin:"#a77264", hair:"#403f4d", hairStyle:"buzz", shirt:"#dfe0ea", jacket:"#3c4878", pants:"#3c4878" },
     "st-penido":    { skin:"#f0b29a", hair:"#5a4340", hairStyle:"side-part", shirt:"#dfe0ea", jacket:"#5b422c", pants:"#393647" },
+    "st-ciro":      { skin:"#fbc2a6", hair:"#815d44", hairStyle:"curly", shirt:"#dfe0ea", jacket:"#863c3d", pants:"#393647" },
     // recepção (blusa branca e saia azul-marinho) e limpeza (uniforme azul-claro)
     "st-aline":     { skin:"#f0b29a", hair:"#403f4d", hairStyle:"ponytail", shirt:"#dfe0ea", pants:"#3c4878", skirt:true },
     "st-carol":     { skin:"#fbc2a6", hair:"#a46533", hairStyle:"bob", shirt:"#dfe0ea", pants:"#3c4878", skirt:true },
