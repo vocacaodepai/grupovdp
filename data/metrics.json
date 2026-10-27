@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T19:36:02.305Z",
+  "generatedAt": "2026-10-27T23:08:44.270Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -701,7 +701,7 @@
         "20261026"
       ],
       [
-        "828",
+        "832",
         "20261027"
       ]
     ]
@@ -709,8 +709,8 @@
   "detailRows": {
     "2.2": [
       [
-        1009,
-        335,
+        1029,
+        344,
         59,
         10,
         1,
@@ -731,7 +731,7 @@
         "20260929"
       ],
       [
-        680,
+        681,
         329,
         85,
         7,
@@ -907,8 +907,8 @@
         "20261015"
       ],
       [
-        680,
-        77,
+        685,
+        74,
         32,
         3,
         1,
@@ -940,7 +940,7 @@
         "20261018"
       ],
       [
-        271,
+        274,
         70,
         63,
         1,
@@ -1621,7 +1621,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-27T19:36:02.352Z",
+      "generatedAt": "2026-10-27T23:08:44.328Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1631,7 +1631,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-27T19:36:02.352Z",
+      "generatedAt": "2026-10-27T23:08:44.328Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
