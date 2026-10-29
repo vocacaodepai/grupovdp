@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T20:29:09.629Z",
+  "generatedAt": "2026-10-29T00:18:10.175Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -153,6 +153,10 @@
       [
         "8",
         "20261028"
+      ],
+      [
+        "8",
+        "20261029"
       ]
     ],
     "2.1": [
@@ -711,24 +715,17 @@
       [
         "834",
         "20261028"
+      ],
+      [
+        "834",
+        "20261029"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
       [
-        572,
-        237,
-        72,
-        2,
-        1,
-        42,
-        1,
-        7,
-        "20260929"
-      ],
-      [
-        680,
+        681,
         329,
         85,
         7,
@@ -904,8 +901,8 @@
         "20261015"
       ],
       [
-        680,
-        77,
+        685,
+        74,
         32,
         3,
         1,
@@ -937,7 +934,7 @@
         "20261018"
       ],
       [
-        271,
+        274,
         70,
         63,
         1,
@@ -1031,35 +1028,35 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 9838
+          "views": 9475
         },
         {
           "label": "Busca no YouTube",
-          "views": 1228
+          "views": 1159
         },
         {
           "label": "Inscritos (feed)",
-          "views": 844
+          "views": 803
         },
         {
           "label": "Vídeos relacionados",
-          "views": 447
-        },
-        {
-          "label": "Notificações",
-          "views": 260
+          "views": 405
         },
         {
           "label": "Página do canal",
-          "views": 239
+          "views": 226
         },
         {
-          "label": "Link externo",
-          "views": 59
+          "label": "Notificações",
+          "views": 226
         },
         {
           "label": "Outra página do YouTube",
           "views": 54
+        },
+        {
+          "label": "Link externo",
+          "views": 53
         }
       ]
     }
@@ -1069,41 +1066,41 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 33.8
+          "pct": 33.6
         },
         {
           "label": "65+ · Homens",
-          "pct": 25.1
+          "pct": 23.6
         },
         {
           "label": "35-44 · Homens",
-          "pct": 9.2
+          "pct": 9.6
         },
         {
           "label": "55-64 · Mulheres",
-          "pct": 7.3
+          "pct": 7.6
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 6.6
+          "pct": 6.9
         },
         {
           "label": "45-54 · Homens",
-          "pct": 5.6
+          "pct": 5.8
         },
         {
           "label": "55-64 · Homens",
-          "pct": 5.3
+          "pct": 5.5
         },
         {
           "label": "45-54 · Mulheres",
-          "pct": 4.2
+          "pct": 4.4
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 10574
+          "views": 10087
         },
         {
           "label": "Portugal",
@@ -1117,43 +1114,43 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11957
+          "views": 11440
         },
         {
           "label": "Computador",
-          "views": 475
+          "views": 447
         },
         {
           "label": "TV",
-          "views": 363
+          "views": 340
         },
         {
           "label": "Tablet",
-          "views": 215
+          "views": 211
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11109
+          "views": 10653
         },
         {
           "label": "Página de exibição",
-          "views": 1323
+          "views": 1236
         },
         {
           "label": "Explorar/Início",
-          "views": 582
+          "views": 553
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 11914
+          "views": 11444
         },
         {
           "label": "Inscritos",
-          "views": 1100
+          "views": 998
         }
       ]
     }
@@ -1238,17 +1235,6 @@
         "avgDuration": 9
       },
       {
-        "id": "6x_sG_e9kAE",
-        "title": "Caminho 139 - São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/6x_sG_e9kAE/mqdefault.jpg",
-        "views": 705,
-        "likes": 62,
-        "comments": 4,
-        "minutes": 50,
-        "subsGained": 2,
-        "avgDuration": 13
-      },
-      {
         "id": "l6wTDPqi5lY",
         "title": "Coração — Ponto 148 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/l6wTDPqi5lY/mqdefault.jpg",
@@ -1282,6 +1268,17 @@
         "avgDuration": 16
       },
       {
+        "id": "6x_sG_e9kAE",
+        "title": "Caminho 139 - São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/6x_sG_e9kAE/mqdefault.jpg",
+        "views": 476,
+        "likes": 43,
+        "comments": 4,
+        "minutes": 36,
+        "subsGained": 2,
+        "avgDuration": 13
+      },
+      {
         "id": "bZq73PlLr6g",
         "title": "Caminho 140 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/bZq73PlLr6g/mqdefault.jpg",
@@ -1291,17 +1288,6 @@
         "minutes": 37,
         "subsGained": 1,
         "avgDuration": 14
-      },
-      {
-        "id": "sFxJtXIKQBE",
-        "title": "Vida de Oração (Parte 1) — Amigos de Deus | São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/sFxJtXIKQBE/mqdefault.jpg",
-        "views": 292,
-        "likes": 29,
-        "comments": 1,
-        "minutes": 587,
-        "subsGained": 8,
-        "avgDuration": 201
       },
       {
         "id": "lhbL0Gmub7g",
@@ -1315,15 +1301,26 @@
         "avgDuration": 14
       },
       {
+        "id": "sFxJtXIKQBE",
+        "title": "Vida de Oração (Parte 1) — Amigos de Deus | São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/sFxJtXIKQBE/mqdefault.jpg",
+        "views": 253,
+        "likes": 25,
+        "comments": 1,
+        "minutes": 524,
+        "subsGained": 6,
+        "avgDuration": 214
+      },
+      {
         "id": "7RGfTpN1Vtc",
         "title": "A História de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 203,
+        "views": 191,
         "likes": 12,
         "comments": 0,
-        "minutes": 85,
+        "minutes": 80,
         "subsGained": 0,
-        "avgDuration": 63
+        "avgDuration": 65
       }
     ]
   },
@@ -1541,7 +1538,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-28T20:29:09.675Z",
+      "generatedAt": "2026-10-29T00:18:10.216Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1551,7 +1548,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-28T20:29:09.675Z",
+      "generatedAt": "2026-10-29T00:18:10.216Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
