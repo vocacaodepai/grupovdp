@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T15:35:43.872Z",
+  "generatedAt": "2026-10-30T23:43:02.312Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -725,7 +725,7 @@
         "20261029"
       ],
       [
-        "837",
+        "842",
         "20261030"
       ]
     ]
@@ -898,8 +898,8 @@
         "20261015"
       ],
       [
-        680,
-        77,
+        685,
+        74,
         32,
         3,
         1,
@@ -931,7 +931,7 @@
         "20261018"
       ],
       [
-        271,
+        274,
         70,
         63,
         1,
@@ -986,7 +986,7 @@
         "20261023"
       ],
       [
-        263,
+        269,
         98,
         72,
         2,
@@ -1028,6 +1028,17 @@
         1,
         3,
         "20261027"
+      ],
+      [
+        1089,
+        110,
+        28,
+        2,
+        0,
+        65,
+        1,
+        0,
+        "20261028"
       ]
     ]
   },
@@ -1036,31 +1047,31 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10008
+          "views": 11023
         },
         {
           "label": "Busca no YouTube",
-          "views": 1147
+          "views": 1188
         },
         {
           "label": "Inscritos (feed)",
-          "views": 734
+          "views": 738
         },
         {
           "label": "Vídeos relacionados",
-          "views": 350
+          "views": 362
         },
         {
           "label": "Notificações",
-          "views": 235
+          "views": 243
         },
         {
           "label": "Página do canal",
-          "views": 213
+          "views": 221
         },
         {
           "label": "Outra página do YouTube",
-          "views": 56
+          "views": 57
         },
         {
           "label": "Link externo",
@@ -1074,45 +1085,45 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 33.6
+          "pct": 34.4
         },
         {
           "label": "65+ · Homens",
-          "pct": 24.4
+          "pct": 24.2
         },
         {
           "label": "55-64 · Mulheres",
-          "pct": 9.9
-        },
-        {
-          "label": "35-44 · Homens",
-          "pct": 9.2
+          "pct": 11.4
         },
         {
           "label": "55-64 · Homens",
-          "pct": 7.4
+          "pct": 8.5
+        },
+        {
+          "label": "35-44 · Homens",
+          "pct": 8
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 6.6
+          "pct": 5.7
         },
         {
           "label": "45-54 · Homens",
-          "pct": 3.5
+          "pct": 3.1
         },
         {
           "label": "13-17 · Homens",
-          "pct": 2.9
+          "pct": 2.5
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 10428
+          "views": 11365
         },
         {
           "label": "Portugal",
-          "views": 162
+          "views": 217
         },
         {
           "label": "ES",
@@ -1122,43 +1133,43 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11834
+          "views": 12842
         },
         {
           "label": "Computador",
-          "views": 432
+          "views": 462
         },
         {
           "label": "TV",
-          "views": 347
+          "views": 366
         },
         {
           "label": "Tablet",
-          "views": 221
+          "views": 252
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11177
+          "views": 12234
         },
         {
           "label": "Página de exibição",
-          "views": 1158
+          "views": 1189
         },
         {
           "label": "Explorar/Início",
-          "views": 501
+          "views": 502
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 11839
+          "views": 12897
         },
         {
           "label": "Inscritos",
-          "views": 997
+          "views": 1028
         }
       ]
     }
@@ -1166,13 +1177,24 @@
   "itemVideos": {
     "2.2": [
       {
+        "id": "-YXQ2Cyx6ig",
+        "title": "Coração — Ponto 155 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/-YXQ2Cyx6ig/mqdefault.jpg",
+        "views": 1233,
+        "likes": 108,
+        "comments": 1,
+        "minutes": 47,
+        "subsGained": 7,
+        "avgDuration": 8
+      },
+      {
         "id": "ta_1h2Ns24Q",
         "title": "Coração — Ponto 152 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/ta_1h2Ns24Q/mqdefault.jpg",
-        "views": 1220,
+        "views": 1222,
         "likes": 89,
         "comments": 0,
-        "minutes": 80,
+        "minutes": 81,
         "subsGained": 6,
         "avgDuration": 18
       },
@@ -1188,32 +1210,32 @@
         "avgDuration": 12
       },
       {
-        "id": "-YXQ2Cyx6ig",
-        "title": "Coração — Ponto 155 | Caminho de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/-YXQ2Cyx6ig/mqdefault.jpg",
-        "views": 1145,
-        "likes": 103,
-        "comments": 0,
-        "minutes": 44,
-        "subsGained": 6,
-        "avgDuration": 8
-      },
-      {
         "id": "veJQHaTx6co",
         "title": "Coração — Ponto 154 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/veJQHaTx6co/mqdefault.jpg",
-        "views": 1061,
+        "views": 1065,
         "likes": 68,
         "comments": 0,
-        "minutes": 72,
+        "minutes": 73,
         "subsGained": 3,
         "avgDuration": 19
+      },
+      {
+        "id": "VOZW4M3c4JM",
+        "title": "Coração — Ponto 156 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/VOZW4M3c4JM/mqdefault.jpg",
+        "views": 966,
+        "likes": 65,
+        "comments": 1,
+        "minutes": 48,
+        "subsGained": 5,
+        "avgDuration": 13
       },
       {
         "id": "vW6rnl3gfyw",
         "title": "Coração — Ponto 151 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/vW6rnl3gfyw/mqdefault.jpg",
-        "views": 904,
+        "views": 905,
         "likes": 62,
         "comments": 0,
         "minutes": 44,
@@ -1254,15 +1276,15 @@
         "avgDuration": 10
       },
       {
-        "id": "VOZW4M3c4JM",
-        "title": "Coração — Ponto 156 | Caminho de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/VOZW4M3c4JM/mqdefault.jpg",
-        "views": 566,
-        "likes": 44,
-        "comments": 1,
-        "minutes": 28,
-        "subsGained": 4,
-        "avgDuration": 14
+        "id": "oJSjV_1pqw0",
+        "title": "Coração — Ponto 157 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/oJSjV_1pqw0/mqdefault.jpg",
+        "views": 556,
+        "likes": 35,
+        "comments": 0,
+        "minutes": 21,
+        "subsGained": 0,
+        "avgDuration": 9
       },
       {
         "id": "7QN9COshEx0",
@@ -1290,7 +1312,7 @@
         "id": "bZq73PlLr6g",
         "title": "Caminho 140 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/bZq73PlLr6g/mqdefault.jpg",
-        "views": 423,
+        "views": 425,
         "likes": 41,
         "comments": 2,
         "minutes": 33,
@@ -1312,27 +1334,30 @@
         "id": "7RGfTpN1Vtc",
         "title": "A História de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 196,
-        "likes": 12,
+        "views": 203,
+        "likes": 13,
         "comments": 0,
-        "minutes": 78,
+        "minutes": 82,
         "subsGained": 0,
-        "avgDuration": 61
-      },
-      {
-        "id": "CAb5VIfJ3qI",
-        "title": "O TEU TRABALHO PODE SER ORAÇÃO: O SEGREDO DE NAZARÉ | SÃO JOSEMARIA ESCRIVÁ",
-        "thumb": "https://i.ytimg.com/vi/CAb5VIfJ3qI/mqdefault.jpg",
-        "views": 187,
-        "likes": 8,
-        "comments": 0,
-        "minutes": 310,
-        "subsGained": 0,
-        "avgDuration": 255
+        "avgDuration": 62
       }
     ]
   },
   "videoDaily": {
+    "-YXQ2Cyx6ig": [
+      [
+        768,
+        "20261026"
+      ],
+      [
+        377,
+        "20261027"
+      ],
+      [
+        88,
+        "20261028"
+      ]
+    ],
     "ta_1h2Ns24Q": [
       [
         1104,
@@ -1353,6 +1378,10 @@
       [
         10,
         "20261027"
+      ],
+      [
+        2,
+        "20261028"
       ]
     ],
     "NW_VDiYDzmo": [
@@ -1399,16 +1428,10 @@
       [
         1,
         "20261027"
-      ]
-    ],
-    "-YXQ2Cyx6ig": [
-      [
-        768,
-        "20261026"
       ],
       [
-        377,
-        "20261027"
+        0,
+        "20261028"
       ]
     ],
     "veJQHaTx6co": [
@@ -1423,6 +1446,20 @@
       [
         81,
         "20261027"
+      ],
+      [
+        4,
+        "20261028"
+      ]
+    ],
+    "VOZW4M3c4JM": [
+      [
+        566,
+        "20261027"
+      ],
+      [
+        400,
+        "20261028"
       ]
     ],
     "vW6rnl3gfyw": [
@@ -1449,36 +1486,10 @@
       [
         1,
         "20261027"
-      ]
-    ],
-    "hVyCUSfYgew": [
-      [
-        184,
-        "20261021"
       ],
       [
-        496,
-        "20261022"
-      ],
-      [
-        143,
-        "20261023"
-      ],
-      [
-        32,
-        "20261024"
-      ],
-      [
-        7,
-        "20261025"
-      ],
-      [
-        3,
-        "20261026"
-      ],
-      [
-        0,
-        "20261027"
+        1,
+        "20261028"
       ]
     ]
   },
@@ -1486,7 +1497,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-30T15:35:43.920Z",
+      "generatedAt": "2026-10-30T23:43:02.352Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1496,7 +1507,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-30T15:35:43.920Z",
+      "generatedAt": "2026-10-30T23:43:02.352Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
