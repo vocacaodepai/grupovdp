@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T02:31:04.543Z",
+  "generatedAt": "2026-10-30T15:35:43.872Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -725,7 +725,7 @@
         "20261029"
       ],
       [
-        "836",
+        "837",
         "20261030"
       ]
     ]
@@ -898,8 +898,8 @@
         "20261015"
       ],
       [
-        685,
-        74,
+        680,
+        77,
         32,
         3,
         1,
@@ -931,7 +931,7 @@
         "20261018"
       ],
       [
-        274,
+        271,
         70,
         63,
         1,
@@ -986,7 +986,7 @@
         "20261023"
       ],
       [
-        269,
+        263,
         98,
         72,
         2,
@@ -997,7 +997,7 @@
         "20261024"
       ],
       [
-        679,
+        678,
         51,
         25,
         2,
@@ -1036,11 +1036,11 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10022
+          "views": 10008
         },
         {
           "label": "Busca no YouTube",
-          "views": 1146
+          "views": 1147
         },
         {
           "label": "Inscritos (feed)",
@@ -1122,11 +1122,11 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11846
+          "views": 11834
         },
         {
           "label": "Computador",
-          "views": 433
+          "views": 432
         },
         {
           "label": "TV",
@@ -1140,7 +1140,7 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11190
+          "views": 11177
         },
         {
           "label": "Página de exibição",
@@ -1154,7 +1154,7 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 11852
+          "views": 11839
         },
         {
           "label": "Inscritos",
@@ -1202,7 +1202,7 @@
         "id": "veJQHaTx6co",
         "title": "Coração — Ponto 154 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/veJQHaTx6co/mqdefault.jpg",
-        "views": 1062,
+        "views": 1061,
         "likes": 68,
         "comments": 0,
         "minutes": 72,
@@ -1413,7 +1413,7 @@
     ],
     "veJQHaTx6co": [
       [
-        489,
+        488,
         "20261025"
       ],
       [
@@ -1486,7 +1486,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-30T02:31:04.581Z",
+      "generatedAt": "2026-10-30T15:35:43.920Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1496,7 +1496,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-30T02:31:04.581Z",
+      "generatedAt": "2026-10-30T15:35:43.920Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
