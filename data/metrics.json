@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T08:56:43.272Z",
+  "generatedAt": "2026-10-31T15:10:30.385Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -895,8 +895,8 @@
         "20261015"
       ],
       [
-        685,
-        74,
+        680,
+        77,
         32,
         3,
         1,
@@ -928,7 +928,7 @@
         "20261018"
       ],
       [
-        274,
+        271,
         70,
         63,
         1,
@@ -983,7 +983,7 @@
         "20261023"
       ],
       [
-        269,
+        263,
         98,
         72,
         2,
@@ -1005,7 +1005,7 @@
         "20261025"
       ],
       [
-        1386,
+        1373,
         155,
         31,
         6,
@@ -1044,7 +1044,7 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10649
+          "views": 10639
         },
         {
           "label": "Busca no YouTube",
@@ -1068,7 +1068,7 @@
         },
         {
           "label": "Outra página do YouTube",
-          "views": 54
+          "views": 53
         },
         {
           "label": "Link externo",
@@ -1130,7 +1130,7 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12258
+          "views": 12247
         },
         {
           "label": "Computador",
@@ -1148,7 +1148,7 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11727
+          "views": 11716
         },
         {
           "label": "Página de exibição",
@@ -1162,11 +1162,11 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12369
+          "views": 12360
         },
         {
           "label": "Inscritos",
-          "views": 933
+          "views": 931
         }
       ]
     }
@@ -1494,7 +1494,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-31T08:56:43.311Z",
+      "generatedAt": "2026-10-31T15:10:30.434Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1504,7 +1504,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-31T08:56:43.311Z",
+      "generatedAt": "2026-10-31T15:10:30.434Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
