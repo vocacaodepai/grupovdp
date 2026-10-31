@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T23:43:02.312Z",
+  "generatedAt": "2026-10-31T02:44:58.480Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -161,6 +161,10 @@
       [
         "8",
         "20261030"
+      ],
+      [
+        "8",
+        "20261031"
       ]
     ],
     "2.1": [
@@ -727,22 +731,15 @@
       [
         "842",
         "20261030"
+      ],
+      [
+        "842",
+        "20261031"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        623,
-        203,
-        49,
-        3,
-        0,
-        43,
-        3,
-        4,
-        "20261001"
-      ],
       [
         147,
         47,
@@ -1047,35 +1044,35 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 11023
+          "views": 10649
         },
         {
           "label": "Busca no YouTube",
-          "views": 1188
+          "views": 1129
         },
         {
           "label": "Inscritos (feed)",
-          "views": 738
+          "views": 688
         },
         {
           "label": "Vídeos relacionados",
-          "views": 362
+          "views": 321
         },
         {
           "label": "Notificações",
-          "views": 243
+          "views": 215
         },
         {
           "label": "Página do canal",
-          "views": 221
+          "views": 160
         },
         {
           "label": "Outra página do YouTube",
-          "views": 57
+          "views": 54
         },
         {
           "label": "Link externo",
-          "views": 56
+          "views": 50
         }
       ]
     }
@@ -1085,41 +1082,41 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 34.4
+          "pct": 33.9
         },
         {
           "label": "65+ · Homens",
-          "pct": 24.2
+          "pct": 23.1
         },
         {
           "label": "55-64 · Mulheres",
-          "pct": 11.4
+          "pct": 11.8
         },
         {
           "label": "55-64 · Homens",
-          "pct": 8.5
+          "pct": 8.8
         },
         {
           "label": "35-44 · Homens",
-          "pct": 8
+          "pct": 8.3
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 5.7
+          "pct": 5.9
         },
         {
           "label": "45-54 · Homens",
-          "pct": 3.1
+          "pct": 3.2
         },
         {
           "label": "13-17 · Homens",
-          "pct": 2.5
+          "pct": 2.6
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 11365
+          "views": 10821
         },
         {
           "label": "Portugal",
@@ -1133,43 +1130,43 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12842
+          "views": 12258
         },
         {
           "label": "Computador",
-          "views": 462
+          "views": 445
         },
         {
           "label": "TV",
-          "views": 366
+          "views": 347
         },
         {
           "label": "Tablet",
-          "views": 252
+          "views": 249
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 12234
+          "views": 11727
         },
         {
           "label": "Página de exibição",
-          "views": 1189
+          "views": 1103
         },
         {
           "label": "Explorar/Início",
-          "views": 502
+          "views": 472
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12897
+          "views": 12369
         },
         {
           "label": "Inscritos",
-          "views": 1028
+          "views": 933
         }
       ]
     }
@@ -1309,17 +1306,6 @@
         "avgDuration": 16
       },
       {
-        "id": "bZq73PlLr6g",
-        "title": "Caminho 140 - São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/bZq73PlLr6g/mqdefault.jpg",
-        "views": 425,
-        "likes": 41,
-        "comments": 2,
-        "minutes": 33,
-        "subsGained": 1,
-        "avgDuration": 13
-      },
-      {
         "id": "lhbL0Gmub7g",
         "title": "Coração — Ponto 149 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/lhbL0Gmub7g/mqdefault.jpg",
@@ -1334,12 +1320,23 @@
         "id": "7RGfTpN1Vtc",
         "title": "A História de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 203,
-        "likes": 13,
+        "views": 197,
+        "likes": 12,
         "comments": 0,
-        "minutes": 82,
+        "minutes": 77,
         "subsGained": 0,
-        "avgDuration": 62
+        "avgDuration": 61
+      },
+      {
+        "id": "CAb5VIfJ3qI",
+        "title": "O TEU TRABALHO PODE SER ORAÇÃO: O SEGREDO DE NAZARÉ | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/CAb5VIfJ3qI/mqdefault.jpg",
+        "views": 174,
+        "likes": 8,
+        "comments": 0,
+        "minutes": 295,
+        "subsGained": 0,
+        "avgDuration": 269
       }
     ]
   },
@@ -1497,7 +1494,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-30T23:43:02.352Z",
+      "generatedAt": "2026-10-31T02:44:58.528Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1507,7 +1504,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-30T23:43:02.352Z",
+      "generatedAt": "2026-10-31T02:44:58.528Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
