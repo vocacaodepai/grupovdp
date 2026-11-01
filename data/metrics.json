@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T22:36:03.813Z",
+  "generatedAt": "2026-11-01T01:26:56.053Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -165,6 +165,10 @@
       [
         "8",
         "20261031"
+      ],
+      [
+        "8",
+        "20261101"
       ]
     ],
     "2.1": [
@@ -735,22 +739,15 @@
       [
         "842",
         "20261031"
+      ],
+      [
+        "842",
+        "20261101"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        147,
-        47,
-        47,
-        1,
-        0,
-        3,
-        0,
-        4,
-        "20261002"
-      ],
       [
         146,
         183,
@@ -1055,19 +1052,19 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10835
+          "views": 10803
         },
         {
           "label": "Busca no YouTube",
-          "views": 1179
+          "views": 1126
         },
         {
           "label": "Inscritos (feed)",
-          "views": 695
+          "views": 659
         },
         {
           "label": "Vídeos relacionados",
-          "views": 324
+          "views": 311
         },
         {
           "label": "Notificações",
@@ -1075,15 +1072,15 @@
         },
         {
           "label": "Página do canal",
-          "views": 178
+          "views": 172
         },
         {
           "label": "Outra página do YouTube",
-          "views": 54
+          "views": 52
         },
         {
           "label": "Link externo",
-          "views": 51
+          "views": 47
         }
       ]
     }
@@ -1127,7 +1124,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 11016
+          "views": 10911
         },
         {
           "label": "Portugal",
@@ -1141,43 +1138,43 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12508
+          "views": 12389
         },
         {
           "label": "Computador",
-          "views": 455
+          "views": 438
         },
         {
           "label": "TV",
-          "views": 352
+          "views": 350
         },
         {
           "label": "Tablet",
-          "views": 267
+          "views": 258
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11974
+          "views": 11901
         },
         {
           "label": "Página de exibição",
-          "views": 1135
+          "views": 1084
         },
         {
           "label": "Explorar/Início",
-          "views": 476
+          "views": 453
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12606
+          "views": 12482
         },
         {
           "label": "Inscritos",
-          "views": 979
+          "views": 956
         }
       ]
     }
@@ -1331,23 +1328,23 @@
         "id": "7RGfTpN1Vtc",
         "title": "A História de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 203,
+        "views": 192,
         "likes": 12,
         "comments": 0,
-        "minutes": 85,
+        "minutes": 84,
         "subsGained": 0,
-        "avgDuration": 65
+        "avgDuration": 67
       },
       {
-        "id": "CAb5VIfJ3qI",
-        "title": "O TEU TRABALHO PODE SER ORAÇÃO: O SEGREDO DE NAZARÉ | SÃO JOSEMARIA ESCRIVÁ",
-        "thumb": "https://i.ytimg.com/vi/CAb5VIfJ3qI/mqdefault.jpg",
-        "views": 174,
-        "likes": 8,
+        "id": "cd6Yp7ZTZk0",
+        "title": "Caminho 142 - São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/cd6Yp7ZTZk0/mqdefault.jpg",
+        "views": 169,
+        "likes": 18,
         "comments": 0,
-        "minutes": 295,
+        "minutes": 29,
         "subsGained": 0,
-        "avgDuration": 269
+        "avgDuration": 32
       }
     ]
   },
@@ -1529,7 +1526,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-10-31T22:36:03.860Z",
+      "generatedAt": "2026-11-01T01:26:56.098Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1539,7 +1536,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-10-31T22:36:03.860Z",
+      "generatedAt": "2026-11-01T01:26:56.098Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
