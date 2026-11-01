@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T01:26:56.053Z",
+  "generatedAt": "2026-11-01T07:56:47.918Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -892,8 +892,8 @@
         "20261015"
       ],
       [
-        685,
-        74,
+        680,
+        77,
         32,
         3,
         1,
@@ -925,7 +925,7 @@
         "20261018"
       ],
       [
-        274,
+        271,
         70,
         63,
         1,
@@ -980,7 +980,7 @@
         "20261023"
       ],
       [
-        269,
+        263,
         98,
         72,
         2,
@@ -1185,7 +1185,7 @@
         "id": "-YXQ2Cyx6ig",
         "title": "Coração — Ponto 155 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/-YXQ2Cyx6ig/mqdefault.jpg",
-        "views": 1265,
+        "views": 1263,
         "likes": 115,
         "comments": 1,
         "minutes": 49,
@@ -1229,7 +1229,7 @@
         "id": "VOZW4M3c4JM",
         "title": "Coração — Ponto 156 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/VOZW4M3c4JM/mqdefault.jpg",
-        "views": 984,
+        "views": 975,
         "likes": 66,
         "comments": 1,
         "minutes": 49,
@@ -1355,7 +1355,7 @@
         "20261026"
       ],
       [
-        377,
+        375,
         "20261027"
       ],
       [
@@ -1475,7 +1475,7 @@
     ],
     "VOZW4M3c4JM": [
       [
-        566,
+        557,
         "20261027"
       ],
       [
@@ -1526,7 +1526,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-01T01:26:56.098Z",
+      "generatedAt": "2026-11-01T07:56:47.962Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1536,7 +1536,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-01T01:26:56.098Z",
+      "generatedAt": "2026-11-01T07:56:47.962Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
