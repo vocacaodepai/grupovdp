@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T22:53:08.821Z",
+  "generatedAt": "2026-11-02T02:00:11.170Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -169,6 +169,10 @@
       [
         "8",
         "20261101"
+      ],
+      [
+        "8",
+        "20261102"
       ]
     ],
     "2.1": [
@@ -743,22 +747,15 @@
       [
         "842",
         "20261101"
+      ],
+      [
+        "843",
+        "20261102"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        146,
-        183,
-        170,
-        2,
-        0,
-        10,
-        0,
-        2,
-        "20261003"
-      ],
       [
         82,
         54,
@@ -892,8 +889,8 @@
         "20261015"
       ],
       [
-        680,
-        77,
+        685,
+        74,
         32,
         3,
         1,
@@ -925,7 +922,7 @@
         "20261018"
       ],
       [
-        271,
+        274,
         70,
         63,
         1,
@@ -980,7 +977,7 @@
         "20261023"
       ],
       [
-        263,
+        269,
         98,
         72,
         2,
@@ -1024,8 +1021,8 @@
         "20261027"
       ],
       [
-        1089,
-        110,
+        1079,
+        109,
         28,
         2,
         0,
@@ -1063,35 +1060,35 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 11068
+          "views": 11059
         },
         {
           "label": "Busca no YouTube",
-          "views": 1165
+          "views": 1131
         },
         {
           "label": "Inscritos (feed)",
-          "views": 674
+          "views": 618
         },
         {
           "label": "Vídeos relacionados",
-          "views": 317
+          "views": 288
         },
         {
           "label": "Notificações",
-          "views": 242
+          "views": 231
         },
         {
           "label": "Página do canal",
-          "views": 172
+          "views": 170
         },
         {
           "label": "Outra página do YouTube",
-          "views": 53
+          "views": 52
         },
         {
           "label": "Link externo",
-          "views": 48
+          "views": 46
         }
       ]
     }
@@ -1135,57 +1132,53 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 11054
+          "views": 10995
         },
         {
           "label": "Portugal",
           "views": 368
-        },
-        {
-          "label": "ES",
-          "views": 14
         }
       ],
       "device": [
         {
           "label": "Celular",
-          "views": 12682
+          "views": 12563
         },
         {
           "label": "Computador",
-          "views": 462
+          "views": 451
         },
         {
           "label": "TV",
-          "views": 355
+          "views": 340
         },
         {
           "label": "Tablet",
-          "views": 274
+          "views": 273
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 12193
+          "views": 12158
         },
         {
           "label": "Página de exibição",
-          "views": 1120
+          "views": 1048
         },
         {
           "label": "Explorar/Início",
-          "views": 463
+          "views": 424
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12787
+          "views": 12663
         },
         {
           "label": "Inscritos",
-          "views": 989
+          "views": 967
         }
       ]
     }
@@ -1336,17 +1329,6 @@
         "avgDuration": 14
       },
       {
-        "id": "7RGfTpN1Vtc",
-        "title": "A História de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 206,
-        "likes": 12,
-        "comments": 0,
-        "minutes": 84,
-        "subsGained": 1,
-        "avgDuration": 63
-      },
-      {
         "id": "YH-tYLN1t14",
         "title": "Coração — Ponto 159 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/YH-tYLN1t14/mqdefault.jpg",
@@ -1356,6 +1338,17 @@
         "minutes": 14,
         "subsGained": 3,
         "avgDuration": 17
+      },
+      {
+        "id": "7RGfTpN1Vtc",
+        "title": "A História de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
+        "views": 199,
+        "likes": 11,
+        "comments": 0,
+        "minutes": 81,
+        "subsGained": 1,
+        "avgDuration": 63
       }
     ]
   },
@@ -1561,7 +1554,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-01T22:53:08.870Z",
+      "generatedAt": "2026-11-02T02:00:11.216Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1571,7 +1564,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-01T22:53:08.870Z",
+      "generatedAt": "2026-11-02T02:00:11.216Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
