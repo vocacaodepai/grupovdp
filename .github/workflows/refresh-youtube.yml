@@ -39,6 +39,12 @@ jobs:
           ADSENSE_REFRESH_TOKEN: ${{ secrets.ADSENSE_REFRESH_TOKEN }}
         run: node scripts/refresh-sites.mjs
 
+      - name: Buscar Instagram na Metricool
+        continue-on-error: true
+        env:
+          METRICOOL_TOKEN: ${{ secrets.METRICOOL_TOKEN }}
+        run: node scripts/refresh-metricool.mjs
+
       - name: Publicar se algo mudou
         run: |
           git config user.name "vdp-bot"

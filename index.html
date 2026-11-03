@@ -1419,7 +1419,7 @@
       ]},
       f3: { num:3, name:"Vocação de Mãe", category:"Maternidade", stage:0, notes:"", goal:{text:"",target:null}, items:[
         {id:"3.1", label:"Site", status:"pendente"},
-        {id:"3.2", label:"Instagram", status:"pendente"}
+        {id:"3.2", label:"Instagram", status:"pendente", source:{provider:"metricool", metrics:[{field:"IGEV01",label:"Seguidores IG"}]}}
       ]},
       f4: { num:4, name:"Pai de Negócios", category:"Finanças", stage:0, notes:"", goal:{text:"",target:null}, items:[
         {id:"4.1", label:"YouTube", status:"pendente"},
@@ -4723,6 +4723,13 @@
     var newFront = {};
     Object.keys(SEED_DATA.fronts).forEach(function(k){            // frente nova publicada (ex.: 09 Blogs) também aparece para quem já tem edições salvas
       if(!Object.prototype.hasOwnProperty.call(s.fronts, k)){ s.fronts[k] = JSON.parse(JSON.stringify(SEED_DATA.fronts[k])); newFront[k] = 1; }
+    });
+    Object.keys(SEED_DATA.fronts).forEach(function(k){             // fonte de métrica publicada depois (ex.: Instagram do Vocação de Mãe na Metricool) entra no item salvo igual ao seed
+      var f = s.fronts[k]; if(!f || newFront[k]) return;
+      SEED_DATA.fronts[k].items.forEach(function(src){
+        if(!src.source) return;
+        f.items.forEach(function(it){ if(it.id===src.id && !it.source && String(it.label||"").trim().toLowerCase()===src.label.toLowerCase()) it.source = JSON.parse(JSON.stringify(src.source)); });
+      });
     });
     SEED_ADDITIONS.forEach(function(a){                            // subprojeto novo publicado: entra uma vez, depois do vizinho do seed
       if(added.indexOf(a.id)>=0) return;
