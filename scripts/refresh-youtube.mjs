@@ -185,8 +185,37 @@ async function main() {
     videoDaily[vid] = rows.slice(idx).map(([date, v]) => [v, compactDate(date)]);
   }
 
+  // --- 4. Monetização: o que o Programa de Parcerias pede (horas longas em 12 meses, views de Shorts em 90 dias) e a receita ---
+  // Cada canal e cada leitura falham sozinhos: o erro fica registrado no próprio bloco e o resto segue.
+  const monetization = existing.monetization || {};
+  const ago = (days) => isoDate(new Date(today.getTime() - days * 86400000));
+  for (const [key, channel] of [["2.2", OPUS_DEI_CHANNEL], ["1.2", PAI_CHANNEL]]) {
+    const m = { asOf: end, subscribers: subsByChannel[channel] ?? null, errors: {} };
+    try {
+      const byType = await analytics(token, { ids: "channel==" + channel, startDate: ago(365), endDate: end,
+        metrics: "estimatedMinutesWatched,views", dimensions: "creatorContentType" });
+      let total = 0, shorts = 0;
+      for (const [type, minutes] of byType.rows || []) { total += Number(minutes) || 0; if (type === "SHORTS") shorts += Number(minutes) || 0; }
+      m.watchHours12m = Math.round((total - shorts) / 60);
+    } catch (e) { m.errors.watchHours = String(e.message).slice(0, 160); }
+    try {
+      const shortsRes = await analytics(token, { ids: "channel==" + channel, startDate: ago(90), endDate: end,
+        metrics: "views", dimensions: "creatorContentType" });
+      m.shortsViews90d = (shortsRes.rows || []).filter((r) => r[0] === "SHORTS").reduce((t, r) => t + (Number(r[1]) || 0), 0);
+    } catch (e) { m.errors.shortsViews = String(e.message).slice(0, 160); }
+    try {
+      const rev = await analytics(token, { ids: "channel==" + channel, startDate: ago(28), endDate: end, metrics: "estimatedRevenue" });
+      const rev12 = await analytics(token, { ids: "channel==" + channel, startDate: ago(365), endDate: end, metrics: "estimatedRevenue" });
+      m.revenue28d = Number(((rev.rows || [])[0] || [0])[0]) || 0;
+      m.revenue12m = Number(((rev12.rows || [])[0] || [0])[0]) || 0;
+      m.revenueCurrency = "USD";
+    } catch (e) { m.errors.revenue = String(e.message).slice(0, 160); }
+    monetization[key] = m;
+  }
+
   const merged = {
     ...existing,
+    monetization,
     generatedAt: new Date().toISOString(),
     snapshotRows,
     detailRows,

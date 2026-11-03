@@ -180,6 +180,19 @@
   .chart{ display:block; width:100%; height:auto; margin-top:6px; overflow:visible; }
   .chart text{ font:11px var(--mono); fill:var(--faint); }
   .bar .v{ white-space:nowrap; }
+  .mon-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(380px,1fr)); gap:12px; margin-top:12px; }
+  .goal{ margin-top:12px; }
+  .goal .gl{ display:flex; justify-content:space-between; gap:10px; font-size:13px; }
+  .goal .gl b{ font-weight:600; }
+  .goal .gt{ height:10px; background:var(--grid); border-radius:5px; overflow:hidden; margin-top:5px; }
+  .goal .gt i{ display:block; height:100%; background:var(--accent); border-radius:5px; }
+  .goal .gt i.ok{ background:var(--good); }
+  .goal .gn, .mon-card .gn{ font-size:12px; color:var(--muted); margin-top:3px; }
+  .mon-card h3 svg{ width:18px; height:18px; flex:none; }
+  .or{ font:500 11px var(--mono); color:var(--faint); text-transform:uppercase; letter-spacing:.08em; margin-top:10px; }
+  .earn{ margin-top:14px; padding:10px 12px; border-radius:10px; font-size:13px; }
+  .earn.yes{ background:var(--good-soft); color:var(--good); } .earn.no{ background:var(--off-soft); color:var(--muted); } .earn.unk{ background:var(--warn-soft); color:var(--warn); }
+  @media (max-width:560px){ .mon-grid{ grid-template-columns:1fr; } }
   @media (max-width:560px){ .charts{ grid-template-columns:1fr; } .bar{ grid-template-columns: 104px 1fr auto; } }
   .dots-legend{ display:flex; gap:14px; flex-wrap:wrap; font-size:12px; color:var(--muted); margin:8px 0 0; }
   .dots-legend span{ display:inline-flex; align-items:center; gap:6px; }
@@ -254,7 +267,7 @@
       blurb:"Paternidade católica: vídeos longos, cortes e textos.",
       parts:[{ name:"Contos de Fence", note:"parceria com o Ciro Forja, sócio do projeto" }],
       ch:[
-        { t:"youtube", sr:"1.2", state:"on", m:[{ l:"Inscritos", v:8, d:"28/10" }], src:"YouTube Data API",
+        { t:"youtube", sr:"1.2", mon:"1.2", state:"on", m:[{ l:"Inscritos", v:8, d:"28/10" }], src:"YouTube Data API",
           done:["Vídeo “Vocação de Pai” v3 (18 min) e 2 cortes montados no editor de vídeos"] },
         { t:"instagram", state:"off", src:"Windsor.ai desconectado", todo:"Reconectar a conta do Instagram" },
         { t:"site", state:"plan", src:"Google Analytics, quando o site entrar no ar", done:["Plano do site em andamento (24/10)"] },
@@ -272,7 +285,7 @@
     { id:"sje", name:"São Josemaría Escrivá", area:"fe", status:"ativo", was:"Frente 02 · item 2.2 (S.J.E. / Opus Dei)", partners:["Fio", "Joãozinho"],
       blurb:"Vídeos e cortes com os pontos de Caminho, Sulco e Forja.",
       ch:[
-        { t:"youtube", sr:"2.2subs", state:"on", m:[{ l:"Inscritos", v:844, d:"03/11" }, { l:"Views em 7 dias", v:4725, d:"até 25/10", calc:"views7" }, { l:"Vindo dos Shorts", v:"74%", d:"30 dias", calc:"shorts" }],
+        { t:"youtube", sr:"2.2subs", mon:"2.2", state:"on", m:[{ l:"Inscritos", v:844, d:"03/11" }, { l:"Views em 7 dias", v:4725, d:"até 25/10", calc:"views7" }, { l:"Vindo dos Shorts", v:"74%", d:"30 dias", calc:"shorts" }],
           src:"YouTube Data + YouTube Analytics", done:["Vídeo novo em produção: cenas 4 a 8, trilha e Reels (28/10)", "Mais visto: “Coração, Ponto 152”, 1.213 views"] },
         { t:"instagram", sr:"2.2", state:"on", m:[{ l:"Seguidores", v:186, d:"02/11" }], src:"Metricool" }
       ], rt:[{ n:"Vídeos do São Josemaría", w:"desativada", who:"—" }] },
@@ -440,6 +453,7 @@
     var rows = (m && m.snapshotRows) || {};
     GEN = m && m.generatedAt ? new Date(m.generatedAt) : null;
     P.forEach(function(p){ p.ch.forEach(function(c){
+      if(c.mon && m && m.monetization && m.monetization[c.mon]) c.monData = m.monetization[c.mon];
       if(!c.sr) return;
       var pts = parseRows(rows[c.sr], 0);
       if(!pts.length) return;
@@ -628,7 +642,7 @@
       '<div class="kpis">' + kpi("Público", aud!=null ? fmt(aud) : "—", aud!=null ? "YouTube + Instagram" : "sem leitura ainda", audienceDelta(p)) +
         kpi("Canais", p.ch.length, p.ch.filter(function(c){ return c.state==="on" || c.state==="late"; }).length+" com métrica") +
         kpi("Rotinas", activeRt(p).length, "agendadas") + '</div>' +
-      evolution(p) +
+      evolution(p) + monetization(p) +
       '<h2>Canais</h2><p class="note">Cada canal mostra o número principal, o que foi feito e de onde vem a métrica.</p>' + dotsLegend() + '<div class="ch-grid">'+cards+'</div>' +
       parts + '<h2>Rotinas</h2>' + rt;
   }
@@ -638,6 +652,38 @@
     return '<h2>Evolução</h2><p class="note">Últimos 90 dias de cada canal com métrica.</p><div class="charts">' + list.map(function(c){
       return '<div class="card chart-card"><h3>'+icon(c.t)+esc(CH_NAME[c.t])+' · '+esc(c.m[0].l.toLowerCase())+'</h3>' +
         '<div class="now">'+fmt(c.m[0].v)+dl(c.m[0].delta, true)+'</div>' + chart(c.pts, CH_COLOR[c.t] || "var(--accent)") + '</div>';
+    }).join("") + '</div>';
+  }
+  // ---------- monetização do YouTube (regras do Programa de Parcerias) ----------
+  function goal(label, have, need, unit){
+    if(have==null) return '<div class="goal"><div class="gl"><span>'+esc(label)+'</span><b>—</b></div><div class="gt"><i style="width:0"></i></div><div class="gn">ainda sem leitura</div></div>';
+    var pct = Math.min(100, have/need*100), ok = have>=need;
+    return '<div class="goal"><div class="gl"><span>'+esc(label)+'</span><b>'+fmt(Math.round(have))+' / '+fmt(need)+'</b></div>' +
+      '<div class="gt"><i class="'+(ok ? "ok" : "")+'" style="width:'+Math.max(ok ? 100 : 1, pct).toFixed(1)+'%"></i></div>' +
+      '<div class="gn">'+(ok ? "✓ meta batida" : "faltam " + fmt(Math.ceil(need - have)) + " " + unit + " · " + pct.toFixed(pct<10 ? 1 : 0).replace(".", ",") + "%")+'</div></div>';
+  }
+  function money(v){ return "US$ " + v.toLocaleString("pt-BR", { minimumFractionDigits:2, maximumFractionDigits:2 }); }
+  function monetization(p){
+    var list = p.ch.filter(function(c){ return c.t==="youtube" && c.mon; });
+    if(!list.length) return "";
+    return '<h2>Monetização do YouTube</h2><p class="note">O que o YouTube pede para pagar pelos anúncios. As horas contam só vídeos longos públicos.</p><div class="mon-grid">' + list.map(function(c){
+      var d = c.monData, subs = d && d.subscribers!=null ? d.subscribers : (c.m && typeof c.m[0].v==="number" ? c.m[0].v : null);
+      var hrs = d ? d.watchHours12m : null, sv = d ? d.shortsViews90d : null, e = (d && d.errors) || {};
+      var earn;
+      if(!d) earn = '<div class="earn unk">Os números de monetização chegam na próxima leitura do robô.</div>';
+      else if(d.revenue12m>0 || d.revenue28d>0) earn = '<div class="earn yes"><b>Já ganha com o YouTube:</b> '+money(d.revenue28d || 0)+' nos últimos 28 dias · '+money(d.revenue12m || 0)+' em 12 meses</div>';
+      else if(e.revenue) earn = '<div class="earn unk"><b>Receita:</b> sem acesso ao relatório de receita. Precisa autorizar de novo o YouTube incluindo a receita.</div>';
+      else if(d.revenue12m===0) earn = '<div class="earn no"><b>Ainda não ganha nada</b> com anúncios do YouTube.</div>';
+      else earn = '<div class="earn unk">Receita ainda sem leitura.</div>';
+      var bothAds = subs!=null && subs>=1000 && ((hrs!=null && hrs>=4000) || (sv!=null && sv>=10e6));
+      var bothFan = subs!=null && subs>=500 && ((hrs!=null && hrs>=3000) || (sv!=null && sv>=3e6));
+      return '<div class="card mon-card"><h3 style="display:flex;align-items:center;gap:8px;font:600 16px var(--sans);margin:0">'+icon("youtube")+'Anúncios (Programa de Parcerias)</h3>' +
+        '<div class="note">'+(bothAds ? "✓ já cumpre as metas para monetizar com anúncios" : "precisa de 1.000 inscritos e mais uma das duas metas abaixo")+'</div>' +
+        goal("Inscritos", subs, 1000, "inscritos") + goal("Horas de exibição em 12 meses", hrs, 4000, "horas") +
+        '<div class="or">ou</div>' + goal("Views de Shorts em 90 dias", sv, 10000000, "views") +
+        '<div class="note" style="margin-top:12px">Primeiro nível (Clube de canais, Super Thanks): 500 inscritos, 3 vídeos em 90 dias e 3.000 horas ou 3 mi de views de Shorts. '+(bothFan ? "<b>✓ já cumpre.</b>" : "")+'</div>' +
+        earn + (d && (e.watchHours || e.shortsViews) ? '<div class="gn" style="margin-top:6px">Leitura incompleta: '+esc(e.watchHours || e.shortsViews)+'</div>' : '') +
+        (d ? '<div class="gn" style="margin-top:6px">leitura de '+esc(dmy(String(d.asOf).replace(/-/g, "")))+'</div>' : '') + '</div>';
     }).join("") + '</div>';
   }
   function viewOffline(id){
