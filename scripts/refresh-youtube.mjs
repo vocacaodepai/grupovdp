@@ -195,13 +195,13 @@ async function main() {
       const byType = await analytics(token, { ids: "channel==" + channel, startDate: ago(365), endDate: end,
         metrics: "estimatedMinutesWatched,views", dimensions: "creatorContentType" });
       let total = 0, shorts = 0;
-      for (const [type, minutes] of byType.rows || []) { total += Number(minutes) || 0; if (type === "SHORTS") shorts += Number(minutes) || 0; }
+      for (const [type, minutes] of byType.rows || []) { total += Number(minutes) || 0; if (String(type).toLowerCase() === "shorts") shorts += Number(minutes) || 0; }
       m.watchHours12m = Math.round((total - shorts) / 60);
     } catch (e) { m.errors.watchHours = String(e.message).slice(0, 160); }
     try {
       const shortsRes = await analytics(token, { ids: "channel==" + channel, startDate: ago(90), endDate: end,
         metrics: "views", dimensions: "creatorContentType" });
-      m.shortsViews90d = (shortsRes.rows || []).filter((r) => r[0] === "SHORTS").reduce((t, r) => t + (Number(r[1]) || 0), 0);
+      m.shortsViews90d = (shortsRes.rows || []).filter((r) => String(r[0]).toLowerCase() === "shorts").reduce((t, r) => t + (Number(r[1]) || 0), 0);
     } catch (e) { m.errors.shortsViews = String(e.message).slice(0, 160); }
     try {
       const rev = await analytics(token, { ids: "channel==" + channel, startDate: ago(28), endDate: end, metrics: "estimatedRevenue" });

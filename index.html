@@ -682,7 +682,7 @@
         goal("Inscritos", subs, 1000, "inscritos") + goal("Horas de exibição em 12 meses", hrs, 4000, "horas") +
         '<div class="or">ou</div>' + goal("Views de Shorts em 90 dias", sv, 10000000, "views") +
         '<div class="note" style="margin-top:12px">Primeiro nível (Clube de canais, Super Thanks): 500 inscritos, 3 vídeos em 90 dias e 3.000 horas ou 3 mi de views de Shorts. '+(bothFan ? "<b>✓ já cumpre.</b>" : "")+'</div>' +
-        earn + (d && (e.watchHours || e.shortsViews) ? '<div class="gn" style="margin-top:6px">Leitura incompleta: '+esc(e.watchHours || e.shortsViews)+'</div>' : '') +
+        earn + (d && (e.watchHours || e.shortsViews) ? '<div class="earn unk" style="margin-top:8px">'+(/403/.test(e.watchHours || e.shortsViews) ? 'A conta do Google ligada ao painel não é dona deste canal no YouTube Analytics. Para ler horas e Shorts, é preciso autorizar com a conta dona do canal.' : 'Leitura incompleta: '+esc(String(e.watchHours || e.shortsViews).slice(0, 80)))+'</div>' : '') +
         (d ? '<div class="gn" style="margin-top:6px">leitura de '+esc(dmy(String(d.asOf).replace(/-/g, "")))+'</div>' : '') + '</div>';
     }).join("") + '</div>';
   }
