@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T19:37:18.036Z",
+  "generatedAt": "2026-11-03T01:46:16.576Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -173,6 +173,10 @@
       [
         "8",
         "20261102"
+      ],
+      [
+        "8",
+        "20261103"
       ]
     ],
     "2.1": [
@@ -751,22 +755,15 @@
       [
         "843",
         "20261102"
+      ],
+      [
+        "844",
+        "20261103"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        82,
-        54,
-        104,
-        0,
-        0,
-        5,
-        1,
-        1,
-        "20261004"
-      ],
       [
         367,
         41,
@@ -1052,6 +1049,17 @@
         0,
         1,
         "20261030"
+      ],
+      [
+        288,
+        75,
+        58,
+        0,
+        0,
+        29,
+        0,
+        0,
+        "20261031"
       ]
     ]
   },
@@ -1060,27 +1068,27 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 11058
+          "views": 11230
         },
         {
           "label": "Busca no YouTube",
-          "views": 1132
+          "views": 1154
         },
         {
           "label": "Inscritos (feed)",
-          "views": 618
+          "views": 615
         },
         {
           "label": "Vídeos relacionados",
-          "views": 288
+          "views": 284
         },
         {
           "label": "Notificações",
-          "views": 231
+          "views": 256
         },
         {
           "label": "Página do canal",
-          "views": 170
+          "views": 166
         },
         {
           "label": "Outra página do YouTube",
@@ -1088,7 +1096,7 @@
         },
         {
           "label": "Link externo",
-          "views": 46
+          "views": 44
         }
       ]
     }
@@ -1132,53 +1140,53 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 10995
+          "views": 11166
         },
         {
           "label": "Portugal",
-          "views": 368
+          "views": 416
         }
       ],
       "device": [
         {
           "label": "Celular",
-          "views": 12563
+          "views": 12766
         },
         {
           "label": "Computador",
-          "views": 451
+          "views": 446
         },
         {
           "label": "TV",
-          "views": 340
+          "views": 341
         },
         {
           "label": "Tablet",
-          "views": 273
+          "views": 278
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 12158
+          "views": 12379
         },
         {
           "label": "Página de exibição",
-          "views": 1048
+          "views": 1046
         },
         {
           "label": "Explorar/Início",
-          "views": 424
+          "views": 411
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12663
+          "views": 12829
         },
         {
           "label": "Inscritos",
-          "views": 967
+          "views": 1007
         }
       ]
     }
@@ -1189,7 +1197,7 @@
         "id": "-YXQ2Cyx6ig",
         "title": "Coração — Ponto 155 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/-YXQ2Cyx6ig/mqdefault.jpg",
-        "views": 1264,
+        "views": 1268,
         "likes": 115,
         "comments": 1,
         "minutes": 49,
@@ -1233,7 +1241,7 @@
         "id": "VOZW4M3c4JM",
         "title": "Coração — Ponto 156 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/VOZW4M3c4JM/mqdefault.jpg",
-        "views": 981,
+        "views": 982,
         "likes": 67,
         "comments": 1,
         "minutes": 49,
@@ -1277,10 +1285,10 @@
         "id": "oJSjV_1pqw0",
         "title": "Coração — Ponto 157 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/oJSjV_1pqw0/mqdefault.jpg",
-        "views": 625,
-        "likes": 37,
+        "views": 653,
+        "likes": 41,
         "comments": 0,
-        "minutes": 26,
+        "minutes": 28,
         "subsGained": 0,
         "avgDuration": 11
       },
@@ -1332,10 +1340,10 @@
         "id": "YH-tYLN1t14",
         "title": "Coração — Ponto 159 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/YH-tYLN1t14/mqdefault.jpg",
-        "views": 200,
-        "likes": 16,
+        "views": 276,
+        "likes": 25,
         "comments": 0,
-        "minutes": 14,
+        "minutes": 19,
         "subsGained": 3,
         "avgDuration": 17
       },
@@ -1343,12 +1351,12 @@
         "id": "7RGfTpN1Vtc",
         "title": "A História de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 199,
-        "likes": 11,
+        "views": 209,
+        "likes": 12,
         "comments": 0,
-        "minutes": 81,
+        "minutes": 88,
         "subsGained": 1,
-        "avgDuration": 63
+        "avgDuration": 66
       }
     ]
   },
@@ -1373,6 +1381,10 @@
       [
         1,
         "20261030"
+      ],
+      [
+        4,
+        "20261031"
       ]
     ],
     "ta_1h2Ns24Q": [
@@ -1407,6 +1419,10 @@
       [
         0,
         "20261030"
+      ],
+      [
+        0,
+        "20261031"
       ]
     ],
     "NW_VDiYDzmo": [
@@ -1465,6 +1481,10 @@
       [
         3,
         "20261030"
+      ],
+      [
+        0,
+        "20261031"
       ]
     ],
     "veJQHaTx6co": [
@@ -1491,6 +1511,10 @@
       [
         3,
         "20261030"
+      ],
+      [
+        0,
+        "20261031"
       ]
     ],
     "VOZW4M3c4JM": [
@@ -1509,6 +1533,10 @@
       [
         7,
         "20261030"
+      ],
+      [
+        1,
+        "20261031"
       ]
     ],
     "vW6rnl3gfyw": [
@@ -1547,6 +1575,10 @@
       [
         0,
         "20261030"
+      ],
+      [
+        0,
+        "20261031"
       ]
     ]
   },
@@ -1554,7 +1586,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-02T19:37:18.072Z",
+      "generatedAt": "2026-11-03T01:46:16.612Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -1564,7 +1596,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-02T19:37:18.072Z",
+      "generatedAt": "2026-11-03T01:46:16.612Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
