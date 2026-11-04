@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T01:59:42.882Z",
+  "generatedAt": "2026-11-04T16:58:59.207Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -2825,7 +2825,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-04T01:59:42.932Z",
+      "generatedAt": "2026-11-04T16:58:59.254Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -2835,7 +2835,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-04T01:59:42.932Z",
+      "generatedAt": "2026-11-04T16:58:59.254Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -2851,7 +2851,7 @@
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
       "watchHours12m": 693,
-      "shortsViews90d": 32341
+      "shortsViews90d": 32331
     },
     "1.2": {
       "asOf": "2026-11-04",
