@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T16:58:59.207Z",
+  "generatedAt": "2026-11-04T22:31:31.159Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -2275,6 +2275,17 @@
         0,
         1,
         "20261101"
+      ],
+      [
+        144,
+        39,
+        66,
+        1,
+        0,
+        8,
+        0,
+        0,
+        "20261102"
       ]
     ]
   },
@@ -2283,27 +2294,27 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 11230
+          "views": 11285
         },
         {
           "label": "Busca no YouTube",
-          "views": 1194
+          "views": 1230
         },
         {
           "label": "Inscritos (feed)",
-          "views": 628
+          "views": 670
         },
         {
           "label": "Vídeos relacionados",
-          "views": 289
+          "views": 295
         },
         {
           "label": "Notificações",
-          "views": 252
+          "views": 255
         },
         {
           "label": "Página do canal",
-          "views": 166
+          "views": 168
         },
         {
           "label": "Outra página do YouTube",
@@ -2355,7 +2366,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 11158
+          "views": 11204
         },
         {
           "label": "Portugal",
@@ -2365,43 +2376,43 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12805
+          "views": 12936
         },
         {
           "label": "Computador",
-          "views": 458
+          "views": 461
         },
         {
           "label": "TV",
-          "views": 344
+          "views": 352
         },
         {
           "label": "Tablet",
-          "views": 277
+          "views": 279
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 12385
+          "views": 12469
         },
         {
           "label": "Página de exibição",
-          "views": 1082
+          "views": 1105
         },
         {
           "label": "Explorar/Início",
-          "views": 422
+          "views": 459
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12876
+          "views": 12996
         },
         {
           "label": "Inscritos",
-          "views": 1013
+          "views": 1037
         }
       ]
     }
@@ -2489,10 +2500,10 @@
         "id": "oJSjV_1pqw0",
         "title": "Coração — Ponto 157 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/oJSjV_1pqw0/mqdefault.jpg",
-        "views": 668,
-        "likes": 41,
+        "views": 674,
+        "likes": 42,
         "comments": 0,
-        "minutes": 29,
+        "minutes": 30,
         "subsGained": 0,
         "avgDuration": 11
       },
@@ -2522,7 +2533,7 @@
         "id": "S76HYsh21Pw",
         "title": "Caminho 141 - São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/S76HYsh21Pw/mqdefault.jpg",
-        "views": 525,
+        "views": 526,
         "likes": 31,
         "comments": 1,
         "minutes": 52,
@@ -2544,8 +2555,8 @@
         "id": "YH-tYLN1t14",
         "title": "Coração — Ponto 159 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/YH-tYLN1t14/mqdefault.jpg",
-        "views": 293,
-        "likes": 26,
+        "views": 296,
+        "likes": 27,
         "comments": 0,
         "minutes": 20,
         "subsGained": 3,
@@ -2563,15 +2574,15 @@
         "avgDuration": 13
       },
       {
-        "id": "7RGfTpN1Vtc",
-        "title": "A História de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 215,
-        "likes": 12,
+        "id": "p5Cv6amm30o",
+        "title": "Coração — Ponto 161 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/p5Cv6amm30o/mqdefault.jpg",
+        "views": 224,
+        "likes": 19,
         "comments": 0,
-        "minutes": 91,
-        "subsGained": 1,
-        "avgDuration": 66
+        "minutes": 14,
+        "subsGained": 0,
+        "avgDuration": 16
       }
     ]
   },
@@ -2604,6 +2615,10 @@
       [
         1,
         "20261101"
+      ],
+      [
+        0,
+        "20261102"
       ]
     ],
     "ta_1h2Ns24Q": [
@@ -2646,6 +2661,10 @@
       [
         0,
         "20261101"
+      ],
+      [
+        0,
+        "20261102"
       ]
     ],
     "NW_VDiYDzmo": [
@@ -2712,6 +2731,10 @@
       [
         2,
         "20261101"
+      ],
+      [
+        0,
+        "20261102"
       ]
     ],
     "veJQHaTx6co": [
@@ -2746,6 +2769,10 @@
       [
         4,
         "20261101"
+      ],
+      [
+        0,
+        "20261102"
       ]
     ],
     "VOZW4M3c4JM": [
@@ -2772,6 +2799,10 @@
       [
         1,
         "20261101"
+      ],
+      [
+        0,
+        "20261102"
       ]
     ],
     "vW6rnl3gfyw": [
@@ -2818,6 +2849,10 @@
       [
         0,
         "20261101"
+      ],
+      [
+        0,
+        "20261102"
       ]
     ]
   },
@@ -2825,7 +2860,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-04T16:58:59.254Z",
+      "generatedAt": "2026-11-04T22:31:31.206Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -2835,7 +2870,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-04T16:58:59.254Z",
+      "generatedAt": "2026-11-04T22:31:31.206Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -2850,8 +2885,8 @@
       "errors": {
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
-      "watchHours12m": 693,
-      "shortsViews90d": 32331
+      "watchHours12m": 694,
+      "shortsViews90d": 32433
     },
     "1.2": {
       "asOf": "2026-11-04",
