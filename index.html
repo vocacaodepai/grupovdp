@@ -12,7 +12,7 @@
     --border:#dbe1ea; --grid:#e6eaf0; --accent:#2f5fd6; --accent-soft:#e3ebfd;
     --good:#1f8a55; --good-soft:#e1f3ea; --warn:#b7791f; --warn-soft:#fbf1dc; --bad:#c1443a; --bad-soft:#fbe7e5;
     --off:#9aa3b2; --off-soft:#eef1f5;
-    --a-familia:#2f5fd6; --a-fe:#a8771c; --a-esporte:#1f8a55; --a-blogs:#7a4bc4; --a-negocios:#c1443a; --a-confirmar:#6b7280; --a-offline:#8a5a3b;
+    --a-familia:#2f5fd6; --a-fe:#a8771c; --a-esporte:#1f8a55; --a-blogs:#7a4bc4; --a-negocios:#c1443a; --a-casa:#13958f; --a-confirmar:#6b7280; --a-offline:#8a5a3b;
     --serif:"Fraunces", Georgia, serif; --sans:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif; --mono:"IBM Plex Mono", ui-monospace, monospace;
     color-scheme:light;
   }
@@ -22,7 +22,7 @@
       --border:#232a35; --grid:#1f2630; --accent:#4d8dff; --accent-soft:#17233d;
       --good:#34b37a; --good-soft:#103524; --warn:#e0a33a; --warn-soft:#33270f; --bad:#e2645a; --bad-soft:#3a1714;
       --off:#5b6474; --off-soft:#1b212a;
-      --a-familia:#5b8dff; --a-fe:#d9a441; --a-esporte:#34b37a; --a-blogs:#a07ae6; --a-negocios:#e2645a; --a-confirmar:#8a94a3; --a-offline:#c08a64;
+      --a-familia:#5b8dff; --a-fe:#d9a441; --a-esporte:#34b37a; --a-blogs:#a07ae6; --a-negocios:#e2645a; --a-casa:#36b5ae; --a-confirmar:#8a94a3; --a-offline:#c08a64;
       color-scheme:dark;
     }
   }
@@ -31,7 +31,7 @@
       --border:#232a35; --grid:#1f2630; --accent:#4d8dff; --accent-soft:#17233d;
       --good:#34b37a; --good-soft:#103524; --warn:#e0a33a; --warn-soft:#33270f; --bad:#e2645a; --bad-soft:#3a1714;
       --off:#5b6474; --off-soft:#1b212a;
-      --a-familia:#5b8dff; --a-fe:#d9a441; --a-esporte:#34b37a; --a-blogs:#a07ae6; --a-negocios:#e2645a; --a-confirmar:#8a94a3; --a-offline:#c08a64;
+      --a-familia:#5b8dff; --a-fe:#d9a441; --a-esporte:#34b37a; --a-blogs:#a07ae6; --a-negocios:#e2645a; --a-casa:#36b5ae; --a-confirmar:#8a94a3; --a-offline:#c08a64;
       color-scheme:dark;
   }
   :root[data-theme="light"]{ color-scheme:light; }
@@ -91,7 +91,7 @@
   .lirio-stats{ display:flex; gap:22px; margin:10px 0 12px; flex-wrap:wrap; }
   .lirio-stats div b{ font:600 22px var(--sans); display:block; }
   .lirio-stats div span{ font-size:12px; color:var(--muted); }
-  .areas-mini{ display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:8px; }
+  .areas-mini{ display:grid; grid-template-columns:repeat(auto-fit, minmax(118px,1fr)); gap:8px; }
   .am{ border-radius:10px; padding:8px 10px; background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--c); min-width:0; }
   .am b{ display:block; font:600 13px var(--sans); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .am span{ font:12px var(--mono); color:var(--muted); }
@@ -201,6 +201,29 @@
   .chart{ display:block; width:100%; height:auto; margin-top:6px; overflow:visible; }
   .chart text{ font:11px var(--mono); fill:var(--faint); }
   .bar .v{ white-space:nowrap; }
+  .lbar{ height:8px; background:var(--grid); border-radius:4px; overflow:hidden; margin-top:6px; }
+  .lbar i{ display:block; height:100%; background:var(--good); border-radius:4px; }
+  .lnext{ margin-top:10px; padding:10px 12px; border-radius:10px; background:var(--accent-soft); color:var(--accent); font-size:13px; }
+  .lgrid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:12px; margin-top:12px; }
+  .lph{ font:600 15px var(--sans); margin:0 0 6px; }
+  .step{ display:flex; gap:10px; align-items:flex-start; width:100%; text-align:left; background:none; border:0; border-top:1px dashed var(--border); padding:9px 0; cursor:pointer; font:14px/1.35 var(--sans); color:var(--text); }
+  .step:first-of-type{ border-top:0; }
+  .step .box{ width:20px; height:20px; border-radius:6px; border:1.6px solid var(--axis, var(--border)); flex:none; display:grid; place-items:center; font:700 12px var(--sans); color:#fff; margin-top:1px; }
+  .step.s1 .box{ background:var(--good); border-color:var(--good); }
+  .step.s2 .box{ background:var(--off-soft); border-color:var(--off); color:var(--muted); }
+  .step.s1 .t{ color:var(--muted); text-decoration:line-through; text-decoration-color:var(--faint); }
+  .step.s2 .t{ color:var(--faint); }
+  .step small{ display:block; font-size:12px; color:var(--faint); margin-top:2px; text-decoration:none; }
+  .step.isnext .t{ font-weight:600; color:var(--accent); }
+  .ntab td, .ntab th{ text-align:center; } .ntab td:first-child, .ntab th:first-child{ text-align:left; }
+  .ntab .step{ display:inline-flex; width:auto; border:0; padding:4px; }
+  .rec{ font:500 10px var(--mono); color:var(--good); border:1px solid var(--good); border-radius:999px; padding:1px 6px; margin-left:6px; text-transform:uppercase; letter-spacing:.05em; }
+  .subnav{ display:flex; gap:6px; flex-wrap:wrap; margin:14px 0 2px; }
+  .subnav a{ font:500 13px var(--sans); padding:6px 13px; border-radius:8px; border:1px solid var(--border); background:var(--surface); color:var(--muted); }
+  .subnav a.on{ border-color:var(--accent); color:var(--accent); background:var(--accent-soft); }
+  .mx td{ text-align:center; font-size:15px; } .mx td:first-child{ text-align:left; font-size:13px; white-space:nowrap; } .mx th{ text-align:center; } .mx th:first-child{ text-align:left; }
+  .mx .y{ color:var(--good); } .mx .c{ color:var(--accent); } .mx .r{ color:var(--faint); }
+  .mx tr.ah td{ background:var(--surface-2); font:600 12px var(--mono); text-transform:uppercase; letter-spacing:.06em; color:var(--muted); text-align:left; }
   .mon-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(380px,1fr)); gap:12px; margin-top:12px; }
   .goal{ margin-top:12px; }
   .goal .gl{ display:flex; justify-content:space-between; gap:10px; font-size:13px; }
@@ -283,8 +306,9 @@
     { id:"familia",  name:"Família",               short:"Família",  c:"var(--a-familia)" },
     { id:"fe",       name:"Fé",                    short:"Fé",       c:"var(--a-fe)" },
     { id:"esporte",  name:"Esporte e motivação",   short:"Esporte",  c:"var(--a-esporte)" },
-    { id:"blogs",    name:"Blogs",                 short:"Blogs",    c:"var(--a-blogs)" },
-    { id:"negocios", name:"Negócios e finanças",   short:"Negócios", c:"var(--a-negocios)" }
+    { id:"negocios", name:"Negócios e finanças",   short:"Negócios", c:"var(--a-negocios)" },
+    { id:"noticias", name:"Notícias e tecnologia", short:"Notícias", c:"var(--a-blogs)" },
+    { id:"casa",     name:"Casa, saúde e compras", short:"Casa e saúde", c:"var(--a-casa)" }
   ];
   var SITE_SRC = "Google Analytics + Search Console + AdSense: falta a credencial do Google";
   var P = [
@@ -341,33 +365,33 @@
           { t:"facebook", state:"off", src:"Ainda não ligado ao painel" }],
       rt:[{ n:"Vocação de Jogador", w:"todo dia, 04:00", who:"Gustavo" }] },
     // Notícias e blogs
-    { id:"portaldaai", name:"Portal da AI", area:"blogs", status:"ativo", was:"Frente 09 · Blogs",
+    { id:"portaldaai", name:"Portal da AI", area:"noticias", status:"ativo", was:"Frente 09 · Blogs",
       ch:[{ t:"site", label:"portaldaai.com.br", state:"off", src:SITE_SRC, done:["Notícias de hora em hora, 24 h", "15 artigos por dia em 3 rodadas", "5 AI Indica da Amazon + 5 da Shopee por dia (Shopee desde 27/10)"] }],
       rt:[{ n:"Notícias de hora em hora", w:"24 h", who:"Felipe" }, { n:"5 artigos (3 rodadas)", w:"05:00 · 11:08 · 17:09", who:"Camila" },
           { n:"5 AI Indica Amazon", w:"06:07", who:"Diego" }, { n:"5 AI Indica Shopee", w:"07:37", who:"nova (27/10), sem mesa no escritório" }] },
-    { id:"blogdobitcoin", name:"Blog do Bitcoin", area:"blogs", status:"andamento", was:"Frente 09 · Blogs",
+    { id:"blogdobitcoin", name:"Blog do Bitcoin", area:"negocios", status:"andamento", was:"Frente 09 · Blogs",
       ch:[{ t:"site", label:"blogdobitcoin.com.br", state:"off", src:SITE_SRC, done:["Rotinas prontas: notícias, artigos, Cripto Indica (Amazon e Shopee) e manutenção"], todo:"O site só entra no ar quando o primeiro PR for mesclado" }],
       rt:[{ n:"Notícias de hora em hora", w:"06:25 a 23:25", who:"Henrique" }, { n:"5 artigos (2 rodadas)", w:"05:13 · 14:13", who:"Larissa" },
           { n:"Cripto Indica e loja Amazon", w:"07:37", who:"Marcelo" }, { n:"Cripto Indica e loja Shopee", w:"08:17", who:"nova (27/10), sem mesa no escritório" },
           { n:"Manutenção: dados, erros e segurança", w:"04:47", who:"Otávio" }] },
-    { id:"politicadiaria", name:"Política Diária", area:"blogs", status:"ativo", was:"Frente 09 · Blogs", partners:["Caio"],
+    { id:"politicadiaria", name:"Política Diária", area:"noticias", status:"ativo", was:"Frente 09 · Blogs", partners:["Caio"],
       ch:[{ t:"site", label:"politicadiaria.com.br", state:"off", src:SITE_SRC, done:["Notícias de hora em hora", "Checagem de boatos e dados das eleições 3 vezes por dia", "Dados do Congresso e 3 resenhas de livros por dia"], todo:"2 PRs esperando você responder “pode mesclar”" },
           { t:"youtube", state:"plan", src:"YouTube Data API, quando o canal abrir", done:["“A virada”: versão longa de 17 min pronta; faltam a capa e a revisão (28/10)"] }],
       rt:[{ n:"Notícias de hora em hora", w:"24 h", who:"Renato" }, { n:"Checagem de boatos", w:"07:40 · 13:40 · 19:40", who:"Paula" },
           { n:"Dados das eleições", w:"08:50 · 14:50 · 20:50", who:"Sérgio" }, { n:"Dados do Congresso", w:"04:17", who:"Vítor" }, { n:"3 resenhas de livros", w:"05:23", who:"Lívia" }] },
-    { id:"saude", name:"Saúde na Minha Vida", area:"blogs", status:"ativo", was:"Frente 09 · Blogs",
+    { id:"saude", name:"Saúde na Minha Vida", area:"casa", status:"ativo", was:"Frente 09 · Blogs",
       ch:[{ t:"site", label:"saudenaminhavida.com.br", state:"off", src:SITE_SRC, done:["Notícias a cada 2 horas", "10 guias por dia", "20 produtos da Amazon + 20 da Shopee por dia"] }],
       rt:[{ n:"Notícias com fonte", w:"a cada 2 h, 06:20 a 22:20", who:"Fernanda" }, { n:"5 guias (2 rodadas)", w:"06:07 · 13:07", who:"Patrícia" },
           { n:"10 produtos Amazon (2 rodadas)", w:"09:37 · 17:37", who:"Natália" }, { n:"10 produtos Shopee (2 rodadas)", w:"11:37 · 15:37", who:"nova (27/10), sem mesa no escritório" },
           { n:"Manutenção: erros e segurança", w:"08:23", who:"André" }] },
-    { id:"review", name:"Review Produtos", area:"blogs", status:"ativo", was:"Frente 09 · Blogs",
+    { id:"review", name:"Review Produtos", area:"casa", status:"ativo", was:"Frente 09 · Blogs",
       ch:[{ t:"site", label:"reviewprodutos.com.br", state:"off", src:SITE_SRC, done:["20 reviews da Amazon + 20 da Shopee por dia"] }],
       rt:[{ n:"Lote de 5 reviews Amazon", w:"06:52 · 09:52 · 18:52 · 21:52", who:"Ricardo" }, { n:"Lote de 5 reviews Shopee", w:"07:52 · 10:52 · 19:52 · 22:52", who:"nova (27/10), sem mesa no escritório" }] },
-    { id:"grama", name:"Blog da Grama", area:"blogs", status:"ativo", was:"Frente 09 · Blogs",
+    { id:"grama", name:"Blog da Grama", area:"casa", status:"ativo", was:"Frente 09 · Blogs",
       ch:[{ t:"site", label:"blogdagrama.com.br", state:"off", src:SITE_SRC, done:["Notícias 3 vezes por dia", "5 artigos por dia", "20 produtos da Amazon + 20 da Shopee por dia"], todo:"A rotina da Shopee está sem a credencial no ambiente" }],
       rt:[{ n:"Notícias do gramado", w:"07:40 · 13:40 · 19:40", who:"Sofia" }, { n:"5 artigos", w:"05:23", who:"Eduardo" },
           { n:"20 produtos Amazon", w:"06:23", who:"Murilo" }, { n:"20 produtos Shopee", w:"08:52", who:"nova (27/10), sem mesa no escritório" }] },
-    { id:"yangled", name:"Yang LED", area:"blogs", status:"ativo", was:"Frente 09 · Blogs", ask:"É um cliente da agência ou um projeto seu?",
+    { id:"yangled", name:"Yang LED", area:"casa", status:"ativo", was:"Frente 09 · Blogs", ask:"É um cliente da agência ou um projeto seu?",
       ch:[{ t:"site", label:"yangled.com.br", state:"off", src:"Ainda não ligado ao painel", done:["5 artigos por dia no blog"] }],
       rt:[{ n:"5 artigos no blog", w:"todo dia, 05:00", who:"Yasmin" }] },
     // Negócios e finanças
@@ -416,7 +440,7 @@
     ["06 Pequena Via", "Grupo › 04 Pequena Via", "offline"],
     ["07 Flor de Lisieux", "Grupo › 03 Flor de Lisieux", "offline"],
     ["08 Apostas (Futebol, Vasco, Motivação)", "Agência Lírio › Esporte e motivação › 3 projetos", "a palavra “Apostas” sai"],
-    ["09 Blogs (7 blogs)", "Agência Lírio › Blogs › 7 projetos", "Política Diária ganha o YouTube"],
+    ["09 Blogs (7 blogs)", "Agência Lírio › cada blog na área do seu assunto", "todo projeto tem o seu site; Política Diária ganha o YouTube"],
     ["—", "Grupo › 05 Loja de terços", "novo, offline"],
     ["—", "Agência Lírio › Fé › São Carlo Acutis · Negócios › Insights do Alfredão", "achados no Claude Code"]
   ];
@@ -428,6 +452,75 @@
     { t:"Instagram", d:"Criar o segredo METRICOOL_TOKEN no GitHub para atualizar sozinho.", st:"late" },
     { t:"Vídeos parados", d:"Vocação de Mãe, São Josemaría e Política Diária esperam você retomar.", st:"late" }
   ];
+  // todo projeto da agência tem (ou vai ter) o seu site, com o blog dentro
+  P.forEach(function(p){ if(!p.ch.some(function(c){ return c.t==="site"; })) p.ch.push({ t:"site", state:"plan", src:"quando o site entrar no ar" }); });
+
+  // ---------- lançamento: site + redes (checklist por projeto) ----------
+  var LAUNCH = [
+    { ph:"1. Planejar", steps:[
+      ["quiz", "Rodar o quiz na Fábrica de Blogs", "ele gera o prompt do site"],
+      ["dominio", "Comprar o domínio na Hostinger", ""],
+      ["email", "Ativar o e-mail grátis da Hostinger", "ex.: contato@seudominio"] ] },
+    { ph:"2. Domínio e Google", steps:[
+      ["txt", "Colocar o TXT do Google Search Console na Hostinger", "prova para o Google que o domínio é seu"],
+      ["emailseg", "Proteger o e-mail do domínio (SPF, DKIM e DMARC)", "evita cair no spam e alguém se passar por você"] ] },
+    { ph:"3. Servidor (VPS)", steps:[
+      ["sessao", "Criar a nova sessão no VPS", ""],
+      ["vps", "Deixar o VPS pronto e seguro", "domínio apontado, HTTPS e firewall, o passo a passo que o Claude indicou"],
+      ["prompt", "Colar o prompt da Fábrica na sessão e rodar", "é aqui que o site é construído"] ] },
+    { ph:"4. Site no ar", steps:[
+      ["noar", "Site no ar e conferido no celular", ""],
+      ["paginas", "Páginas obrigatórias: sobre, contato, privacidade e termos", "o AdSense pede"],
+      ["sitemap", "Sitemap enviado no Search Console", ""],
+      ["ga4", "Google Analytics ligado", "é o que mostra as visitas no painel"] ] },
+    { ph:"5. Conteúdo e automação", steps:[
+      ["posts", "Primeiras postagens publicadas", ""],
+      ["rotinas", "Rotinas automáticas criadas", "aparecem no escritório"],
+      ["painel", "Métricas ligadas ao painel", ""] ] },
+    { ph:"6. Ganhar dinheiro", steps:[
+      ["adsense", "AdSense pedido e aprovado", ""],
+      ["afiliados", "Afiliados (Amazon, Shopee)", ""],
+      ["loja", "Loja ou produtos próprios no site", "quando fizer sentido"] ] }
+  ];
+  var NETS = [["instagram", "Instagram"], ["facebook", "Facebook"], ["youtube", "YouTube"], ["tiktok", "TikTok"], ["pinterest", "Pinterest"], ["threads", "Threads"], ["x", "X"]];
+  ICON.tiktok = '<path d="M9.5 2v7.6a2.6 2.6 0 1 1-2.6-2.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M9.5 2c.3 1.9 1.6 3.1 3.6 3.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>';
+  ICON.pinterest = '<circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7.2 14l1.3-6.2M6 7.6c0-1.6 1.1-2.6 2.5-2.6 1.4 0 2.3.9 2.3 2.1 0 1.6-.9 2.8-2 2.8-.7 0-1.1-.5-1-1.1" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>';
+  CH_NAME.tiktok = "TikTok"; CH_NAME.pinterest = "Pinterest";
+  // redes que mais combinam com cada área (sugestão; a escolha é sua)
+  var REC_AREA = { familia:["pinterest", "threads"], fe:["tiktok", "threads"], esporte:["tiktok", "x"], negocios:["x", "threads"], noticias:["x", "threads"], casa:["pinterest", "tiktok"] };
+  function recNets(p){ return ["instagram", "facebook", "youtube"].concat(REC_AREA[p.area] || []); }
+  // o que já se sabe que foi feito (marcado pelo Claude; dá para mudar com um toque)
+  var OLD_BUILD = { quiz:2, sessao:2, vps:2, prompt:2 };   // sites feitos antes da Fábrica e do VPS: não se aplica
+  function seedOf(id){
+    var o = {}, add = function(m){ for(var k in m) o[k] = m[k]; };
+    var live = ["portaldaai", "politicadiaria", "saude", "review", "grama", "yangled", "vocacaodemae"];
+    if(live.indexOf(id)>=0){ add(OLD_BUILD); add({ dominio:1, noar:1, posts:1, rotinas:1 }); }
+    if(["portaldaai", "politicadiaria", "saude", "review", "grama", "vocacaodemae", "blogdobitcoin"].indexOf(id)>=0) o.afiliados = 1;
+    if(id==="blogdobitcoin") add({ quiz:2, sessao:2, vps:2, prompt:2, dominio:1, rotinas:1 });
+    if(id==="vocacaodemae") add({ txt:1, sitemap:1, ga4:1 });
+    if(id==="portaldaai") o.ga4 = 1;
+    var both = function(n){ o["net:" + n] = 1; o["mc:" + n] = 1; };
+    if(["sje", "jogador", "escrivatododia", "vasco", "motivacao", "vocacaodemae"].indexOf(id)>=0){ both("instagram"); both("facebook"); }
+    if(id==="sje"){ both("youtube"); both("tiktok"); }
+    if(id==="escrivatododia") both("threads");
+    if(id==="vocacaodepai"){ o["net:instagram"] = 1; o["net:youtube"] = 1; }
+    return o;
+  }
+  var LKEY = "vdp-lancamento-v1", lstore = {};
+  try{ lstore = JSON.parse(localStorage.getItem(LKEY) || "{}") || {}; }catch(e){ lstore = {}; }
+  function lget(pid, sid){ var u = lstore[pid]; if(u && Object.prototype.hasOwnProperty.call(u, sid)) return u[sid]; var sd = seedOf(pid)[sid]; return sd || 0; }
+  function lset(pid, sid, v){ lstore[pid] = lstore[pid] || {}; lstore[pid][sid] = v; try{ localStorage.setItem(LKEY, JSON.stringify(lstore)); }catch(e){} }
+  function launchItems(p){
+    var out = [];
+    LAUNCH.forEach(function(g){ g.steps.forEach(function(st){ out.push({ id:st[0], label:st[1] }); }); });
+    recNets(p).forEach(function(n){ var nm = NETS.filter(function(x){ return x[0]===n; })[0][1]; out.push({ id:"net:" + n, label:"Criar o " + nm }); out.push({ id:"mc:" + n, label:"Ligar o " + nm + " na Metricool" }); });
+    return out;
+  }
+  function launchStats(p){
+    var items = launchItems(p), done = 0, total = 0, next = null;
+    items.forEach(function(it){ var v = lget(p.id, it.id); if(v===2) return; total++; if(v===1) done++; else if(!next) next = it; });
+    return { done:done, total:total, next:next, pct:total ? done/total*100 : 0 };
+  }
   var SCHEDULES_TOTAL = 36;                       // horários agendados ativos (rodadas contam separado)
   function activeRt(p){ return p.rt.filter(function(r){ return r.w!=="desativada"; }); }
   var ROUTINES_TOTAL = P.reduce(function(s, p){ return s + activeRt(p).length; }, 0);
@@ -608,6 +701,49 @@
   function kpi(l, v, h, d){ return '<div class="kpi"><div class="lbl">'+esc(l)+'</div><div class="v">'+esc(v)+'</div>'+(d ? dl(d, true) : '')+'<div class="h">'+esc(h)+'</div></div>'; }
 
   var areaFilter = "todas";
+  function lirioHead(cur){
+    return '<div class="crumb"><a href="#/">Grupo Lisieux</a><span>›</span>Agência Lírio</div>' +
+      '<h1>Agência Lírio</h1><p class="sub">Agência de marketing com IA. Cuida de tudo que o grupo faz na internet. Todo projeto tem o seu site (com o blog dentro) e as suas redes.</p>' +
+      '<div class="subnav">' + [["#/lirio", "Projetos"], ["#/lirio-ativos", "Ativos (site e redes)"], ["#/lirio-sites", "Sites"]].map(function(t){ return '<a href="'+t[0]+'" class="'+(t[0]===cur ? "on" : "")+'">'+t[1]+'</a>'; }).join("") + '</div>';
+  }
+  function viewAtivos(){
+    var cols = [["site", "Site"]].concat(NETS);
+    var rows = AREAS.map(function(a){
+      var list = P.filter(function(p){ return p.area===a.id; });
+      return '<tr class="ah"><td colspan="'+(cols.length + 2)+'">'+esc(a.name)+'</td></tr>' + list.map(function(p){
+        var ls = launchStats(p);
+        return '<tr><td><a href="#/lirio/'+p.id+'" style="color:var(--accent)">'+esc(p.name)+'</a></td>' + cols.map(function(c){
+          var ch = p.ch.filter(function(x){ return x.t===c[0]; })[0], metric = ch && (ch.state==="on" || ch.state==="late");
+          var made = c[0]==="site" ? lget(p.id, "noar")===1 : lget(p.id, "net:" + c[0])===1 || metric;
+          var rec = c[0]==="site" || recNets(p).indexOf(c[0])>=0;
+          var cell = metric ? '<span class="y" title="criada, com número no painel">●</span>' : made ? '<span class="c" title="criada">✓</span>' : rec ? '<span class="r" title="sugerida, ainda não criada">○</span>' : '<span class="r">·</span>';
+          return '<td>'+cell+'</td>';
+        }).join("") + '<td style="min-width:90px"><div class="lbar" style="margin:0"><i style="width:'+ls.pct.toFixed(1)+'%"></i></div><div class="gn" style="font-size:11px;color:var(--muted)">'+ls.done+'/'+ls.total+'</div></td></tr>';
+      }).join("");
+    }).join("");
+    return lirioHead("#/lirio-ativos") +
+      '<p class="note" style="margin-top:12px"><span class="y" style="color:var(--good)">●</span> criada e com número no painel · <span style="color:var(--accent)">✓</span> criada · <span style="color:var(--faint)">○</span> sugerida, falta criar · <span style="color:var(--faint)">·</span> não sugerida</p>' +
+      '<div class="tbl"><div class="tbl-scroll"><table class="mx"><thead><tr><th>Projeto</th>' + cols.map(function(c){ return '<th>'+esc(c[1])+'</th>'; }).join("") + '<th>Lançamento</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+  }
+  var SITES_DATA = null;
+  function viewSites(){
+    var list = P.map(function(p){ var site = p.ch.filter(function(c){ return c.t==="site"; })[0]; return { p:p, site:site, ls:launchStats(p) }; });
+    var live = list.filter(function(x){ return lget(x.p.id, "noar")===1; }).length;
+    var rows = list.slice().sort(function(a, b){ return b.ls.pct - a.ls.pct; }).map(function(x){
+      var noar = lget(x.p.id, "noar")===1, built = lget(x.p.id, "prompt")===1 || lget(x.p.id, "dominio")===1;
+      var st = noar ? '<span class="st ativo" style="position:static">no ar</span>' : built ? '<span class="st andamento" style="position:static">em construção</span>' : '<span class="st ideia" style="position:static">a criar</span>';
+      return '<tr><td><a href="#/lirio/'+x.p.id+'" style="color:var(--accent)">'+esc(x.p.name)+'</a><div class="note" style="font-family:var(--mono);font-size:12px">'+esc(x.site.label || "domínio a definir")+'</div></td><td>'+st+'</td>' +
+        '<td style="min-width:140px"><div class="lbar" style="margin:0"><i style="width:'+x.ls.pct.toFixed(1)+'%"></i></div><div class="note" style="font-size:12px">'+x.ls.done+'/'+x.ls.total+(x.ls.next ? ' · próximo: '+esc(x.ls.next.label) : '')+'</div></td>' +
+        '<td>'+activeRt(x.p).length+'</td></tr>';
+    }).join("");
+    var hasVisits = SITES_DATA && Object.keys(SITES_DATA).some(function(k){ var v = SITES_DATA[k]; return v && v.ga4 && !(v.errors && v.errors.ga4); });
+    return lirioHead("#/lirio-sites") +
+      '<div class="kpis">' + kpi("Sites no ar", live, "de " + P.length + " projetos") + kpi("Rotinas nos sites", ROUTINES_TOTAL, SCHEDULES_TOTAL + " horários") +
+        kpi("Visitas somadas", "—", hasVisits ? "" : "falta ligar o Google Analytics") + '</div>' +
+      '<h2>Evolução de todos os sites juntos</h2>' +
+      (hasVisits ? '<p class="note">Visitas por dia, somando todos os sites.</p>' : '<div class="card"><p class="empty" style="margin:0">O gráfico das visitas somadas aparece aqui quando o Google Analytics dos sites for ligado ao painel (falta a credencial do Google, veja em Métricas e APIs).</p></div>') +
+      '<h2>Cada site</h2><div class="tbl"><div class="tbl-scroll"><table><thead><tr><th>Projeto e domínio</th><th>Situação</th><th>Lançamento</th><th>Rotinas</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+  }
   function viewLirio(){
     var tot = totalAudience(), chans = 0, on = 0;
     P.forEach(function(p){ chans += p.ch.length; p.ch.forEach(function(c){ if(c.state==="on" || c.state==="late") on++; }); });
@@ -622,9 +758,8 @@
     var found = (areaFilter==="todas" || areaFilter==="confirmar") ?
       '<div class="area-h" style="--c:var(--a-confirmar)"><i class="bar-c"></i><h2>Achei no Claude Code, falta encaixar</h2></div>' +
       '<div class="found-list">' + FOUND.map(function(f){ return '<div class="found"><b>'+esc(f.n)+'</b>'+esc(f.w)+'<div class="q">'+esc(f.q)+'</div></div>'; }).join("") + '</div>' : "";
-    return '<div class="crumb"><a href="#/">Grupo Lisieux</a><span>›</span>Agência Lírio</div>' +
-      '<h1>Agência Lírio</h1><p class="sub">Agência de marketing com IA. Cuida de tudo que o grupo faz na internet. Cada projeto tem os seus canais, e cada canal mostra o que foi feito e os números.</p>' +
-      '<div class="kpis">' + kpi("Público", fmt(tot), "YouTube + Instagram com leitura", totalDelta()) + kpi("Projetos", P.length, "em 5 áreas") +
+    return lirioHead("#/lirio") +
+      '<div class="kpis">' + kpi("Público", fmt(tot), "YouTube + Instagram com leitura", totalDelta()) + kpi("Projetos", P.length, "em "+AREAS.length+" áreas") +
         kpi("Canais mapeados", chans, on+" com métrica ligada") + kpi("Rotinas", ROUTINES_TOTAL, SCHEDULES_TOTAL+" horários agendados") + kpi("A encaixar", FOUND.length, "achados no Claude Code") + '</div>' +
       '<div class="chips" id="areaChips">'+chipsHtml+'</div>' + dotsLegend() + sections + found;
   }
@@ -640,8 +775,9 @@
     var big = aud!=null ? '<div class="big">'+fmt(aud)+'<small>público</small>'+dl(audienceDelta(p))+'</div>'+(main ? spark(main.pts, a.c) : '')
       : dom ? '<div class="big dom">'+esc(dom)+'</div>' : '<div class="big" style="color:var(--faint)">—<small>sem leitura ainda</small></div>';
     var tags = (p.isNew ? '<span class="tag new">novo</span> ' : '') + (p.found ? '<span class="tag found">achado</span> ' : '');
-    var nr = activeRt(p).length;
-    var meta = '<div class="meta"><span><b>'+nr+'</b> rotina'+(nr===1?"":"s")+'</span>' +
+    var nr = activeRt(p).length, ls = launchStats(p);
+    var launch = '<div class="gn" style="font-size:12px;color:var(--muted);margin-top:10px">lançamento: '+ls.done+'/'+ls.total+'</div><div class="lbar"><i style="width:'+ls.pct.toFixed(1)+'%"></i></div>';
+    var meta = launch + '<div class="meta"><span><b>'+nr+'</b> rotina'+(nr===1?"":"s")+'</span>' +
       (p.partners ? '<span>sócio'+(p.partners.length>1?"s":"")+': <b>'+esc(p.partners.join(" e "))+'</b></span>' : '') +
       (p.parts ? '<span>parceria: <b>'+esc(p.parts[0].name)+'</b></span>' : '') + '</div>';
     return '<a class="card proj" href="#/lirio/'+p.id+'" style="--c:'+a.c+'"><span class="st '+p.status+'">'+ST_TXT[p.status]+'</span>' +
@@ -669,9 +805,36 @@
       '<div class="kpis">' + kpi("Público", aud!=null ? fmt(aud) : "—", aud!=null ? "YouTube + Instagram" : "sem leitura ainda", audienceDelta(p)) +
         kpi("Canais", p.ch.length, p.ch.filter(function(c){ return c.state==="on" || c.state==="late"; }).length+" com métrica") +
         kpi("Rotinas", activeRt(p).length, "agendadas") + '</div>' +
-      evolution(p) + monetization(p) +
+      evolution(p) + monetization(p) + launchSection(p) +
       '<h2>Canais</h2><p class="note">Cada canal mostra o número principal, o que foi feito e de onde vem a métrica.</p>' + dotsLegend() + '<div class="ch-grid">'+cards+'</div>' +
       parts + '<h2>Rotinas</h2>' + rt;
+  }
+  function stepBtn(p, id, label, hint, isNext){
+    var v = lget(p.id, id), mark = v===1 ? "✓" : v===2 ? "–" : "";
+    var st = v===1 ? "feito" : v===2 ? "não se aplica" : "pendente";
+    return '<button type="button" class="step s'+v+(isNext ? " isnext" : "")+'" data-p="'+p.id+'" data-s="'+id+'" aria-label="'+esc(label)+': '+st+'">' +
+      '<span class="box">'+mark+'</span><span class="t">'+esc(label)+(hint ? '<small>'+esc(hint)+'</small>' : '')+'</span></button>';
+  }
+  function launchSection(p){
+    var ls = launchStats(p), rec = recNets(p);
+    var phases = LAUNCH.map(function(g){
+      return '<div class="card"><div class="lph">'+esc(g.ph)+'</div>' + g.steps.map(function(st){ return stepBtn(p, st[0], st[1], st[2], ls.next && ls.next.id===st[0]); }).join("") + '</div>';
+    }).join("");
+    var nets = '<div class="card" style="grid-column:1/-1"><div class="lph">7. Redes para levar gente ao site</div>' +
+      '<div class="note">Marque quando a conta for criada e quando estiver ligada na Metricool (aí os números entram sozinhos no painel).</div>' +
+      '<div class="tbl-scroll"><table class="ntab"><thead><tr><th>Rede</th><th>Criada</th><th>Na Metricool</th></tr></thead><tbody>' +
+      NETS.map(function(n){
+        var r = rec.indexOf(n[0])>=0, cur = lget(p.id, "net:" + n[0]) || lget(p.id, "mc:" + n[0]);
+        if(!r && !cur) return "";
+        return '<tr><td><span style="display:inline-flex;align-items:center;gap:6px">'+icon(n[0]).replace('<svg ', '<svg width="14" height="14" ')+esc(n[1])+'</span>'+(r ? '<span class="rec">sugerida</span>' : '')+'</td>' +
+          '<td>'+stepBtn(p, "net:" + n[0], "", "", false)+'</td><td>'+stepBtn(p, "mc:" + n[0], "", "", false)+'</td></tr>';
+      }).join("") + '</tbody></table></div></div>';
+    return '<h2>Lançamento do site e das redes</h2>' +
+      '<p class="note">Toque num item para marcar: feito → não se aplica → pendente. Fica salvo neste aparelho.</p>' +
+      '<div class="card"><div class="gl" style="display:flex;justify-content:space-between;font-size:14px"><b>'+ls.done+' de '+ls.total+' passos feitos</b><span>'+Math.round(ls.pct)+'%</span></div>' +
+        '<div class="lbar"><i style="width:'+ls.pct.toFixed(1)+'%"></i></div>' +
+        (ls.next ? '<div class="lnext"><b>Próximo passo:</b> '+esc(ls.next.label)+'</div>' : '<div class="lnext" style="background:var(--good-soft);color:var(--good)">Tudo feito por aqui.</div>') + '</div>' +
+      '<div class="lgrid">' + phases + nets + '</div>';
   }
   function evolution(p){
     var list = p.ch.filter(function(c){ return c.pts && c.pts.length; });
@@ -747,22 +910,31 @@
   function route(keepScroll){
     var h0 = location.hash || "";
     var first = h0.replace(/^#\/?/, "").split("/")[0];
-    if(h0 && ["", "lirio", "offline", "apis", "mapa"].indexOf(first)<0){ location.replace("frentes/" + h0); return; }   // endereço do painel antigo
+    if(h0 && ["", "lirio", "lirio-ativos", "lirio-sites", "offline", "apis", "mapa"].indexOf(first)<0){ location.replace("frentes/" + h0); return; }   // endereço do painel antigo
     var h = h0 || "#/", parts = h.replace(/^#\/?/, "").split("/"), html;
     if(parts[0]==="lirio" && parts[1]) html = viewProject(parts[1]);
     else if(parts[0]==="lirio") html = viewLirio();
+    else if(parts[0]==="lirio-ativos") html = viewAtivos();
+    else if(parts[0]==="lirio-sites") html = viewSites();
     else if(parts[0]==="offline") html = viewOffline(parts[1]);
     else if(parts[0]==="apis") html = viewApis();
     else if(parts[0]==="mapa") html = viewMap();
     else html = viewGroup();
     document.getElementById("view").innerHTML = html;
-    var cur = "#/" + (parts[0]==="offline" ? "" : parts[0]);
+    var cur = "#/" + (parts[0]==="offline" ? "" : /^lirio/.test(parts[0]) ? "lirio" : parts[0]);
     document.getElementById("nav").innerHTML = TABS.map(function(t){ return '<a href="'+t[0]+'" class="'+(t[0]===cur ? "on" : "")+'">'+t[1]+'</a>'; }).join("");
     var ch = document.getElementById("areaChips");
     if(ch) ch.addEventListener("click", function(e){ var c = e.target.closest(".chip"); if(!c) return; areaFilter = c.getAttribute("data-area"); route(); });
     if(keepScroll!==true) window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", function(){ route(); });
+  // checklist: toque alterna pendente → feito → não se aplica → pendente
+  document.getElementById("view").addEventListener("click", function(e){
+    var b = e.target.closest(".step"); if(!b) return;
+    var pid = b.getAttribute("data-p"), sid = b.getAttribute("data-s"), v = lget(pid, sid);
+    lset(pid, sid, v===0 ? 1 : v===1 ? 2 : 0);
+    var y = window.scrollY; route(true); window.scrollTo(0, y);
+  });
   // tema: Sistema / Claro / Escuro (mesma escolha guardada pelo painel antigo)
   function setTheme(t, save){
     if(t==="light" || t==="dark") document.documentElement.setAttribute("data-theme", t); else document.documentElement.removeAttribute("data-theme");
@@ -775,7 +947,7 @@
   window.addEventListener("resize", function(){ if(window.innerWidth===lastW) return; lastW = window.innerWidth; clearTimeout(rsz); rsz = setTimeout(function(){ route(true); }, 200); });
   route();
   fetch("data/metrics.json?t=" + Date.now(), { cache:"no-store" }).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(m){
-    bind(m); route(true);
+    bind(m); SITES_DATA = m.sites || null; route(true);
     document.getElementById("hint").textContent = "Números do robô do painel" + (GEN ? ", atualizados em " + GEN.toLocaleString("pt-BR", { day:"2-digit", month:"2-digit", hour:"2-digit", minute:"2-digit" }) : "") + ". As setinhas comparam com 7 dias antes.";
   }).catch(function(){ document.getElementById("hint").textContent = "Não consegui ler os números agora; mostrando os últimos conhecidos."; });
 })();
