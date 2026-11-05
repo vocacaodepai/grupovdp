@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T22:31:31.159Z",
+  "generatedAt": "2026-11-05T02:43:17.254Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -181,6 +181,10 @@
       [
         "8",
         "20261104"
+      ],
+      [
+        "8",
+        "20261105"
       ]
     ],
     "2.1": [
@@ -1974,22 +1978,15 @@
       [
         "845",
         "20261104"
+      ],
+      [
+        "845",
+        "20261105"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        521,
-        88,
-        30,
-        0,
-        0,
-        42,
-        2,
-        5,
-        "20261006"
-      ],
       [
         358,
         143,
@@ -2294,35 +2291,35 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 11285
+          "views": 10958
         },
         {
           "label": "Busca no YouTube",
-          "views": 1230
+          "views": 1167
         },
         {
           "label": "Inscritos (feed)",
-          "views": 670
+          "views": 630
         },
         {
           "label": "Vídeos relacionados",
-          "views": 295
+          "views": 279
         },
         {
           "label": "Notificações",
-          "views": 255
+          "views": 247
         },
         {
           "label": "Página do canal",
-          "views": 168
+          "views": 122
         },
         {
           "label": "Outra página do YouTube",
-          "views": 53
+          "views": 43
         },
         {
           "label": "Link externo",
-          "views": 43
+          "views": 37
         }
       ]
     }
@@ -2332,41 +2329,41 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 34.7
+          "pct": 35.7
         },
         {
           "label": "65+ · Homens",
-          "pct": 22.8
+          "pct": 23.2
         },
         {
           "label": "55-64 · Mulheres",
-          "pct": 11.7
+          "pct": 12.4
         },
         {
           "label": "55-64 · Homens",
-          "pct": 8.7
+          "pct": 9.2
         },
         {
           "label": "35-44 · Homens",
-          "pct": 8.2
+          "pct": 6
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 5.9
+          "pct": 4.9
         },
         {
           "label": "45-54 · Homens",
-          "pct": 3.1
+          "pct": 3.3
         },
         {
           "label": "13-17 · Homens",
-          "pct": 2.6
+          "pct": 2.8
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 11204
+          "views": 10750
         },
         {
           "label": "Portugal",
@@ -2376,43 +2373,43 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12936
+          "views": 12460
         },
         {
           "label": "Computador",
-          "views": 461
+          "views": 441
         },
         {
           "label": "TV",
-          "views": 352
+          "views": 333
         },
         {
           "label": "Tablet",
-          "views": 279
+          "views": 273
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 12469
+          "views": 12025
         },
         {
           "label": "Página de exibição",
-          "views": 1105
+          "views": 1057
         },
         {
           "label": "Explorar/Início",
-          "views": 459
+          "views": 430
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12996
+          "views": 12526
         },
         {
           "label": "Inscritos",
-          "views": 1037
+          "views": 986
         }
       ]
     }
@@ -2530,17 +2527,6 @@
         "avgDuration": 18
       },
       {
-        "id": "S76HYsh21Pw",
-        "title": "Caminho 141 - São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/S76HYsh21Pw/mqdefault.jpg",
-        "views": 526,
-        "likes": 31,
-        "comments": 1,
-        "minutes": 52,
-        "subsGained": 0,
-        "avgDuration": 18
-      },
-      {
         "id": "UXvVLvJ9wZE",
         "title": "Santa Pureza — Ponto 145 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/UXvVLvJ9wZE/mqdefault.jpg",
@@ -2572,6 +2558,17 @@
         "minutes": 15,
         "subsGained": 1,
         "avgDuration": 13
+      },
+      {
+        "id": "S76HYsh21Pw",
+        "title": "Caminho 141 - São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/S76HYsh21Pw/mqdefault.jpg",
+        "views": 261,
+        "likes": 8,
+        "comments": 0,
+        "minutes": 24,
+        "subsGained": 0,
+        "avgDuration": 18
       },
       {
         "id": "p5Cv6amm30o",
@@ -2860,7 +2857,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-04T22:31:31.206Z",
+      "generatedAt": "2026-11-05T02:43:17.302Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -2870,7 +2867,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-04T22:31:31.206Z",
+      "generatedAt": "2026-11-05T02:43:17.302Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -2880,16 +2877,16 @@
   },
   "monetization": {
     "2.2": {
-      "asOf": "2026-11-04",
+      "asOf": "2026-11-05",
       "subscribers": 845,
       "errors": {
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
       "watchHours12m": 694,
-      "shortsViews90d": 32433
+      "shortsViews90d": 32290
     },
     "1.2": {
-      "asOf": "2026-11-04",
+      "asOf": "2026-11-05",
       "subscribers": 8,
       "errors": {
         "watchHours": "Analytics API failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Forbidden\",\n    \"errors\": [\n      {\n        \"message\": \"Forbidden\",\n        \"domain\": ",
