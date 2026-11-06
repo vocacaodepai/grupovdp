@@ -556,14 +556,15 @@
     var lim = new Date(toDate(last.d).getTime() - 7*864e5), ref = null;
     for(var i=pts.length-2; i>=0; i--){ if(toDate(pts[i].d)<=lim){ ref = pts[i]; break; } }
     if(!ref) ref = pts[0];
-    return { v:Math.round(last.v - ref.v), since:ref.d };
+    return { v:Math.round(last.v - ref.v), since:ref.d, until:last.d };
   }
   function dl(x, long){
     if(!x) return "";
     var cls = x.v>0 ? "up" : x.v<0 ? "down" : "flat", txt = x.v>0 ? "▲ +" + fmt(x.v) : x.v<0 ? "▼ −" + fmt(-x.v) : "● 0";
-    return '<span class="dl '+cls+'" title="desde '+dmy(x.since)+'">'+txt+(long ? '<small>desde '+dmy(x.since)+'</small>' : '')+'</span>';
+    var per = "de " + dmy(x.since) + " a " + dmy(x.until || x.since);
+    return '<span class="dl '+cls+'" title="'+per+'">'+txt+(long ? '<small>'+per+'</small>' : '')+'</span>';
   }
-  function sumDelta(list){ var v = 0, since = null, has = false; list.forEach(function(x){ if(x){ v += x.v; has = true; if(!since || x.since<since) since = x.since; } }); return has ? { v:v, since:since } : null; }
+  function sumDelta(list){ var v = 0, since = null, until = null, has = false; list.forEach(function(x){ if(x){ v += x.v; has = true; if(!since || x.since<since) since = x.since; if(!until || x.until>until) until = x.until; } }); return has ? { v:v, since:since, until:until } : null; }
   function audCh(c){ return (c.t==="youtube" || c.t==="instagram") && c.m && typeof c.m[0].v==="number"; }
   function audienceDelta(p){ return sumDelta(p.ch.filter(audCh).map(function(c){ return c.m[0].delta; })); }
   function totalDelta(){ return sumDelta(P.map(audienceDelta)); }
