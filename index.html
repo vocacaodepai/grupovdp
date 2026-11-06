@@ -224,6 +224,8 @@
   .mx td{ text-align:center; font-size:15px; } .mx td:first-child{ text-align:left; font-size:13px; white-space:nowrap; } .mx th{ text-align:center; } .mx th:first-child{ text-align:left; }
   .mx .y{ color:var(--good); } .mx .c{ color:var(--accent); } .mx .r{ color:var(--faint); }
   .mx tr.ah td{ background:var(--surface-2); font:600 12px var(--mono); text-transform:uppercase; letter-spacing:.06em; color:var(--muted); text-align:left; }
+  #toast{ position:fixed; left:50%; bottom:20px; transform:translate(-50%, 20px); opacity:0; pointer-events:none; transition:.25s; background:var(--text); color:var(--bg); font:500 13px var(--sans); padding:10px 16px; border-radius:10px; z-index:60; max-width:calc(100% - 32px); }
+  #toast.show{ opacity:1; transform:translate(-50%, 0); }
   .mon-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(380px,1fr)); gap:12px; margin-top:12px; }
   .goal{ margin-top:12px; }
   .goal .gl{ display:flex; justify-content:space-between; gap:10px; font-size:13px; }
@@ -509,7 +511,39 @@
   var LKEY = "vdp-lancamento-v1", lstore = {};
   try{ lstore = JSON.parse(localStorage.getItem(LKEY) || "{}") || {}; }catch(e){ lstore = {}; }
   function lget(pid, sid){ var u = lstore[pid]; if(u && Object.prototype.hasOwnProperty.call(u, sid)) return u[sid]; var sd = seedOf(pid)[sid]; return sd || 0; }
-  function lset(pid, sid, v){ lstore[pid] = lstore[pid] || {}; lstore[pid][sid] = v; try{ localStorage.setItem(LKEY, JSON.stringify(lstore)); }catch(e){} }
+  // com o endereço do VPS preenchido, as marcações ficam no servidor e valem em qualquer aparelho
+  // (vps/checklist-api); vazio = cada aparelho guarda as suas
+  var CHECK_API = "";
+  var TKEY = "vdp-check-token";
+  function lsave(){ try{ localStorage.setItem(LKEY, JSON.stringify(lstore)); }catch(e){} }
+  function toast(msg){
+    var t = document.getElementById("toast");
+    if(!t){ t = document.createElement("div"); t.id = "toast"; t.setAttribute("role", "status"); document.body.appendChild(t); }
+    t.textContent = msg; t.className = "show"; clearTimeout(toast.h); toast.h = setTimeout(function(){ t.className = ""; }, 4000);
+  }
+  function remoteSet(pid, sid, v, retried){
+    var tok = ""; try{ tok = localStorage.getItem(TKEY) || ""; }catch(e){}
+    if(!tok){
+      tok = window.prompt("Senha do checklist (só pede uma vez neste aparelho):") || "";
+      if(!tok){ toast("Sem a senha, a marcação ficou só neste aparelho."); return; }
+      try{ localStorage.setItem(TKEY, tok); }catch(e){}
+    }
+    fetch(CHECK_API + "/checklist/" + encodeURIComponent(pid) + "/" + encodeURIComponent(sid), {
+      method:"PUT", headers:{ "Authorization":"Bearer " + tok, "Content-Type":"application/json" }, body:JSON.stringify({ v:v })
+    }).then(function(r){
+      if(r.status===401){ try{ localStorage.removeItem(TKEY); }catch(e){} if(!retried) return remoteSet(pid, sid, v, true); toast("Senha errada: a marcação ficou só neste aparelho."); return; }
+      if(!r.ok) toast("O servidor não salvou (" + r.status + "). Ficou só neste aparelho.");
+    }).catch(function(){ toast("Sem conexão com o servidor: ficou só neste aparelho."); });
+  }
+  function lset(pid, sid, v){ lstore[pid] = lstore[pid] || {}; lstore[pid][sid] = v; lsave(); if(CHECK_API) remoteSet(pid, sid, v); }
+  function loadRemote(){
+    if(!CHECK_API) return;
+    fetch(CHECK_API + "/checklist", { cache:"no-store" }).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){
+      var st = (d && d.states) || {};
+      Object.keys(st).forEach(function(pid){ lstore[pid] = lstore[pid] || {}; for(var k in st[pid]) lstore[pid][k] = st[pid][k]; });
+      lsave(); var y = window.scrollY; route(true); window.scrollTo(0, y);
+    }).catch(function(){ toast("Não consegui ler o checklist do servidor; mostrando o deste aparelho."); });
+  }
   function launchItems(p){
     var out = [];
     LAUNCH.forEach(function(g){ g.steps.forEach(function(st){ out.push({ id:st[0], label:st[1] }); }); });
@@ -831,7 +865,7 @@
           '<td>'+stepBtn(p, "net:" + n[0], "", "", false)+'</td><td>'+stepBtn(p, "mc:" + n[0], "", "", false)+'</td></tr>';
       }).join("") + '</tbody></table></div></div>';
     return '<h2>Lançamento do site e das redes</h2>' +
-      '<p class="note">Toque num item para marcar: feito → não se aplica → pendente. Fica salvo neste aparelho.</p>' +
+      '<p class="note">Toque num item para marcar: feito → não se aplica → pendente. '+(CHECK_API ? "Fica salvo no seu servidor e vale em qualquer aparelho." : "Fica salvo neste aparelho.")+'</p>' +
       '<div class="card"><div class="gl" style="display:flex;justify-content:space-between;font-size:14px"><b>'+ls.done+' de '+ls.total+' passos feitos</b><span>'+Math.round(ls.pct)+'%</span></div>' +
         '<div class="lbar"><i style="width:'+ls.pct.toFixed(1)+'%"></i></div>' +
         (ls.next ? '<div class="lnext"><b>Próximo passo:</b> '+esc(ls.next.label)+'</div>' : '<div class="lnext" style="background:var(--good-soft);color:var(--good)">Tudo feito por aqui.</div>') + '</div>' +
@@ -947,6 +981,7 @@
   var rsz = null, lastW = window.innerWidth;
   window.addEventListener("resize", function(){ if(window.innerWidth===lastW) return; lastW = window.innerWidth; clearTimeout(rsz); rsz = setTimeout(function(){ route(true); }, 200); });
   route();
+  loadRemote();
   fetch("data/metrics.json?t=" + Date.now(), { cache:"no-store" }).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(m){
     bind(m); SITES_DATA = m.sites || null; route(true);
     document.getElementById("hint").textContent = "Números do robô do painel" + (GEN ? ", atualizados em " + GEN.toLocaleString("pt-BR", { day:"2-digit", month:"2-digit", hour:"2-digit", minute:"2-digit" }) : "") + ". As setinhas comparam com 7 dias antes.";
