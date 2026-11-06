@@ -513,7 +513,7 @@
   function lget(pid, sid){ var u = lstore[pid]; if(u && Object.prototype.hasOwnProperty.call(u, sid)) return u[sid]; var sd = seedOf(pid)[sid]; return sd || 0; }
   // com o endereço do VPS preenchido, as marcações ficam no servidor e valem em qualquer aparelho
   // (vps/checklist-api); vazio = cada aparelho guarda as suas
-  var CHECK_API = "";
+  var CHECK_API = "https://painel-checklist.187-41-115-1.sslip.io";
   var TKEY = "vdp-check-token";
   function lsave(){ try{ localStorage.setItem(LKEY, JSON.stringify(lstore)); }catch(e){} }
   function toast(msg){
