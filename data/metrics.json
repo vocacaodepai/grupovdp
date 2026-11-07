@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07T19:35:08.875Z",
+  "generatedAt": "2026-11-07T22:57:51.471Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -2316,7 +2316,7 @@
         "20261106"
       ],
       [
-        "846",
+        "847",
         "20261107"
       ]
     ]
@@ -2401,8 +2401,8 @@
         "20261015"
       ],
       [
-        685,
-        74,
+        680,
+        77,
         32,
         3,
         1,
@@ -2434,7 +2434,7 @@
         "20261018"
       ],
       [
-        274,
+        271,
         70,
         63,
         1,
@@ -2489,7 +2489,7 @@
         "20261023"
       ],
       [
-        269,
+        263,
         98,
         72,
         2,
@@ -2557,7 +2557,7 @@
       [
         349,
         70,
-        48,
+        49,
         6,
         0,
         30,
@@ -2619,6 +2619,17 @@
         0,
         0,
         "20261104"
+      ],
+      [
+        37,
+        10,
+        46,
+        1,
+        0,
+        2,
+        0,
+        0,
+        "20261105"
       ]
     ]
   },
@@ -2627,23 +2638,23 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10718
+          "views": 10722
         },
         {
           "label": "Busca no YouTube",
-          "views": 1153
+          "views": 1178
         },
         {
           "label": "Inscritos (feed)",
-          "views": 550
+          "views": 554
         },
         {
           "label": "Vídeos relacionados",
-          "views": 259
+          "views": 260
         },
         {
           "label": "Notificações",
-          "views": 247
+          "views": 250
         },
         {
           "label": "Página do canal",
@@ -2709,15 +2720,15 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12126
+          "views": 12150
         },
         {
           "label": "Computador",
-          "views": 427
+          "views": 435
         },
         {
           "label": "TV",
-          "views": 314
+          "views": 319
         },
         {
           "label": "Tablet",
@@ -2727,25 +2738,25 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11765
+          "views": 11788
         },
         {
           "label": "Página de exibição",
-          "views": 999
+          "views": 1010
         },
         {
           "label": "Explorar/Início",
-          "views": 379
+          "views": 382
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12199
+          "views": 12233
         },
         {
           "label": "Inscritos",
-          "views": 944
+          "views": 947
         }
       ]
     }
@@ -2877,12 +2888,12 @@
         "id": "YH-tYLN1t14",
         "title": "Coração — Ponto 159 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/YH-tYLN1t14/mqdefault.jpg",
-        "views": 298,
+        "views": 300,
         "likes": 27,
         "comments": 0,
-        "minutes": 20,
+        "minutes": 21,
         "subsGained": 3,
-        "avgDuration": 17
+        "avgDuration": 16
       },
       {
         "id": "lhbL0Gmub7g",
@@ -2960,6 +2971,10 @@
       [
         1,
         "20261104"
+      ],
+      [
+        0,
+        "20261105"
       ]
     ],
     "ta_1h2Ns24Q": [
@@ -3014,6 +3029,10 @@
       [
         0,
         "20261104"
+      ],
+      [
+        0,
+        "20261105"
       ]
     ],
     "NW_VDiYDzmo": [
@@ -3092,6 +3111,10 @@
       [
         2,
         "20261104"
+      ],
+      [
+        0,
+        "20261105"
       ]
     ],
     "veJQHaTx6co": [
@@ -3138,6 +3161,10 @@
       [
         0,
         "20261104"
+      ],
+      [
+        0,
+        "20261105"
       ]
     ],
     "VOZW4M3c4JM": [
@@ -3176,6 +3203,10 @@
       [
         0,
         "20261104"
+      ],
+      [
+        0,
+        "20261105"
       ]
     ],
     "vW6rnl3gfyw": [
@@ -3234,6 +3265,10 @@
       [
         0,
         "20261104"
+      ],
+      [
+        0,
+        "20261105"
       ]
     ]
   },
@@ -3241,7 +3276,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-07T19:35:08.920Z",
+      "generatedAt": "2026-11-07T22:57:51.510Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3251,7 +3286,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-07T19:35:08.920Z",
+      "generatedAt": "2026-11-07T22:57:51.510Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3262,12 +3297,12 @@
   "monetization": {
     "2.2": {
       "asOf": "2026-11-07",
-      "subscribers": 846,
+      "subscribers": 847,
       "errors": {
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
       "watchHours12m": 694,
-      "shortsViews90d": 29750
+      "shortsViews90d": 29780
     },
     "1.2": {
       "asOf": "2026-11-07",
