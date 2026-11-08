@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07T22:57:51.471Z",
+  "generatedAt": "2026-11-08T02:14:16.794Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -193,6 +193,10 @@
       [
         "8",
         "20261107"
+      ],
+      [
+        "8",
+        "20261108"
       ]
     ],
     "2.1": [
@@ -2318,22 +2322,15 @@
       [
         "847",
         "20261107"
+      ],
+      [
+        "847",
+        "20261108"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
-      [
-        86,
-        117,
-        190,
-        1,
-        0,
-        2,
-        0,
-        0,
-        "20261009"
-      ],
       [
         72,
         53,
@@ -2401,8 +2398,8 @@
         "20261015"
       ],
       [
-        680,
-        77,
+        685,
+        74,
         32,
         3,
         1,
@@ -2434,7 +2431,7 @@
         "20261018"
       ],
       [
-        271,
+        274,
         70,
         63,
         1,
@@ -2489,7 +2486,7 @@
         "20261023"
       ],
       [
-        263,
+        269,
         98,
         72,
         2,
@@ -2638,19 +2635,19 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10722
+          "views": 10708
         },
         {
           "label": "Busca no YouTube",
-          "views": 1178
+          "views": 1146
         },
         {
           "label": "Inscritos (feed)",
-          "views": 554
+          "views": 524
         },
         {
           "label": "Vídeos relacionados",
-          "views": 260
+          "views": 250
         },
         {
           "label": "Notificações",
@@ -2710,7 +2707,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 10412
+          "views": 10348
         },
         {
           "label": "Portugal",
@@ -2720,43 +2717,43 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12150
+          "views": 12091
         },
         {
           "label": "Computador",
-          "views": 435
+          "views": 425
         },
         {
           "label": "TV",
-          "views": 319
+          "views": 303
         },
         {
           "label": "Tablet",
-          "views": 271
+          "views": 270
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11788
+          "views": 11749
         },
         {
           "label": "Página de exibição",
-          "views": 1010
+          "views": 982
         },
         {
           "label": "Explorar/Início",
-          "views": 382
+          "views": 363
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12233
+          "views": 12159
         },
         {
           "label": "Inscritos",
-          "views": 947
+          "views": 935
         }
       ]
     }
@@ -3276,7 +3273,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-07T22:57:51.510Z",
+      "generatedAt": "2026-11-08T02:14:16.834Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3286,7 +3283,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-07T22:57:51.510Z",
+      "generatedAt": "2026-11-08T02:14:16.834Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3296,16 +3293,16 @@
   },
   "monetization": {
     "2.2": {
-      "asOf": "2026-11-07",
+      "asOf": "2026-11-08",
       "subscribers": 847,
       "errors": {
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
       "watchHours12m": 694,
-      "shortsViews90d": 29780
+      "shortsViews90d": 29471
     },
     "1.2": {
-      "asOf": "2026-11-07",
+      "asOf": "2026-11-08",
       "subscribers": 8,
       "errors": {
         "watchHours": "Analytics API failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Forbidden\",\n    \"errors\": [\n      {\n        \"message\": \"Forbidden\",\n        \"domain\": ",
