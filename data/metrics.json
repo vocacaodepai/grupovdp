@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09T11:21:12.989Z",
+  "generatedAt": "2026-11-09T21:30:42.282Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -2386,7 +2386,7 @@
         "20261108"
       ],
       [
-        "846",
+        "847",
         "20261109"
       ]
     ],
@@ -2719,6 +2719,17 @@
         0,
         0,
         "20261106"
+      ],
+      [
+        63,
+        23,
+        67,
+        1,
+        0,
+        1,
+        0,
+        0,
+        "20261107"
       ]
     ]
   },
@@ -2727,15 +2738,15 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10689
+          "views": 10691
         },
         {
           "label": "Busca no YouTube",
-          "views": 1136
+          "views": 1175
         },
         {
           "label": "Inscritos (feed)",
-          "views": 506
+          "views": 517
         },
         {
           "label": "Notificações",
@@ -2743,19 +2754,19 @@
         },
         {
           "label": "Vídeos relacionados",
-          "views": 242
+          "views": 243
         },
         {
           "label": "Página do canal",
-          "views": 109
+          "views": 115
         },
         {
           "label": "Outra página do YouTube",
-          "views": 43
+          "views": 45
         },
         {
           "label": "Link externo",
-          "views": 31
+          "views": 32
         }
       ]
     }
@@ -2799,7 +2810,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 10348
+          "views": 10404
         },
         {
           "label": "Portugal",
@@ -2809,15 +2820,15 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12044
+          "views": 12090
         },
         {
           "label": "Computador",
-          "views": 424
+          "views": 438
         },
         {
           "label": "TV",
-          "views": 295
+          "views": 298
         },
         {
           "label": "Tablet",
@@ -2827,25 +2838,25 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11722
+          "views": 11750
         },
         {
           "label": "Página de exibição",
-          "views": 969
+          "views": 999
         },
         {
           "label": "Explorar/Início",
-          "views": 347
+          "views": 352
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12124
+          "views": 12186
         },
         {
           "label": "Inscritos",
-          "views": 914
+          "views": 915
         }
       ]
     }
@@ -2889,7 +2900,7 @@
         "id": "veJQHaTx6co",
         "title": "Coração — Ponto 154 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/veJQHaTx6co/mqdefault.jpg",
-        "views": 1071,
+        "views": 1072,
         "likes": 68,
         "comments": 0,
         "minutes": 74,
@@ -2977,7 +2988,7 @@
         "id": "YH-tYLN1t14",
         "title": "Coração — Ponto 159 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/YH-tYLN1t14/mqdefault.jpg",
-        "views": 302,
+        "views": 304,
         "likes": 27,
         "comments": 0,
         "minutes": 21,
@@ -2999,7 +3010,7 @@
         "id": "p5Cv6amm30o",
         "title": "Coração — Ponto 161 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/p5Cv6amm30o/mqdefault.jpg",
-        "views": 245,
+        "views": 248,
         "likes": 20,
         "comments": 0,
         "minutes": 17,
@@ -3068,6 +3079,10 @@
       [
         0,
         "20261106"
+      ],
+      [
+        0,
+        "20261107"
       ]
     ],
     "ta_1h2Ns24Q": [
@@ -3130,6 +3145,10 @@
       [
         0,
         "20261106"
+      ],
+      [
+        0,
+        "20261107"
       ]
     ],
     "NW_VDiYDzmo": [
@@ -3216,6 +3235,10 @@
       [
         0,
         "20261106"
+      ],
+      [
+        0,
+        "20261107"
       ]
     ],
     "veJQHaTx6co": [
@@ -3270,6 +3293,10 @@
       [
         0,
         "20261106"
+      ],
+      [
+        1,
+        "20261107"
       ]
     ],
     "VOZW4M3c4JM": [
@@ -3316,6 +3343,10 @@
       [
         0,
         "20261106"
+      ],
+      [
+        0,
+        "20261107"
       ]
     ],
     "vW6rnl3gfyw": [
@@ -3382,6 +3413,10 @@
       [
         0,
         "20261106"
+      ],
+      [
+        0,
+        "20261107"
       ]
     ]
   },
@@ -3389,7 +3424,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-09T11:21:13.039Z",
+      "generatedAt": "2026-11-09T21:30:42.323Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3399,7 +3434,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-09T11:21:13.039Z",
+      "generatedAt": "2026-11-09T21:30:42.323Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3410,12 +3445,12 @@
   "monetization": {
     "2.2": {
       "asOf": "2026-11-09",
-      "subscribers": 846,
+      "subscribers": 847,
       "errors": {
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
-      "watchHours12m": 694,
-      "shortsViews90d": 29102
+      "watchHours12m": 695,
+      "shortsViews90d": 29160
     },
     "1.2": {
       "asOf": "2026-11-09",
