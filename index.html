@@ -310,7 +310,8 @@
     { id:"esporte",  name:"Esporte e motivação",   short:"Esporte",  c:"var(--a-esporte)" },
     { id:"negocios", name:"Negócios e finanças",   short:"Negócios", c:"var(--a-negocios)" },
     { id:"noticias", name:"Notícias e tecnologia", short:"Notícias", c:"var(--a-blogs)" },
-    { id:"casa",     name:"Casa, saúde e compras", short:"Casa e saúde", c:"var(--a-casa)" }
+    { id:"casa",     name:"Casa, saúde e compras", short:"Casa e saúde", c:"var(--a-casa)" },
+    { id:"entretenimento", name:"Entretenimento", short:"Entretenimento", c:"#d0559a" }
   ];
   var SITE_SRC = "Google Analytics + Search Console + AdSense: falta a credencial do Google";
   var P = [
@@ -403,6 +404,34 @@
       blurb:"Conteúdo de vendas.",
       ch:[{ t:"instagram", state:"plan", done:["Legenda sobre 5 técnicas de vendas pronta (28/10)"] }], rt:[] }
   ];
+  [
+    { id:"brasileirao", name:"Brasileirão Metrics", area:"esporte", handle:"@brasileiraometrics" },
+    { id:"masteringapple", name:"Mastering Apple", area:"noticias", handle:"@masteringapple" },
+    { id:"inmyhome", name:"In My Home Products", area:"casa", handle:"@inmyhomeproducts" },
+    { id:"endlessai", name:"The Endless AI Story", area:"entretenimento", handle:"@theendlessaistory" },
+    { id:"ruidobranco", name:"Ruído Branco", area:"entretenimento", handle:"canal no YouTube" }
+  ].forEach(function(x){ P.push({ id:x.id, name:x.name, area:x.area, status:"andamento", found:true, was:"novo · achado na Metricool", blurb:x.handle, ch:[], rt:[] }); });
+  // cada projeto com marca na Metricool: as redes ligadas lá viram canais com número (data/metrics.json → metricool)
+  var MC_BRANDS = {
+    sje:["6793263", ["instagram", "facebook", "youtube", "tiktok"]], jogador:["6798569", ["instagram", "facebook"]],
+    escrivatododia:["6816432", ["instagram", "facebook", "threads"]], vasco:["6849741", ["instagram", "facebook"]],
+    motivacao:["6904253", ["instagram", "facebook"]], vocacaodemae:["7853789", ["instagram", "facebook"]],
+    brasileirao:["7864002", ["instagram", "facebook"]], politicadiaria:["7880292", ["instagram", "facebook", "youtube"]],
+    endlessai:["7911052", ["instagram", "facebook"]], ruidobranco:["7921246", ["youtube"]],
+    inmyhome:["7931881", ["instagram", "facebook"]], masteringapple:["7951623", ["instagram", "facebook", "youtube"]]
+  };
+  P.forEach(function(p){
+    var b = MC_BRANDS[p.id]; if(!b) return;
+    b[1].forEach(function(net){
+      var c = p.ch.filter(function(x){ return x.t===net; })[0];
+      if(!c){ c = { t:net, state:"off", src:"Metricool" }; p.ch.push(c); }
+      if(net==="youtube" && c.sr) return;          // canal com leitura direta do YouTube continua nela
+      if(c.sr){ c.xsr = c.sr; c.sr = null; }       // os números extras (alcance, interações) seguem na série antiga
+      c.mcb = b[0];
+      if(!c.src || /ainda não ligado|Windsor/i.test(c.src) || c.state==="plan") c.src = "Metricool";
+      if(c.state==="plan" || c.state==="off") c.state = "off";
+    });
+  });
   var OFF = [
     { id:"atelie", num:2, name:"Ateliê Lisieux", cat:"Roupas", status:"ideia", was:"Frente 05" },
     { id:"flor", num:3, name:"Flor de Lisieux", cat:"Casa de festas", status:"ideia", was:"Frente 07" },
@@ -489,7 +518,7 @@
   ICON.pinterest = '<circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7.2 14l1.3-6.2M6 7.6c0-1.6 1.1-2.6 2.5-2.6 1.4 0 2.3.9 2.3 2.1 0 1.6-.9 2.8-2 2.8-.7 0-1.1-.5-1-1.1" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>';
   CH_NAME.tiktok = "TikTok"; CH_NAME.pinterest = "Pinterest";
   // redes que mais combinam com cada área (sugestão; a escolha é sua)
-  var REC_AREA = { familia:["pinterest", "threads"], fe:["tiktok", "threads"], esporte:["tiktok", "x"], negocios:["x", "threads"], noticias:["x", "threads"], casa:["pinterest", "tiktok"] };
+  var REC_AREA = { entretenimento:["tiktok"], familia:["pinterest", "threads"], fe:["tiktok", "threads"], esporte:["tiktok", "x"], negocios:["x", "threads"], noticias:["x", "threads"], casa:["pinterest", "tiktok"] };
   function recNets(p){ return ["instagram", "facebook", "youtube"].concat(REC_AREA[p.area] || []); }
   // o que já se sabe que foi feito (marcado pelo Claude; dá para mudar com um toque)
   var OLD_BUILD = { quiz:2, sessao:2, vps:2, prompt:2 };   // sites feitos antes da Fábrica e do VPS: não se aplica
@@ -506,6 +535,7 @@
     if(id==="sje"){ both("youtube"); both("tiktok"); }
     if(id==="escrivatododia") both("threads");
     if(id==="vocacaodepai"){ o["net:instagram"] = 1; o["net:youtube"] = 1; }
+    if(MC_BRANDS[id]) MC_BRANDS[id][1].forEach(both);
     return o;
   }
   var LKEY = "vdp-lancamento-v1", lstore = {};
@@ -563,9 +593,10 @@
   // ---------- contas ----------
   function areaOf(id){ for(var i=0;i<AREAS.length;i++) if(AREAS[i].id===id) return AREAS[i]; return { id:"x", name:"", c:"var(--a-confirmar)" }; }
   function fmt(n){ return typeof n==="number" ? n.toLocaleString("pt-BR") : n; }
-  function audience(p){ var s = 0, has = false; p.ch.forEach(function(c){ if(c.m && typeof c.m[0].v==="number" && (c.t==="youtube" || c.t==="instagram")){ s += c.m[0].v; has = true; } }); return has ? s : null; }
-  function byPlatform(){ var o = { youtube:0, instagram:0 }; P.forEach(function(p){ p.ch.forEach(function(c){ if(c.m && typeof c.m[0].v==="number" && o[c.t]!=null) o[c.t] += c.m[0].v; }); }); return o; }
-  function totalAudience(){ var b = byPlatform(); return b.youtube + b.instagram; }
+  var AUD_NETS = ["youtube", "instagram", "facebook", "tiktok", "threads"];
+  function audience(p){ var s = 0, has = false; p.ch.forEach(function(c){ if(audCh(c)){ s += c.m[0].v; has = true; } }); return has ? s : null; }
+  function byPlatform(){ var o = {}; AUD_NETS.forEach(function(n){ o[n] = 0; }); P.forEach(function(p){ p.ch.forEach(function(c){ if(audCh(c)) o[c.t] += c.m[0].v; }); }); return o; }
+  function totalAudience(){ var b = byPlatform(), t = 0; for(var k in b) t += b[k]; return t; }
 
   // ---------- números reais (data/metrics.json, atualizado pelo robô) ----------
   function parseRows(rows, col){
@@ -599,24 +630,26 @@
     return '<span class="dl '+cls+'" title="'+per+'">'+txt+(long ? '<small>'+per+'</small>' : '')+'</span>';
   }
   function sumDelta(list){ var v = 0, since = null, until = null, has = false; list.forEach(function(x){ if(x){ v += x.v; has = true; if(!since || x.since<since) since = x.since; if(!until || x.until>until) until = x.until; } }); return has ? { v:v, since:since, until:until } : null; }
-  function audCh(c){ return (c.t==="youtube" || c.t==="instagram") && c.m && typeof c.m[0].v==="number"; }
+  function audCh(c){ return AUD_NETS.indexOf(c.t)>=0 && c.m && typeof c.m[0].v==="number"; }
   function audienceDelta(p){ return sumDelta(p.ch.filter(audCh).map(function(c){ return c.m[0].delta; })); }
   function totalDelta(){ return sumDelta(P.map(audienceDelta)); }
   var GEN = null;
   function bind(m){
     var rows = (m && m.snapshotRows) || {};
     GEN = m && m.generatedAt ? new Date(m.generatedAt) : null;
+    var mcb = (m && m.metricool) || {};
     P.forEach(function(p){ p.ch.forEach(function(c){
       if(c.mon && m && m.monetization && m.monetization[c.mon]) c.monData = m.monetization[c.mon];
-      if(!c.sr) return;
-      var pts = parseRows(rows[c.sr], 0);
+      if(!c.sr && !c.mcb) return;
+      var pts = c.sr ? parseRows(rows[c.sr], 0) : parseRows(((mcb[c.mcb] || {}).series || {})[c.t], 0);
       if(!pts.length) return;
       var last = pts[pts.length - 1];
       if(!c.m) c.m = [{ l:c.t==="youtube" ? "Inscritos" : "Seguidores" }];
+      if(c.label==null && p.blurb && /^@/.test(p.blurb) && c.t!=="youtube") c.label = p.blurb;
       c.pts = pts; c.m[0].v = last.v; c.m[0].d = dmy(last.d); c.m[0].delta = delta(pts);
       c.m.forEach(function(x, i){
         if(!i) return;
-        if(x.c!=null){ var ps = parseRows(rows[c.sr], x.c); if(ps.length){ x.v = ps[ps.length - 1].v; x.d = dmy(ps[ps.length - 1].d); } }
+        if(x.c!=null){ var ps = parseRows(rows[c.xsr || c.sr], x.c); if(ps.length){ x.v = ps[ps.length - 1].v; x.d = dmy(ps[ps.length - 1].d); } }
         else if(x.calc==="views7"){
           var dr = ((m.detailRows || {})["2.2"] || []).filter(Array.isArray).slice().sort(function(a, b){ return String(a[a.length-1])<String(b[b.length-1]) ? -1 : 1; }).slice(-7);
           if(dr.length){ x.v = dr.reduce(function(t, r){ return t + (Number(r[0]) || 0); }, 0); x.d = "até " + dmy(String(dr[dr.length-1][dr[dr.length-1].length-1])); }
@@ -666,7 +699,7 @@
       '<circle cx="'+X(lp).toFixed(1)+'" cy="'+Y(lp.v).toFixed(1)+'" r="4" fill="'+color+'"/>' +
       '<text x="'+L+'" y="'+(H - 6)+'">'+dmy(pts[0].d)+'</text><text x="'+(W - Rr)+'" y="'+(H - 6)+'" text-anchor="end">'+dmy(lp.d)+'</text>' + hits + '</svg>';
   }
-  var CH_COLOR = { youtube:"var(--bad)", instagram:"var(--a-blogs)" };
+  var CH_COLOR = { youtube:"var(--bad)", instagram:"var(--a-blogs)", facebook:"var(--a-familia)", tiktok:"var(--text)", threads:"var(--muted)" };
   // público somado do grupo, dia a dia (cada conta repete o último valor conhecido)
   function groupSeries(){
     var list = []; P.forEach(function(p){ p.ch.forEach(function(c){ if(audCh(c) && c.pts && c.pts.length) list.push(c.pts); }); });
@@ -697,13 +730,13 @@
     var max = ranked.length ? ranked[0].v : 1;
     var bars = ranked.map(function(x){ var a = areaOf(x.p.area);
       return '<a class="bar" href="#/lirio/'+x.p.id+'" style="--c:'+a.c+'"><span class="n">'+esc(x.p.name)+'</span><span class="t"><i style="width:'+Math.max(0.4, x.v/max*100).toFixed(1)+'%"></i></span><span class="v">'+fmt(x.v)+dl(audienceDelta(x.p))+'</span></a>'; }).join("");
-    var tot = b.youtube + b.instagram;
+    var tot = totalAudience();
     var needs = NEEDS.map(function(n){ return '<div class="need"><i class="dot '+n.st+'" style="margin-top:6px"></i><div><b>'+esc(n.t)+'</b>'+esc(n.d)+'</div></div>'; }).join("");
     return '' +
       '<div class="crumb">Grupo Lisieux</div>' +
       '<h1>Grupo Lisieux</h1><p class="sub">A empresa da família, ainda sem CNPJ. Embaixo dela: a Agência Lírio, que cuida de tudo que é online, e os negócios offline.</p>' +
       '<div class="kpis">' +
-        kpi("Público online", fmt(tot), "seguidores + inscritos com leitura", totalDelta()) +
+        kpi("Público online", fmt(tot), "seguidores + inscritos, todas as redes", totalDelta()) +
         kpi("Projetos online", online, "na Agência Lírio") +
         kpi("Rotinas", ROUTINES_TOTAL, SCHEDULES_TOTAL+" horários · "+ROUTINES_NEW+" novas da Shopee") +
         kpi("Negócios offline", OFF.length, "1 novo: Loja de terços") +
@@ -720,19 +753,18 @@
           '<div><div class="col-h"><span class="tag offline">offline</span><span class="note">negócios físicos</span></div><div class="off-grid">'+offCards+'</div></div>' +
         '</div>' +
       '</div>' +
-      '<h2>Evolução do público do grupo</h2><p class="note">YouTube + Instagram somados, dia a dia.</p><div class="card">'+chart(groupSeries(), "var(--accent)", true)+'</div>' +
+      '<h2>Evolução do público do grupo</h2><p class="note">Todas as redes somadas, dia a dia.</p><div class="card">'+chart(groupSeries(), "var(--accent)", true)+'</div>' +
       '<div class="two">' +
-        '<div><h2>Onde está o público</h2><p class="note">Por projeto, somando YouTube e Instagram. Os sites ainda não têm leitura.</p><div class="card"><div class="bars">'+bars+'</div></div></div>' +
+        '<div><h2>Onde está o público</h2><p class="note">Por projeto, somando todas as redes. Os sites ainda não têm leitura.</p><div class="card"><div class="bars">'+bars+'</div></div></div>' +
         '<div><h2>Por plataforma</h2><p class="note">Contas com leitura no painel.</p><div class="card">' +
-          '<div class="stack"><i style="width:'+(b.instagram/tot*100).toFixed(1)+'%;background:var(--a-blogs)"></i><i style="width:'+(b.youtube/tot*100).toFixed(1)+'%;background:var(--bad)"></i></div>' +
-          '<div class="legend"><div><span class="sw" style="background:var(--a-blogs)"></span>Instagram<span class="v">'+fmt(b.instagram)+'</span></div>' +
-          '<div><span class="sw" style="background:var(--bad)"></span>YouTube<span class="v">'+fmt(b.youtube)+'</span></div>' +
+          '<div class="stack">' + PLAT.filter(function(x){ return b[x[0]]>0; }).map(function(x){ return '<i style="width:'+(b[x[0]]/tot*100).toFixed(1)+'%;background:'+x[2]+'"></i>'; }).join("") + '</div>' +
+          '<div class="legend">' + PLAT.map(function(x){ return '<div><span class="sw" style="background:'+x[2]+'"></span>'+x[1]+'<span class="v">'+(b[x[0]] ? fmt(b[x[0]]) : "—")+'</span></div>'; }).join("") +
           '<div><span class="sw" style="background:var(--grid)"></span>Sites<span class="v">sem leitura</span></div></div>' +
-          '<p class="note" style="margin:10px 0 0">Dica: a maior parte do público está num só perfil (Motivação). E esse perfil vem perdendo seguidores devagar (−11 desde 26/10).</p>' +
         '</div></div>' +
       '</div>' +
       '<h2>O que está esperando você</h2><p class="note">Levantado nas sessões e rotinas do Claude Code em 28/10 e 03/11.</p><div class="needs">'+needs+'</div>';
   }
+  var PLAT = [["instagram", "Instagram", "var(--a-blogs)"], ["youtube", "YouTube", "var(--bad)"], ["facebook", "Facebook", "var(--a-familia)"], ["tiktok", "TikTok", "var(--text)"], ["threads", "Threads", "var(--muted)"]];
   function kpi(l, v, h, d){ return '<div class="kpi"><div class="lbl">'+esc(l)+'</div><div class="v">'+esc(v)+'</div>'+(d ? dl(d, true) : '')+'<div class="h">'+esc(h)+'</div></div>'; }
 
   var areaFilter = "todas";
@@ -794,7 +826,7 @@
       '<div class="area-h" style="--c:var(--a-confirmar)"><i class="bar-c"></i><h2>Achei no Claude Code, falta encaixar</h2></div>' +
       '<div class="found-list">' + FOUND.map(function(f){ return '<div class="found"><b>'+esc(f.n)+'</b>'+esc(f.w)+'<div class="q">'+esc(f.q)+'</div></div>'; }).join("") + '</div>' : "";
     return lirioHead("#/lirio") +
-      '<div class="kpis">' + kpi("Público", fmt(tot), "YouTube + Instagram com leitura", totalDelta()) + kpi("Projetos", P.length, "em "+AREAS.length+" áreas") +
+      '<div class="kpis">' + kpi("Público", fmt(tot), "todas as redes com leitura", totalDelta()) + kpi("Projetos", P.length, "em "+AREAS.length+" áreas") +
         kpi("Canais mapeados", chans, on+" com métrica ligada") + kpi("Rotinas", ROUTINES_TOTAL, SCHEDULES_TOTAL+" horários agendados") + kpi("A encaixar", FOUND.length, "achados no Claude Code") + '</div>' +
       '<div class="chips" id="areaChips">'+chipsHtml+'</div>' + dotsLegend() + sections + found;
   }
@@ -837,7 +869,7 @@
         (p.partners ? '<span class="note">sócio'+(p.partners.length>1?"s":"")+': '+esc(p.partners.join(" e "))+'</span>' : '') +
         '<span class="note">antes: '+esc(p.was)+'</span></div>' +
       (p.ask ? '<p class="todo" style="display:inline-block;margin-top:12px;color:var(--warn);background:var(--warn-soft)">'+esc(p.ask)+'</p>' : '') +
-      '<div class="kpis">' + kpi("Público", aud!=null ? fmt(aud) : "—", aud!=null ? "YouTube + Instagram" : "sem leitura ainda", audienceDelta(p)) +
+      '<div class="kpis">' + kpi("Público", aud!=null ? fmt(aud) : "—", aud!=null ? "todas as redes" : "sem leitura ainda", audienceDelta(p)) +
         kpi("Canais", p.ch.length, p.ch.filter(function(c){ return c.state==="on" || c.state==="late"; }).length+" com métrica") +
         kpi("Rotinas", activeRt(p).length, "agendadas") + '</div>' +
       evolution(p) + monetization(p) + launchSection(p) +

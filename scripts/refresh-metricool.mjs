@@ -40,9 +40,9 @@ async function get(path, params) {
 
 function ymd(d) { return d.toISOString().slice(0, 10); }
 
-async function timeline(userId, blogId, metric, from, to) {
+async function timeline(userId, blogId, metric, from, to, network = "instagram") {
   const json = await get("/v2/analytics/timelines", {
-    from: from + "T00:00:00", to: to + "T23:59:59", metric, network: "instagram", subject: "account", userId, blogId,
+    from: from + "T00:00:00", to: to + "T23:59:59", metric, network, subject: "account", userId, blogId,
   });
   const out = {};
   const values = (json.data && json.data[0] && json.data[0].values) || [];
@@ -89,6 +89,39 @@ for (const [itemId, spec] of Object.entries(ITEMS)) {
     console.log(itemId + " @" + spec.ig + ": " + e.message);
   }
 }
+
+// Todas as marcas da Metricool, todas as redes ligadas: seguidores por dia em data.metricool[idDaMarca].
+// O painel liga cada projeto à sua marca pelo id; marca nova aparece aqui sozinha.
+const NETWORKS = [
+  ["instagram", "instagram", "followers"],
+  ["facebook", "facebookPageId", "pageFollows"],
+  ["youtube", "youtube", "totalSubscribers"],
+  ["tiktok", "tiktok", "followers_count"],
+  ["threads", "threads", "followers_count"],
+];
+const brands = {};
+for (const p of profiles) {
+  if (!p || !p.id) continue;
+  const old = (data.metricool || {})[p.id] || {};
+  const entry = { label: p.label || "", series: {}, errors: {} };
+  for (const [net, field, metric] of NETWORKS) {
+    if (!p[field]) continue;
+    try {
+      const fresh = await timeline(p.userId, p.id, metric, from, to, net);
+      const rows = {};
+      for (const r of (old.series && old.series[net]) || []) rows[r[1]] = r;
+      for (const [d, v] of Object.entries(fresh)) rows[d] = [v, d];
+      const list = Object.keys(rows).sort().map((d) => rows[d]);
+      // 0 enquanto a Metricool ainda não coletou: só grava quando há algum valor acima de zero
+      if (list.some((r) => Number(r[0]) > 0)) entry.series[net] = list;
+      else entry.errors[net] = "ainda sem dados";
+    } catch (e) { entry.errors[net] = e.message; }
+  }
+  brands[p.id] = entry;
+  const nets = Object.keys(entry.series);
+  console.log("marca " + p.id + " " + entry.label + ": " + (nets.length ? nets.map((n) => n + " " + entry.series[n][entry.series[n].length - 1][0]).join(", ") : "sem dados ainda"));
+}
+if (JSON.stringify(brands) !== JSON.stringify(data.metricool || {})) { data.metricool = brands; changed++; }
 
 if (changed) {
   writeFileSync(DATA_FILE, JSON.stringify(data, null, 2) + "\n");
