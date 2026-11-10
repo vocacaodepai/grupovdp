@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T11:51:27.385Z",
+  "generatedAt": "2026-11-10T23:58:39.846Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -2758,6 +2758,17 @@
         0,
         0,
         "20261107"
+      ],
+      [
+        35,
+        10,
+        58,
+        0,
+        1,
+        0,
+        0,
+        0,
+        "20261108"
       ]
     ]
   },
@@ -2766,15 +2777,15 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10690
+          "views": 10692
         },
         {
           "label": "Busca no YouTube",
-          "views": 1148
+          "views": 1171
         },
         {
           "label": "Inscritos (feed)",
-          "views": 504
+          "views": 513
         },
         {
           "label": "Notificações",
@@ -2782,7 +2793,7 @@
         },
         {
           "label": "Vídeos relacionados",
-          "views": 225
+          "views": 226
         },
         {
           "label": "Página do canal",
@@ -2848,15 +2859,15 @@
       "device": [
         {
           "label": "Celular",
-          "views": 12014
+          "views": 12040
         },
         {
           "label": "Computador",
-          "views": 437
+          "views": 443
         },
         {
           "label": "TV",
-          "views": 294
+          "views": 297
         },
         {
           "label": "Tablet",
@@ -2866,25 +2877,25 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11732
+          "views": 11745
         },
         {
           "label": "Página de exibição",
-          "views": 949
+          "views": 964
         },
         {
           "label": "Explorar/Início",
-          "views": 339
+          "views": 346
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12110
+          "views": 12144
         },
         {
           "label": "Inscritos",
-          "views": 910
+          "views": 911
         }
       ]
     }
@@ -2906,7 +2917,7 @@
         "id": "ta_1h2Ns24Q",
         "title": "Coração — Ponto 152 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/ta_1h2Ns24Q/mqdefault.jpg",
-        "views": 1227,
+        "views": 1228,
         "likes": 89,
         "comments": 0,
         "minutes": 81,
@@ -3016,8 +3027,8 @@
         "id": "YH-tYLN1t14",
         "title": "Coração — Ponto 159 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/YH-tYLN1t14/mqdefault.jpg",
-        "views": 304,
-        "likes": 27,
+        "views": 305,
+        "likes": 26,
         "comments": 0,
         "minutes": 21,
         "subsGained": 3,
@@ -3111,6 +3122,10 @@
       [
         0,
         "20261107"
+      ],
+      [
+        0,
+        "20261108"
       ]
     ],
     "ta_1h2Ns24Q": [
@@ -3177,6 +3192,10 @@
       [
         0,
         "20261107"
+      ],
+      [
+        1,
+        "20261108"
       ]
     ],
     "NW_VDiYDzmo": [
@@ -3267,6 +3286,10 @@
       [
         0,
         "20261107"
+      ],
+      [
+        0,
+        "20261108"
       ]
     ],
     "veJQHaTx6co": [
@@ -3325,6 +3348,10 @@
       [
         1,
         "20261107"
+      ],
+      [
+        0,
+        "20261108"
       ]
     ],
     "VOZW4M3c4JM": [
@@ -3375,6 +3402,10 @@
       [
         0,
         "20261107"
+      ],
+      [
+        0,
+        "20261108"
       ]
     ],
     "vW6rnl3gfyw": [
@@ -3445,6 +3476,10 @@
       [
         0,
         "20261107"
+      ],
+      [
+        0,
+        "20261108"
       ]
     ]
   },
@@ -3452,7 +3487,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-10T11:51:27.442Z",
+      "generatedAt": "2026-11-10T23:58:39.905Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3462,7 +3497,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-10T11:51:27.442Z",
+      "generatedAt": "2026-11-10T23:58:39.905Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3478,7 +3513,7 @@
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
       "watchHours12m": 695,
-      "shortsViews90d": 29088
+      "shortsViews90d": 29116
     },
     "1.2": {
       "asOf": "2026-11-10",
