@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T09:24:58.498Z",
+  "generatedAt": "2026-11-12T17:41:26.796Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -2563,8 +2563,8 @@
         "20261015"
       ],
       [
-        680,
-        77,
+        685,
+        74,
         32,
         3,
         1,
@@ -2596,7 +2596,7 @@
         "20261018"
       ],
       [
-        271,
+        274,
         70,
         63,
         1,
@@ -2651,7 +2651,7 @@
         "20261023"
       ],
       [
-        263,
+        269,
         98,
         72,
         2,
@@ -2844,11 +2844,11 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10623
+          "views": 10619
         },
         {
           "label": "Busca no YouTube",
-          "views": 1162
+          "views": 1163
         },
         {
           "label": "Inscritos (feed)",
@@ -2868,7 +2868,7 @@
         },
         {
           "label": "Outra página do YouTube",
-          "views": 36
+          "views": 35
         },
         {
           "label": "Link externo",
@@ -2926,7 +2926,7 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11925
+          "views": 11921
         },
         {
           "label": "Computador",
@@ -2944,7 +2944,7 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11658
+          "views": 11654
         },
         {
           "label": "Página de exibição",
@@ -2958,7 +2958,7 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12055
+          "views": 12051
         },
         {
           "label": "Inscritos",
@@ -3578,7 +3578,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-12T09:24:58.552Z",
+      "generatedAt": "2026-11-12T17:41:26.841Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3588,7 +3588,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-12T09:24:58.552Z",
+      "generatedAt": "2026-11-12T17:41:26.841Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -6228,6 +6228,13 @@
       },
       "errors": {
         "facebook": "ainda sem dados"
+      }
+    },
+    "8061259": {
+      "label": "Tudo Sobre Pokemon",
+      "series": {},
+      "errors": {
+        "youtube": "ainda sem dados"
       }
     }
   }
