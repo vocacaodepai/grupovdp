@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T18:09:49.806Z",
+  "generatedAt": "2026-11-13T23:31:37.585Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -2875,6 +2875,17 @@
         0,
         0,
         "20261110"
+      ],
+      [
+        33,
+        30,
+        260,
+        0,
+        0,
+        1,
+        0,
+        1,
+        "20261111"
       ]
     ]
   },
@@ -2883,15 +2894,15 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10574
+          "views": 10578
         },
         {
           "label": "Busca no YouTube",
-          "views": 1134
+          "views": 1155
         },
         {
           "label": "Inscritos (feed)",
-          "views": 478
+          "views": 483
         },
         {
           "label": "Notificações",
@@ -2899,19 +2910,19 @@
         },
         {
           "label": "Vídeos relacionados",
-          "views": 192
+          "views": 193
         },
         {
           "label": "Página do canal",
-          "views": 115
+          "views": 116
         },
         {
           "label": "Outra página do YouTube",
-          "views": 35
+          "views": 36
         },
         {
           "label": "Playlist",
-          "views": 16
+          "views": 18
         }
       ]
     }
@@ -2965,11 +2976,11 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11827
+          "views": 11860
         },
         {
           "label": "Computador",
-          "views": 421
+          "views": 425
         },
         {
           "label": "TV",
@@ -2983,21 +2994,21 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11578
+          "views": 11596
         },
         {
           "label": "Página de exibição",
-          "views": 912
+          "views": 926
         },
         {
           "label": "Explorar/Início",
-          "views": 320
+          "views": 325
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 11965
+          "views": 12002
         },
         {
           "label": "Inscritos",
@@ -3166,7 +3177,7 @@
         "id": "6lLfDlB3VN8",
         "title": "Coração — Ponto 160 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/6lLfDlB3VN8/mqdefault.jpg",
-        "views": 226,
+        "views": 227,
         "likes": 13,
         "comments": 0,
         "minutes": 8,
@@ -3240,6 +3251,10 @@
       [
         0,
         "20261110"
+      ],
+      [
+        0,
+        "20261111"
       ]
     ],
     "ta_1h2Ns24Q": [
@@ -3318,6 +3333,10 @@
       [
         0,
         "20261110"
+      ],
+      [
+        0,
+        "20261111"
       ]
     ],
     "NW_VDiYDzmo": [
@@ -3420,6 +3439,10 @@
       [
         1,
         "20261110"
+      ],
+      [
+        0,
+        "20261111"
       ]
     ],
     "veJQHaTx6co": [
@@ -3490,6 +3513,10 @@
       [
         0,
         "20261110"
+      ],
+      [
+        0,
+        "20261111"
       ]
     ],
     "VOZW4M3c4JM": [
@@ -3552,6 +3579,10 @@
       [
         0,
         "20261110"
+      ],
+      [
+        0,
+        "20261111"
       ]
     ],
     "vW6rnl3gfyw": [
@@ -3634,6 +3665,10 @@
       [
         0,
         "20261110"
+      ],
+      [
+        0,
+        "20261111"
       ]
     ]
   },
@@ -3641,7 +3676,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-13T18:09:49.853Z",
+      "generatedAt": "2026-11-13T23:31:37.621Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3651,7 +3686,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-13T18:09:49.853Z",
+      "generatedAt": "2026-11-13T23:31:37.621Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3667,7 +3702,7 @@
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
       "watchHours12m": 696,
-      "shortsViews90d": 29102
+      "shortsViews90d": 29134
     },
     "1.2": {
       "asOf": "2026-11-13",
