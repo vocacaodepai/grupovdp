@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T22:51:59.128Z",
+  "generatedAt": "2026-11-13T03:01:50.969Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -213,6 +213,10 @@
       [
         "8",
         "20261112"
+      ],
+      [
+        "8",
+        "20261113"
       ]
     ],
     "2.1": [
@@ -2493,6 +2497,10 @@
       [
         "848",
         "20261112"
+      ],
+      [
+        "848",
+        "20261113"
       ]
     ],
     "3.2": [
@@ -2541,17 +2549,6 @@
   "detailRows": {
     "2.2": [
       [
-        152,
-        144,
-        149,
-        0,
-        0,
-        10,
-        0,
-        2,
-        "20261014"
-      ],
-      [
         413,
         67,
         34,
@@ -2563,8 +2560,8 @@
         "20261015"
       ],
       [
-        680,
-        77,
+        685,
+        74,
         32,
         3,
         1,
@@ -2596,7 +2593,7 @@
         "20261018"
       ],
       [
-        271,
+        274,
         70,
         63,
         1,
@@ -2651,7 +2648,7 @@
         "20261023"
       ],
       [
-        263,
+        269,
         98,
         72,
         2,
@@ -2855,35 +2852,35 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10630
+          "views": 10574
         },
         {
           "label": "Busca no YouTube",
-          "views": 1181
+          "views": 1134
         },
         {
           "label": "Inscritos (feed)",
-          "views": 499
+          "views": 478
         },
         {
           "label": "Notificações",
-          "views": 241
+          "views": 237
         },
         {
           "label": "Vídeos relacionados",
-          "views": 213
+          "views": 192
         },
         {
           "label": "Página do canal",
-          "views": 118
+          "views": 115
         },
         {
           "label": "Outra página do YouTube",
-          "views": 36
+          "views": 35
         },
         {
-          "label": "Link externo",
-          "views": 17
+          "label": "Playlist",
+          "views": 16
         }
       ]
     }
@@ -2927,7 +2924,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 10310
+          "views": 10209
         },
         {
           "label": "Portugal",
@@ -2937,43 +2934,43 @@
       "device": [
         {
           "label": "Celular",
-          "views": 11951
+          "views": 11827
         },
         {
           "label": "Computador",
-          "views": 438
+          "views": 421
         },
         {
           "label": "TV",
-          "views": 297
+          "views": 284
         },
         {
           "label": "Tablet",
-          "views": 275
+          "views": 273
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11668
+          "views": 11578
         },
         {
           "label": "Página de exibição",
-          "views": 963
+          "views": 912
         },
         {
           "label": "Explorar/Início",
-          "views": 335
+          "views": 320
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12087
+          "views": 11965
         },
         {
           "label": "Inscritos",
-          "views": 879
+          "views": 845
         }
       ]
     }
@@ -3613,7 +3610,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-12T22:51:59.182Z",
+      "generatedAt": "2026-11-13T03:01:51.014Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3623,7 +3620,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-12T22:51:59.182Z",
+      "generatedAt": "2026-11-13T03:01:51.014Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3633,16 +3630,16 @@
   },
   "monetization": {
     "2.2": {
-      "asOf": "2026-11-12",
+      "asOf": "2026-11-13",
       "subscribers": 848,
       "errors": {
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
       "watchHours12m": 696,
-      "shortsViews90d": 29121
+      "shortsViews90d": 29102
     },
     "1.2": {
-      "asOf": "2026-11-12",
+      "asOf": "2026-11-13",
       "subscribers": 8,
       "errors": {
         "watchHours": "Analytics API failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Forbidden\",\n    \"errors\": [\n      {\n        \"message\": \"Forbidden\",\n        \"domain\": ",
