@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T23:31:37.585Z",
+  "generatedAt": "2026-11-14T03:30:21.995Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -217,6 +217,10 @@
       [
         "8",
         "20261113"
+      ],
+      [
+        "8",
+        "20261114"
       ]
     ],
     "2.1": [
@@ -2528,6 +2532,10 @@
       [
         "848",
         "20261113"
+      ],
+      [
+        "848",
+        "20261114"
       ]
     ],
     "3.2": [
@@ -2574,25 +2582,18 @@
       [
         "2.0",
         "20261112"
+      ],
+      [
+        "4.0",
+        "20261113"
       ]
     ]
   },
   "detailRows": {
     "2.2": [
       [
-        413,
-        67,
-        34,
-        0,
-        0,
-        25,
-        0,
-        2,
-        "20261015"
-      ],
-      [
-        680,
-        77,
+        685,
+        74,
         32,
         3,
         1,
@@ -2624,7 +2625,7 @@
         "20261018"
       ],
       [
-        271,
+        274,
         70,
         63,
         1,
@@ -2679,7 +2680,7 @@
         "20261023"
       ],
       [
-        263,
+        269,
         98,
         72,
         2,
@@ -2894,23 +2895,23 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 10578
+          "views": 10245
         },
         {
           "label": "Busca no YouTube",
-          "views": 1155
+          "views": 1116
         },
         {
           "label": "Inscritos (feed)",
-          "views": 483
+          "views": 462
         },
         {
           "label": "Notificações",
-          "views": 237
+          "views": 229
         },
         {
           "label": "Vídeos relacionados",
-          "views": 193
+          "views": 184
         },
         {
           "label": "Página do canal",
@@ -2918,7 +2919,7 @@
         },
         {
           "label": "Outra página do YouTube",
-          "views": 36
+          "views": 29
         },
         {
           "label": "Playlist",
@@ -2932,31 +2933,31 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 35.7
+          "pct": 35
         },
         {
           "label": "65+ · Homens",
-          "pct": 23.2
+          "pct": 22.6
         },
         {
           "label": "55-64 · Mulheres",
-          "pct": 12.4
+          "pct": 12.9
         },
         {
           "label": "55-64 · Homens",
-          "pct": 9.2
+          "pct": 9.5
         },
         {
           "label": "35-44 · Homens",
-          "pct": 6
+          "pct": 6.2
         },
         {
           "label": "35-44 · Mulheres",
-          "pct": 4.9
+          "pct": 5.1
         },
         {
           "label": "45-54 · Homens",
-          "pct": 3.3
+          "pct": 3.5
         },
         {
           "label": "13-17 · Homens",
@@ -2966,53 +2967,53 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 10209
+          "views": 9875
         },
         {
           "label": "Portugal",
-          "views": 467
+          "views": 433
         }
       ],
       "device": [
         {
           "label": "Celular",
-          "views": 11860
+          "views": 11471
         },
         {
           "label": "Computador",
-          "views": 425
+          "views": 411
         },
         {
           "label": "TV",
-          "views": 284
+          "views": 276
         },
         {
           "label": "Tablet",
-          "views": 273
+          "views": 267
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 11596
+          "views": 11232
         },
         {
           "label": "Página de exibição",
-          "views": 926
+          "views": 887
         },
         {
           "label": "Explorar/Início",
-          "views": 325
+          "views": 311
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 12002
+          "views": 11637
         },
         {
           "label": "Inscritos",
-          "views": 845
+          "views": 793
         }
       ]
     }
@@ -3130,17 +3131,6 @@
         "avgDuration": 18
       },
       {
-        "id": "UXvVLvJ9wZE",
-        "title": "Santa Pureza — Ponto 145 | Caminho de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/UXvVLvJ9wZE/mqdefault.jpg",
-        "views": 499,
-        "likes": 28,
-        "comments": 0,
-        "minutes": 43,
-        "subsGained": 0,
-        "avgDuration": 16
-      },
-      {
         "id": "YH-tYLN1t14",
         "title": "Coração — Ponto 159 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/YH-tYLN1t14/mqdefault.jpg",
@@ -3183,6 +3173,17 @@
         "minutes": 8,
         "subsGained": 0,
         "avgDuration": 8
+      },
+      {
+        "id": "7RGfTpN1Vtc",
+        "title": "A História de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
+        "views": 213,
+        "likes": 5,
+        "comments": 0,
+        "minutes": 102,
+        "subsGained": 1,
+        "avgDuration": 80
       }
     ]
   },
@@ -3676,7 +3677,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-13T23:31:37.621Z",
+      "generatedAt": "2026-11-14T03:30:22.044Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3686,7 +3687,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-13T23:31:37.621Z",
+      "generatedAt": "2026-11-14T03:30:22.044Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3696,16 +3697,16 @@
   },
   "monetization": {
     "2.2": {
-      "asOf": "2026-11-13",
+      "asOf": "2026-11-14",
       "subscribers": 848,
       "errors": {
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
       "watchHours12m": 696,
-      "shortsViews90d": 29134
+      "shortsViews90d": 29108
     },
     "1.2": {
-      "asOf": "2026-11-13",
+      "asOf": "2026-11-14",
       "subscribers": 8,
       "errors": {
         "watchHours": "Analytics API failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Forbidden\",\n    \"errors\": [\n      {\n        \"message\": \"Forbidden\",\n        \"domain\": ",
@@ -4344,6 +4345,10 @@
           [
             "35.0",
             "20261112"
+          ],
+          [
+            "35.0",
+            "20261113"
           ]
         ],
         "youtube": [
@@ -4662,6 +4667,10 @@
           [
             "848.0",
             "20261113"
+          ],
+          [
+            "848.0",
+            "20261114"
           ]
         ]
       },
@@ -5038,6 +5047,10 @@
           [
             "10.0",
             "20261112"
+          ],
+          [
+            "11.0",
+            "20261113"
           ]
         ]
       },
@@ -6005,6 +6018,10 @@
           [
             "20.0",
             "20261112"
+          ],
+          [
+            "22.0",
+            "20261113"
           ]
         ]
       },
@@ -6057,6 +6074,10 @@
           [
             "2.0",
             "20261112"
+          ],
+          [
+            "4.0",
+            "20261113"
           ]
         ],
         "facebook": [
@@ -6147,6 +6168,10 @@
           [
             "65.0",
             "20261112"
+          ],
+          [
+            "67.0",
+            "20261113"
           ]
         ],
         "facebook": [
@@ -6233,6 +6258,10 @@
           [
             "23.0",
             "20261112"
+          ],
+          [
+            "23.0",
+            "20261113"
           ]
         ],
         "facebook": [
@@ -6313,6 +6342,10 @@
           [
             "1.0",
             "20261112"
+          ],
+          [
+            "1.0",
+            "20261113"
           ]
         ],
         "facebook": [
@@ -6363,6 +6396,10 @@
           [
             "244.0",
             "20261113"
+          ],
+          [
+            "244.0",
+            "20261114"
           ]
         ]
       },
@@ -6403,6 +6440,10 @@
           [
             "3.0",
             "20261112"
+          ],
+          [
+            "3.0",
+            "20261113"
           ]
         ],
         "youtube": [
@@ -6429,6 +6470,10 @@
           [
             "1.0",
             "20261113"
+          ],
+          [
+            "1.0",
+            "20261114"
           ]
         ]
       },
