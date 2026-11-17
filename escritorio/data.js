@@ -200,7 +200,6 @@
     { key:"saude",    name:"Saúde na Minha Vida", short:"SAÚDE NA MINHA VIDA", domain:"saudenaminhavida.com.br" },
     { key:"review",   name:"Review Produtos",     short:"REVIEW PRODUTOS",     domain:"reviewprodutos.com.br" },
     { key:"grama",    name:"Blog da Grama",       short:"BLOG DA GRAMA",       domain:"blogdagrama.com.br" },
-    { key:"yangled",  name:"Yang LED",            short:"YANG LED",            domain:"yangled.com.br" }
   ];
   // Equipe de cada rotina, contada no texto da própria rotina: quem lidera (a sessão agendada) + os subagentes
   // que ela abre AO MESMO TEMPO (aparecem no escritório só enquanto a rotina trabalha) + o total por execução.
@@ -232,7 +231,6 @@
     ["rt-grama-noticias",     "Sofia",    "Redatora · notícias, 3 rodadas",      "f9", "grama", [], 1, "1 agente por rodada"],
     ["rt-grama-artigos",      "Eduardo",  "Redator · 5 artigos por dia",         "f9", "grama", [], 1, "1 agente escreve os 5 artigos"],
     ["rt-grama-produtos",     "Murilo",   "Pesquisador · 20 produtos por dia",   "f9", "grama", R5, 21, "1 + 20 redatores, em 4 lotes de 5"],
-    ["rt-yangled-blog",       "Yasmin",   "Redatora · 5 artigos por dia",        "f9", "yangled", [], 1, "1 agente escreve os 5 artigos"]
   ];
   // nomes dos subagentes (fixos, na ordem das rotinas acima), com a função no gênero do nome
   var HELPER_NAMES = [["Alice","f"],["Arthur","m"],["Bernardo","m"],["Laura","f"],["Heitor","m"],["Valentina","f"],["Enzo","m"],["Manuela","f"],

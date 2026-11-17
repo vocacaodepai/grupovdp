@@ -184,7 +184,6 @@
     { key:"politica", x0:45, T:20, n:3, wall:288 },
     { key:"review",   x0:56, T:20, n:3, wall:288 },
     { key:"grama",    x0:45, T:29, n:4, wall:432 },
-    { key:"yangled",  x0:59, T:29, n:1, wall:432 }
   ];
   var TOCOS = [ { x:192, y0:320, y1:432 }, { x:506, y0:320, y1:432 },
                 // divisa com a ala 09: portas no corredor (linhas 16–17) e na Área de descanso (linhas 35–37)
