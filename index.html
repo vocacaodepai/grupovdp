@@ -434,9 +434,9 @@
   });
   var OFF = [
     { id:"atelie", num:2, name:"Ateliê Lisieux", cat:"Roupas", status:"ideia", was:"Frente 05" },
-    { id:"flor", num:3, name:"Flor de Lisieux", cat:"Casa de festas", status:"ideia", was:"Frente 07" },
+    { id:"flor", num:3, name:"Flor de Lisieux", cat:"Loja de terços", status:"ideia", was:"Frente 07" },
     { id:"pequenavia", num:4, name:"Pequena Via", cat:"Loja de brinquedos", status:"ideia", was:"Frente 06" },
-    { id:"tercos", num:5, name:"Loja de terços", cat:"Artigos religiosos", status:"ideia", isNew:true, was:"novo", nameTbd:true }
+    { id:"lizie", num:5, name:"Espaço Liziê", cat:"Casa de festas", status:"ideia", isNew:true, was:"novo" }
   ];
   var FOUND = [
     { n:"Tarde com Maria", w:"site em recriação, esperando prints e textos", q:"Entra em Fé?" },
@@ -459,7 +459,7 @@
     { s:"AdSense", what:"receita de anúncios", st:"off", where:"sites com anúncio", next:"Falta autorizar (ADSENSE_REFRESH_TOKEN)" },
     { s:"Amazon Associados", what:"cliques e comissões", st:"plan", where:"Vocação de Mãe e os blogs com loja", next:"O painel ainda não lê" },
     { s:"Shopee Afiliados", what:"cliques e comissões", st:"plan", where:"Portal da AI, Bitcoin, Saúde, Review, Grama", next:"As rotinas já usam a API de ofertas; falta ler as comissões" },
-    { s:"Lançamento manual", what:"vendas, eventos e estoque", st:"plan", where:"Ateliê, Flor de Lisieux, Pequena Via, Loja de terços", next:"Formulário simples no painel" },
+    { s:"Lançamento manual", what:"vendas, eventos e estoque", st:"plan", where:"Ateliê, Flor de Lisieux, Pequena Via, Espaço Liziê", next:"Formulário simples no painel" },
     { s:"Supabase", what:"quem está trabalhando agora (escritório)", st:"on", where:"Escritório virtual", next:"—" }
   ];
   var MOVES = [
@@ -472,7 +472,7 @@
     ["07 Flor de Lisieux", "Grupo › 03 Flor de Lisieux", "offline"],
     ["08 Apostas (Futebol, Vasco, Motivação)", "Agência Lírio › Esporte e motivação › 3 projetos", "a palavra “Apostas” sai"],
     ["09 Blogs (7 blogs)", "Agência Lírio › cada blog na área do seu assunto", "todo projeto tem o seu site; Política Diária ganha o YouTube"],
-    ["—", "Grupo › 05 Loja de terços", "novo, offline"],
+    ["—", "Grupo › 05 Espaço Liziê", "novo, offline (casa de festas)"],
     ["—", "Agência Lírio › Fé › São Carlo Acutis · Negócios › Insights do Alfredão", "achados no Claude Code"]
   ];
   var NEEDS = [
@@ -739,7 +739,7 @@
         kpi("Público online", fmt(tot), "seguidores + inscritos, todas as redes", totalDelta()) +
         kpi("Projetos online", online, "na Agência Lírio") +
         kpi("Rotinas", ROUTINES_TOTAL, SCHEDULES_TOTAL+" horários · "+ROUTINES_NEW+" novas da Shopee") +
-        kpi("Negócios offline", OFF.length, "1 novo: Loja de terços") +
+        kpi("Negócios offline", OFF.length, "1 novo: Espaço Liziê") +
         kpi("Receita do mês", "R$ 0", "nenhum lançamento ainda") +
       '</div>' +
       '<div class="tree">' +
@@ -945,7 +945,7 @@
   }
   function viewOffline(id){
     var o = OFF.filter(function(x){ return x.id===id; })[0]; if(!o) return viewGroup();
-    var slots = [["Faturamento do mês", "R$ 0"], [o.id==="flor" ? "Festas no mês" : "Pedidos no mês", "0"], ["Ticket médio", "—"], [o.id==="flor" ? "Agenda" : "Estoque", "—"]];
+    var slots = [["Faturamento do mês", "R$ 0"], [o.id==="lizie" ? "Festas no mês" : "Pedidos no mês", "0"], ["Ticket médio", "—"], [o.id==="lizie" ? "Agenda" : "Estoque", "—"]];
     return '<div class="crumb"><a href="#/">Grupo Lisieux</a><span>›</span>'+esc(o.name)+'</div>' +
       '<h1>'+esc(o.name)+'</h1>' +
       '<div class="proj-head"><span class="tag offline">offline</span>'+(o.nameTbd ? '<span class="tag found">nome a definir</span>' : '')+'<span class="note">'+esc(o.cat)+'</span><span class="note">antes: '+esc(o.was)+'</span></div>' +
