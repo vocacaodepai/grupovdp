@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T12:34:11.797Z",
+  "generatedAt": "2026-11-18T20:52:10.298Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -2668,7 +2668,7 @@
         "20261117"
       ],
       [
-        "848",
+        "849",
         "20261118"
       ]
     ],
@@ -3033,6 +3033,17 @@
         0,
         0,
         "20261115"
+      ],
+      [
+        36,
+        2,
+        11,
+        0,
+        1,
+        -23,
+        0,
+        0,
+        "20261116"
       ]
     ]
   },
@@ -3041,15 +3052,15 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 8065
+          "views": 8067
         },
         {
           "label": "Busca no YouTube",
-          "views": 1018
+          "views": 1047
         },
         {
           "label": "Inscritos (feed)",
-          "views": 377
+          "views": 378
         },
         {
           "label": "Notificações",
@@ -3057,7 +3068,7 @@
         },
         {
           "label": "Vídeos relacionados",
-          "views": 161
+          "views": 162
         },
         {
           "label": "Página do canal",
@@ -3065,7 +3076,7 @@
         },
         {
           "label": "Outra página do YouTube",
-          "views": 24
+          "views": 23
         },
         {
           "label": "Link externo",
@@ -3113,7 +3124,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 7748
+          "views": 7779
         },
         {
           "label": "Portugal",
@@ -3123,11 +3134,11 @@
       "device": [
         {
           "label": "Celular",
-          "views": 9173
+          "views": 9200
         },
         {
           "label": "Computador",
-          "views": 363
+          "views": 368
         },
         {
           "label": "TV",
@@ -3141,11 +3152,11 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 8981
+          "views": 8994
         },
         {
           "label": "Página de exibição",
-          "views": 773
+          "views": 792
         },
         {
           "label": "Explorar/Início",
@@ -3155,7 +3166,7 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 9349
+          "views": 9381
         },
         {
           "label": "Inscritos",
@@ -3171,7 +3182,7 @@
         "title": "Coração — Ponto 155 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/-YXQ2Cyx6ig/mqdefault.jpg",
         "views": 1272,
-        "likes": 115,
+        "likes": 114,
         "comments": 1,
         "minutes": 49,
         "subsGained": 7,
@@ -3182,7 +3193,7 @@
         "title": "Coração — Ponto 152 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/ta_1h2Ns24Q/mqdefault.jpg",
         "views": 1230,
-        "likes": 89,
+        "likes": 88,
         "comments": 0,
         "minutes": 82,
         "subsGained": 6,
@@ -3204,7 +3215,7 @@
         "title": "Coração — Ponto 156 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/VOZW4M3c4JM/mqdefault.jpg",
         "views": 985,
-        "likes": 67,
+        "likes": 66,
         "comments": 1,
         "minutes": 49,
         "subsGained": 5,
@@ -3236,8 +3247,8 @@
         "id": "oJSjV_1pqw0",
         "title": "Coração — Ponto 157 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/oJSjV_1pqw0/mqdefault.jpg",
-        "views": 676,
-        "likes": 42,
+        "views": 679,
+        "likes": 41,
         "comments": 0,
         "minutes": 30,
         "subsGained": 0,
@@ -3248,7 +3259,7 @@
         "title": "Coração — Ponto 159 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/YH-tYLN1t14/mqdefault.jpg",
         "views": 308,
-        "likes": 26,
+        "likes": 25,
         "comments": 0,
         "minutes": 21,
         "subsGained": 3,
@@ -3281,7 +3292,7 @@
         "title": "Coração — Ponto 160 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/6lLfDlB3VN8/mqdefault.jpg",
         "views": 227,
-        "likes": 13,
+        "likes": 12,
         "comments": 0,
         "minutes": 8,
         "subsGained": 0,
@@ -3291,12 +3302,12 @@
         "id": "7RGfTpN1Vtc",
         "title": "A História de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 209,
+        "views": 213,
         "likes": 6,
         "comments": 0,
         "minutes": 107,
         "subsGained": 1,
-        "avgDuration": 80
+        "avgDuration": 79
       },
       {
         "id": "9Q6A-V0ewhI",
@@ -3418,6 +3429,10 @@
       [
         2,
         "20261115"
+      ],
+      [
+        0,
+        "20261116"
       ]
     ],
     "ta_1h2Ns24Q": [
@@ -3516,6 +3531,10 @@
       [
         1,
         "20261115"
+      ],
+      [
+        0,
+        "20261116"
       ]
     ],
     "veJQHaTx6co": [
@@ -3606,6 +3625,10 @@
       [
         1,
         "20261115"
+      ],
+      [
+        0,
+        "20261116"
       ]
     ],
     "VOZW4M3c4JM": [
@@ -3688,6 +3711,10 @@
       [
         2,
         "20261115"
+      ],
+      [
+        0,
+        "20261116"
       ]
     ],
     "vW6rnl3gfyw": [
@@ -3790,6 +3817,10 @@
       [
         0,
         "20261115"
+      ],
+      [
+        0,
+        "20261116"
       ]
     ],
     "hVyCUSfYgew": [
@@ -3896,6 +3927,10 @@
       [
         0,
         "20261115"
+      ],
+      [
+        0,
+        "20261116"
       ]
     ]
   },
@@ -3903,7 +3938,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-18T12:34:11.846Z",
+      "generatedAt": "2026-11-18T20:52:10.361Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3913,7 +3948,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-18T12:34:11.846Z",
+      "generatedAt": "2026-11-18T20:52:10.361Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3924,12 +3959,12 @@
   "monetization": {
     "2.2": {
       "asOf": "2026-11-18",
-      "subscribers": 848,
+      "subscribers": 849,
       "errors": {
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
       "watchHours12m": 697,
-      "shortsViews90d": 29073
+      "shortsViews90d": 29106
     },
     "1.2": {
       "asOf": "2026-11-18",
