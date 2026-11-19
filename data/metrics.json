@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T02:07:56.786Z",
+  "generatedAt": "2026-11-19T10:15:35.862Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -3053,7 +3053,7 @@
         },
         {
           "label": "Busca no YouTube",
-          "views": 1017
+          "views": 1018
         },
         {
           "label": "Inscritos (feed)",
@@ -3131,7 +3131,7 @@
       "device": [
         {
           "label": "Celular",
-          "views": 8667
+          "views": 8668
         },
         {
           "label": "Computador",
@@ -3153,7 +3153,7 @@
         },
         {
           "label": "Página de exibição",
-          "views": 749
+          "views": 750
         },
         {
           "label": "Explorar/Início",
@@ -3163,7 +3163,7 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 8863
+          "views": 8864
         },
         {
           "label": "Inscritos",
@@ -3935,7 +3935,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-19T02:07:56.843Z",
+      "generatedAt": "2026-11-19T10:15:35.906Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3945,7 +3945,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-19T02:07:56.843Z",
+      "generatedAt": "2026-11-19T10:15:35.906Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -4313,6 +4313,10 @@
           [
             "848.0",
             "20261118"
+          ],
+          [
+            "849.0",
+            "20261119"
           ]
         ]
       },
@@ -4419,6 +4423,10 @@
           [
             "244.0",
             "20261118"
+          ],
+          [
+            "244.0",
+            "20261119"
           ]
         ]
       },
@@ -4476,6 +4484,10 @@
           [
             "1.0",
             "20261118"
+          ],
+          [
+            "1.0",
+            "20261119"
           ]
         ]
       },
