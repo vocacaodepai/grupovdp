@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-20T01:12:06.154Z",
+  "generatedAt": "2026-11-20T08:35:20.601Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -3057,11 +3057,11 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 7453
+          "views": 7449
         },
         {
           "label": "Busca no YouTube",
-          "views": 1024
+          "views": 1025
         },
         {
           "label": "Inscritos (feed)",
@@ -3085,7 +3085,7 @@
         },
         {
           "label": "Outra página do YouTube",
-          "views": 19
+          "views": 18
         }
       ]
     }
@@ -3139,7 +3139,7 @@
       "device": [
         {
           "label": "Celular",
-          "views": 8459
+          "views": 8455
         },
         {
           "label": "Computador",
@@ -3157,7 +3157,7 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 8265
+          "views": 8261
         },
         {
           "label": "Página de exibição",
@@ -3171,7 +3171,7 @@
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 8656
+          "views": 8652
         },
         {
           "label": "Inscritos",
@@ -3963,7 +3963,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-20T01:12:06.206Z",
+      "generatedAt": "2026-11-20T08:35:20.637Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -3973,7 +3973,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-20T01:12:06.206Z",
+      "generatedAt": "2026-11-20T08:35:20.637Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -4345,6 +4345,10 @@
           [
             "849.0",
             "20261119"
+          ],
+          [
+            "849.0",
+            "20261120"
           ]
         ]
       },
@@ -4455,6 +4459,10 @@
           [
             "244.0",
             "20261119"
+          ],
+          [
+            "244.0",
+            "20261120"
           ]
         ]
       },
@@ -4516,6 +4524,10 @@
           [
             "1.0",
             "20261119"
+          ],
+          [
+            "1.0",
+            "20261120"
           ]
         ]
       },
