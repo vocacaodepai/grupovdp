@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T13:11:15.977Z",
+  "generatedAt": "2026-11-22T20:21:46.646Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -3154,6 +3154,17 @@
         0,
         1,
         "20261119"
+      ],
+      [
+        18,
+        8,
+        83,
+        0,
+        0,
+        1,
+        0,
+        0,
+        "20261120"
       ]
     ]
   },
@@ -3162,15 +3173,15 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 5068
+          "views": 5070
         },
         {
           "label": "Busca no YouTube",
-          "views": 944
+          "views": 951
         },
         {
           "label": "Inscritos (feed)",
-          "views": 316
+          "views": 323
         },
         {
           "label": "Notificações",
@@ -3178,7 +3189,7 @@
         },
         {
           "label": "Vídeos relacionados",
-          "views": 118
+          "views": 120
         },
         {
           "label": "Página do canal",
@@ -3244,15 +3255,15 @@
       "device": [
         {
           "label": "Celular",
-          "views": 6090
+          "views": 6104
         },
         {
           "label": "Computador",
-          "views": 267
+          "views": 269
         },
         {
           "label": "TV",
-          "views": 181
+          "views": 183
         },
         {
           "label": "Tablet",
@@ -3262,21 +3273,21 @@
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 5779
+          "views": 5783
         },
         {
           "label": "Página de exibição",
-          "views": 691
+          "views": 698
         },
         {
           "label": "Explorar/Início",
-          "views": 226
+          "views": 233
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 6210
+          "views": 6228
         },
         {
           "label": "Inscritos",
@@ -3302,10 +3313,10 @@
         "id": "veJQHaTx6co",
         "title": "Coração — Ponto 154 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/veJQHaTx6co/mqdefault.jpg",
-        "views": 1074,
-        "likes": 68,
+        "views": 1076,
+        "likes": 69,
         "comments": 0,
-        "minutes": 74,
+        "minutes": 75,
         "subsGained": 3,
         "avgDuration": 19
       },
@@ -3324,7 +3335,7 @@
         "id": "oJSjV_1pqw0",
         "title": "Coração — Ponto 157 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/oJSjV_1pqw0/mqdefault.jpg",
-        "views": 680,
+        "views": 681,
         "likes": 41,
         "comments": 0,
         "minutes": 30,
@@ -3368,7 +3379,7 @@
         "id": "7RGfTpN1Vtc",
         "title": "A História de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 209,
+        "views": 211,
         "likes": 6,
         "comments": 0,
         "minutes": 107,
@@ -3423,12 +3434,23 @@
         "id": "unsAby0zpgk",
         "title": "Vida de Oração — Parte 2 | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/unsAby0zpgk/mqdefault.jpg",
-        "views": 81,
+        "views": 82,
         "likes": 10,
         "comments": 0,
-        "minutes": 212,
+        "minutes": 213,
         "subsGained": 4,
-        "avgDuration": 231
+        "avgDuration": 228
+      },
+      {
+        "id": "hTyGpYeHM0A",
+        "title": "VIDA DE FÉ (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
+        "thumb": "https://i.ytimg.com/vi/hTyGpYeHM0A/mqdefault.jpg",
+        "views": 72,
+        "likes": 14,
+        "comments": 0,
+        "minutes": 143,
+        "subsGained": 1,
+        "avgDuration": 202
       },
       {
         "id": "3ZCgDsXrNQ0",
@@ -3440,17 +3462,6 @@
         "minutes": 4,
         "subsGained": 0,
         "avgDuration": 13
-      },
-      {
-        "id": "hTyGpYeHM0A",
-        "title": "VIDA DE FÉ (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
-        "thumb": "https://i.ytimg.com/vi/hTyGpYeHM0A/mqdefault.jpg",
-        "views": 66,
-        "likes": 14,
-        "comments": 0,
-        "minutes": 143,
-        "subsGained": 1,
-        "avgDuration": 202
       }
     ]
   },
@@ -3555,6 +3566,10 @@
       [
         0,
         "20261119"
+      ],
+      [
+        0,
+        "20261120"
       ]
     ],
     "veJQHaTx6co": [
@@ -3661,6 +3676,10 @@
       [
         0,
         "20261119"
+      ],
+      [
+        2,
+        "20261120"
       ]
     ],
     "VOZW4M3c4JM": [
@@ -3759,6 +3778,10 @@
       [
         0,
         "20261119"
+      ],
+      [
+        0,
+        "20261120"
       ]
     ],
     "oJSjV_1pqw0": [
@@ -3853,6 +3876,10 @@
       [
         0,
         "20261119"
+      ],
+      [
+        1,
+        "20261120"
       ]
     ],
     "YH-tYLN1t14": [
@@ -3939,6 +3966,10 @@
       [
         0,
         "20261119"
+      ],
+      [
+        0,
+        "20261120"
       ]
     ],
     "p5Cv6amm30o": [
@@ -4017,6 +4048,10 @@
       [
         0,
         "20261119"
+      ],
+      [
+        0,
+        "20261120"
       ]
     ]
   },
@@ -4024,7 +4059,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-22T13:11:16.031Z",
+      "generatedAt": "2026-11-22T20:21:46.696Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -4034,7 +4069,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-22T13:11:16.031Z",
+      "generatedAt": "2026-11-22T20:21:46.696Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -4050,7 +4085,7 @@
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
       "watchHours12m": 698,
-      "shortsViews90d": 29146
+      "shortsViews90d": 29154
     },
     "1.2": {
       "asOf": "2026-11-22",
