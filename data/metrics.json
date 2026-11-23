@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T20:21:46.646Z",
+  "generatedAt": "2026-11-23T00:59:11.854Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -253,6 +253,10 @@
       [
         "8",
         "20261122"
+      ],
+      [
+        "8",
+        "20261123"
       ]
     ],
     "2.1": [
@@ -2783,6 +2787,10 @@
       [
         "849",
         "20261122"
+      ],
+      [
+        "849",
+        "20261123"
       ]
     ],
     "3.2": [
@@ -2858,17 +2866,6 @@
   },
   "detailRows": {
     "2.2": [
-      [
-        269,
-        98,
-        72,
-        2,
-        2,
-        21,
-        0,
-        2,
-        "20261024"
-      ],
       [
         678,
         51,
@@ -3173,27 +3170,27 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 5070
+          "views": 4924
         },
         {
           "label": "Busca no YouTube",
-          "views": 951
+          "views": 895
         },
         {
           "label": "Inscritos (feed)",
-          "views": 323
+          "views": 299
         },
         {
           "label": "Notificações",
-          "views": 140
+          "views": 124
         },
         {
           "label": "Vídeos relacionados",
-          "views": 120
+          "views": 108
         },
         {
           "label": "Página do canal",
-          "views": 57
+          "views": 56
         },
         {
           "label": "Link externo",
@@ -3201,7 +3198,7 @@
         },
         {
           "label": "Outra página do YouTube",
-          "views": 14
+          "views": 13
         }
       ]
     }
@@ -3245,7 +3242,7 @@
       "countries": [
         {
           "label": "Brasil",
-          "views": 4970
+          "views": 4777
         },
         {
           "label": "Portugal",
@@ -3255,43 +3252,43 @@
       "device": [
         {
           "label": "Celular",
-          "views": 6104
+          "views": 5872
         },
         {
           "label": "Computador",
-          "views": 269
+          "views": 259
         },
         {
           "label": "TV",
-          "views": 183
+          "views": 170
         },
         {
           "label": "Tablet",
-          "views": 153
+          "views": 151
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 5783
+          "views": 5589
         },
         {
           "label": "Página de exibição",
-          "views": 698
+          "views": 649
         },
         {
           "label": "Explorar/Início",
-          "views": 233
+          "views": 217
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 6228
+          "views": 6032
         },
         {
           "label": "Inscritos",
-          "views": 486
+          "views": 423
         }
       ]
     }
@@ -3379,12 +3376,12 @@
         "id": "7RGfTpN1Vtc",
         "title": "A História de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 211,
+        "views": 205,
         "likes": 6,
         "comments": 0,
-        "minutes": 107,
+        "minutes": 102,
         "subsGained": 2,
-        "avgDuration": 85
+        "avgDuration": 83
       },
       {
         "id": "9Q6A-V0ewhI",
@@ -3401,23 +3398,12 @@
         "id": "vW6rnl3gfyw",
         "title": "Coração — Ponto 151 | Caminho de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/vW6rnl3gfyw/mqdefault.jpg",
-        "views": 185,
-        "likes": 24,
+        "views": 126,
+        "likes": 19,
         "comments": 0,
-        "minutes": 9,
+        "minutes": 6,
         "subsGained": 0,
-        "avgDuration": 14
-      },
-      {
-        "id": "ta_1h2Ns24Q",
-        "title": "Coração — Ponto 152 | Caminho de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/ta_1h2Ns24Q/mqdefault.jpg",
-        "views": 127,
-        "likes": 10,
-        "comments": 0,
-        "minutes": 18,
-        "subsGained": 0,
-        "avgDuration": 25
+        "avgDuration": 18
       },
       {
         "id": "KoZbtgKS-Vw",
@@ -3434,34 +3420,45 @@
         "id": "unsAby0zpgk",
         "title": "Vida de Oração — Parte 2 | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/unsAby0zpgk/mqdefault.jpg",
-        "views": 82,
+        "views": 71,
         "likes": 10,
         "comments": 0,
-        "minutes": 213,
+        "minutes": 183,
         "subsGained": 4,
-        "avgDuration": 228
+        "avgDuration": 216
       },
       {
         "id": "hTyGpYeHM0A",
         "title": "VIDA DE FÉ (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/hTyGpYeHM0A/mqdefault.jpg",
-        "views": 72,
-        "likes": 14,
+        "views": 68,
+        "likes": 12,
         "comments": 0,
-        "minutes": 143,
+        "minutes": 133,
         "subsGained": 1,
-        "avgDuration": 202
+        "avgDuration": 206
       },
       {
-        "id": "3ZCgDsXrNQ0",
-        "title": "Coração — Ponto 153 | Caminho de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/3ZCgDsXrNQ0/mqdefault.jpg",
-        "views": 71,
-        "likes": 10,
+        "id": "ta_1h2Ns24Q",
+        "title": "Coração — Ponto 152 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/ta_1h2Ns24Q/mqdefault.jpg",
+        "views": 57,
+        "likes": 4,
         "comments": 0,
         "minutes": 4,
         "subsGained": 0,
-        "avgDuration": 13
+        "avgDuration": 12
+      },
+      {
+        "id": "yzMdMrC3Qjk",
+        "title": "Caminho 135 — Santa Pureza | São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/yzMdMrC3Qjk/mqdefault.jpg",
+        "views": 44,
+        "likes": 2,
+        "comments": 0,
+        "minutes": 4,
+        "subsGained": 0,
+        "avgDuration": 18
       }
     ]
   },
@@ -4059,7 +4056,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-22T20:21:46.696Z",
+      "generatedAt": "2026-11-23T00:59:12.042Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -4069,7 +4066,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-22T20:21:46.696Z",
+      "generatedAt": "2026-11-23T00:59:12.042Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -4079,16 +4076,16 @@
   },
   "monetization": {
     "2.2": {
-      "asOf": "2026-11-22",
+      "asOf": "2026-11-23",
       "subscribers": 849,
       "errors": {
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
       "watchHours12m": 698,
-      "shortsViews90d": 29154
+      "shortsViews90d": 29138
     },
     "1.2": {
-      "asOf": "2026-11-22",
+      "asOf": "2026-11-23",
       "subscribers": 8,
       "errors": {
         "watchHours": "Analytics API failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Forbidden\",\n    \"errors\": [\n      {\n        \"message\": \"Forbidden\",\n        \"domain\": ",
