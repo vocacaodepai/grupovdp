@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T19:50:02.277Z",
+  "generatedAt": "2026-11-27T02:27:54.726Z",
   "snapshotRows": {
     "1.2": [
       [
@@ -269,6 +269,10 @@
       [
         "8",
         "20261126"
+      ],
+      [
+        "8",
+        "20261127"
       ]
     ],
     "2.1": [
@@ -2923,6 +2927,10 @@
       [
         "850",
         "20261126"
+      ],
+      [
+        "850",
+        "20261127"
       ]
     ],
     "3.2": [
@@ -3014,17 +3022,6 @@
   },
   "detailRows": {
     "2.2": [
-      [
-        1079,
-        109,
-        28,
-        2,
-        0,
-        65,
-        1,
-        0,
-        "20261028"
-      ],
       [
         294,
         27,
@@ -3310,6 +3307,17 @@
         0,
         4,
         "20261123"
+      ],
+      [
+        43,
+        27,
+        90,
+        0,
+        0,
+        1,
+        0,
+        1,
+        "20261124"
       ]
     ]
   },
@@ -3318,27 +3326,27 @@
       "traffic": [
         {
           "label": "Shorts",
-          "views": 2071
+          "views": 1070
         },
         {
           "label": "Busca no YouTube",
-          "views": 809
+          "views": 791
         },
         {
           "label": "Inscritos (feed)",
-          "views": 289
+          "views": 298
         },
         {
           "label": "Notificações",
-          "views": 85
+          "views": 77
         },
         {
           "label": "Vídeos relacionados",
-          "views": 82
+          "views": 76
         },
         {
           "label": "Página do canal",
-          "views": 48
+          "views": 40
         },
         {
           "label": "Link externo",
@@ -3356,99 +3364,65 @@
       "ageGender": [
         {
           "label": "65+ · Mulheres",
-          "pct": 44.8
-        },
-        {
-          "label": "65+ · Homens",
-          "pct": 20.5
-        },
-        {
-          "label": "55-64 · Mulheres",
-          "pct": 20
-        },
-        {
-          "label": "55-64 · Homens",
-          "pct": 14.6
+          "pct": 100
         }
       ],
       "countries": [
         {
           "label": "Brasil",
-          "views": 2023
+          "views": 1086
         },
         {
           "label": "Portugal",
-          "views": 305
+          "views": 250
         }
       ],
       "device": [
         {
           "label": "Celular",
-          "views": 3019
+          "views": 2054
         },
         {
           "label": "Computador",
-          "views": 209
+          "views": 185
         },
         {
           "label": "TV",
-          "views": 96
+          "views": 83
         },
         {
           "label": "Tablet",
-          "views": 95
+          "views": 66
         }
       ],
       "playbackLocation": [
         {
           "label": "Feed de Shorts",
-          "views": 2631
+          "views": 1600
         },
         {
           "label": "Página de exibição",
-          "views": 579
+          "views": 568
         },
         {
           "label": "Explorar/Início",
-          "views": 212
+          "views": 222
         }
       ],
       "subscriptionStatus": [
         {
           "label": "Não inscritos",
-          "views": 3138
+          "views": 2134
         },
         {
           "label": "Inscritos",
-          "views": 284
+          "views": 256
         }
       ]
     }
   },
   "itemVideos": {
     "2.2": [
-      {
-        "id": "oJSjV_1pqw0",
-        "title": "Coração — Ponto 157 | Caminho de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/oJSjV_1pqw0/mqdefault.jpg",
-        "views": 681,
-        "likes": 41,
-        "comments": 0,
-        "minutes": 30,
-        "subsGained": 0,
-        "avgDuration": 11
-      },
-      {
-        "id": "VOZW4M3c4JM",
-        "title": "Coração — Ponto 156 | Caminho de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/VOZW4M3c4JM/mqdefault.jpg",
-        "views": 436,
-        "likes": 23,
-        "comments": 0,
-        "minutes": 21,
-        "subsGained": 1,
-        "avgDuration": 11
-      },
       {
         "id": "YH-tYLN1t14",
         "title": "Coração — Ponto 159 | Caminho de São Josemaría Escrivá",
@@ -3486,12 +3460,12 @@
         "id": "7RGfTpN1Vtc",
         "title": "A História de São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/7RGfTpN1Vtc/mqdefault.jpg",
-        "views": 209,
+        "views": 211,
         "likes": 8,
         "comments": 0,
         "minutes": 118,
         "subsGained": 2,
-        "avgDuration": 97
+        "avgDuration": 101
       },
       {
         "id": "9Q6A-V0ewhI",
@@ -3505,15 +3479,15 @@
         "avgDuration": 13
       },
       {
-        "id": "-YXQ2Cyx6ig",
-        "title": "Coração — Ponto 155 | Caminho de São Josemaría Escrivá",
-        "thumb": "https://i.ytimg.com/vi/-YXQ2Cyx6ig/mqdefault.jpg",
-        "views": 137,
-        "likes": 11,
-        "comments": 1,
-        "minutes": 5,
-        "subsGained": 1,
-        "avgDuration": 8
+        "id": "oJSjV_1pqw0",
+        "title": "Coração — Ponto 157 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/oJSjV_1pqw0/mqdefault.jpg",
+        "views": 132,
+        "likes": 6,
+        "comments": 0,
+        "minutes": 9,
+        "subsGained": 0,
+        "avgDuration": 18
       },
       {
         "id": "KoZbtgKS-Vw",
@@ -3530,40 +3504,62 @@
         "id": "hTyGpYeHM0A",
         "title": "VIDA DE FÉ (Parte 1) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/hTyGpYeHM0A/mqdefault.jpg",
-        "views": 76,
-        "likes": 9,
+        "views": 86,
+        "likes": 7,
         "comments": 0,
-        "minutes": 98,
+        "minutes": 95,
         "subsGained": 1,
-        "avgDuration": 186
+        "avgDuration": 162
+      },
+      {
+        "id": "-YXQ2Cyx6ig",
+        "title": "Coração — Ponto 155 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/-YXQ2Cyx6ig/mqdefault.jpg",
+        "views": 49,
+        "likes": 6,
+        "comments": 0,
+        "minutes": 1,
+        "subsGained": 0,
+        "avgDuration": 8
       },
       {
         "id": "unsAby0zpgk",
         "title": "Vida de Oração — Parte 2 | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/unsAby0zpgk/mqdefault.jpg",
-        "views": 52,
-        "likes": 7,
+        "views": 47,
+        "likes": 6,
         "comments": 0,
-        "minutes": 140,
+        "minutes": 124,
         "subsGained": 3,
-        "avgDuration": 210
+        "avgDuration": 200
+      },
+      {
+        "id": "VOZW4M3c4JM",
+        "title": "Coração — Ponto 156 | Caminho de São Josemaría Escrivá",
+        "thumb": "https://i.ytimg.com/vi/VOZW4M3c4JM/mqdefault.jpg",
+        "views": 37,
+        "likes": 2,
+        "comments": 0,
+        "minutes": 1,
+        "subsGained": 0,
+        "avgDuration": 9
       },
       {
         "id": "yzMdMrC3Qjk",
         "title": "Caminho 135 — Santa Pureza | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/yzMdMrC3Qjk/mqdefault.jpg",
-        "views": 33,
+        "views": 31,
         "likes": 1,
         "comments": 0,
         "minutes": 2,
         "subsGained": 0,
-        "avgDuration": 14
+        "avgDuration": 15
       },
       {
         "id": "yDiwBB073_Y",
         "title": "Caminho 133 - Santa Pureza - Sao Josemaria Escriva",
         "thumb": "https://i.ytimg.com/vi/yDiwBB073_Y/mqdefault.jpg",
-        "views": 28,
+        "views": 26,
         "likes": 0,
         "comments": 0,
         "minutes": 1,
@@ -3574,247 +3570,27 @@
         "id": "op5_mAJvwzA",
         "title": "O SEGREDO DA SANTIDADE QUE QUASE NINGUÉM PERCEBE | São Josemaría Escrivá",
         "thumb": "https://i.ytimg.com/vi/op5_mAJvwzA/mqdefault.jpg",
-        "views": 24,
+        "views": 25,
         "likes": 1,
         "comments": 0,
         "minutes": 5,
         "subsGained": 0,
-        "avgDuration": 98
+        "avgDuration": 75
       },
       {
         "id": "KnTr-LDA8J0",
         "title": "VIDA DE FÉ (Parte 2) | SÃO JOSEMARIA ESCRIVÁ",
         "thumb": "https://i.ytimg.com/vi/KnTr-LDA8J0/mqdefault.jpg",
-        "views": 23,
+        "views": 24,
         "likes": 1,
         "comments": 0,
         "minutes": 27,
         "subsGained": 0,
-        "avgDuration": 161
+        "avgDuration": 159
       }
     ]
   },
   "videoDaily": {
-    "oJSjV_1pqw0": [
-      [
-        549,
-        "20261028"
-      ],
-      [
-        36,
-        "20261029"
-      ],
-      [
-        37,
-        "20261030"
-      ],
-      [
-        30,
-        "20261031"
-      ],
-      [
-        14,
-        "20261101"
-      ],
-      [
-        6,
-        "20261102"
-      ],
-      [
-        0,
-        "20261103"
-      ],
-      [
-        2,
-        "20261104"
-      ],
-      [
-        0,
-        "20261105"
-      ],
-      [
-        0,
-        "20261106"
-      ],
-      [
-        0,
-        "20261107"
-      ],
-      [
-        0,
-        "20261108"
-      ],
-      [
-        0,
-        "20261109"
-      ],
-      [
-        0,
-        "20261110"
-      ],
-      [
-        0,
-        "20261111"
-      ],
-      [
-        0,
-        "20261112"
-      ],
-      [
-        1,
-        "20261113"
-      ],
-      [
-        1,
-        "20261114"
-      ],
-      [
-        0,
-        "20261115"
-      ],
-      [
-        3,
-        "20261116"
-      ],
-      [
-        1,
-        "20261117"
-      ],
-      [
-        0,
-        "20261118"
-      ],
-      [
-        0,
-        "20261119"
-      ],
-      [
-        1,
-        "20261120"
-      ],
-      [
-        0,
-        "20261121"
-      ],
-      [
-        0,
-        "20261122"
-      ],
-      [
-        0,
-        "20261123"
-      ]
-    ],
-    "VOZW4M3c4JM": [
-      [
-        399,
-        "20261028"
-      ],
-      [
-        18,
-        "20261029"
-      ],
-      [
-        7,
-        "20261030"
-      ],
-      [
-        1,
-        "20261031"
-      ],
-      [
-        1,
-        "20261101"
-      ],
-      [
-        0,
-        "20261102"
-      ],
-      [
-        0,
-        "20261103"
-      ],
-      [
-        0,
-        "20261104"
-      ],
-      [
-        0,
-        "20261105"
-      ],
-      [
-        0,
-        "20261106"
-      ],
-      [
-        0,
-        "20261107"
-      ],
-      [
-        0,
-        "20261108"
-      ],
-      [
-        0,
-        "20261109"
-      ],
-      [
-        0,
-        "20261110"
-      ],
-      [
-        0,
-        "20261111"
-      ],
-      [
-        0,
-        "20261112"
-      ],
-      [
-        0,
-        "20261113"
-      ],
-      [
-        0,
-        "20261114"
-      ],
-      [
-        2,
-        "20261115"
-      ],
-      [
-        0,
-        "20261116"
-      ],
-      [
-        1,
-        "20261117"
-      ],
-      [
-        5,
-        "20261118"
-      ],
-      [
-        0,
-        "20261119"
-      ],
-      [
-        0,
-        "20261120"
-      ],
-      [
-        0,
-        "20261121"
-      ],
-      [
-        1,
-        "20261122"
-      ],
-      [
-        1,
-        "20261123"
-      ]
-    ],
     "YH-tYLN1t14": [
       [
         200,
@@ -3915,6 +3691,10 @@
       [
         0,
         "20261123"
+      ],
+      [
+        0,
+        "20261124"
       ]
     ],
     "p5Cv6amm30o": [
@@ -4009,6 +3789,10 @@
       [
         0,
         "20261123"
+      ],
+      [
+        0,
+        "20261124"
       ]
     ],
     "6lLfDlB3VN8": [
@@ -4107,13 +3891,13 @@
       [
         0,
         "20261123"
+      ],
+      [
+        0,
+        "20261124"
       ]
     ],
     "7RGfTpN1Vtc": [
-      [
-        7,
-        "20261028"
-      ],
       [
         6,
         "20261029"
@@ -4217,6 +4001,230 @@
       [
         13,
         "20261123"
+      ],
+      [
+        9,
+        "20261124"
+      ]
+    ],
+    "9Q6A-V0ewhI": [
+      [
+        135,
+        "20261029"
+      ],
+      [
+        41,
+        "20261030"
+      ],
+      [
+        13,
+        "20261031"
+      ],
+      [
+        3,
+        "20261101"
+      ],
+      [
+        3,
+        "20261102"
+      ],
+      [
+        0,
+        "20261103"
+      ],
+      [
+        0,
+        "20261104"
+      ],
+      [
+        3,
+        "20261105"
+      ],
+      [
+        0,
+        "20261106"
+      ],
+      [
+        0,
+        "20261107"
+      ],
+      [
+        0,
+        "20261108"
+      ],
+      [
+        0,
+        "20261109"
+      ],
+      [
+        0,
+        "20261110"
+      ],
+      [
+        0,
+        "20261111"
+      ],
+      [
+        0,
+        "20261112"
+      ],
+      [
+        0,
+        "20261113"
+      ],
+      [
+        0,
+        "20261114"
+      ],
+      [
+        0,
+        "20261115"
+      ],
+      [
+        0,
+        "20261116"
+      ],
+      [
+        0,
+        "20261117"
+      ],
+      [
+        0,
+        "20261118"
+      ],
+      [
+        0,
+        "20261119"
+      ],
+      [
+        0,
+        "20261120"
+      ],
+      [
+        0,
+        "20261121"
+      ],
+      [
+        0,
+        "20261122"
+      ],
+      [
+        0,
+        "20261123"
+      ],
+      [
+        0,
+        "20261124"
+      ]
+    ],
+    "oJSjV_1pqw0": [
+      [
+        36,
+        "20261029"
+      ],
+      [
+        37,
+        "20261030"
+      ],
+      [
+        30,
+        "20261031"
+      ],
+      [
+        14,
+        "20261101"
+      ],
+      [
+        6,
+        "20261102"
+      ],
+      [
+        0,
+        "20261103"
+      ],
+      [
+        2,
+        "20261104"
+      ],
+      [
+        0,
+        "20261105"
+      ],
+      [
+        0,
+        "20261106"
+      ],
+      [
+        0,
+        "20261107"
+      ],
+      [
+        0,
+        "20261108"
+      ],
+      [
+        0,
+        "20261109"
+      ],
+      [
+        0,
+        "20261110"
+      ],
+      [
+        0,
+        "20261111"
+      ],
+      [
+        0,
+        "20261112"
+      ],
+      [
+        1,
+        "20261113"
+      ],
+      [
+        1,
+        "20261114"
+      ],
+      [
+        0,
+        "20261115"
+      ],
+      [
+        3,
+        "20261116"
+      ],
+      [
+        1,
+        "20261117"
+      ],
+      [
+        0,
+        "20261118"
+      ],
+      [
+        0,
+        "20261119"
+      ],
+      [
+        1,
+        "20261120"
+      ],
+      [
+        0,
+        "20261121"
+      ],
+      [
+        0,
+        "20261122"
+      ],
+      [
+        0,
+        "20261123"
+      ],
+      [
+        0,
+        "20261124"
       ]
     ]
   },
@@ -4224,7 +4232,7 @@
     "portaldaai": {
       "label": "Portal da AI",
       "domain": "portaldaai.com.br",
-      "generatedAt": "2026-11-26T19:50:02.316Z",
+      "generatedAt": "2026-11-27T02:27:54.773Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -4234,7 +4242,7 @@
     "vocacaodemae": {
       "label": "Vocação de Mãe",
       "domain": "vocacaodemae.com.br",
-      "generatedAt": "2026-11-26T19:50:02.316Z",
+      "generatedAt": "2026-11-27T02:27:54.773Z",
       "errors": {
         "ga4": "secret GOOGLE_SA_JSON ausente",
         "searchConsole": "secret GOOGLE_SA_JSON ausente",
@@ -4244,16 +4252,16 @@
   },
   "monetization": {
     "2.2": {
-      "asOf": "2026-11-26",
+      "asOf": "2026-11-27",
       "subscribers": 850,
       "errors": {
         "revenue": "Analytics API failed: 401 {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Insufficient permission to access this report.\",\n    \"errors\": [\n      {\n        \"mess"
       },
       "watchHours12m": 699,
-      "shortsViews90d": 28664
+      "shortsViews90d": 28118
     },
     "1.2": {
-      "asOf": "2026-11-26",
+      "asOf": "2026-11-27",
       "subscribers": 8,
       "errors": {
         "watchHours": "Analytics API failed: 403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Forbidden\",\n    \"errors\": [\n      {\n        \"message\": \"Forbidden\",\n        \"domain\": ",
